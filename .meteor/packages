@@ -26,3 +26,7 @@ accounts-google
 mike:mocha
 accounts-password
 coffeescript
+accounts-facebook
+accounts-twitter
+service-configuration
+accounts-ui
