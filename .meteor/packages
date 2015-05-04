@@ -27,3 +27,7 @@ coffeescript
 audit-argument-checks
 velocity:html-reporter
 mike:mocha
+accounts-facebook
+accounts-twitter
+service-configuration
+accounts-ui
