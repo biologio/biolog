@@ -3,12 +3,17 @@
         <a href="/" class="brand item">Biolog</a>
         <a href="/admin" class="active item">Admin</a>
         <div class="left menu"></div>
+        
         <div class="right menu">
+            <div class="item">{{#if currentUser}} {{currentUser.username}} {{/if}} <i class="user icon"></i></div>
+            {{> atNavButton}}
+            <!--
             {{#if currentUser}}
             <div class="item"><button id="btnSignOut" class="ui green button">Sign Out</button></div>
             {{else}}
             <div class="item"><button id="btnSignIn" class="ui green button">Sign in</button></div>
             {{/if}}
+            -->
         </div>
     </nav>
     
