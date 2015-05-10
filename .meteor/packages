@@ -25,10 +25,9 @@ accounts-google
 accounts-password
 coffeescript
 audit-argument-checks
-velocity:html-reporter
 accounts-facebook
 accounts-twitter
 service-configuration
 accounts-ui
 http
-mike:mocha
+matteodem:easy-search

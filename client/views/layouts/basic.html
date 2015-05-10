@@ -1,8 +1,11 @@
 <template name="basicLayout">
     <nav class="ui menu inverted navbar page grid">
-        <a href="/" class="brand item">Biolog</a>
-        <a href="/admin" class="active item">Admin</a>
-        <div class="left menu"></div>
+        <a href="/" class="brand item">Biolog!</a>
+        <a href="/meds" class="item">Medicines</a>
+        <a href="/admin" class="item">Admin</a>
+        <div class="left menu">
+
+        </div>
         
         <div class="right menu">
             <div class="item">{{#if currentUser}} {{currentUser.username}} {{/if}} <i class="user icon"></i></div>

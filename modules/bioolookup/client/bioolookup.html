@@ -1,0 +1,31 @@
+<template name="bioolookup">
+    {{> esInput index="bioolookup" placeholder="Search bioontology"}}
+
+    {{#ifEsInputIsEmpty index="bioolookup"}}
+        <div>Search?</div>
+    {{/ifEsInputIsEmpty}}
+
+    {{#ifEsHasNoResults index="bioolookup"}}
+        <div class="no-results">No results found</div>
+    {{else}}
+        {{#ifEsIsSearching index="bioolookup"}}
+            <div>Loading...</div>
+        {{else}}
+            <div class="results-wrapper">
+                {{#esEach index="bioolookup"}}
+                    {{> bioolookupItem}}
+                {{/esEach}}
+            </div>
+
+            {{> esLoadMoreButton index="bioolookup"}}
+        {{/ifEsIsSearching}}
+    {{/ifEsHasNoResults}}
+
+
+
+
+</template>
+
+<template name="bioolookupItem">
+    Item: {{prefLabel}}
+</template>
