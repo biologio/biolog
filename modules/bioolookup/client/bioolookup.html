@@ -1,31 +1,20 @@
 <template name="bioolookup">
-    {{> esInput index="bioolookup" placeholder="Search bioontology"}}
 
-    {{#ifEsInputIsEmpty index="bioolookup"}}
-        <div>Search?</div>
-    {{/ifEsInputIsEmpty}}
-
-    {{#ifEsHasNoResults index="bioolookup"}}
-        <div class="no-results">No results found</div>
-    {{else}}
-        {{#ifEsIsSearching index="bioolookup"}}
-            <div>Loading...</div>
-        {{else}}
-            <div class="results-wrapper">
-                {{#esEach index="bioolookup"}}
-                    {{> bioolookupItem}}
-                {{/esEach}}
-            </div>
-
-            {{> esLoadMoreButton index="bioolookup"}}
-        {{/ifEsIsSearching}}
-    {{/ifEsHasNoResults}}
-
-
-
+    <div class="ui icon input loading">
+        <input class="prompt" type="text" placeholder="Search for medications..." id="biolookup-searchBox">
+    </div>
+    <div class="results ui selection list">
+        {{#each results}}
+            {{>bioolookupResultItem}}
+        {{/each}}
+    </div>
 
 </template>
 
-<template name="bioolookupItem">
-    Item: {{prefLabel}}
+<template name="bioolookupResultItem">
+    <div class="item">
+        <div class="content">
+            <div class="header">{{title}}</div>
+        </div>
+    </div>
 </template>
