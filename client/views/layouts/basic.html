@@ -1,5 +1,13 @@
 <template name="basicLayout">
-    <nav class="ui menu inverted navbar page grid">
+    <div class="ui left vertical inverted labeled icon sidebar menu">
+      
+      {{#each sidebarmenus}}
+        {{> sidebarmenu}}
+      {{/each}}
+    </div>
+    
+    <nav class="ui top fixed menu inverted navbar page grid">
+        <div class="item main-menu"><i class=" item align justify icon"></i></div>
         <a href="/" class="brand item">Biolog!</a>
         <a href="/meds" class="item">Medicines</a>
         <a href="/admin" class="item">Admin</a>
@@ -19,6 +27,14 @@
             -->
         </div>
     </nav>
-    
+    <div class="pusher">
     {{> yield}}
+    </div>
+</template>
+
+<template name="sidebarmenu">
+    <a class="item">
+        <i class="{{icon}} icon"></i>
+        {{text}}
+    </a>
 </template>
