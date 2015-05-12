@@ -1,8 +1,29 @@
 //'use strict';
 
-//if (Meteor.isServer) {
+if (Meteor.isServer) {
 
+    var lookupBioontology = function(ontologies, query, callback) {
+        var bioportalConfig = YAML.eval(Assets.getText('config/bioportal.yml'));
+        var url = bioportalConfig.baseurl + "search?display_links=false&q=" + encodeURIComponent(q) + "&ontologies=" + ontologies + "&apikey=" + bioportalConfig.apikey;
 
+        HTTP.get(url, params, function (err, response) {
+            if (err) {
+                return callback(err);
+            }
+            var json = JSON.parse(response.content);
+            console.log("Received data: " + JSON.stringify(json.collection));
+            return callback(null, json.collection);
+        });
+    };
+
+    var lookupBioontologySync = Meteor.wrapAsync(lookupBioontology);
+
+    Meteor.methods({
+        bioolookup: function (collection, query) {
+            return lookupBioontologySync(collection, query);
+        }
+    });
+}
 
 //bioolookupSearch = function (name, searchString, params, callback) {
 //    var Future = Npm.require('fibers/future');
@@ -87,58 +108,27 @@ if (Meteor.isClient) {
     });
 
     Template.bioolookup.events({
-        "keydown .prompt": function(event, template) {
-            var textVal = template.find("#biolookup-searchBox").value;
-            console.log("Keydown!" + textVal);
-            var bioportalConfig = YAML.eval(Assets.getText('config/bioportal.yml'));
-            var url = bioportalConfig.baseurl + "search?display_links=false&q=" + encodeURIComponent(searchString) + "&apikey=" + bioportalConfig.apikey;
+        "input .prompt": function(event, template) {
+            var q = template.find("#biolookup-searchBox").value;
+            //console.log("input!" + q);
+            //var lookupResponse = Meteor.call("bioolookup", "RXNORM", q);
+            //console.log("Received response: " + JSON.stringify(lookupResponse));
+            //semantic_types=T116,T109,T121
+            var url = "http://bioportal.smart-bio.org:8080/search?semantic_types=T116,T109,T121display_links=false&q=" + encodeURIComponent(q) + "*&ontologies=RXNORM&apikey=95d31cce-3247-4186-ae95-97c61884c50a";
 
 
-            HTTP.get(url, params, function(err, response) {
+            HTTP.get(url, function (err, response) {
                 if (err) {
-                    console.error("Error in bioolookup: " + err );
-                    results.set(null);
-                    return;
+                    return results.set([]);
                 }
                 var json = JSON.parse(response.content);
-                //var data = {
-                //    total: 100,
-                //    results: json.collection
-                //};
-
-                console.log("Received data: " + JSON.stringify(json.collection));
+                //console.log("Received data: " + JSON.stringify(json.collection));
                 results.set(json.collection);
-
-
             });
+        },
 
-            //results.set([
-            //    { title: 'Andorra' },
-            //    { title: 'United Arab Emirates' },
-            //    { title: 'Afghanistan' },
-            //    { title: 'Antigua' },
-            //    { title: 'Anguilla' },
-            //    { title: 'Albania' },
-            //    { title: 'Armenia' },
-            //    { title: 'Netherlands Antilles' },
-            //    { title: 'Angola' },
-            //    { title: 'Argentina' },
-            //    { title: 'American Samoa' },
-            //    { title: 'Austria' },
-            //    { title: 'Australia' },
-            //    { title: 'Aruba' },
-            //    { title: 'Aland Islands' },
-            //    { title: 'Azerbaijan' },
-            //    { title: 'Bosnia' },
-            //    { title: 'Barbados' },
-            //    { title: 'Bangladesh' },
-            //    { title: 'Belgium' },
-            //    { title: 'Burkina Faso' },
-            //    { title: 'Bulgaria' },
-            //    { title: 'Bahrain' },
-            //    { title: 'Burundi' }
-            //    // etc
-            //]);
+        "click .bioolookup-result": function(event, template) {
+            console.log("clicked: " + JSON.stringify(this));
         }
     });
 

@@ -5,16 +5,12 @@
     </div>
     <div class="results ui selection list">
         {{#each results}}
-            {{>bioolookupResultItem}}
+            <div class="item bioolookup-result">
+                <div class="content">
+                    <div class="header">{{prefLabel}}</div>
+                </div>
+            </div>
         {{/each}}
     </div>
 
-</template>
-
-<template name="bioolookupResultItem">
-    <div class="item">
-        <div class="content">
-            <div class="header">{{title}}</div>
-        </div>
-    </div>
 </template>

@@ -67,8 +67,8 @@
       <file leaf-file-name="bioolookup.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/modules/bioolookup/bioolookup.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.3560127" vertical-offset="1243" max-vertical-offset="2265">
-              <caret line="140" column="17" selection-start-line="140" selection-start-column="17" selection-end-line="140" selection-end-column="17" />
+            <state vertical-scroll-proportion="0.43037975" vertical-offset="1468" max-vertical-offset="2115">
+              <caret line="116" column="95" selection-start-line="116" selection-start-column="95" selection-end-line="116" selection-end-column="95" />
               <folding />
             </state>
           </provider>
@@ -77,8 +77,8 @@
       <file leaf-file-name="bioolookup.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/modules/bioolookup/client/bioolookup.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-4.375" vertical-offset="0" max-vertical-offset="375">
-              <caret line="7" column="37" selection-start-line="7" selection-start-column="37" selection-end-line="7" selection-end-column="37" />
+            <state vertical-scroll-proportion="-6.25" vertical-offset="0" max-vertical-offset="330">
+              <caret line="10" column="22" selection-start-line="10" selection-start-column="22" selection-end-line="10" selection-end-column="22" />
               <folding />
             </state>
           </provider>
@@ -208,6 +208,38 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="biolog" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="biolog" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="private" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="biolog" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="biolog" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="private" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="config" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -588,14 +620,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/private/config/bioportal.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="672">
-          <caret line="0" column="47" selection-start-line="0" selection-start-column="47" selection-end-line="0" selection-end-column="47" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/server/config/security.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.29017857" vertical-offset="0" max-vertical-offset="672">
@@ -694,14 +718,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/views/meds/meds.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.625" vertical-offset="0" max-vertical-offset="135">
-          <caret line="1" column="20" selection-start-line="1" selection-start-column="20" selection-end-line="1" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/views/meds/meds.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="672">
@@ -726,18 +742,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/private/config/bioportal.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.04464286" vertical-offset="0" max-vertical-offset="672">
+          <caret line="2" column="44" selection-start-line="2" selection-start-column="44" selection-end-line="2" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/views/meds/meds.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.625" vertical-offset="0" max-vertical-offset="135">
+          <caret line="1" column="20" selection-start-line="1" selection-start-column="20" selection-end-line="1" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/modules/bioolookup/client/bioolookup.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.375" vertical-offset="0" max-vertical-offset="375">
-          <caret line="7" column="37" selection-start-line="7" selection-start-column="37" selection-end-line="7" selection-end-column="37" />
+        <state vertical-scroll-proportion="-6.25" vertical-offset="0" max-vertical-offset="330">
+          <caret line="10" column="22" selection-start-line="10" selection-start-column="22" selection-end-line="10" selection-end-column="22" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/modules/bioolookup/bioolookup.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.3560127" vertical-offset="1243" max-vertical-offset="2265">
-          <caret line="140" column="17" selection-start-line="140" selection-start-column="17" selection-end-line="140" selection-end-column="17" />
+        <state vertical-scroll-proportion="0.43037975" vertical-offset="1468" max-vertical-offset="2115">
+          <caret line="116" column="95" selection-start-line="116" selection-start-column="95" selection-end-line="116" selection-end-column="95" />
           <folding />
         </state>
       </provider>
