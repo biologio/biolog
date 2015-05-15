@@ -20,10 +20,13 @@ Template.basicLayout.rendered = function(){
 Template.basicLayout.helpers({
     // array of side bar menus
     sidebarmenus:[
-        {text:"Home", icon:"home"},
-        {text:"Topic", icon:"block layout"},
-        {text:"Friends", icon:"smile"},
-        {text:"History", icon:"calendar"},
-        {text:"Messages", icon:"mail"},
+        {text:"Home", icon:"home", url:"/"},
+        {text:"Medicines", icon:"lab", url:"/meds"},
+        {text:"Admin", icon:"settings", url:"/admin"},
+        {text:"Conditions", icon:"heart", url:"#"},
+        {text:"Medications", icon:"wifi", url:"#"},
+        {text:"Events", icon:"calendar", url:"#"},
+        {text:"Timeline", icon:"tasks", url:"#"},
+        
     ]
 });

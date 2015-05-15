@@ -9,8 +9,8 @@
     <nav class="ui top fixed menu inverted navbar page grid">
         <div class="item main-menu"><i class=" item align justify icon"></i></div>
         <a href="/" class="brand item">Biolog!</a>
-        <a href="/meds" class="item">Medicines</a>
-        <a href="/admin" class="item">Admin</a>
+        <!--<a href="/meds" class="item">Medicines</a>
+        <a href="/admin" class="item">Admin</a>-->
         <div class="left menu">
 
         </div>
@@ -33,7 +33,7 @@
 </template>
 
 <template name="sidebarmenu">
-    <a class="item">
+    <a class="item" href="{{url}}">
         <i class="{{icon}} icon"></i>
         {{text}}
     </a>
