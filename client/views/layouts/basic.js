@@ -13,20 +13,18 @@ Template.basicLayout.events({
     }
 });
 
-Template.basicLayout.rendered = function(){
-    
-}
+
 
 Template.basicLayout.helpers({
     // array of side bar menus
     sidebarmenus:[
         {text:"Home", icon:"home", url:"/"},
-        {text:"Medicines", icon:"lab", url:"/meds"},
+        {text:"Medicines", icon:"first aid", url:"/meds"},
         {text:"Admin", icon:"settings", url:"/admin"},
-        {text:"Conditions", icon:"heart", url:"#"},
-        {text:"Medications", icon:"wifi", url:"#"},
-        {text:"Events", icon:"calendar", url:"#"},
-        {text:"Timeline", icon:"tasks", url:"#"},
+        {text:"Conditions", icon:"heart", url:"/#"},
+        {text:"Medications", icon:"treatment", url:"/#"},
+        {text:"Events", icon:"calendar", url:"/#"},
+        {text:"Timeline", icon:"tasks", url:"/#"},
         
     ]
 });
