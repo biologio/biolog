@@ -269,7 +269,7 @@ Meteor.methods(FactMethods = {
             subjName: String,
             objName: String,
             text: String,
-            startDate: 
+            startDate:
         });
 
         check (skipFact, Boolean);

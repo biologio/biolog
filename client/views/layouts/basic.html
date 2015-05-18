@@ -17,7 +17,7 @@
         </div>
         
         <div class="right menu">
-            <div class="item">{{#if currentUser}} {{currentUser.username}} {{/if}} <i class="user icon"></i></div>
+            {{#if currentUser}}<div class="item"> {{currentUser.username}}  <i class="user icon"></i></div>{{/if}}
             {{> atNavButton}}
             <!--
             {{#if currentUser}}
