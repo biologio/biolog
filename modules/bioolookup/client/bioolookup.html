@@ -1,11 +1,31 @@
-<template name="bioolookup">
+<template name="bioolookupButton">
+    <!--<div id="bioolookupButton" class="ui right floated floating icon button">-->
+    <div id="bioolookupButton" class="ui icon button">
+        <i class="plus icon"></i>
+    </div>
+</template>
 
+
+<template name="bioolookupModal">
+    <div id="bioolookupModal" class="ui modal small">
+        <div class="content">
+            {{>bioolookupContent}}
+        </div>
+        <div class="actions">
+            <div class="ui button cancel">Cancel</div>
+            <div class="ui button ok">OK</div>
+        </div>
+    </div>
+</template>
+
+
+<template name="bioolookupContent">
     <div class="ui icon input loading">
-        <input class="prompt" type="text" placeholder="Search for medications..." id="biolookup-searchBox">
+        <input class="prompt" type="text" placeholder="Search for medications..." id="biolookupSearchBox">
     </div>
     <div class="results ui selection list">
         {{#each results}}
-            <div class="item bioolookup-result">
+            <div class="item bioolookupResult">
                 <div class="content">
                     <div class="header">{{prefLabel}}</div>
                 </div>
@@ -14,3 +34,4 @@
     </div>
 
 </template>
+

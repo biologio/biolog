@@ -1,4 +1,5 @@
 <template name="basicLayout">
+    {{> patientModal}}
     <div class="ui left vertical inverted labeled icon sidebar menu">
       
       {{#each sidebarmenus}}
@@ -8,7 +9,7 @@
     
     <nav class="ui top fixed menu inverted navbar page grid">
         <div class="item main-menu"><i class=" item align justify icon"></i></div>
-        <a href="/" class="brand item">Biolog!</a>
+        <a href="/" class="brand item">Biolog</a>
         <!--<a href="/meds" class="item">Medicines</a>
         <a href="/admin" class="item">Admin</a>-->
         <div class="left menu">

@@ -14,7 +14,9 @@ Template.basicLayout.events({
 });
 
 Template.basicLayout.rendered = function(){
-    
+    if (! getPatient()) {
+        Session.set("biolog.patient.modal.open", "true");
+    }
 }
 
 Template.basicLayout.helpers({

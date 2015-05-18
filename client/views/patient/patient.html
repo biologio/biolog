@@ -1,0 +1,62 @@
+
+<template name="patientModal">
+    <div id="patientModal" class="ui modal small">
+        <div class="content">
+            <h3>Select a patient</h3>
+            {{>patientSelector}}
+            {{>patientDemographics}}
+        </div>
+        <div class="actions">
+            <div class="ui button cancel">Cancel</div>
+            <div class="ui button ok">OK</div>
+        </div>
+    </div>
+</template>
+
+<template name="patientSelector">
+    <div class="row">
+        <div class="col col-lg-12">
+            <span class="list-group">
+                {{#each patients}}
+                    <a href="#" class="list-group-item patientDialog-patient">
+                        {{name}}
+                    </a>
+                {{/each}}
+            </span>
+            <!--<button class="btn btn-default patientSelector-newPatient"><i class="fa fa-plus"></i>New Patient</button>-->
+        </div>
+    </div>
+</template>
+
+
+
+<template name="patientDemographics">
+    <form class="ui form">
+        {{#with patient}}
+            <div class="field">
+                <label>Nickname</label>
+                <input type="text" class="form-control" id="inputNickname"
+                       placeholder="What is this patient called?"
+                       value="{{nickname}}">
+            </div>
+            <div class="field">
+                <label>Date of Birth</label>
+                <input type="date" class="form-control" id="inputDob" placeholder="Date of birth" value="{{dob}}">
+            </div>
+            <div class="grouped fields">
+                <div class="field">
+                    <div class="ui radio checkbox">
+                        <input type="radio" name="inputGender" id="inputGenderFemale" value="female" {{femaleChecked}}>
+                        <label>Female</label>
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="ui radio checkbox">
+                        <input type="radio" name="inputGender" id="inputGenderMale" value="male" {{maleChecked}}>
+                        <label>Male</label>
+                    </div>
+                </div>
+            </div>
+        {{/with}}
+    </form>
+</template>
