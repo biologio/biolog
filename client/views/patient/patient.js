@@ -84,7 +84,7 @@ Template.patientDemographics.events({
         setValuePath(pt, "data['id/sex']", fact);
         setPatient(pt);
         //addProperty(fact);
-        console.log("Changed: " + JSON.stringify(getPatient()));
+        console.log("Changed patient: " + JSON.stringify(getPatient()));
     }
 });
 
