@@ -38,7 +38,7 @@ setValuePath = function(object, path, value) {
  * @returns {*}
  */
 getValuePath = function(object, path) {
-    var o = object;
+    var o = object; // o is undefined here, pls fix
     path = path.replace(/\[(\w+)\]/g, '.$1');
     path = path.replace(/^\./, '');
     var a = path.split('.');
