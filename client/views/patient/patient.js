@@ -22,7 +22,7 @@ Tracker.autorun(function () {
         }).modal('show');
 
     } else {
-        console.log("Hiding modal: " + Session.get("biolog.patient.modal.open"));
+        //console.log("Hiding modal: " + Session.get("biolog.patient.modal.open"));
         $('#patientModal').modal('hide');
     }
 });

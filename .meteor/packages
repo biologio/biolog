@@ -24,12 +24,10 @@ semantic:ui-css
 accounts-google
 accounts-password
 coffeescript
-audit-argument-checks
 accounts-facebook
 accounts-twitter
 service-configuration
 accounts-ui
 http
-matteodem:easy-search
 reactive-var
 semantic:ui-sidebar

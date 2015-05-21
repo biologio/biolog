@@ -12,7 +12,7 @@ Meteor.methods({
         check(entity, {
             _id: String,
             name: String,
-            source: String,
+            //source: String,
             etypes: [String]
         });
         // Make sure the user is logged in before inserting a task
@@ -32,13 +32,13 @@ Meteor.methods({
         }
 
         entity.creator = this.userId;
-        entity.updater = this.userId;
+        //entity.updater = this.userId;
         entity.owners = [this.userId];
         var theDate = new Date();
         entity.created = theDate;
-        entity.updated = theDate;
+        //entity.updated = theDate;
         entity.valid = 1;
-        if (!entity.source) entity.source = "biolog/server/entities";
+        //if (!entity.source) entity.source = "biolog/server/entities";
         console.log("Inserting entity: " + JSON.stringify(entity));
         Entities.insert(entity);
 

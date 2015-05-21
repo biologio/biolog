@@ -400,19 +400,19 @@ Meteor.methods(FactMethods = {
             return { success: false, error: message};
         }
 
-        check(fact, {
-            subj: String,
-            pred: String,
-            //obj: Match.Optional([String]),
-            obj: Match.Optional(Match.Any),
-            subjName: Match.Optional(String),
-            objName: Match.Optional(String),
-            text: Match.Optional(String),
-            startDate: Match.Optional(Match.Any),
-            endDate: Match.Optional(Match.Any),
-            startFlag: Match.Optional(Match.Any),
-            endFlag: Match.Optional(Match.Any)
-        });
+        //check(fact, {
+        //    subj: String,
+        //    pred: String,
+        //    //obj: Match.Optional([String]),
+        //    obj: Match.Optional(Match.Any),
+        //    subjName: Match.Optional(String),
+        //    objName: Match.Optional(String),
+        //    text: Match.Optional(String),
+        //    startDate: Match.Optional(Match.Any),
+        //    endDate: Match.Optional(Match.Any),
+        //    startFlag: Match.Optional(Match.Any),
+        //    endFlag: Match.Optional(Match.Any)
+        //});
 
         check (skipFact, Match.Optional(Boolean));
 
@@ -477,31 +477,31 @@ _addFact = function (fact, userId) {
     }
 
     fact.creator = userId;
-    fact.updater = userId;
+    //fact.updater = userId;
     var theDate = new Date();
     fact.created = theDate;
-    fact.updated = theDate;
+    //fact.updated = theDate;
     if (!fact._id) fact._id = new Meteor.Collection.ObjectID()._str;
-    if (!fact.source) fact.source = "biolog/server/facts";
+    //fact.source = "biolog/server/facts";
     console.log("Inserting fact: " + JSON.stringify(fact));
     Facts.insert(fact);
 
     //next update the current data for the subject entity
     var newEntityVals = {};
-    Entities.update(subjId,
-        {
-            $inc: { used: 1 }
-        }
-    );
+    //Entities.update(subjId,
+    //    {
+    //        $inc: { used: 1 }
+    //    }
+    //);
 
     //next increment the use count for the object, if any
-    if (fact.obj) {
-        Entities.update(fact.obj,
-            {
-                $inc: { used:1 }
-            }
-        );
-    }
+    //if (fact.obj) {
+    //    Entities.update(fact.obj,
+    //        {
+    //            $inc: { used:1 }
+    //        }
+    //    );
+    //}
 
     return {success: true, fact: fact};
 };
@@ -542,8 +542,8 @@ _updateFact = function(fact, userId) {
         var endDate = new Date();
         Facts.upsert( existingFact._id,
             {$set: {
-                outdated: endDate,
-                outdater: userId,
+                //outdated: endDate,
+                //outdater: userId,
                 endDate: endDate,
                 endFlag: 0,
                 current: -1,
@@ -553,8 +553,8 @@ _updateFact = function(fact, userId) {
     console.log("Updating fact: " + JSON.stringify(fact));
     Facts.upsert( fact._id,
         {$set: {
-            updated: new Date(),
-            updater: userId,
+            //updated: new Date(),
+            //updater: userId,
             valid: fact.valid,
             obj: fact.obj,
             num: fact.num,
@@ -569,13 +569,13 @@ _updateFact = function(fact, userId) {
 
 
     //next update the used count for the object, if warranted
-    if (fact.obj && fact.obj != existingFact.obj) {
-        Entities.update(fact.obj, { $inc: { used: 1 } } );
-    }
+    //if (fact.obj && fact.obj != existingFact.obj) {
+    //    Entities.update(fact.obj, { $inc: { used: 1 } } );
+    //}
 
-    if (existingFact.obj && fact.obj != existingFact.obj) {
-        Entities.update(existingFact.obj, { $inc: { used: -1 } });
-    }
+    //if (existingFact.obj && fact.obj != existingFact.obj) {
+    //    Entities.update(existingFact.obj, { $inc: { used: -1 } });
+    //}
 
     return {success: true};
 };
@@ -607,10 +607,10 @@ _setFact = function(fact, userId) {
     );
 
     fact.creator = userId;
-    //fact.updater = userId;
+    fact.updater = userId;
     var theDate = new Date();
     fact.created = theDate;
-    //fact.updated = theDate;
+    fact.updated = theDate;
     if (!fact._id) fact._id = new Meteor.Collection.ObjectID()._str;
     if (!fact.source) fact.source = "smartbio/server/facts";
 
@@ -618,17 +618,20 @@ _setFact = function(fact, userId) {
         _id: String,
         subj: String,
         pred: String,
-        obj: Match.Optional(Match.Any),
+        obj: Match.Optional(String),
         subjName: Match.Optional(String),
         objName: Match.Optional(String),
         text: Match.Optional(String),
-        startDate: Match.Optional(Match.Any),
-        endDate: Match.Optional(Match.Any),
+        startDate: Match.Optional(Match.OneOf(undefined, String, Date)),
+        endDate: Match.Optional(Match.OneOf(undefined, String, Date)),
         startFlag: Match.Optional(Match.Any),
         endFlag: Match.Optional(Match.Any),
-        created: Match.Any,
-        creator: Match.Any,
-        source: String
+        created: Date,
+        creator: Match.Optional(String),
+        updated: Match.OneOf(undefined, String, Date),
+        updater: Match.Optional(String),
+        source: String,
+        valid: Match.Optional(Match.Integer)
     });
 
     console.log("Inserting fact: " + JSON.stringify(fact));
@@ -642,20 +645,20 @@ _setFact = function(fact, userId) {
     newEntityVals[key] = fact;
     Entities.update(subjId,
         {
-            $set: newEntityVals,
-            $inc: { used: 1 }
+            $set: newEntityVals
+            //$inc: { used: 1 }
         },
         {validate: false}
     );
 
     //next increment the use count for the object, if any
-    if (fact.obj) {
-        Entities.update(fact.obj,
-            {
-                $inc: { used:1 }
-            }
-        );
-    }
+    //if (fact.obj) {
+    //    Entities.update(fact.obj,
+    //        {
+    //            $inc: { used:1 }
+    //        }
+    //    );
+    //}
 
     return {success: true};
 };
