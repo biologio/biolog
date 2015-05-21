@@ -28,6 +28,11 @@ Tracker.autorun(function () {
 });
 
 
+Template.patientDemographics.rendered = function() {
+    $('.ui.checkbox')
+        .checkbox();
+    ;
+}
 
 
 Template.patientDemographics.events({
@@ -51,7 +56,9 @@ Template.patientDemographics.events({
         var fact = {
             subj: pt._id,
             pred: "id/nickname",
-            text: event.target.value
+            text: event.target.value,
+            startFlag: 0,
+            endFlag: 0
         };
         setValuePath(pt, "data['id/nickname']", fact);
         setPatient(pt);
@@ -65,6 +72,7 @@ Template.patientDemographics.events({
             subj: pt._id,
             pred: "id/dob",
             startDate: event.target.value,
+            startFlag: 0,
             endFlag: 1
         };
         setValuePath(pt, "data['id/dob']", fact);
@@ -79,6 +87,7 @@ Template.patientDemographics.events({
             subj: pt._id,
             pred: "id/sex",
             text: event.target.value,
+            startFlag: 0,
             endFlag: 1
         };
         setValuePath(pt, "data['id/sex']", fact);
@@ -159,6 +168,11 @@ Template.patientDemographics.helpers({
         var dobDate = new Date(String(dob.startDate));
         //console.log("dob: this=" + JSON.stringify(this));
         //console.log("dob: dobDate=" + (typeof dobDate) + "; dobDate=" + dobDate);
-        return dobDate.toISOString().substring(0, 10);
+        try {
+            return dobDate.toISOString().substring(0, 10);
+        } catch(err) {
+            return null;
+        }
+
     }
 });

@@ -12,3 +12,13 @@ if (process.env.NODE_ENV === "development")
     BrowserPolicy.content.allowConnectOrigin("ws://localhost:5000");
     BrowserPolicy.content.allowConnectOrigin("ws://localhost:3000");
 }
+
+/**
+ * Prevent the user from updating record to isAdmin or whatever
+ * See https://dweldon.silvrback.com/common-mistakes
+ */
+Meteor.users.deny({
+    update: function() {
+        return true;
+    }
+});

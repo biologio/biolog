@@ -275,20 +275,22 @@ Meteor.methods(FactMethods = {
         }
 
         check(fact, {
-            _id: String,
             subj: String,
             pred: String,
-            obj: [String],
-            subjName: String,
-            objName: String,
-            text: String,
-            startDate: Date(),
-            endDate: Date(),
-            startFlag: Match.Integer,
-            endFlag: Match.Integer
+            obj: Match.Optional(Match.Any),
+            //obj: [
+            //    Match.Optional(String)
+            //],
+            subjName: Match.Optional(String),
+            objName: Match.Optional(String),
+            text: Match.Optional(String),
+            startDate: Match.Optional(Match.Any),
+            endDate: Match.Optional(Match.Any),
+            startFlag: Match.Optional(Match.Any),
+            endFlag: Match.Optional(Match.Any)
         });
 
-        check (skipFact, Boolean);
+        check (skipFact, Match.Optional(Boolean));
 
         if (! skipFact) {
             var result = _updateFact(fact);
@@ -399,21 +401,21 @@ Meteor.methods(FactMethods = {
         }
 
         check(fact, {
-            _id: String,
             subj: String,
             pred: String,
-            obj: [String],
-            subjName: String,
-            objName: String,
-            text: String,
-            startDate: Date(),
-            endDate: Date(),
-            startFlag: Match.Integer,
-            endFlag: Match.Integer
+            //obj: Match.Optional([String]),
+            obj: Match.Optional(Match.Any),
+            subjName: Match.Optional(String),
+            objName: Match.Optional(String),
+            text: Match.Optional(String),
+            startDate: Match.Optional(Match.Any),
+            endDate: Match.Optional(Match.Any),
+            startFlag: Match.Optional(Match.Any),
+            endFlag: Match.Optional(Match.Any)
         });
 
-        check (skipFact, Boolean);
-        
+        check (skipFact, Match.Optional(Boolean));
+
         return _setProperty(fact, this.userId, skipFact);
 
     //    if (! skipFact) {
@@ -605,12 +607,30 @@ _setFact = function(fact, userId) {
     );
 
     fact.creator = userId;
-    fact.updater = userId;
+    //fact.updater = userId;
     var theDate = new Date();
     fact.created = theDate;
-    fact.updated = theDate;
+    //fact.updated = theDate;
     if (!fact._id) fact._id = new Meteor.Collection.ObjectID()._str;
     if (!fact.source) fact.source = "smartbio/server/facts";
+
+    check(fact, {
+        _id: String,
+        subj: String,
+        pred: String,
+        obj: Match.Optional(Match.Any),
+        subjName: Match.Optional(String),
+        objName: Match.Optional(String),
+        text: Match.Optional(String),
+        startDate: Match.Optional(Match.Any),
+        endDate: Match.Optional(Match.Any),
+        startFlag: Match.Optional(Match.Any),
+        endFlag: Match.Optional(Match.Any),
+        created: Match.Any,
+        creator: Match.Any,
+        source: String
+    });
+
     console.log("Inserting fact: " + JSON.stringify(fact));
     Facts.insert(fact);
 
@@ -644,7 +664,7 @@ _setFact = function(fact, userId) {
 _setProperty = function(fact, userId, skipFact) {
     if (! skipFact) {
         //var result = FactMethods.setFact(fact);
-        var result = _setFact(fact);
+        var result = _setFact(fact, userId);
         if (! result.success) {
             return result;
         }
