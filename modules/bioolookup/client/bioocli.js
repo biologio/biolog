@@ -90,6 +90,8 @@ Template.bioolookupContent.events({
     }
 });
 
+//TODO lookup generic
+//TODO lookup drug class
 submitBioolookup = function() {
     Session.set("biolog.bioolookup.modal.open", null);
     var med = Session.get("biolog.bioolookup.results");
@@ -97,6 +99,7 @@ submitBioolookup = function() {
     if (!med) return;
     var fact = {
         subj: getPatient()._id,
+        pred: medicationPredicate._id,
         obj: med.cui[0],
         objName: med.prefLabel,
         etypes: ["Medication"],

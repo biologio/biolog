@@ -2,72 +2,6 @@
  * Created by dd on 11/24/14.
  */
 
-isNumber = function(n) {
-    return !isNaN(parseFloat(n)) && isFinite(n);
-};
-
-strToId = function(raw) {
-    return raw.replace(/[^\w\s]|_/g, "").replace(/\s+/g, "-");
-};
-
-/**
- * Set a value within a object tree
- * @param object
- * @param path
- * @param value
- */
-setValuePath = function(object, path, value) {
-    var a = path.split('.');
-    var o = object;
-    for (var i = 0; i < a.length - 1; i++) {
-        var n = a[i];
-        if (n in o) {
-            o = o[n];
-        } else {
-            o[n] = {};
-            o = o[n];
-        }
-    }
-    o[a[a.length - 1]] = value;
-};
-
-/**
- * Geta  value from within an object's tree
- * @param object
- * @param path
- * @returns {*}
- */
-getValuePath = function(object, path) {
-    var o = object; // o is undefined here, pls fix
-    path = path.replace(/\[(\w+)\]/g, '.$1');
-    path = path.replace(/^\./, '');
-    var a = path.split('.');
-    while (a.length) {
-        var n = a.shift();
-        if (n in o) {
-            o = o[n];
-        } else {
-            return;
-        }
-    }
-    return o;
-};
-
-yyyymmdd = function(date) {
-    var yyyy = date.getFullYear().toString();
-    var mm = (date.getMonth()+1).toString(); // getMonth() is zero-based
-    var dd  = date.getDate().toString();
-    return yyyy + (mm[1]?mm:"0"+mm[0]) + (dd[1]?dd:"0"+dd[0]); // padding
-};
-
-yyyy_mm_dd = function(date) {
-    var yyyy = date.getFullYear().toString();
-    var mm = (date.getMonth()+1).toString(); // getMonth() is zero-based
-    var dd  = date.getDate().toString();
-    return yyyy + "-" + (mm[1]?mm:"0"+mm[0]) + "-" + (dd[1]?dd:"0"+dd[0]); // padding
-};
-
-
 searchIsabel = function() {
     var patientDiagnoses = Session.get("patientDiagnoses");
     var diagnosisList = "";
@@ -96,17 +30,17 @@ searchIsabel = function() {
 
 getPatientDiagnoses = function(patientId) {
     if (! patientId) return;
-    return Facts.find({pred: "diagnosis", subj: patientId, valid: 1 });
+    return Facts.find({pred: diagnosisPredicate._id, subj: patientId, valid: 1 });
 };
 
 getPatientFlags = function(patientId) {
     if (! patientId) return;
-    return Facts.find({pred: "flag", subj: patientId, valid: 1 });
+    return Facts.find({pred: flagPredicate._id, subj: patientId, valid: 1 });
 };
 
 getPatientMeds = function(patientId) {
     if (! patientId) return;
-    return Facts.find({pred: "medication", subj: patientId, valid: 1 });
+    return Facts.find({pred: medicationPredicate._id, subj: patientId, valid: 1 }).fetch();
 };
 
 //TODO filter out any questions that need not be asked
