@@ -10,6 +10,11 @@ Template.basicLayout.events({
     },
     'click .main-menu': function(e) {
         $('.sidebar').sidebar('toggle');
+    },
+    'click .sidebar.menu a': function(e) {
+        // console.log(this);
+        Router.go(this.url);
+        $(".sidebar").sidebar("hide");
     }
 });
 
