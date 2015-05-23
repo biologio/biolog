@@ -1,12 +1,15 @@
 <template name="meds">
-    <h1 class="ui left header">Medications</h1>
-    {{> bioolookupButton}}
     <div class="ui segment">
-        <!--<div class="ui items">-->
-        <div class="ui link items">
-            {{#each items}}
-                {{>medsItem}}
-            {{/each}}
+        <span class="ui large header">Medications</span>&nbsp;&nbsp;&nbsp;&nbsp;{{> bioolookupButton}}
+
+
+        <div class="ui segment">
+            <!--<div class="ui items">-->
+            <div class="ui divided link items">
+                {{#each items}}
+                    {{>medsItem}}
+                {{/each}}
+            </div>
         </div>
     </div>
     {{> bioolookupModal}}
@@ -15,6 +18,13 @@
 
 <template name="medsItem">
     <div class="item">
-        {{objName}}
+        <div class="ui tiny image">
+            <img src="images/pills.jpg">
+        </div>
+        <div class="content">
+            <div class="header medsItem">{{objName}}</div>
+            <p>{{strengthMg}} mg</p>
+            <p>{{timimg}}</p>
+        </div>
     </div>
 </template>
