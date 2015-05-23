@@ -4,7 +4,7 @@
 
 Tracker.autorun(function () {
     if (Session.get("biolog.bioolookup.modal.open")) {
-        //console.log("Showing modal:" + Session.get("biolog.bioolookup.modal.open"));
+        console.log("Showing modal:" + Session.get("biolog.bioolookup.modal.open"));
         $('#bioolookupModal').modal({
             closable  : true,
             onApprove    : function(){
@@ -102,7 +102,7 @@ submitBioolookup = function() {
         pred: medicationPredicate._id,
         obj: med.cui[0],
         objName: med.prefLabel,
-        etypes: ["Medication"],
+        etypes: [medicationEtype._id],
         startDate: new Date(),
         endFlag: 1
     };

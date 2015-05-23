@@ -1,7 +1,7 @@
 <template name="meds">
     <h1 class="ui left header">Medications</h1>
     {{> bioolookupButton}}
-    <div class="ui aligned segment">
+    <div class="ui segment">
         <!--<div class="ui items">-->
         <div class="ui link items">
             {{#each items}}
@@ -15,6 +15,6 @@
 
 <template name="medsItem">
     <div class="item">
-        {{subjName}}
+        {{objName}}
     </div>
 </template>

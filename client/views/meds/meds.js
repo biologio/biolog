@@ -1,6 +1,8 @@
 Template['meds'].helpers({
     items: function() {
-        return getPatientMeds();
+        if (!getPatient()) return;
+        var result = getPatientMeds(getPatient()._id).fetch();
+        return result;
     }
 });
 

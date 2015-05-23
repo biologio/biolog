@@ -26,36 +26,3 @@ searchIsabel = function() {
         Session.set("isabel", content.Diagnosis_checklist)
     });
 };
-
-
-getPatientDiagnoses = function(patientId) {
-    if (! patientId) return;
-    return Facts.find({pred: diagnosisPredicate._id, subj: patientId, valid: 1 });
-};
-
-getPatientFlags = function(patientId) {
-    if (! patientId) return;
-    return Facts.find({pred: flagPredicate._id, subj: patientId, valid: 1 });
-};
-
-getPatientMeds = function(patientId) {
-    if (! patientId) return;
-    return Facts.find({pred: medicationPredicate._id, subj: patientId, valid: 1 }).fetch();
-};
-
-//TODO filter out any questions that need not be asked
-getPatientQuestions = function(flags) {
-    if (! patientId) return;
-    return Questions.find(
-        {
-            valid: 1,
-            $or: [ flags ]
-        }
-    );
-};
-
-//TODO support users being permitted to handle other patients
-getUserPatients = function(userid) {
-    if (! userid) return;
-    return Entities.find({etypes: "patient", owners: userid, valid: 1 });
-};

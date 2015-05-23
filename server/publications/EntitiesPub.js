@@ -1,3 +1,3 @@
-Meteor.publish('Entities', function () {
-  return Entities.find();
-});
+//Meteor.publish('Entities', function () {
+//  return Entities.find();
+//});

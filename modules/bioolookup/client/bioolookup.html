@@ -21,24 +21,24 @@
 
 <template name="bioolookupContent">
 <div class="ui page grid">
-        <div class="three column row">
-            <div class="column"></div>
-            <div class="center aligned starter column">
-    <div class="ui icon input loading">
-        <input class="prompt" type="text" placeholder="Search for medications..." id="biolookupSearchBox">
-    </div>
-    <div class="results ui selection list">
-        {{#each results}}
-            <div class="item bioolookupResult">
-                <div class="content">
-                    <div class="header">{{prefLabel}}</div>
-                </div>
+    <div class="three column row">
+        <!--<div class="column"></div>-->
+        <div class="left aligned starter column">
+            <div class="ui icon input loading">
+                <input class="prompt" type="text" placeholder="Search for medications..." id="biolookupSearchBox">
             </div>
-        {{/each}}
+            <div class="results ui selection list">
+                {{#each results}}
+                    <div class="item bioolookupResult">
+                        <div class="content">
+                            <div class="header">{{prefLabel}}</div>
+                        </div>
+                    </div>
+                {{/each}}
+            </div>
+         </div>
     </div>
- </div>
-        </div>
-    </div>
+</div>
 
 </template>
 
