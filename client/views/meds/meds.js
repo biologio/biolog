@@ -14,10 +14,15 @@ Template.medsItem.rendered = function() {
 Template.medsItem.helpers({
 
     strengthMg: function() {
-        console.log("StrengthMg: " + JSON.stringify(this));
-        var strengthMg = getValuePath(this, "data");
-        if (!strengthMg) return "?";
-        return strengthMg;
+        var strength = getValuePath(this, "data['medication/strength'].num");
+        if (!strength) return "?";
+        return strength;
+    },
+
+    frequency: function() {
+        var freq = getValuePath(this, "data['medication/frequency'].text");
+        if (!freq) return "? frequency";
+        return freq;
     },
 
     timimg: function() {
@@ -31,6 +36,8 @@ Template.medsItem.helpers({
             return "stopped " + yyyy_mm_dd(this.endDate);
         }
     }
+
+
 });
 
 Template['meds'].events({
