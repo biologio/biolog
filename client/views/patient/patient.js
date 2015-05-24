@@ -125,7 +125,7 @@ Template.patientDemographics.helpers({
                 }
                 patient = {
                     _id: patientId,
-                    name: Meteor.user().profile.name,
+                    name: Meteor.user().profile.name, // use 'name: Meteor.user().profile.name || Meteor.user().username' or simply 'name: Meteor.user().username' as all users are not going to use social account for login.
                     //nameLC: Meteor.user().profile.name.toLowerCase(),
                     etypes: ["patient"]
                     //owners: [Meteor.userId()],
