@@ -1,0 +1,27 @@
+<template name="avtarHtml">
+<head>
+  <title>Avatar Tester</title>
+</head>
+
+<body>
+
+  <h1>Avatar Tester</h1>
+
+  <div>{{> loginButtons}}</div>
+{{users}}
+  {{#each users}}
+    <div class="user">
+      <div class="user-service">{{service this}}</div>
+      <div class="user-name">{{name this}}</div>
+      {{> avatar user=this size='small' shape='circle'}}
+      {{> avatar user=this shape='rounded' bgColor='red' txtColor='green'}}
+      {{> avatar user=this size='large' shape='circle' txtColor='blue'}}
+      {{> avatar user=this size='large'}}
+      {{> avatar user=this class='some custom classes'}}
+      {{> avatar user=this size='extra-small' shape='rounded'}}
+      {{> avatar}}
+    </div>
+  {{/each}}
+{{> avatar user=currentUser size='small' shape='circle'}}
+</body>
+</template>

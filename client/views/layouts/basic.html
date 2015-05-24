@@ -17,7 +17,7 @@
         </div>
         
         <div class="right menu">
-            {{#if currentUser}}<div class="item"> {{currentUser.username}}  <i class="user icon"></i></div>{{/if}}
+            {{#if currentUser}}<a class="item" href="/profile"> {{currentUser.username}}  {{> avatar user=currentUser size='small' shape='circle'}}</a>{{/if}}
             {{> atNavButton}}
             <!--
             {{#if currentUser}}
@@ -40,3 +40,11 @@
         {{text}}
     </a>
 </template>
+<!--
+<template name="avatarSemanticUI">
+  <div class="avatar {{size}} {{shape}} {{class}}">
+    <img class="avatar-image" src="{{imageUrl}}" {{dimensions}} alt="avatar" onerror="this.style.display='none';" />
+    <span class="avatar-initials" style="{{initialsCss}}">{{initialsText}}</span>
+  </div>
+</template>
+-->
