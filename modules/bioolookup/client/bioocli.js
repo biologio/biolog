@@ -36,7 +36,7 @@ Template.bioolookupButton.events({
 
 Template.bioolookupModal.rendered = function() {
 
-}
+};
 
 var results = new ReactiveVar();
 

@@ -13,18 +13,84 @@
         </div>
     </div>
     {{> bioolookupModal}}
+    {{> medModal}}
 </template>
 
 
 <template name="medsItem">
-    <div class="item">
+    <div class="item medsItem">
         <div class="ui tiny image">
             <img src="images/pills.jpg">
         </div>
         <div class="content">
-            <div class="header medsItem">{{objName}}</div>
+            <div class="header">{{objName}}</div>
             <p>{{strengthMg}} mg&nbsp;&nbsp;&nbsp;{{frequency}}</p>
-            <p>{{timimg}}</p>
+            <p>{{timing}}</p>
+        </div>
+    </div>
+</template>
+
+
+
+<template name="medModal">
+    <div id="medModal" class="ui modal small">
+        <div class="content">
+
+
+
+
+            <div class="ui form segment">
+                <div class="ui message">
+                    <div class="header">{{medName}}</div>
+                </div>
+                <div class="two fields">
+                    <div class="field">
+                        <label>Strength</label>
+                        <input placeholder="Strength in mg" type="text" value="{{medStrength}}"> mg
+                    </div>
+                    <div class="field">
+                        <label>How often do you generally take it?</label>
+                        <select class="ui dropdown">
+                            <!--<option value="">Frequency</option>-->
+                            <option value=".2" {{selected ".2"}}>5 times per day</option>
+                            <option value=".25" {{selected ".25"}}>4 times per day</option>
+                            <option value=".33" {{selected ".33"}}>3 times per day</option>
+                            <option value=".5" {{selected ".5"}}>Twice per day</option>
+                            <option value="1" {{selected "1"}}>Once per day</option>
+                            <option value="2" {{selected "2"}}>Once per 2 days</option>
+                            <option value="3" {{selected "3"}}>Once per 3 days</option>
+                            <option value="4" {{selected "4"}}>Once per 4 days</option>
+                            <option value="5" {{selected "5"}}>Once per 5 days</option>
+                            <option value="6" {{selected "6"}}>Once per 6 days</option>
+                            <option value="7" {{selected "7"}}>Once per week</option>
+                            <option value="14" {{selected "14"}}>Once per 2 weeks</option>
+                            <option value="30" {{selected "30"}}>Once per month</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="two fields">
+                    <div class="field">
+                        <label>Start Date</label>
+                        <input placeholder="Text Input" type="date" value="{{medStartDate}}">
+                    </div>
+                    <div class="field">
+                        <label>End Date</label>
+                        <input placeholder="Text Input" type="date" value="{{medEndDate}}">
+
+                        <label>Still Taking?</label>
+                        <input type="checkbox" value="medTaking" {{medTakingChecked}}>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+        </div>
+        <div class="actions">
+            <div class="ui button cancel">Cancel</div>
+            <div class="ui button ok">OK</div>
         </div>
     </div>
 </template>
