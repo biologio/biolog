@@ -31,3 +31,5 @@ accounts-ui
 http
 reactive-var
 semantic:ui-sidebar
+bengott:avatar
+aldeed:template-extension

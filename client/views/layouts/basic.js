@@ -37,3 +37,9 @@ Template.basicLayout.helpers({
         
     ]
 });
+Avatar.options = {
+  fallbackType: 'initials',
+  gravatarDefault: 'identicon'
+  //defaultImageUrl: 'img/avatar.jpg'
+};
+// Template.avatar.replaces("avatarSemanticUI");
