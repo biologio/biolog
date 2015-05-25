@@ -57,8 +57,8 @@ Tracker.autorun(function () {
         $('#medModal').modal({
             closable  : true,
             onApprove    : function(){
+                updateMed();
                 Session.set("biolog.med.editing", null);
-                submitMed();
                 return true;
             },
             onDeny    : function(){
@@ -78,6 +78,14 @@ Tracker.autorun(function () {
 });
 
 
+Template.medModal.rendered = function() {
+    $('.ui.rating')
+        .rating({
+            //initialRating: 2,
+            maxRating: 5
+        })
+    ;
+};
 
 
 Template.medModal.helpers({
@@ -129,7 +137,47 @@ Template.medModal.helpers({
         var med = Session.get("biolog.med.editing");
         if (!med) return;
         var freqVal = getMedFrequency(med);
-        if (freqVal.text == freqText) return "checked";
+        if (!freqVal) {
+            if (freqText=="1") return "selected";
+            return "";
+        }
+        if (freqVal.text == freqText) return "selected";
         return "";
+    },
+
+    medRating: function() {
+        var med = Session.get("biolog.med.editing");
+        if (!med) return;
+        var ratingVal = getFactRating(med);
+        return ratingVal;
     }
 });
+
+
+
+updateMed = function() {
+    var med = Session.get("biolog.med.editing");
+    console.log("Saving med: " + JSON.stringify(med));
+    if (!med) return;
+    var frequency = $("#medFrequency").val();
+    var strength = $("#medStrength").val();
+    var rating = null;
+    rating = $('.ui.rating').rating('get rating');
+    if (rating) {
+        setFactRating(med, String(rating));
+    }
+    setMedFrequency(med, frequency);
+    setMedStrength(med, strength);
+
+    med.startDate = $("#medStartDate").val();
+    med.endDate = $("#medEndDate").val();
+    med.endFlag = 0;
+    if ($("#medEndFlag").prop("checked")) med.endFlag = 1;
+    updateProperty(med, function(err, success) {
+        if (err) {
+            console.error("Unable to save med: " + err + "\n" + JSON.stringify(med));
+            return;
+        }
+        console.log("Saved med: " + JSON.stringify(med));
+    })
+}
