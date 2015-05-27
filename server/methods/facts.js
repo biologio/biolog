@@ -274,21 +274,21 @@ Meteor.methods(FactMethods = {
             return { success: false, error: message};
         }
 
-        check(fact, {
-            subj: String,
-            pred: String,
-            obj: Match.Optional(Match.Any),
-            //obj: [
-            //    Match.Optional(String)
-            //],
-            subjName: Match.Optional(String),
-            objName: Match.Optional(String),
-            text: Match.Optional(String),
-            startDate: Match.Optional(Match.Any),
-            endDate: Match.Optional(Match.Any),
-            startFlag: Match.Optional(Match.Any),
-            endFlag: Match.Optional(Match.Any)
-        });
+        //check(fact, {
+        //    subj: String,
+        //    pred: String,
+        //    obj: Match.Optional(Match.Any),
+        //    //obj: [
+        //    //    Match.Optional(String)
+        //    //],
+        //    subjName: Match.Optional(String),
+        //    objName: Match.Optional(String),
+        //    text: Match.Optional(String),
+        //    startDate: Match.Optional(Match.Any),
+        //    endDate: Match.Optional(Match.Any),
+        //    startFlag: Match.Optional(Match.Any),
+        //    endFlag: Match.Optional(Match.Any)
+        //});
 
         check (skipFact, Match.Optional(Boolean));
 
@@ -536,21 +536,21 @@ _updateFact = function(fact, userId) {
         return { success: false, error: message};
     }
 
-    //if the fact is already used, then mark it as not current and create a new fact
-    if (existingFact.used > 0) {
-        fact._id = new Meteor.Collection.ObjectID()._str;
-        var endDate = new Date();
-        Facts.upsert( existingFact._id,
-            {$set: {
-                //outdated: endDate,
-                //outdater: userId,
-                endDate: endDate,
-                endFlag: 0,
-                current: -1,
-                supersededBy: fact._id
-            }});
-    }
-    console.log("Updating fact: " + JSON.stringify(fact));
+    //todo: if the fact is already used, then mark it as not current and create a new fact
+    //if (existingFact.used > 0) {
+    //    fact._id = new Meteor.Collection.ObjectID()._str;
+    //    var endDate = new Date();
+    //    Facts.upsert( existingFact._id,
+    //        {$set: {
+    //            //outdated: endDate,
+    //            //outdater: userId,
+    //            endDate: endDate,
+    //            endFlag: 0,
+    //            current: -1,
+    //            supersededBy: fact._id
+    //        }});
+    //}
+    console.log("Updating fact which has data: " + JSON.stringify(fact.data));
     Facts.upsert( fact._id,
         {$set: {
             //updated: new Date(),
@@ -566,6 +566,72 @@ _updateFact = function(fact, userId) {
         }},
         {validate: false}
     );
+
+    //if there is fact data, set that
+    if (fact.data) {
+        var vals = {};
+        for (var dataKey in fact.data) {
+            var obj = fact.data[dataKey];
+            var baseKey = "data['" + dataKey + "']";
+
+            //add each field the the vals to be upserted
+            vals[baseKey + ".pred"] = obj.pred;
+            if (obj.obj) {
+                vals[baseKey + ".obj"] = obj.obj;
+            } else {
+                vals[baseKey.obj] = null;
+            }
+            if (obj.objName) {
+                vals[baseKey + ".objName"] = obj.objName;
+            } else {
+                vals[baseKey.objName] = null;
+            }
+            if (obj.etypes) {
+                vals[baseKey + ".etypes"] = obj.etypes;
+            } else {
+                vals[baseKey.etypes] = null;
+            }
+            if (obj.text) {
+                vals[baseKey + ".text"] = obj.text;
+            } else {
+                vals[baseKey.text] = null;
+            }
+            if (obj.num) {
+                vals[baseKey + ".num"] = obj.num;
+            } else {
+                vals[baseKey.num] = null;
+            }
+            if (obj.normVal) {
+                vals[baseKey + ".normVal"] = obj.normVal;
+            } else {
+                vals[baseKey.normVal] = null;
+            }
+            if (obj.unit) {
+                vals[baseKey + ".unit"] = obj.unit;
+            } else {
+                vals[baseKey.unit] = null;
+            }
+            if (obj.measure) {
+                vals[baseKey + ".measure"] = obj.measure;
+            } else {
+                vals[baseKey.measure] = null;
+            }
+            if (obj.valid) {
+                vals[baseKey + ".valid"] = obj.valid;
+            } else {
+                vals[baseKey.valid] = 1;
+            }
+            vals[baseKey.valid].creator = userId;
+            vals[baseKey.valid].editors = [userId];
+
+            console.log("Upserting: " + JSON.stringify(vals));
+            Facts.upsert( fact._id,
+                {$set: vals},
+                {validate: false}
+            );
+        }
+
+    }
 
 
     //next update the used count for the object, if warranted

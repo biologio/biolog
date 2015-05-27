@@ -60,7 +60,7 @@ Template.patientDemographics.events({
             startFlag: 0,
             endFlag: 0
         };
-        setValuePath(pt, "data['id/nickname']", fact);
+        setValuePath(pt, "data.id/nickname", fact);
         setPatient(pt);
         //addProperty(fact);
         console.log("Changed: " + JSON.stringify(getPatient()));
@@ -75,7 +75,7 @@ Template.patientDemographics.events({
             startFlag: 0,
             endFlag: 1
         };
-        setValuePath(pt, "data['id/dob']", fact);
+        setValuePath(pt, "data.id/dob", fact);
         setPatient(pt);
         //addProperty(fact);
         console.log("Changed patient: " + JSON.stringify(getPatient()));
@@ -90,7 +90,7 @@ Template.patientDemographics.events({
             startFlag: 0,
             endFlag: 1
         };
-        setValuePath(pt, "data['id/sex']", fact);
+        setValuePath(pt, "data.id/sex", fact);
         setPatient(pt);
         //addProperty(fact);
         console.log("Changed patient: " + JSON.stringify(getPatient()));
@@ -143,29 +143,33 @@ Template.patientDemographics.helpers({
     },
 
     femaleChecked: function() {
-        var sex = getValuePath(this, "data['id/sex']");
+        //var sex = getValuePath(this, "data['id/sex']");
+        var sex = getPatientSex();
         if (!sex) return;
-        if (sex.text=="female") return "checked";
+        if (sex=="female") return "checked";
         return "";
     },
 
     maleChecked: function() {
-        var sex = getValuePath(this, "data['id/sex']");
+        //var sex = getValuePath(this, "data['id/sex']");
+        var sex = getPatientSex();
         if (!sex) return;
-        if (sex.text=="male") return "checked";
+        if (sex=="male") return "checked";
         return "";
     },
 
     nickname: function() {
-        var nickname = getValuePath(this, "data['id/nickname']");
+        //var nickname = getValuePath(this, "data['id/nickname']");
+        var nickname = getPatientNickname();
         if (!nickname) return;
         return nickname.text;
     },
 
     dob: function() {
-        var dob = getValuePath(this, "data['id/dob']");
+        //var dob = getValuePath(this, "data['id/dob']");
+        var dob = getPatientDob();
         if (!dob) return;
-        var dobDate = new Date(String(dob.startDate));
+        var dobDate = new Date(String(dob));
         //console.log("dob: this=" + JSON.stringify(this));
         //console.log("dob: dobDate=" + (typeof dobDate) + "; dobDate=" + dobDate);
         try {

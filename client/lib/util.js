@@ -2,6 +2,7 @@
  * Created by dd on 11/24/14.
  */
 
+//TODO are they pregnant?
 searchIsabel = function() {
     var patientDiagnoses = Session.get("patientDiagnoses");
     var diagnosisList = "";
@@ -12,8 +13,10 @@ searchIsabel = function() {
     }
     console.log("searchIsabel: " + diagnosisList);
     var pt = Session.get("patient");
-    var dob = yyyymmdd(getValuePath(pt, "data['id/dob']").startDate);
-    var sex = getValuePath(pt, "data['id/sex']").text;
+    //var dob = yyyymmdd(getValuePath(pt, "data.id/dob").startDate);
+    var dob = getPatientDob();
+    //var sex = getValuePath(pt, "data.id/sex").text;
+    var sex = getPatientSex();
     var pregnant = "false";
     Meteor.call("isabel", dob, sex, pregnant, 12, diagnosisList, function(error, result){
         if (error) {
