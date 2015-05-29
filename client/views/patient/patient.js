@@ -3,7 +3,6 @@
  */
 Tracker.autorun(function () {
     if (Session.get("biolog.patient.modal.open")) {
-        console.log("Showing modal:" + Session.get("biolog.patient.modal.open"));
         $('#patientModal').modal({
             closable  : true,
             onApprove    : function(){
@@ -63,7 +62,7 @@ Template.patientDemographics.events({
         setValuePath(pt, "data.id/nickname", fact);
         setPatient(pt);
         //addProperty(fact);
-        console.log("Changed: " + JSON.stringify(getPatient()));
+        //console.log("Changed: " + JSON.stringify(getPatient()));
     },
 
     'change #inputDob': function(event) {
@@ -177,6 +176,5 @@ Template.patientDemographics.helpers({
         } catch(err) {
             return null;
         }
-
     }
 });

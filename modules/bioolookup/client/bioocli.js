@@ -4,7 +4,6 @@
 
 Tracker.autorun(function () {
     if (Session.get("biolog.bioolookup.modal.open")) {
-        console.log("Showing modal:" + Session.get("biolog.bioolookup.modal.open"));
         $('#bioolookupModal').modal({
             closable  : true,
             onApprove    : function(){
@@ -72,7 +71,7 @@ Template.bioolookupContent.events({
         Session.set("biolog.bioolookup.results", null);
         var q = template.find("#biolookupSearchBox").value;
         var url = getUrlLookupMeds(q);
-
+        console.log("bioolookupContent url=" + url);
         HTTP.get(url, function (err, response) {
             if (err) {
                 return results.set([]);
@@ -87,6 +86,9 @@ Template.bioolookupContent.events({
         //console.log("clicked: " + JSON.stringify(this));
         results.set([this]);
         Session.set("biolog.bioolookup.results", this);
+
+        var detailUrl = getUrlDetailMesh(this.cui);
+        console.log("Lookup details: " + detailUrl);
     }
 });
 
@@ -102,15 +104,16 @@ submitBioolookup = function() {
         pred: medicationPredicate._id,
         obj: med.cui[0],
         objName: med.prefLabel,
-        etypes: [medicationEtype._id],
+        //etypes: [medicationEtype._id],
         startDate: new Date(),
         endFlag: 1
     };
-    addProperty(fact, function(err, success) {
+    setProperty(fact, function(err, success) {
         if (err) {
             console.error("Unable to save fact: " + err + "\n" + JSON.stringify(fact));
             return;
         }
-        console.log("Saved fact: " + JSON.stringify(fact));
+        //console.log("Saved fact: " + JSON.stringify(fact));
     })
-}
+};
+

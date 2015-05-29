@@ -24,7 +24,7 @@
         </div>
         <div class="content">
             <div class="header">{{objName}}</div>
-            <p>{{strengthMg}} mg&nbsp;&nbsp;&nbsp;{{frequency}}</p>
+            <p>{{strength}} mg&nbsp;&nbsp;&nbsp;{{frequency}}</p>
             <p>{{timing}}</p>
         </div>
     </div>
@@ -58,20 +58,20 @@
                         <label>How often are you taking it?</label>
                         <select id="medFrequency" class="ui dropdown">
                             <!--<option value="">Frequency</option>-->
-                            <option value=".2" {{selected ".2"}}>5 times per day</option>
-                            <option value=".25" {{selected ".25"}}>4 times per day</option>
-                            <option value=".33" {{selected ".33"}}>3 times per day</option>
-                            <option value=".5" {{selected ".5"}}>Twice per day</option>
-                            <option value="1" {{selected "1"}}>Once per day</option>
-                            <option value="2" {{selected "2"}}>Once per 2 days</option>
-                            <option value="3" {{selected "3"}}>Once per 3 days</option>
-                            <option value="4" {{selected "4"}}>Once per 4 days</option>
-                            <option value="5" {{selected "5"}}>Once per 5 days</option>
-                            <option value="6" {{selected "6"}}>Once per 6 days</option>
-                            <option value="7" {{selected "7"}}>Once per week</option>
-                            <option value="14" {{selected "14"}}>Once per 2 weeks</option>
-                            <option value="21" {{selected "21"}}>Once per 3 weeks</option>
-                            <option value="30" {{selected "30"}}>Once per month</option>
+                            <option value=".2" {{medFrequencySelected ".2"}}>{{medFrequencyLabel ".2"}}</option>
+                            <option value=".25" {{medFrequencySelected ".25"}}>{{medFrequencyLabel ".25"}}</option>
+                            <option value=".33" {{medFrequencySelected ".33"}}>{{medFrequencyLabel ".33"}}</option>
+                            <option value=".5" {{medFrequencySelected ".5"}}>{{medFrequencyLabel ".5"}}</option>
+                            <option value="1" {{medFrequencySelected "1"}}>{{medFrequencyLabel "1"}}</option>
+                            <option value="2" {{medFrequencySelected "2"}}>{{medFrequencyLabel "2"}}</option>
+                            <option value="3" {{medFrequencySelected "3"}}>{{medFrequencyLabel "3"}}</option>
+                            <option value="4" {{medFrequencySelected "4"}}>{{medFrequencyLabel "4"}}</option>
+                            <option value="5" {{medFrequencySelected "5"}}>{{medFrequencyLabel "5"}}</option>
+                            <option value="6" {{medFrequencySelected "6"}}>{{medFrequencyLabel "6"}}</option>
+                            <option value="7" {{medFrequencySelected "7"}}>{{medFrequencyLabel "7"}}</option>
+                            <option value="14" {{medFrequencySelected "14"}}>{{medFrequencyLabel "14"}}</option>
+                            <option value="21" {{medFrequencySelected "21"}}>{{medFrequencyLabel "21"}}</option>
+                            <option value="30" {{medFrequencySelected "30"}}>{{medFrequencyLabel "30"}}</option>
                         </select>
                     </div>
                 </div>

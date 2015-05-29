@@ -8,7 +8,7 @@ Template.meds.helpers({
 
 Template.medsItem.events({
     "click .medsItem": function(event, template) {
-        console.log("clicked: " + JSON.stringify(this));
+        //console.log("clicked: " + JSON.stringify(this));
         Session.set("biolog.med.editing", this);
         //Session.set("biolog.med.modal.open", true);
     }
@@ -21,16 +21,16 @@ Template.medsItem.events({
 
 Template.medsItem.helpers({
 
-    strengthMg: function() {
-        var strength = getMedStrength(this);
-        if (!strength) return "?";
-        return strength;
+    strength: function() {
+        var str = getMedStrength(this);
+        if (!str) return "?";
+        return str;
     },
 
     frequency: function() {
-        var freq = getMedFrequency();
+        var freq = getMedFrequency(this);
         if (!freq) return "? frequency";
-        return freq;
+        return medFrequencies[freq];
     },
 
     timing: function() {
@@ -53,11 +53,15 @@ Template.medsItem.helpers({
 
 Tracker.autorun(function () {
     if (Session.get("biolog.med.editing")) {
-        console.log("Showing modal:" + JSON.stringify(Session.get("biolog.med.editing")));
+        //console.log("Showing modal:" + JSON.stringify(Session.get("biolog.med.editing")));
         $('#medModal').modal({
             closable  : true,
             onApprove    : function(){
                 updateMed();
+                $('.ui.rating').rating('clear rating');
+                $('#medStrength').val('');
+                $('#medStartDate').val('');
+                $('#medEndDate').val('');
                 Session.set("biolog.med.editing", null);
                 return true;
             },
@@ -100,29 +104,34 @@ Template.medModal.helpers({
         return getMedStrength(med);
     },
 
-    medFrequency: function() {
-        var med = Session.get("biolog.med.editing");
-        if (!med) return;
-        return getMedFrequency(med);
-    },
+    //medFrequency: function() {
+    //    var med = Session.get("biolog.med.editing");
+    //    if (!med) return;
+    //    return getMedFrequency(med);
+    //},
 
     medStartDate: function() {
         var med = Session.get("biolog.med.editing");
         if (!med) return;
-        return med.startDate;
+        var dateStr = yyyy_mm_dd(med.startDate);
+        return dateStr;
     },
 
     medEndDate: function() {
         var med = Session.get("biolog.med.editing");
         if (!med) return;
-        return med.endDate;
+        //return med.endDate;
+        if (!med.endDate) return "";
+        var dateStr = yyyy_mm_dd(med.endDate);
+        return dateStr;
     },
 
-    medTaking: function() {
-        var med = Session.get("biolog.med.editing");
-        if (!med) return;
-        return med.endFlag;
-    },
+
+    //medTaking: function() {
+    //    var med = Session.get("biolog.med.editing");
+    //    if (!med) return;
+    //    return med.endFlag;
+    //},
 
     medTakingChecked: function() {
         var med = Session.get("biolog.med.editing");
@@ -133,22 +142,28 @@ Template.medModal.helpers({
         return "";
     },
 
-    selected: function(freqText) {
+    medFrequencySelected: function(aFreqVal) {
         var med = Session.get("biolog.med.editing");
         if (!med) return;
         var freqVal = getMedFrequency(med);
         if (!freqVal) {
-            if (freqText=="1") return "selected";
+            if (aFreqVal=="1") return "selected";
             return "";
         }
-        if (freqVal.text == freqText) return "selected";
+        if (freqVal == aFreqVal) return "selected";
         return "";
+    },
+
+    medFrequencyLabel: function(freqVal) {
+        return medFrequencies[freqVal];
     },
 
     medRating: function() {
         var med = Session.get("biolog.med.editing");
         if (!med) return;
         var ratingVal = getFactRating(med);
+        console.log("ratingVal=" + ratingVal);
+        $('.ui.rating').rating('set rating', ratingVal);
         return ratingVal;
     }
 });
@@ -157,7 +172,8 @@ Template.medModal.helpers({
 
 updateMed = function() {
     var med = Session.get("biolog.med.editing");
-    console.log("Saving med: " + JSON.stringify(med));
+    delete med._id;
+    //console.log("Saving med: " + JSON.stringify(med));
     if (!med) return;
     var frequency = $("#medFrequency").val();
     var strength = $("#medStrength").val();
@@ -169,11 +185,29 @@ updateMed = function() {
     setMedFrequency(med, frequency);
     setMedStrength(med, strength);
 
-    med.startDate = $("#medStartDate").val();
-    med.endDate = $("#medEndDate").val();
+    var startDateStr = $("#medStartDate").val();
+    if (startDateStr) {
+        var startDate = new Date(startDateStr);
+        startDate.setTime( startDate.getTime() + startDate.getTimezoneOffset()*60*1000 );
+        med.startDate = startDate;
+    } else {
+        med.startDate = null;
+    }
+
+    var endDateStr = $("#medEndDate").val();
+    console.log("endDateStr='" + endDateStr + "'");
+    if (endDateStr) {
+        var endDate = new Date(endDateStr);
+        endDate.setTime( endDate.getTime() + endDate.getTimezoneOffset()*60*1000 );
+        med.endDate = endDate;
+        console.log("set endDate=" + endDate);
+    } else {
+        med.endDate = null;
+    }
     med.endFlag = 0;
     if ($("#medEndFlag").prop("checked")) med.endFlag = 1;
-    updateProperty(med, function(err, success) {
+
+    setProperty(med, function(err, success) {
         if (err) {
             console.error("Unable to save med: " + err + "\n" + JSON.stringify(med));
             return;

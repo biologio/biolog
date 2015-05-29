@@ -35,8 +35,14 @@ var getDataForUpdate = function(item, userId) {
         var obj = item.data[dataKey];
         var baseKey = "data['" + dataKey + "']";
 
+        vals[baseKey] = {};
+
         //add each field the the vals to be upserted
-        vals[baseKey].pred = obj.pred;
+        if (obj.pred) {
+            vals[baseKey].pred = obj.pred;
+        } else {
+            vals[baseKey].pred = null;
+        }
         if (obj.obj) {
             vals[baseKey].obj = obj.obj;
         } else {
@@ -47,11 +53,11 @@ var getDataForUpdate = function(item, userId) {
         } else {
             vals[baseKey].objName = null;
         }
-        if (obj.etypes) {
-            vals[baseKey].etypes = obj.etypes;
-        } else {
-            vals[baseKey].etypes = null;
-        }
+        //if (obj.etypes) {
+        //    vals[baseKey].etypes = obj.etypes;
+        //} else {
+        //    vals[baseKey].etypes = null;
+        //}
         if (obj.text) {
             vals[baseKey].text = obj.text;
         } else {
@@ -90,154 +96,9 @@ var getDataForUpdate = function(item, userId) {
 
 var FactMethods;
 Meteor.methods(FactMethods = {
-    /* save a fact and associated properties */
-
-    /**
-     * Add a fact.  No special permissions needed.  Return true if successful.
-     *
-     * Use this if you want to add a new fact, with no special permissions and no need to invalidate past values
-     * for the same subject and the same predicate (SP)
-     *
-     * Increment use count for the S & O entities referenced.
-     * @param fact
-     * @param mode
-     */
-    addFact: function (fact) {
-        // Make sure the user is logged in before inserting a task
-        if (! this.userId) {
-            var message = "User not authenticated";
-            console.error(message);
-            return { success: false, error: message};
-        }
-
-        return _addFact(fact, this.userId);
-    },
-
-    /**
-     * Use this if you want to add a new fact (that is also a property), with no special permissions and no need to invalidate past values
-     * for the same subject and the same predicate (SP)
-     *
-     * Store a fact and also update a property of the subject.
-     * When can properties be added?  These things must be true:
-     * 1. The entity is not private, or the user is a trustee.
-     * 2. The fact is current
-     * 3. There is not already a property with the same signature (SPO or SP).
-     *
-     * First call addFact.  If this returns true, then update the property if the above conditions are met.  Return true if the property was added.
-     * @param fact
-     */
-    addProperty: function(fact, skipFact) {
-
-        // Make sure the user is logged in before inserting a task
-        if (! this.userId) {
-            var message = "User not authenticated";
-            console.error(message);
-            return { success: false, error: message};
-        }
-
-        var storedFact = {};
-        if (! skipFact) {
-            //var result = FactMethods.addFact(fact);
-            var result = _addFact(fact, this.userId);
-            console.log("called addFact(): result=" + JSON.stringify(result));
-            if (! result.success) {
-                return result;
-            }
-            storedFact = result.fact;
-            console.log("storedFact=" + JSON.stringify(storedFact));
-        }
-
-        if (fact.valid <= 0) {
-            var message = "Fact is not valid: " + JSON.stringify(fact);
-            console.error(message);
-            return { success: false, error: message};
-        }
-
-        var subj = Entities.findOne(fact.subj);
-        if (subj.creator != this.userId && subj.editors && ! _.contains(subj.editors, this.userId)) {
-            var message = "User: " + this.userId + " not authorized to add property to entity: " + fact.subj;
-            console.error(message);
-            return { success: false, error: message};
-        }
-
-        var signature = "data['" + fact.pred + "']";
-        if (fact.obj) signature += "['" + fact.obj + "']";
-        if (getValuePath(subj, signature)) {
-            var message = "Entity: " + fact.subj + " already has property: " + signature;
-            console.error(message);
-            return { success: false, error: message};
-        }
-
-        var newProperty = {};
-        var slimmedFact = slimFact(fact);
-        newProperty[signature] = slimmedFact;
-        console.log("Saving newProperty for entity: " + fact.subj + " = " + JSON.stringify(newProperty));
-        Entities.upsert({_id: fact.subj},
-            { $set: newProperty },
-            { validate: false },
-            function(err, count) {
-                if (err) {
-                    console.error("Error saving new property for entity: " + fact.subj + ": " + err);
-                    return { success: false, error: err};
-                }
-                console.log("Saved " + count + " new property for entity: " + fact.subj);
-                return {success: true};
-            }
-        );
 
 
-    },
 
-    /**
-     * Use this method if you have a recently-created fact, and you wish to change a date or value
-     *
-     * Update an existing fact of the same id.  First check permissions and use count.
-     * If use count > 0, then fail.  Return true if successful
-     */
-    updateFact: function (fact) {
-        // Make sure the user is logged in before inserting a task
-        console.log("Updating fact: " + fact._id);
-
-        if (!this.userId) {
-            var message = "User not authenticated";
-            console.error(message);
-            return { success: false, error: message};
-        }
-        return _updateFact(fact, this.userId);
-    },
-
-
-    /**
-     * Use this method if you have a recently-created fact (that is also a property), and you wish to change a date or value
-     *
-     * First call updateFact.  If this returns true, then update the property if these conditions are met.
-     * 1. The entity is not private, or the user is a trustee.
-     * 2. The fact is current
-     * 3. There is not already a property with the same signature (SPO or SP).
-     *
-     * Return true if the property was updated.
-     * @param fact
-     * @param skipFact if true, do not update the fact, only update the property
-     */
-    updateProperty: function(fact, skipFact) {
-        console.log("updateProperty");
-        if (!this.userId) {
-            var message = "User not authenticated";
-            console.error(message);
-            return { success: false, error: message};
-        }
-
-        check (skipFact, Match.Optional(Boolean));
-
-        if (! skipFact) {
-            var result = _updateFact(fact);
-            if (! result.success) {
-                return result;
-            }
-        }
-
-        return _setProperty(fact, this.userId, true);
-    },
 
 
     /**
@@ -279,98 +140,19 @@ Meteor.methods(FactMethods = {
         }
         check (skipFact, Match.Optional(Boolean));
 
+        if (! skipFact) {
+            //var result = FactMethods.setFact(fact);
+            var result = _setFact(fact, this.userId);
+            if (! result.success) {
+                return result;
+            }
+        }
+
         return _setProperty(fact, this.userId, skipFact);
     }
 });
 
 
-
-
-_addFact = function (fact, userId) {
-
-    //make sure the subject exists
-    var subjId = fact.subj;
-    var subj = Entities.findOne(subjId);
-    if (! subj || subj.valid < 0) {
-        var message = "Subject does not exist or is no longer valid";
-        console.error(message);
-        return { success: false, error: message};
-    }
-
-    fact.creator = userId;
-    //fact.updater = userId;
-    var theDate = new Date();
-    fact.created = theDate;
-    //fact.updated = theDate;
-    if (!fact._id) fact._id = new Meteor.Collection.ObjectID()._str;
-    //fact.source = "biolog/server/facts";
-    console.log("Inserting fact: " + JSON.stringify(fact));
-    Facts.insert(fact);
-
-    //next update the current data for the subject entity
-    var newEntityVals = {};
-    return {success: true, fact: fact};
-};
-
-
-_updateFact = function(fact, userId) {
-    var existingFact = Facts.findOne(fact._id);
-
-    //if previous fact not found, abort
-    if (!existingFact) {
-        var message = "No such fact to update";
-        console.error(message);
-        return { success: false, error: message};
-    }
-
-    //if not permitted, abort
-    if (existingFact.creator != userId && existingFact.editors && ! _.contains(existingFact.editors, userId)) {
-        var message = "User: " + userId + " not authorized to update fact: " + JSON.stringify(fact);
-        console.error(message);
-        return { success: false, error: message};
-    }
-
-    //if new fact has different subject or predicate than previous, abort
-    if (existingFact.subj != fact.subj) {
-        var message = "Subjects do not match";
-        console.error(message);
-        return { success: false, error: message};
-    }
-    if (existingFact.pred != fact.pred) {
-        var message = "Predicates do not match";
-        console.error(message);
-        return { success: false, error: message};
-    }
-
-    //todo: if the fact is already used, then mark it as not current and create a new fact
-    console.log("Updating fact which has data: " + JSON.stringify(fact.data));
-    Facts.upsert( fact._id,
-        {$set: {
-            //updated: new Date(),
-            //updater: userId,
-            valid: fact.valid,
-            obj: fact.obj,
-            num: fact.num,
-            text: fact.text,
-            startDate: fact.startDate,
-            startFlag: fact.startFlag,
-            endDate: fact.endDate,
-            endFlag: fact.endFlag
-        }},
-        {validate: false}
-    );
-
-    //if there is fact data, set that
-    if (fact.data) {
-        var vals = getDataForUpdate(fact, userId);
-        console.log("Upserting data into fact: " + JSON.stringify(vals));
-        Facts.upsert( fact._id,
-            {$set: vals},
-            {validate: false}
-        );
-    }
-    return {success: true};
-};
 
 
 _setFact = function(fact, userId) {
@@ -390,86 +172,62 @@ _setFact = function(fact, userId) {
         return { success: false, error: message};
     }
 
-    //find other existing valid facts with the same SP and invalidate them
-    Facts.update(
-        { subj: fact.subj, pred: fact.pred, valid: 1 },
-        { $set: {
-            valid: 0
-        }}
-    );
+    //find other existing valid facts with the same signature and invalidate them
+    if (fact.obj) {
+        Facts.update(
+            { subj: fact.subj, pred: fact.pred, obj: fact.obj, valid: 1 },
+            { $set: {
+                valid: 0
+            }}
+        );
+    } else {
+        Facts.update(
+            { subj: fact.subj, pred: fact.pred, valid: 1 },
+            { $set: {
+                valid: 0
+            }}
+        );
+    }
+
 
     fact.creator = userId;
-    fact.updater = userId;
+    //fact.updater = userId;
     var theDate = new Date();
     fact.created = theDate;
-    fact.updated = theDate;
-    if (!fact._id) fact._id = new Meteor.Collection.ObjectID()._str;
-    if (!fact.source) fact.source = "smartbio/server/facts";
+    //fact.updated = theDate;
+    //if (!fact._id) fact._id = new Meteor.Collection.ObjectID()._str;
+    //if (!fact.source) fact.source = "smartbio/server/facts";
 
     check(fact, {
-        _id: String,
+        //_id: String,
         subj: String,
         pred: String,
+        data: Match.Optional(Match.Any),
         obj: Match.Optional(String),
         subjName: Match.Optional(String),
         objName: Match.Optional(String),
         text: Match.Optional(String),
-        startDate: Match.Optional(Match.OneOf(undefined, String, Date)),
-        endDate: Match.Optional(Match.OneOf(undefined, String, Date)),
+        startDate: Match.Optional(Match.OneOf(undefined, null, String, Date)),
+        endDate: Match.Optional(Match.OneOf(undefined, null, String, Date)),
         startFlag: Match.Optional(Match.Any),
         endFlag: Match.Optional(Match.Any),
         created: Date,
         creator: Match.Optional(String),
-        updated: Match.OneOf(undefined, String, Date),
-        updater: Match.Optional(String),
-        source: String,
+        //updated: Match.OneOf(undefined, String, Date),
+        //updater: Match.Optional(String),
+        //source: String,
         valid: Match.Optional(Match.Integer)
     });
 
+    fact._id = new Meteor.Collection.ObjectID()._str;
     console.log("Inserting fact: " + JSON.stringify(fact));
     Facts.insert(fact);
-
-    //next update the current data for the subject entity
-    //var newEntityVals = {};
-    //var key = "data['" + fact.pred + "']";
-    //if (fact.obj) key = "data['" + fact.pred + "/" + fact.obj + "']";
-    ////setValuePath(newEntityVals, key, fact);
-    //newEntityVals[key] = fact;
-    //Entities.update(subjId,
-    //    {
-    //        $set: newEntityVals
-    //        //$inc: { used: 1 }
-    //    },
-    //    {validate: false}
-    //);
-
-    //next increment the use count for the object, if any
-    //if (fact.obj) {
-    //    Entities.update(fact.obj,
-    //        {
-    //            $inc: { used:1 }
-    //        }
-    //    );
-    //}
 
     return {success: true};
 };
 
 
 _setProperty = function(fact, userId, skipFact) {
-    if (! skipFact) {
-        //var result = FactMethods.setFact(fact);
-        var result = _setFact(fact, userId);
-        if (! result.success) {
-            return result;
-        }
-    }
-
-    //if (fact.current <= 0) {
-    //    var message = "Fact is not current: " + JSON.stringify(fact);
-    //    console.error(message);
-    //    return { success: false, error: message};
-    //}
 
     var subj = Entities.findOne(fact.subj);
     if (subj.creator != userId && ! _.contains(subj.editors, userId)) {
@@ -479,7 +237,9 @@ _setProperty = function(fact, userId, skipFact) {
     }
 
     var predSignature = "data." + fact.pred;
-
+    if (fact.obj) {
+        predSignature += "." + fact.obj;
+    }
     //overwrite value with the new value
     var newProperty = {};
     //setValuePath(newProperty, predSignature, fact);
@@ -490,6 +250,8 @@ _setProperty = function(fact, userId, skipFact) {
     //}
 
     newProperty[predSignature] = fact;
+    //delete newProperty[predSignature].pred;
+    delete newProperty[predSignature].subj;
 
     console.log("_setProperty: newProperty=" + JSON.stringify(newProperty));
 
@@ -499,14 +261,258 @@ _setProperty = function(fact, userId, skipFact) {
     );
 
     //add subfacts
-    if (fact.data) {
-        var vals = getDataForUpdate(fact, userId);
-        console.log("Upserting data into entity: " + JSON.stringify(vals));
-        Entities.update(subj._id,
-            { $set: vals },
-            { validate: false }
-        );
-    }
+    //if (fact.data) {
+    //    var vals = getDataForUpdate(fact, userId);
+    //    console.log("Upserting data into entity: " + JSON.stringify(vals));
+    //    Entities.update(subj._id,
+    //        { $set: vals },
+    //        { validate: false }
+    //    );
+    //}
 
     return {success: true};
 };
+
+
+
+
+
+
+
+
+
+///**
+// * Add a fact.  No special permissions needed.  Return true if successful.
+// *
+// * Use this if you want to add a new fact, with no special permissions and no need to invalidate past values
+// * for the same subject and the same predicate (SP)
+// *
+// * Increment use count for the S & O entities referenced.
+// * @param fact
+// * @param mode
+// */
+//addFact: function (fact) {
+//    // Make sure the user is logged in before inserting a task
+//    if (! this.userId) {
+//        var message = "User not authenticated";
+//        console.error(message);
+//        return { success: false, error: message};
+//    }
+//
+//    return _addFact(fact, this.userId);
+//},
+
+///**
+// * Use this if you want to add a new fact (that is also a property), with no special permissions and no need to invalidate past values
+// * for the same subject and the same predicate (SP)
+// *
+// * Store a fact and also update a property of the subject.
+// * When can properties be added?  These things must be true:
+// * 1. The entity is not private, or the user is a trustee.
+// * 2. The fact is current
+// * 3. There is not already a property with the same signature (SPO or SP).
+// *
+// * First call addFact.  If this returns true, then update the property if the above conditions are met.  Return true if the property was added.
+// * @param fact
+// */
+//addProperty: function(fact, skipFact) {
+//
+//    // Make sure the user is logged in before inserting a task
+//    if (! this.userId) {
+//        var message = "User not authenticated";
+//        console.error(message);
+//        return { success: false, error: message};
+//    }
+//
+//    var storedFact = {};
+//    if (! skipFact) {
+//        //var result = FactMethods.addFact(fact);
+//        var result = _addFact(fact, this.userId);
+//        console.log("called addFact(): result=" + JSON.stringify(result));
+//        if (! result.success) {
+//            return result;
+//        }
+//        storedFact = result.fact;
+//        console.log("storedFact=" + JSON.stringify(storedFact));
+//    }
+//
+//    if (fact.valid <= 0) {
+//        var message = "Fact is not valid: " + JSON.stringify(fact);
+//        console.error(message);
+//        return { success: false, error: message};
+//    }
+//
+//    var subj = Entities.findOne(fact.subj);
+//    if (subj.creator != this.userId && subj.editors && ! _.contains(subj.editors, this.userId)) {
+//        var message = "User: " + this.userId + " not authorized to add property to entity: " + fact.subj;
+//        console.error(message);
+//        return { success: false, error: message};
+//    }
+//
+//    var signature = "data." + fact.pred;
+//    if (fact.obj) signature += "." + fact.obj;
+//    if (getValuePath(subj, signature)) {
+//        var message = "Entity: " + fact.subj + " already has property: " + signature;
+//        console.error(message);
+//        return { success: false, error: message};
+//    }
+//
+//    var newProperty = {};
+//    var slimmedFact = slimFact(fact);
+//    newProperty[signature] = slimmedFact;
+//    console.log("Saving newProperty for entity: " + fact.subj + " = " + JSON.stringify(newProperty));
+//    Entities.upsert({_id: fact.subj},
+//        { $set: newProperty },
+//        { validate: false },
+//        function(err, count) {
+//            if (err) {
+//                console.error("Error saving new property for entity: " + fact.subj + ": " + err);
+//                return { success: false, error: err};
+//            }
+//            console.log("Saved " + count + " new property for entity: " + fact.subj);
+//            return {success: true};
+//        }
+//    );
+//
+//
+//},
+
+
+/**
+ * Use this method if you have a recently-created fact, and you wish to change a date or value
+ *
+ * Update an existing fact of the same id.  First check permissions and use count.
+ * If use count > 0, then fail.  Return true if successful
+ */
+//updateFact: function (fact) {
+//    // Make sure the user is logged in before inserting a task
+//    console.log("Updating fact: " + fact._id);
+//
+//    if (!this.userId) {
+//        var message = "User not authenticated";
+//        console.error(message);
+//        return { success: false, error: message};
+//    }
+//    return _updateFact(fact, this.userId);
+//},
+
+
+/**
+ * Use this method if you have a recently-created fact (that is also a property), and you wish to change a date or value
+ *
+ * First call updateFact.  If this returns true, then update the property if these conditions are met.
+ * 1. The entity is not private, or the user is a trustee.
+ * 2. The fact is current
+ * 3. There is not already a property with the same signature (SPO or SP).
+ *
+ * Return true if the property was updated.
+ * @param fact
+ * @param skipFact if true, do not update the fact, only update the property
+ */
+//updateProperty: function(fact, skipFact) {
+//    console.log("updateProperty");
+//    if (!this.userId) {
+//        var message = "User not authenticated";
+//        console.error(message);
+//        return { success: false, error: message};
+//    }
+//
+//    check (skipFact, Match.Optional(Boolean));
+//
+//    if (! skipFact) {
+//        var result = _updateFact(fact);
+//        if (! result.success) {
+//            return result;
+//        }
+//    }
+//
+//    return _setProperty(fact, this.userId, true);
+//},
+
+
+
+//_addFact = function (fact, userId) {
+//
+//    //make sure the subject exists
+//    var subjId = fact.subj;
+//    var subj = Entities.findOne(subjId);
+//    if (! subj || subj.valid < 0) {
+//        var message = "Subject does not exist or is no longer valid";
+//        console.error(message);
+//        return { success: false, error: message};
+//    }
+//
+//    fact.creator = userId;
+//    //fact.updater = userId;
+//    var theDate = new Date();
+//    fact.created = theDate;
+//    //fact.updated = theDate;
+//    if (!fact._id) fact._id = new Meteor.Collection.ObjectID()._str;
+//    //fact.source = "biolog/server/facts";
+//    console.log("Inserting fact: " + JSON.stringify(fact));
+//    Facts.insert(fact);
+//
+//    //next update the current data for the subject entity
+//    var newEntityVals = {};
+//    return {success: true, fact: fact};
+//};
+//
+//
+//_updateFact = function(fact, userId) {
+//    var existingFact = Facts.findOne(fact._id);
+//
+//    //if previous fact not found, abort
+//    if (!existingFact) {
+//        var message = "No such fact to update";
+//        console.error(message);
+//        return { success: false, error: message};
+//    }
+//
+//    //if not permitted, abort
+//    if (existingFact.creator != userId && existingFact.editors && ! _.contains(existingFact.editors, userId)) {
+//        var message = "User: " + userId + " not authorized to update fact: " + JSON.stringify(fact);
+//        console.error(message);
+//        return { success: false, error: message};
+//    }
+//
+//    //if new fact has different subject or predicate than previous, abort
+//    if (existingFact.subj != fact.subj) {
+//        var message = "Subjects do not match";
+//        console.error(message);
+//        return { success: false, error: message};
+//    }
+//    if (existingFact.pred != fact.pred) {
+//        var message = "Predicates do not match";
+//        console.error(message);
+//        return { success: false, error: message};
+//    }
+//
+//    //todo: if the fact is already used, then mark it as not current and create a new fact
+//    console.log("Updating fact which has data: " + JSON.stringify(fact.data));
+//    Facts.upsert( fact._id,
+//        {$set: {
+//            //updated: new Date(),
+//            //updater: userId,
+//            valid: fact.valid,
+//            obj: fact.obj,
+//            num: fact.num,
+//            text: fact.text,
+//            startDate: fact.startDate,
+//            startFlag: fact.startFlag,
+//            endDate: fact.endDate,
+//            endFlag: fact.endFlag
+//        }},
+//        {validate: false}
+//    );
+//
+//    //if there is fact data, set that
+//    if (fact.data) {
+//        var vals = getDataForUpdate(fact, userId);
+//        console.log("Upserting data into fact: " + JSON.stringify(vals));
+//        Facts.upsert( fact._id,
+//            {$set: vals},
+//            {validate: false}
+//        );
+//    }
+//    return {success: true};
+//};
