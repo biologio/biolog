@@ -162,7 +162,7 @@ Template.patientDemographics.helpers({
         //var nickname = getValuePath(this, "data['id/nickname']");
         var nickname = getPatientNickname();
         if (!nickname) return;
-        return nickname.text;
+        return nickname;
     },
 
     dob: function() {
