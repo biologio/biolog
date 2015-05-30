@@ -10,7 +10,6 @@ underscore
 aldeed:collection2
 iron:router
 raix:handlebar-helpers
-matteodem:easy-security
 fastclick
 zimme:iron-router-active
 manuelschoebel:ms-seo
@@ -33,3 +32,6 @@ reactive-var
 semantic:ui-sidebar
 bengott:avatar
 aldeed:template-extension
+sanjo:jasmine
+velocity:html-reporter
+houston:admin
