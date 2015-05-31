@@ -1,10 +1,10 @@
 
 
-describe('Questions', function() {
+describe('Questions - Create', function() {
     
     
     
-    it("create question", function() {
+    it("Create Question", function() {
         spyOn(Questions, "insert").and.callFake(function(doc, callback) {
             // simulate return of id = "1";
             callback(null, "1");
@@ -27,10 +27,40 @@ describe('Questions', function() {
             //useCount: { type: Number, index: -1, defaultValue: 0 } //number of times this mapping has been used
         }
         Questions.insert(doc, function(error, result) {
-            
+            // console.log(result);
         });
+        
         // use last call to access arguments
         expect(Questions.insert).toHaveBeenCalled();
+        
+        
+        
+        
     });
+    it("Read Question", function() {
+        spyOn(Questions, "find");
+        
+        Questions.find({});
+        
+        // use last call to access arguments
+        expect(Questions.find).toHaveBeenCalled();
+    });
+    it("Update Question", function() {
+        spyOn(Questions, "update");
+        
+        Questions.update({});
+        
+        // use last call to access arguments
+        expect(Questions.update).toHaveBeenCalled();
+    });
+    it("Delete Question", function() {
+        spyOn(Questions, "remove");
+        
+        Questions.remove({});
+        
+        // use last call to access arguments
+        expect(Questions.remove).toHaveBeenCalled();
+    });
+    
     
 });
