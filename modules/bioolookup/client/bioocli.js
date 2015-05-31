@@ -71,7 +71,7 @@ Template.bioolookupContent.events({
         Session.set("biolog.bioolookup.results", null);
         var q = template.find("#biolookupSearchBox").value;
         var url = getUrlLookupMeds(q);
-        console.log("bioolookupContent url=" + url);
+        //console.log("bioolookupContent url=" + url);
         HTTP.get(url, function (err, response) {
             if (err) {
                 return results.set([]);
@@ -83,12 +83,23 @@ Template.bioolookupContent.events({
     },
 
     "click .bioolookupResult": function(event, template) {
-        //console.log("clicked: " + JSON.stringify(this));
-        results.set([this]);
-        Session.set("biolog.bioolookup.results", this);
+        var selectedMed = this;
+        console.log("clicked: " + JSON.stringify(selectedMed));
+        results.set([selectedMed]);
+        Session.set("biolog.bioolookup.results", selectedMed);
 
-        var detailUrl = getUrlDetailMesh(this.cui);
-        console.log("Lookup details: " + detailUrl);
+        lookupGeneric(selectedMed, function(err, genericMed) {
+            if (err) {
+                console.error("Unable to lookup generic: " + err);
+            }
+            if (genericMed) {
+                console.log("genericMed: " + JSON.stringify(genericMed));
+                Session.set("biolog.bioolookup.results", genericMed);
+                lookupDrugClasses(genericMed);
+            } else {
+                lookupDrugClasses(selectedMed);
+            }
+        });
     }
 });
 

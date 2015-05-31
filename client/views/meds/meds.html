@@ -1,17 +1,28 @@
 <template name="meds">
     <div class="ui segment">
-        <span class="ui large header">Medications</span>&nbsp;&nbsp;&nbsp;&nbsp;{{> bioolookupButton}}
-
-
+        <span class="ui large header">Current Medications</span>&nbsp;&nbsp;&nbsp;&nbsp;{{> bioolookupButton}}
         <div class="ui segment">
             <!--<div class="ui items">-->
             <div class="ui divided link items">
-                {{#each items}}
+                {{#each currentMeds}}
                     {{>medsItem}}
                 {{/each}}
             </div>
         </div>
     </div>
+
+    <div class="ui segment">
+        <span class="ui large header">Past Medications</span>&nbsp;&nbsp;&nbsp;&nbsp;{{> bioolookupButton}}
+        <div class="ui segment">
+            <!--<div class="ui items">-->
+            <div class="ui divided link items">
+                {{#each pastMeds}}
+                    {{>medsItem}}
+                {{/each}}
+            </div>
+        </div>
+    </div>
+
     {{> bioolookupModal}}
     {{> medModal}}
 </template>

@@ -1,7 +1,13 @@
 Template.meds.helpers({
-    items: function () {
+    currentMeds: function () {
         if (!getPatient()) return;
-        var result = getPatientMeds(getPatient()._id).fetch();
+        var result = getPatientMedsCurrent(getPatient()._id).fetch();
+        return result;
+    },
+
+    pastMeds: function () {
+        if (!getPatient()) return;
+        var result = getPatientMedsPast(getPatient()._id).fetch();
         return result;
     }
 });
@@ -162,7 +168,7 @@ Template.medModal.helpers({
         var med = Session.get("biolog.med.editing");
         if (!med) return;
         var ratingVal = getFactRating(med);
-        console.log("ratingVal=" + ratingVal);
+        //console.log("ratingVal=" + ratingVal);
         $('.ui.rating').rating('set rating', ratingVal);
         return ratingVal;
     }
