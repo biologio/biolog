@@ -79,8 +79,8 @@
       <file leaf-file-name="bioontologyFns.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/modules/bioolookup/bioontologyFns.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7250509" vertical-offset="2449" max-vertical-offset="3000">
-              <caret line="189" column="52" selection-start-line="189" selection-start-column="52" selection-end-line="189" selection-end-column="52" />
+            <state vertical-scroll-proportion="0.20570265" vertical-offset="814" max-vertical-offset="3045">
+              <caret line="63" column="78" selection-start-line="63" selection-start-column="78" selection-end-line="63" selection-end-column="78" />
               <folding />
             </state>
           </provider>
@@ -917,8 +917,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/modules/bioolookup/bioontologyFns.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7250509" vertical-offset="2449" max-vertical-offset="3000">
-          <caret line="189" column="52" selection-start-line="189" selection-start-column="52" selection-end-line="189" selection-end-column="52" />
+        <state vertical-scroll-proportion="0.20570265" vertical-offset="814" max-vertical-offset="3045">
+          <caret line="63" column="78" selection-start-line="63" selection-start-column="78" selection-end-line="63" selection-end-column="78" />
           <folding />
         </state>
       </provider>

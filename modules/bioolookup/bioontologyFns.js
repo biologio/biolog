@@ -61,7 +61,10 @@ addIngredients = function(med, fact, callback) {
         uriEntries = med.properties["http://purl.bioontology.org/ontology/RXNORM/tradename_of"];
     }
     if (!uriEntries) {
-        return callback("No generic info present");
+        console.log("No generic info present - add self as the sole ingredient");
+        var addingError = addMedIngredient(fact, med);
+        if (addingError) return callback(addingError);
+        return callback();
     };
     var genericUris = [];
     for (var uriIdx in uriEntries) {
