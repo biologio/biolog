@@ -37,21 +37,9 @@
       <file leaf-file-name="meds.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/views/meds/meds.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-10.481482" vertical-offset="2552" max-vertical-offset="3420">
+            <state vertical-scroll-proportion="-57.074074" vertical-offset="1294" max-vertical-offset="3420">
               <caret line="189" column="5" selection-start-line="189" selection-start-column="5" selection-end-line="189" selection-end-column="5" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="subscriptions.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/subscriptions/subscriptions.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="270">
-              <caret line="6" column="26" selection-start-line="6" selection-start-column="26" selection-end-line="6" selection-end-column="26" />
-              <folding>
-                <element signature="e#0#36#0" expanded="false" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -66,11 +54,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="medUtils.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="medUtils.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/util/medUtils.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.56563705" vertical-offset="922" max-vertical-offset="1605">
-              <caret line="81" column="61" selection-start-line="81" selection-start-column="61" selection-end-line="81" selection-end-column="61" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="967" max-vertical-offset="1620">
+              <caret line="86" column="2" selection-start-line="86" selection-start-column="2" selection-end-line="86" selection-end-column="2" />
               <folding />
             </state>
           </provider>
@@ -79,8 +67,8 @@
       <file leaf-file-name="bioocli.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/modules/bioolookup/client/bioocli.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-35.0" vertical-offset="300" max-vertical-offset="2460">
-              <caret line="85" column="21" selection-start-line="85" selection-start-column="20" selection-end-line="85" selection-end-column="21" />
+            <state vertical-scroll-proportion="-9.296296" vertical-offset="1969" max-vertical-offset="2625">
+              <caret line="150" column="31" selection-start-line="150" selection-start-column="31" selection-end-line="150" selection-end-column="31" />
               <folding>
                 <element signature="e#0#36#0" expanded="false" />
               </folding>
@@ -88,11 +76,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="bioontologyFns.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="bioontologyFns.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/modules/bioolookup/bioontologyFns.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-8.259259" vertical-offset="1547" max-vertical-offset="2445">
-              <caret line="120" column="33" selection-start-line="120" selection-start-column="33" selection-end-line="120" selection-end-column="33" />
+            <state vertical-scroll-proportion="0.7250509" vertical-offset="2449" max-vertical-offset="3000">
+              <caret line="189" column="52" selection-start-line="189" selection-start-column="52" selection-end-line="189" selection-end-column="52" />
               <folding />
             </state>
           </provider>
@@ -151,9 +139,9 @@
         <option value="$PROJECT_DIR$/lib/query/subscriptionQueries.js" />
         <option value="$PROJECT_DIR$/client/lib/client-methods.js" />
         <option value="$PROJECT_DIR$/client/views/meds/meds.js" />
+        <option value="$PROJECT_DIR$/lib/util/medUtils.js" />
         <option value="$PROJECT_DIR$/modules/bioolookup/client/bioocli.js" />
         <option value="$PROJECT_DIR$/modules/bioolookup/bioontologyFns.js" />
-        <option value="$PROJECT_DIR$/lib/util/medUtils.js" />
       </list>
     </option>
   </component>
@@ -883,14 +871,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/views/meds/meds.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.481482" vertical-offset="2552" max-vertical-offset="3420">
-          <caret line="189" column="5" selection-start-line="189" selection-start-column="5" selection-end-line="189" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/util/factUtils.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.115830116" vertical-offset="0" max-vertical-offset="518">
@@ -909,28 +889,36 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/client/views/meds/meds.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-57.074074" vertical-offset="1294" max-vertical-offset="3420">
+          <caret line="189" column="5" selection-start-line="189" selection-start-column="5" selection-end-line="189" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/modules/bioolookup/client/bioocli.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-35.0" vertical-offset="300" max-vertical-offset="2460">
-          <caret line="85" column="21" selection-start-line="85" selection-start-column="20" selection-end-line="85" selection-end-column="21" />
+        <state vertical-scroll-proportion="-9.296296" vertical-offset="1969" max-vertical-offset="2625">
+          <caret line="150" column="31" selection-start-line="150" selection-start-column="31" selection-end-line="150" selection-end-column="31" />
           <folding>
             <element signature="e#0#36#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/modules/bioolookup/bioontologyFns.js">
+    <entry file="file://$PROJECT_DIR$/lib/util/medUtils.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.259259" vertical-offset="1547" max-vertical-offset="2445">
-          <caret line="120" column="33" selection-start-line="120" selection-start-column="33" selection-end-line="120" selection-end-column="33" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="967" max-vertical-offset="1620">
+          <caret line="86" column="2" selection-start-line="86" selection-start-column="2" selection-end-line="86" selection-end-column="2" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/util/medUtils.js">
+    <entry file="file://$PROJECT_DIR$/modules/bioolookup/bioontologyFns.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.56563705" vertical-offset="922" max-vertical-offset="1605">
-          <caret line="81" column="61" selection-start-line="81" selection-start-column="61" selection-end-line="81" selection-end-column="61" />
+        <state vertical-scroll-proportion="0.7250509" vertical-offset="2449" max-vertical-offset="3000">
+          <caret line="189" column="52" selection-start-line="189" selection-start-column="52" selection-end-line="189" selection-end-column="52" />
           <folding />
         </state>
       </provider>

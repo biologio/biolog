@@ -53,8 +53,9 @@ getUrlLookupClass = function(ontology, purlUrl) {
     return url;
 };
 
-//TODO handle combination drugs
-addIngredientsAndClasses = function(med, fact, callback) {
+
+
+addIngredients = function(med, fact, callback) {
     var uriEntries = med.properties["http://purl.bioontology.org/ontology/MESH/tradename_of"];
     if (!uriEntries) {
         uriEntries = med.properties["http://purl.bioontology.org/ontology/RXNORM/tradename_of"];
@@ -82,8 +83,8 @@ addIngredientsAndClasses = function(med, fact, callback) {
                 callbk(err);
             }
             var json = JSON.parse(response.content);
-            //console.log("\n\nReceived ingredient: " + JSON.stringify(json));
-            var addingError = addMedIngredientAndClasses(fact, json);
+            console.log("\n\nReceived ingredient from: " + lookupUrl);
+            var addingError = addMedIngredient(fact, json);
             if (addingError) return callbk(addingError);
             callbk();
         });
@@ -96,55 +97,55 @@ addIngredientsAndClasses = function(med, fact, callback) {
 
 
 
-addMedClasses = function(med, fact, callback) {
-    var cui = med.cui[0];
-    //if (!med) cui = med.cui[0];
-    if (!cui) {
-        var err = "Unable to find CUI for med: " + JSON.stringify(med);
-        console.error(err);
-        return callback(err);
-    }
-    var url = getUrlLookupMesh(cui);
-    console.log("\n\nLooking up drug classes at: " + url);
-    HTTP.get(url, function (err, response) {
-        if (err) {
-            console.error("Unable to look up drug class at url: " + url + ":\n" + err);
-            callback(err);
-        }
-        var json = JSON.parse(response.content);
+//addMedClasses = function(med, fact, callback) {
+//    var cui = med.cui[0];
+//    //if (!med) cui = med.cui[0];
+//    if (!cui) {
+//        var err = "Unable to find CUI for med: " + JSON.stringify(med);
+//        console.error(err);
+//        return callback(err);
+//    }
+//    var url = getUrlLookupMesh(cui);
+//    console.log("\n\nLooking up drug classes at: " + url);
+//    HTTP.get(url, function (err, response) {
+//        if (err) {
+//            console.error("Unable to look up drug class at url: " + url + ":\n" + err);
+//            callback(err);
+//        }
+//        var json = JSON.parse(response.content);
+//
+//        var props = json.collection[0].properties;
+//        if (!props) props = json.collection.properties;
+//        if (!props) {
+//            var err = "Unable to find properties from: " + url;
+//            console.error(err);
+//            return callback(err);
+//        }
+//        var uris = props["http://purl.bioontology.org/ontology/MESH/isa"];
+//        if (! uris) {
+//            callback("No classes found");
+//        }
+//
+//        //for (var classIdx in classes) {
+//        //    var drugClassUri = classes[classIdx];
+//        //    console.log("\n\nlookup drug class: " + drugClassUri);
+//        //}
+//
+//        addMedClassesForEachGenericCui(uris, fact, callback);
+//
+//
+//        //console.log("Received drug class data: " + JSON.stringify(json));
+//        //callback(null, json);
+//    });
+//};
 
-        var props = json.collection[0].properties;
-        if (!props) props = json.collection.properties;
-        if (!props) {
-            var err = "Unable to find properties from: " + url;
-            console.error(err);
-            return callback(err);
-        }
-        var uris = props["http://purl.bioontology.org/ontology/MESH/isa"];
-        if (! uris) {
-            callback("No classes found");
-        }
-
-        //for (var classIdx in classes) {
-        //    var drugClassUri = classes[classIdx];
-        //    console.log("\n\nlookup drug class: " + drugClassUri);
-        //}
-
-        addMedClassesForEach(uris, fact, callback);
-
-
-        //console.log("Received drug class data: " + JSON.stringify(json));
-        //callback(null, json);
-    });
-};
-
-addMedClassesForEach = function(uris, fact, callback) {
-    if (!uris) return callback("No medicine URIs were provided");
-    async.each(uris, function(uri, callbk) {
+addMedClassesForEachGenericCui = function(ingredientCuis, fact, callback) {
+    if (!ingredientCuis) return callback("No ingredient CUIs were provided");
+    async.each(ingredientCuis, function(cui, callbk) {
         //lookup each uri and add it as a medication/ingredient
-        var lookupUrl = getUrlLookupClass("MESH", uri);
+        var lookupUrl = getUrlLookupMesh(cui);
         //var lookupUrl = getUrlLookupMeds(encodeURIComponent(genericUrl));
-        //console.log("Looking up generic at: " + lookupUrl);
+        console.log("\n\nLooking up med class at: " + lookupUrl);
         HTTP.get(lookupUrl, function (err, response) {
             if (err) {
                 console.error("Unable to look up med class at url: " + lookupUrl + ":\n" + err);
@@ -152,9 +153,44 @@ addMedClassesForEach = function(uris, fact, callback) {
             }
             var json = JSON.parse(response.content);
             //console.log("\n\nReceived ingredient: " + JSON.stringify(json));
+
+            var props = json.collection[0].properties;
+            if (!props) props = json.collection.properties;
+            if (!props) {
+                var err = "Unable to find properties from: " + url;
+                console.error(err);
+                return callback(err);
+            }
+            var uris = props["http://purl.bioontology.org/ontology/MESH/isa"];
+            if (! uris) {
+                callback("No classes found");
+            }
+
+            //for (var classIdx in classes) {
+            //    var drugClassUri = classes[classIdx];
+            //    console.log("\n\nlookup drug class: " + drugClassUri);
+            //}
+
+            addMedClassesForEachClassUri(uris, fact, function(err) {
+                if (err) return callbk(err);
+                callbk();
+            });
+        });
+    }, callback);
+};
+
+
+addMedClassesForEachClassUri = function(classUris, fact, callback) {
+    if (!classUris) return callback("No class URIs were provided");
+    async.each(classUris, function(uri, callbk) {
+        var lookupUrl = getUrlLookupClass("MESH", uri);
+        //var lookupUrl = getUrlLookupMeds(encodeURIComponent(genericUrl));
+        console.log("\n\nGetting med class at: " + lookupUrl);
+        HTTP.get(lookupUrl, function (err, response) {
+            var json = JSON.parse(response.content);
             var addingError = addMedClass(fact, json);
             if (addingError) return callbk(addingError);
             callbk();
         });
     }, callback);
-}
+};

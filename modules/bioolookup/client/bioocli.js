@@ -121,7 +121,7 @@ Template.bioolookupContent.events({
 submitBioolookup = function() {
     Session.set("biolog.bioolookup.modal.open", null);
     var med = Session.get("biolog.bioolookup.results");
-    console.log("Saving med: " + JSON.stringify(med));
+    //console.log("Saving med: " + JSON.stringify(med));
     if (!med) return;
     var cui = med.cui[0];
     //if (!cui) cui = med.cui[0];
@@ -135,18 +135,29 @@ submitBioolookup = function() {
         endFlag: 1
     };
 
-    addIngredientsAndClasses(med, fact, function(err, ingredientUris) {
+    addIngredients(med, fact, function(err) {
         if (err) {
             console.error("Unable to addIngredients: " + err);
         }
 
-        console.log("\n\nSaving med fact:" + JSON.stringify(fact));
-        saveProperty(fact, function(err, success) {
+        var ingredients = fact.data["medication/ingredient"];
+        console.log("\n\nNext add med classes: " + JSON.stringify(ingredients));
+        var ingredientCuis = Object.keys(ingredients);
+
+        addMedClassesForEachGenericCui(ingredientCuis, fact, function(err, result) {
             if (err) {
-                console.error("Unable to save medication fact: " + err + "\n" + JSON.stringify(fact));
-                return;
+                console.error("Error adding med class: " + err);
             }
-        });
+            console.log("\n\n\nSaving med fact:" + JSON.stringify(fact));
+            saveProperty(fact, function(err, success) {
+                if (err) {
+                    console.error("Unable to save medication fact: " + err + "\n" + JSON.stringify(fact));
+                    return;
+                }
+            });
+
+        })
+
     });
 
     //saveProperty(fact, function(err, success) {
