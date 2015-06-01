@@ -2,8 +2,8 @@
  * Created by dd on 3/28/15.
  */
 
-setProperty = function(fact, callback) {
-    console.log("setProperty: " + JSON.stringify(fact));
+saveProperty = function(fact, callback) {
+    //console.log("saveProperty: " + JSON.stringify(fact));
     Meteor.call("setProperty", fact, function(response) {
         if (callback) return callback(response);
         if (response) {

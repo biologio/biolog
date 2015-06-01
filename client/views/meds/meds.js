@@ -179,7 +179,7 @@ Template.medModal.helpers({
 updateMed = function() {
     var med = Session.get("biolog.med.editing");
     delete med._id;
-    //console.log("Saving med: " + JSON.stringify(med));
+    //console.log("\n\nSaving med: " + JSON.stringify(med));
     if (!med) return;
     var frequency = $("#medFrequency").val();
     var strength = $("#medStrength").val();
@@ -213,11 +213,11 @@ updateMed = function() {
     med.endFlag = 0;
     if ($("#medEndFlag").prop("checked")) med.endFlag = 1;
 
-    setProperty(med, function(err, success) {
+    saveProperty(med, function(err, success) {
         if (err) {
             console.error("Unable to save med: " + err + "\n" + JSON.stringify(med));
             return;
         }
         console.log("Saved med: " + JSON.stringify(med));
     })
-}
+};

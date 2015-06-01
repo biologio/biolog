@@ -16,7 +16,7 @@ var slimFact = function(fact) {
  updateFact
  updateProperty
  setFact
- setProperty
+ saveProperty
  In this js file, we distinguish between the ~Fact methods and the ~Property methods.
  The ~Fact methods simply add or update a fact in the database.
  The ~Property methods do 2 things: (1) add the fact by calling the corresponding ~Fact method, and (2) update that value in the owning entity.

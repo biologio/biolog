@@ -83,23 +83,36 @@ Template.bioolookupContent.events({
     },
 
     "click .bioolookupResult": function(event, template) {
-        var selectedMed = this;
-        console.log("clicked: " + JSON.stringify(selectedMed));
-        results.set([selectedMed]);
-        Session.set("biolog.bioolookup.results", selectedMed);
+        var med = this;
+        //console.log("clicked: " + JSON.stringify(selectedMed));
+        results.set([med]);
+        Session.set("biolog.bioolookup.results", med);
 
-        lookupGeneric(selectedMed, function(err, genericMed) {
-            if (err) {
-                console.error("Unable to lookup generic: " + err);
-            }
-            if (genericMed) {
-                console.log("genericMed: " + JSON.stringify(genericMed));
-                Session.set("biolog.bioolookup.results", genericMed);
-                lookupDrugClasses(genericMed);
-            } else {
-                lookupDrugClasses(selectedMed);
-            }
-        });
+        //addIngredients(med, function(err) {
+        //    if (err) {
+        //        console.error("Unable to addIngredients: " + err);
+        //    }
+        //});
+            //addMedClasses(med, function(err, result) {
+            //    if (err) console.error("lookupDrugClasses for selectedMed error=: " + err);
+            //    //console.log("lookupDrugClasses for selectedMed result=: " + JSON.stringify(result));
+            //});
+
+
+            //if (genericMed) {
+            //    //console.log("genericMed: " + JSON.stringify(genericMed));
+            //    Session.set("biolog.bioolookup.results", genericMed);
+            //    lookupDrugClasses(genericMed, function(err, result) {
+            //        if (err) console.error("lookupDrugClasses for genericMed error=: " + err);
+            //        console.log("lookupDrugClasses for genericMed result=: " + JSON.stringify(result));
+            //    });
+            //} else {
+            //    lookupDrugClasses(med, function(err, result) {
+            //        if (err) console.error("lookupDrugClasses for selectedMed error=: " + err);
+            //        //console.log("lookupDrugClasses for selectedMed result=: " + JSON.stringify(result));
+            //    });
+            //}
+
     }
 });
 
@@ -110,21 +123,38 @@ submitBioolookup = function() {
     var med = Session.get("biolog.bioolookup.results");
     console.log("Saving med: " + JSON.stringify(med));
     if (!med) return;
+    var cui = med.cui[0];
+    //if (!cui) cui = med.cui[0];
     var fact = {
         subj: getPatient()._id,
         pred: medicationPredicate._id,
-        obj: med.cui[0],
+        obj: cui,
         objName: med.prefLabel,
         //etypes: [medicationEtype._id],
         startDate: new Date(),
         endFlag: 1
     };
-    setProperty(fact, function(err, success) {
+
+    addIngredientsAndClasses(med, fact, function(err, ingredientUris) {
         if (err) {
-            console.error("Unable to save fact: " + err + "\n" + JSON.stringify(fact));
-            return;
+            console.error("Unable to addIngredients: " + err);
         }
-        //console.log("Saved fact: " + JSON.stringify(fact));
-    })
+
+        console.log("\n\nSaving med fact:" + JSON.stringify(fact));
+        saveProperty(fact, function(err, success) {
+            if (err) {
+                console.error("Unable to save medication fact: " + err + "\n" + JSON.stringify(fact));
+                return;
+            }
+        });
+    });
+
+    //saveProperty(fact, function(err, success) {
+    //    if (err) {
+    //        console.error("Unable to save fact: " + err + "\n" + JSON.stringify(fact));
+    //        return;
+    //    }
+    //    //console.log("Saved fact: " + JSON.stringify(fact));
+    //});
 };
 

@@ -7090,7 +7090,7 @@ var packageMetadata = {
                 },
                 "version": {
                   "type": "constant",
-                  "value": "613bbe28ed871836e2ed2b77805181bdb1aa40a6"
+                  "value": "8850410fe7e3f627ff53acff804d14d9bac3c8fd"
                 },
                 "PUBLIC_SETTINGS": {
                   "type": "undefined"
@@ -7885,7 +7885,7 @@ var packageMetadata = {
       "members": {
         "autoupdateVersion": {
           "type": "constant",
-          "value": "6a5e6e796fe2a8c44d08d68234f79069543b1b4e"
+          "value": "7a5661fa826177530cc7e72e217c6e2a23bba28c"
         },
         "autoupdateVersionRefreshable": {
           "type": "constant",
@@ -21470,6 +21470,196 @@ var packageMetadata = {
           "type": "function"
         },
         "defineMethod": {
+          "type": "function"
+        }
+      }
+    }
+  },
+  "peerlibrary:async": {
+    "async": {
+      "type": "object",
+      "members": {
+        "noConflict": {
+          "type": "function"
+        },
+        "nextTick": {
+          "type": "function"
+        },
+        "setImmediate": {
+          "type": "function"
+        },
+        "each": {
+          "type": "function",
+          "refID": 7
+        },
+        "forEach": {
+          "ref": 7
+        },
+        "eachSeries": {
+          "type": "function",
+          "refID": 9
+        },
+        "forEachSeries": {
+          "ref": 9
+        },
+        "eachLimit": {
+          "type": "function",
+          "refID": 11
+        },
+        "forEachLimit": {
+          "ref": 11
+        },
+        "map": {
+          "type": "function"
+        },
+        "mapSeries": {
+          "type": "function"
+        },
+        "mapLimit": {
+          "type": "function"
+        },
+        "reduce": {
+          "type": "function",
+          "refID": 19
+        },
+        "inject": {
+          "ref": 19
+        },
+        "foldl": {
+          "ref": 19
+        },
+        "reduceRight": {
+          "type": "function",
+          "refID": 21
+        },
+        "foldr": {
+          "ref": 21
+        },
+        "filter": {
+          "type": "function",
+          "refID": 23
+        },
+        "filterSeries": {
+          "type": "function",
+          "refID": 25
+        },
+        "select": {
+          "ref": 23
+        },
+        "selectSeries": {
+          "ref": 25
+        },
+        "reject": {
+          "type": "function"
+        },
+        "rejectSeries": {
+          "type": "function"
+        },
+        "detect": {
+          "type": "function"
+        },
+        "detectSeries": {
+          "type": "function"
+        },
+        "some": {
+          "type": "function",
+          "refID": 35
+        },
+        "any": {
+          "ref": 35
+        },
+        "every": {
+          "type": "function",
+          "refID": 37
+        },
+        "all": {
+          "ref": 37
+        },
+        "sortBy": {
+          "type": "function"
+        },
+        "auto": {
+          "type": "function"
+        },
+        "retry": {
+          "type": "function"
+        },
+        "waterfall": {
+          "type": "function"
+        },
+        "parallel": {
+          "type": "function"
+        },
+        "parallelLimit": {
+          "type": "function"
+        },
+        "series": {
+          "type": "function"
+        },
+        "iterator": {
+          "type": "function"
+        },
+        "apply": {
+          "type": "function"
+        },
+        "concat": {
+          "type": "function"
+        },
+        "concatSeries": {
+          "type": "function"
+        },
+        "whilst": {
+          "type": "function"
+        },
+        "doWhilst": {
+          "type": "function"
+        },
+        "until": {
+          "type": "function"
+        },
+        "doUntil": {
+          "type": "function"
+        },
+        "queue": {
+          "type": "function"
+        },
+        "priorityQueue": {
+          "type": "function"
+        },
+        "cargo": {
+          "type": "function"
+        },
+        "log": {
+          "type": "function"
+        },
+        "dir": {
+          "type": "function"
+        },
+        "memoize": {
+          "type": "function"
+        },
+        "unmemoize": {
+          "type": "function"
+        },
+        "times": {
+          "type": "function"
+        },
+        "timesSeries": {
+          "type": "function"
+        },
+        "seq": {
+          "type": "function"
+        },
+        "compose": {
+          "type": "function"
+        },
+        "applyEach": {
+          "type": "function"
+        },
+        "applyEachSeries": {
+          "type": "function"
+        },
+        "forever": {
           "type": "function"
         }
       }
