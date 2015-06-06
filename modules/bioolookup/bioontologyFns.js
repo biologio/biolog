@@ -8,50 +8,63 @@
  * @returns {string}
  */
 //LOCAL
-//getUrlLookupMeds = function(q) {
-//    return "http://bioportal.smart-bio.org:8080/search?ontologies=RXNORM&suggest=true" +
-//        "&semantic_types=T116,T109,T121,T002,T197,T127" +
-//        "&include=prefLabel,synonym,definition,notation,cui,semanticType,properties" +
-//        "&display_context=false&q=" + encodeURIComponent(q) +
-//        "&apikey=95d31cce-3247-4186-ae95-97c61884c50a";
-//};
-
-//REMOTE
 getUrlLookupMeds = function(q) {
-    return "http://data.bioontology.org/search?ontologies=RXNORM&suggest=true" +
+    return "http://bioportal.smart-bio.org:8080/search?ontologies=RXNORM&suggest=true" +
         "&semantic_types=T116,T109,T121,T002,T197,T127" +
         "&include=prefLabel,synonym,definition,notation,cui,semanticType,properties" +
         "&display_context=false&q=" + encodeURIComponent(q) +
-        "&apikey=89b05cf1-2e81-48f6-baad-58236f6af05d";
+        "&apikey=95d31cce-3247-4186-ae95-97c61884c50a";
 };
+
+//REMOTE
+//getUrlLookupMeds = function(q) {
+//    return "http://data.bioontology.org/search?ontologies=RXNORM&suggest=true" +
+//        "&semantic_types=T116,T109,T121,T002,T197,T127" +
+//        "&include=prefLabel,synonym,definition,notation,cui,semanticType,properties" +
+//        "&display_context=false&q=" + encodeURIComponent(q) +
+//        "&apikey=89b05cf1-2e81-48f6-baad-58236f6af05d";
+//};
+
+
+
 /**
  * Provides the URL for doing a lookup of a single entity on MESH, which provides greater detail than most ontologies.
  * @param q
  * @returns {string}
  */
 //LOCAL
-//getUrlLookupMesh = function(q) {
-//return "http://bioportal.smart-bio.org:8080/search?suggest=false" +
-//"&ontologies=MESH" +
-//    "&include=prefLabel,synonym,definition,notation,cui,semanticType,properties" +
-//    "&display_context=false&q=" + q +
-//    "&apikey=95d31cce-3247-4186-ae95-97c61884c50a";
-//};
+getUrlLookupMesh = function(q) {
+return "http://bioportal.smart-bio.org:8080/search?suggest=false" +
+"&ontologies=MESH" +
+    "&include=prefLabel,synonym,definition,notation,cui,semanticType,properties" +
+    "&display_context=false&q=" + q +
+    "&apikey=95d31cce-3247-4186-ae95-97c61884c50a";
+};
 
 //REMOTE
-getUrlLookupMesh = function(q) {
-    return "http://data.bioontology.org/search?suggest=false" +
-        "&ontologies=MESH" +
-        "&include=prefLabel,synonym,definition,notation,cui,semanticType,properties" +
-        "&display_context=false&q=" + q +
-        "&apikey=89b05cf1-2e81-48f6-baad-58236f6af05d";
-};
+//getUrlLookupMesh = function(q) {
+//    return "http://data.bioontology.org/search?suggest=false" +
+//        "&ontologies=MESH" +
+//        "&include=prefLabel,synonym,definition,notation,cui,semanticType,properties" +
+//        "&display_context=false&q=" + q +
+//        "&apikey=89b05cf1-2e81-48f6-baad-58236f6af05d";
+//};
 
+
+//LOCAL
 getUrlLookupClass = function(ontology, purlUrl) {
-    var url = "http://data.bioontology.org/ontologies/" + ontology + "/classes/" +
-        encodeURIComponent(purlUrl) + "?apikey=89b05cf1-2e81-48f6-baad-58236f6af05d";
+    var url = "http://bioportal.smart-bio.org:8080/ontologies/" + ontology + "/classes/" +
+        encodeURIComponent(purlUrl) + "?apikey=95d31cce-3247-4186-ae95-97c61884c50a";
     return url;
 };
+
+
+//REMOTE
+//getUrlLookupClass = function(ontology, purlUrl) {
+//    var url = "http://data.bioontology.org/ontologies/" + ontology + "/classes/" +
+//        encodeURIComponent(purlUrl) + "?apikey=89b05cf1-2e81-48f6-baad-58236f6af05d";
+//    return url;
+//};
 
 
 
@@ -157,10 +170,21 @@ addMedClassesForEachGenericCui = function(ingredientCuis, fact, callback) {
             var json = JSON.parse(response.content);
             //console.log("\n\nReceived ingredient: " + JSON.stringify(json));
 
-            var props = json.collection[0].properties;
-            if (!props) props = json.collection.properties;
+            var props;
+            try {
+                props = json.collection[0].properties;
+            } catch (unable) {
+                //try again
+            }
             if (!props) {
-                var err = "Unable to find properties from: " + url;
+                try {
+                    props = json.collection.properties;
+                } catch (unable) {
+                    //still unable
+                }
+            }
+            if (!props) {
+                var err = "Unable to find properties from: " + lookupUrl;
                 console.error(err);
                 return callback(err);
             }

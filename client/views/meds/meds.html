@@ -54,19 +54,9 @@
                 <div class="ui message">
                     <div class="header">{{medName}}</div>
                 </div>
-                <div class="one field">
-                    <div class="field">
-                        <label>Your Rating</label>
-                        <div id="medRating" class="ui massive star rating" data-rating="{{medRating}}"></div>
-                    </div>
-                </div>
                 <div class="two fields">
                     <div class="field">
-                        <label>Strength</label>
-                        <input id="medStrength" placeholder="Strength in mg" type="text" value="{{medStrength}}"> mg
-                    </div>
-                    <div class="field">
-                        <label>How often are you taking it?</label>
+                        <label>How often do you take it?</label>
                         <select id="medFrequency" class="ui dropdown">
                             <!--<option value="">Frequency</option>-->
                             <option value=".2" {{medFrequencySelected ".2"}}>{{medFrequencyLabel ".2"}}</option>
@@ -85,8 +75,27 @@
                             <option value="30" {{medFrequencySelected "30"}}>{{medFrequencyLabel "30"}}</option>
                         </select>
                     </div>
-                </div>
 
+                    <div class="field">
+                        <label>Your Rating</label>
+                        <div id="medRating" class="ui massive star rating" data-rating="{{medRating}}"></div>
+                    </div>
+                </div>
+                {{#each ingredients}}
+                    <div class="two fields">
+                        <div class="field">
+                            <label>&nbsp;</label>
+                            <div class="ui large image label">
+                                <img src="images/pills.jpg" />
+                                {{text}}
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label>Strength</label>
+                            <input id="medStrength-{{obj}}" class="medStrength" placeholder="Strength in mg" type="text" value="{{ingredientStrength obj}}">
+                        </div>
+                    </div>
+                {{/each}}
                 <div class="two fields">
                     <div class="field">
                         <label>Start Date</label>

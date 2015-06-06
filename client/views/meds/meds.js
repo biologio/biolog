@@ -28,9 +28,10 @@ Template.medsItem.events({
 Template.medsItem.helpers({
 
     strength: function() {
-        var str = getMedStrength(this);
-        if (!str) return "?";
-        return str;
+        //var str = getIngredientStrength(cui);
+        //if (!str) return "?";
+        //return str;
+        return "?";
     },
 
     frequency: function() {
@@ -104,10 +105,18 @@ Template.medModal.helpers({
         return getMedName(med);
     },
 
-    medStrength: function() {
+    ingredients: function() {
+        var med = Session.get("biolog.med.editing");
+        //console.log("med=" + JSON.stringify(med));
+        var medIngredients = getMedIngredients(med);
+
+        return medIngredients;
+    },
+
+    ingredientStrength: function(cui) {
         var med = Session.get("biolog.med.editing");
         if (!med) return;
-        return getMedStrength(med);
+        return getIngredientStrength(med, cui);
     },
 
     //medFrequency: function() {
@@ -182,14 +191,23 @@ updateMed = function() {
     //console.log("\n\nSaving med: " + JSON.stringify(med));
     if (!med) return;
     var frequency = $("#medFrequency").val();
-    var strength = $("#medStrength").val();
+    //var strength = $("#medStrength").val();
     var rating = null;
     rating = $('.ui.rating').rating('get rating');
     if (rating) {
         setFactRating(med, String(rating));
     }
     setMedFrequency(med, frequency);
-    setMedStrength(med, strength);
+
+    //setMedStrength(med, strength);
+    var ingredients = getMedIngredients(med);
+    for (var ingredientIdx in ingredients) {
+        var ingredient = ingredients[ingredientIdx];
+        var inputId = "#medStrength-" + ingredient.obj;
+        var ingredientStrength = $(inputId).val();
+        console.log("ingredient: " + ingredient.text + " has id: " + inputId + " has strength:" + ingredientStrength);
+        setIngredientStrength(med, ingredient.obj, ingredientStrength);
+    }
 
     var startDateStr = $("#medStartDate").val();
     if (startDateStr) {

@@ -123,17 +123,8 @@ submitBioolookup = function() {
     var med = Session.get("biolog.bioolookup.results");
     //console.log("Saving med: " + JSON.stringify(med));
     if (!med) return;
-    var cui = med.cui[0];
-    //if (!cui) cui = med.cui[0];
-    var fact = {
-        subj: getPatient()._id,
-        pred: medicationPredicate._id,
-        obj: cui,
-        objName: med.prefLabel,
-        //etypes: [medicationEtype._id],
-        startDate: new Date(),
-        endFlag: 1
-    };
+
+    var fact = createMedFact(getPatient()._id, med);
 
     addIngredients(med, fact, function(err) {
         if (err) {
@@ -159,13 +150,5 @@ submitBioolookup = function() {
         })
 
     });
-
-    //saveProperty(fact, function(err, success) {
-    //    if (err) {
-    //        console.error("Unable to save fact: " + err + "\n" + JSON.stringify(fact));
-    //        return;
-    //    }
-    //    //console.log("Saved fact: " + JSON.stringify(fact));
-    //});
 };
 
