@@ -4,7 +4,7 @@ Router.route('/', function () {
   SEO.set({ title: 'Home -' + Meteor.App.NAME });
 });
 
-Router.route('/profile', function () {
+Router.route('/profile', {name: 'user.profile'}, function () {
   this.render('profile');
   SEO.set({ title: 'Profile -' + Meteor.App.NAME });
 });
