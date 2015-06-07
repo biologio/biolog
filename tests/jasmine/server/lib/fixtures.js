@@ -11,7 +11,7 @@ createPatients = function() {
 
         submitPatient(pt);
 
-        addMedications(pt);
+        //addMedications(pt);
     }
 }
 
