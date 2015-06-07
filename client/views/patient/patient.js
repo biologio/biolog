@@ -52,14 +52,7 @@ Template.patientDemographics.events({
 
     'change #inputNickname': function(event) {
         var pt = getPatient();
-        var fact = {
-            subj: pt._id,
-            pred: "id/nickname",
-            text: event.target.value,
-            startFlag: 0,
-            endFlag: 0
-        };
-        setValuePath(pt, "data.id/nickname", fact);
+        setPatientNickname(pt, event.target.value);
         setPatient(pt);
         //addProperty(fact);
         //console.log("Changed: " + JSON.stringify(getPatient()));
@@ -67,13 +60,7 @@ Template.patientDemographics.events({
 
     'change #inputDob': function(event) {
         var pt = getPatient();
-        var fact = {
-            subj: pt._id,
-            pred: "id/dob",
-            startDate: event.target.value,
-            startFlag: 0,
-            endFlag: 1
-        };
+        setPatientDob(pt, event.target.value);
         setValuePath(pt, "data.id/dob", fact);
         setPatient(pt);
         //addProperty(fact);
@@ -82,14 +69,8 @@ Template.patientDemographics.events({
 
     'change input[name=inputGender]': function(event) {
         var pt = getPatient();
-        var fact = {
-            subj: pt._id,
-            pred: "id/sex",
-            text: event.target.value,
-            startFlag: 0,
-            endFlag: 1
-        };
-        setValuePath(pt, "data.id/sex", fact);
+        setPatientSex(pt, event.target.value);
+
         setPatient(pt);
         //addProperty(fact);
         console.log("Changed patient: " + JSON.stringify(getPatient()));

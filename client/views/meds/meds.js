@@ -28,10 +28,18 @@ Template.medsItem.events({
 Template.medsItem.helpers({
 
     strength: function() {
-        //var str = getIngredientStrength(cui);
-        //if (!str) return "?";
-        //return str;
-        return "?";
+        var med = this;
+        var ingredients = getMedIngredients(med);
+        var display = "";
+        for (var ingredientIdx in ingredients) {
+            var ingredient = ingredients[ingredientIdx];
+            var strength = getIngredientStrength(med, ingredient.obj);
+            if (!strength) strength = "?";
+            if (display.length > 0) display += " + ";
+            display += ingredient.text + " " + strength + " mg";
+        }
+        if (display.length === 0) return "?";
+        return display;
     },
 
     frequency: function() {
@@ -239,3 +247,5 @@ updateMed = function() {
         console.log("Saved med: " + JSON.stringify(med));
     })
 };
+
+

@@ -7089,7 +7089,7 @@ var packageMetadata = {
                 },
                 "version": {
                   "type": "constant",
-                  "value": "9eab1697a7aa68402620ef21dd2be9ed5a11e451"
+                  "value": "4fac82fe761e419c8ef2523b628c4b8466c16b4a"
                 },
                 "PUBLIC_SETTINGS": {
                   "type": "undefined"
@@ -7884,7 +7884,7 @@ var packageMetadata = {
       "members": {
         "autoupdateVersion": {
           "type": "constant",
-          "value": "e3ed1e21224875ee3a49e3798b8287813b568599"
+          "value": "803633e87211dbb2aec98ca4546c0c5b3c2454b5"
         },
         "autoupdateVersionRefreshable": {
           "type": "constant",
@@ -21660,6 +21660,380 @@ var packageMetadata = {
         },
         "forever": {
           "type": "function"
+        }
+      }
+    }
+  },
+  "risul:chance": {
+    "Chance": {
+      "type": "function",
+      "refID": 0,
+      "members": {
+        "Chance": {
+          "ref": 0
+        },
+        "prototype": {
+          "type": "object",
+          "members": {
+            "VERSION": {
+              "type": "constant",
+              "value": "0.7.5"
+            },
+            "bool": {
+              "type": "function"
+            },
+            "character": {
+              "type": "function"
+            },
+            "floating": {
+              "type": "function"
+            },
+            "integer": {
+              "type": "function"
+            },
+            "natural": {
+              "type": "function"
+            },
+            "string": {
+              "type": "function"
+            },
+            "capitalize": {
+              "type": "function"
+            },
+            "mixin": {
+              "type": "function"
+            },
+            "unique": {
+              "type": "function"
+            },
+            "n": {
+              "type": "function"
+            },
+            "pad": {
+              "type": "function"
+            },
+            "pick": {
+              "type": "function"
+            },
+            "shuffle": {
+              "type": "function"
+            },
+            "weighted": {
+              "type": "function"
+            },
+            "paragraph": {
+              "type": "function"
+            },
+            "sentence": {
+              "type": "function"
+            },
+            "syllable": {
+              "type": "function"
+            },
+            "word": {
+              "type": "function"
+            },
+            "age": {
+              "type": "function"
+            },
+            "birthday": {
+              "type": "function"
+            },
+            "cpf": {
+              "type": "function"
+            },
+            "first": {
+              "type": "function"
+            },
+            "gender": {
+              "type": "function"
+            },
+            "last": {
+              "type": "function"
+            },
+            "mrz": {
+              "type": "function"
+            },
+            "name": {
+              "type": "function"
+            },
+            "name_prefixes": {
+              "type": "function"
+            },
+            "prefix": {
+              "type": "function"
+            },
+            "name_prefix": {
+              "type": "function"
+            },
+            "ssn": {
+              "type": "function"
+            },
+            "name_suffixes": {
+              "type": "function"
+            },
+            "suffix": {
+              "type": "function"
+            },
+            "name_suffix": {
+              "type": "function"
+            },
+            "android_id": {
+              "type": "function"
+            },
+            "apple_token": {
+              "type": "function"
+            },
+            "wp8_anid2": {
+              "type": "function"
+            },
+            "wp7_anid": {
+              "type": "function"
+            },
+            "bb_pin": {
+              "type": "function"
+            },
+            "avatar": {
+              "type": "function"
+            },
+            "color": {
+              "type": "function"
+            },
+            "domain": {
+              "type": "function"
+            },
+            "email": {
+              "type": "function"
+            },
+            "fbid": {
+              "type": "function"
+            },
+            "google_analytics": {
+              "type": "function"
+            },
+            "hashtag": {
+              "type": "function"
+            },
+            "ip": {
+              "type": "function"
+            },
+            "ipv6": {
+              "type": "function"
+            },
+            "klout": {
+              "type": "function"
+            },
+            "tlds": {
+              "type": "function"
+            },
+            "tld": {
+              "type": "function"
+            },
+            "twitter": {
+              "type": "function"
+            },
+            "url": {
+              "type": "function"
+            },
+            "address": {
+              "type": "function"
+            },
+            "altitude": {
+              "type": "function"
+            },
+            "areacode": {
+              "type": "function"
+            },
+            "city": {
+              "type": "function"
+            },
+            "coordinates": {
+              "type": "function"
+            },
+            "countries": {
+              "type": "function"
+            },
+            "country": {
+              "type": "function"
+            },
+            "depth": {
+              "type": "function"
+            },
+            "geohash": {
+              "type": "function"
+            },
+            "geojson": {
+              "type": "function"
+            },
+            "latitude": {
+              "type": "function"
+            },
+            "longitude": {
+              "type": "function"
+            },
+            "phone": {
+              "type": "function"
+            },
+            "postal": {
+              "type": "function"
+            },
+            "provinces": {
+              "type": "function"
+            },
+            "province": {
+              "type": "function"
+            },
+            "state": {
+              "type": "function"
+            },
+            "states": {
+              "type": "function"
+            },
+            "street": {
+              "type": "function"
+            },
+            "street_suffix": {
+              "type": "function"
+            },
+            "street_suffixes": {
+              "type": "function"
+            },
+            "zip": {
+              "type": "function"
+            },
+            "ampm": {
+              "type": "function"
+            },
+            "date": {
+              "type": "function"
+            },
+            "hammertime": {
+              "type": "function"
+            },
+            "hour": {
+              "type": "function"
+            },
+            "millisecond": {
+              "type": "function"
+            },
+            "second": {
+              "type": "function"
+            },
+            "minute": {
+              "type": "function"
+            },
+            "month": {
+              "type": "function"
+            },
+            "months": {
+              "type": "function"
+            },
+            "timestamp": {
+              "type": "function"
+            },
+            "year": {
+              "type": "function"
+            },
+            "cc": {
+              "type": "function"
+            },
+            "cc_types": {
+              "type": "function"
+            },
+            "cc_type": {
+              "type": "function"
+            },
+            "currency_types": {
+              "type": "function"
+            },
+            "currency": {
+              "type": "function"
+            },
+            "currency_pair": {
+              "type": "function"
+            },
+            "dollar": {
+              "type": "function"
+            },
+            "exp": {
+              "type": "function"
+            },
+            "exp_month": {
+              "type": "function"
+            },
+            "exp_year": {
+              "type": "function"
+            },
+            "d4": {
+              "type": "function"
+            },
+            "d6": {
+              "type": "function"
+            },
+            "d8": {
+              "type": "function"
+            },
+            "d10": {
+              "type": "function"
+            },
+            "d12": {
+              "type": "function"
+            },
+            "d20": {
+              "type": "function"
+            },
+            "d30": {
+              "type": "function"
+            },
+            "d100": {
+              "type": "function"
+            },
+            "rpg": {
+              "type": "function"
+            },
+            "guid": {
+              "type": "function"
+            },
+            "hash": {
+              "type": "function"
+            },
+            "luhn_check": {
+              "type": "function"
+            },
+            "luhn_calculate": {
+              "type": "function"
+            },
+            "md5": {
+              "type": "function"
+            },
+            "get": {
+              "type": "function"
+            },
+            "mac_address": {
+              "type": "function"
+            },
+            "normal": {
+              "type": "function"
+            },
+            "radio": {
+              "type": "function"
+            },
+            "set": {
+              "type": "function"
+            },
+            "tv": {
+              "type": "function"
+            },
+            "cnpj": {
+              "type": "function"
+            },
+            "mersenne_twister": {
+              "type": "function"
+            },
+            "blueimp_md5": {
+              "type": "function"
+            }
+          }
         }
       }
     }
