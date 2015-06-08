@@ -1,10 +1,11 @@
 PATHIENT_COUNT = 3;
 
+var chance = new Chance()
 
 createPatients = function() {
     for (var i=0; i<PATIENT_COUNT; i++) {
         var id = Meteor.Collection.ObjectID()._str;
-        var chance = new Chance()
+
         var name = chance.name();
         var pt = createPatientEntity(id, name);
         addDemographics(id);
@@ -38,6 +39,19 @@ addDemographics = function(id) {
 addMedications = function(pt) {
     var countMeds = chance.integer({min: 0, max: 50});
     for (var i=0; i < countMeds; i++) {
-        //lookup and add this medication
+        //lookup and add this medication:
+        var q = chance.string({length: 2});
+        var url = getUrlLookupMeds(q);
+        //console.log("bioolookupContent url=" + url);
+        HTTP.get(url, function (err, response) {
+            if (err) {
+                return results.set([]);
+            }
+            var json = JSON.parse(response.content);
+            var index = chance.integer({min:0, max: json.length - 1});
+            var med = json[index];
+
+            //TODO: lookup attributes of this medicine
+        });
     }
 };
