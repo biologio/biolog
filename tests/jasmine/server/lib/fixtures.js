@@ -1,4 +1,4 @@
-PATHIENT_COUNT = 3;
+PATIENT_COUNT = 100;
 
 var chance = new Chance()
 
