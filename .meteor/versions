@@ -25,6 +25,7 @@ callback-hook@1.0.3
 check@1.0.5
 chuangbo:cookie@1.1.0
 coffeescript@1.0.6
+dandv:jquery-rateit@1.0.22_2
 dburles:collection-helpers@1.0.3
 dburles:mongo-collection-instances@0.2.6
 ddp@1.1.0

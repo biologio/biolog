@@ -91,7 +91,7 @@ Tracker.autorun(function () {
         }).modal('show');
 
     } else {
-        //console.log("Hiding modal: " + Session.get("biolog.bioolookup.modal.open"));
+        //console.log("Hiding modal: " + Session.get("biolog.bioolookup.meds.modal.open"));
         $('#medModal').modal('hide');
     }
 });

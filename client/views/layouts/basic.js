@@ -28,12 +28,12 @@ Template.basicLayout.helpers({
     // array of side bar menus
     sidebarmenus:[
         {text:"Home", icon:"home", url:"/"},
-        {text:"Medicines", icon:"first aid", url:"/meds"},
-        {text:"Admin", icon:"settings", url:"/admin"},
-        {text:"Conditions", icon:"heart", url:"/#"},
-        {text:"Medications", icon:"treatment", url:"/#"},
+        {text:"Conditions", icon:"heart", url:"/conditions"},
+        {text:"Meds", icon:"first aid", url:"/meds"},
         {text:"Events", icon:"calendar", url:"/#"},
         {text:"Timeline", icon:"tasks", url:"/#"},
+        {text:"About", icon:"info", url:"/about"},
+        {text:"Admin", icon:"settings", url:"/admin"}
         
     ]
 });

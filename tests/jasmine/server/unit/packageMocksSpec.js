@@ -7090,7 +7090,7 @@ var packageMetadata = {
                 },
                 "version": {
                   "type": "constant",
-                  "value": "c8f366a8b33b0bec7b574d91d5aa41a277b44b68"
+                  "value": "96d0577279d50e42acc0f752c90d2f1494ee8709"
                 },
                 "PUBLIC_SETTINGS": {
                   "type": "undefined"
@@ -7885,11 +7885,11 @@ var packageMetadata = {
       "members": {
         "autoupdateVersion": {
           "type": "constant",
-          "value": "f0d548b272f238b35019ceed374c83e6c8a26fff"
+          "value": "c0f029d72df3101fb7b7821426d58a945077cf46"
         },
         "autoupdateVersionRefreshable": {
           "type": "constant",
-          "value": "9146d9cf6bf669164cd2a11771a29149c1c28f98"
+          "value": "b38570b147639240257af7a84595567b5144f8c3"
         },
         "autoupdateVersionCordova": {
           "type": "constant",
@@ -22039,6 +22039,7 @@ var packageMetadata = {
       }
     }
   },
+  "dandv:jquery-rateit": {},
   "session": {}
 }
 var globalContext = (typeof global !== 'undefined') ? global : window
