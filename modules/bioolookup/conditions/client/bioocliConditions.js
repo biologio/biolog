@@ -92,7 +92,7 @@ submitBioolookupConditions = function() {
 
     addConditionClasses(cond, fact, function(err) {
         if (err) {
-            console.error("Unable to addClassess: " + err);
+            console.error("Unable to addClasses: " + err);
         }
 
         saveProperty(fact, function(err, success) {

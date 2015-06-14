@@ -29,6 +29,7 @@ Tracker.autorun(function () {
 
 Template.bioolookupMedsButton.events({
     "click #bioolookupMedsButton": function() {
+        Session.set("biolog.bioolookup.meds.modal.open", false);
         Session.set("biolog.bioolookup.meds.modal.open", true);
     }
 });
