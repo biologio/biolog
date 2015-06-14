@@ -3,11 +3,11 @@
  */
 
 //TODO are they pregnant?
-searchIsabel = function() {
-    var patientDiagnoses = Session.get("patientDiagnoses");
+searchIsabel = function(patientId) {
+    var patientConditions = getPatientConditions(patientId);
     var diagnosisList = "";
-    for (var di in patientDiagnoses) {
-        var dx = patientDiagnoses[di];
+    for (var di in patientConditions) {
+        var dx = patientConditions[di];
         if (diagnosisList.length > 0) diagnosisList += "|";
         diagnosisList += dx.objName;
     }

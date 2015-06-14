@@ -3,8 +3,8 @@
  */
 
 
-Meteor.publish("patientDiagnoses", function (patientId) {
-    return getPatientDiagnoses(patientId);
+Meteor.publish("patientConditions", function (patientId) {
+    return getPatientConditions(patientId);
 });
 
 Meteor.publish("patientFlags", function (patientId) {
