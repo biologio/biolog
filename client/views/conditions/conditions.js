@@ -1,3 +1,5 @@
+conditionFrowns = new ReactiveVar();
+
 var getFrowns = function() {
     var condition = Session.get("biolog.condition.editing");
     return getConditionSeverity(condition);
@@ -9,7 +11,7 @@ Template.conditions.helpers({
 
         if (!getPatient()) return;
         var result = getPatientConditionsCurrent(getPatient()._id).fetch();
-        console.log("currentConditions: result=" + JSON.stringify(result));
+        //console.log("currentConditions: result=" + JSON.stringify(result));
         return result;
     },
 
@@ -22,7 +24,7 @@ Template.conditions.helpers({
 
 Template.conditionsItem.rendered = function() {
     $('.rateit').rateit();
-    //$('.rateit').bind(getFrowns);
+    $('.rateit').bind(getFrowns);
 };
 
 Template.conditionsItem.events({
@@ -98,9 +100,12 @@ Template.conditionModal.rendered = function() {
 
 Template.conditionModal.events({
     "click .rateit": function(event, template) {
+        console.log("click .rateit");
         var changedElementId = event.currentTarget.id;
         var condition = Session.get("biolog.condition.editing");
         var val = $('#' + changedElementId).rateit('value');
+        conditionFrowns.set(val);
+        console.log("Set conditionFrowns=" + conditionFrowns.get());
         setConditionSeverity(condition, val);
         //Session.set("selectedDiagnosis", condition);
     }
@@ -206,13 +211,14 @@ updateCondition = function() {
     condition.endFlag = 0;
     if ($("#conditionEndFlag").prop("checked")) condition.endFlag = 1;
 
+    setConditionSeverity(condition, conditionFrowns.get());
     saveProperty(condition, function(err, success) {
         if (err) {
             console.error("Unable to save condition: " + err + "\n" + JSON.stringify(condition));
             return;
         }
         console.log("Saved condition: " + JSON.stringify(condition));
-    })
+    });
 };
 
 
