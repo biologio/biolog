@@ -7089,7 +7089,7 @@ var packageMetadata = {
                 },
                 "version": {
                   "type": "constant",
-                  "value": "c8f366a8b33b0bec7b574d91d5aa41a277b44b68"
+                  "value": "34f1624a416a9b7fb7b55b9c7f66db5405a0b9e3"
                 },
                 "PUBLIC_SETTINGS": {
                   "type": "undefined"
@@ -7213,7 +7213,7 @@ var packageMetadata = {
             },
             "connections": {
               "type": "constant",
-              "value": 1
+              "value": 0
             },
             "timeout": {
               "type": "constant",
@@ -7884,11 +7884,11 @@ var packageMetadata = {
       "members": {
         "autoupdateVersion": {
           "type": "constant",
-          "value": "f0d548b272f238b35019ceed374c83e6c8a26fff"
+          "value": "2d27b52fd3a38d3d04f0cd583f08cc2757165529"
         },
         "autoupdateVersionRefreshable": {
           "type": "constant",
-          "value": "9146d9cf6bf669164cd2a11771a29149c1c28f98"
+          "value": "1ba4bfa12d42eac81b3fac75492be6987406256e"
         },
         "autoupdateVersionCordova": {
           "type": "constant",
@@ -7902,7 +7902,7 @@ var packageMetadata = {
     }
   },
   "meteor-platform": {},
-  "less": {},
+  "flemay:less-autoprefixer": {},
   "aldeed:simple-schema": {
     "SimpleSchema": {
       "type": "function",
@@ -22038,6 +22038,7 @@ var packageMetadata = {
       }
     }
   },
+  "lawshe:full-page": {},
   "session": {}
 }
 var globalContext = (typeof global !== 'undefined') ? global : window

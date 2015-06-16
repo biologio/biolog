@@ -1,0 +1,20 @@
+<template name="landingLayout">
+    <div class="ui top fixed menu inverted navbar page grid">
+        <div class="container " id="menu">
+            <a data-menuanchor="firstPage" data-section="0" href="#firstPage" class="brand item">HOME</a>
+            <a data-menuanchor="secondPage" data-section="1" href="#secondPage" class="item">PROBLEMS & SOLUTIONS </a>
+            <a data-menuanchor="3rdPage" data-section="2" href="#3rdPage" class="item">WHAT IT'S NOT </a>
+            <a data-menuanchor="4thPage" data-section="3" href="#4thPage" class="item">ABOUT</a>
+            <a  data-menuanchor="5thPage" data-section="4" href="#5thPage" class="item">CUSTOMERS</a>
+            <div class="left menu">
+            </div>
+            <div class="right menu">
+                <a class="item" href="/profile"> Menu</a>
+            </div>
+        </div>
+    </div>
+  
+  
+ 
+    {{> yield}}
+</template>

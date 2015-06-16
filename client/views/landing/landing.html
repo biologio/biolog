@@ -1,0 +1,66 @@
+<template name="landing">
+    <div id="fullpage">
+        <div class="section " id="section0" data-anchor="firstPage">
+            <div class="ui page grid">
+                <div class="eight wide column">
+                    <h1 class="ui header">Biolog.io</h1>
+                    <p>
+                        Biolog.io is a personal health record + expert system, designed for people to drive their health care. Our mission is to give people the tools to make optimal health decisions and to eliminate medical error.
+                    </p>
+                </div>
+                <div class="eight wide column">
+                    <div class="intro">
+                        <p>Bio log</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section" id="section1">
+          <div class="ui page grid">
+                <div class=" wide column">
+                <h1 class="header aligned center">
+           		Who Uses Biolog?
+           	</h1>
+          </div>
+          </div>
+            {{#each list}}
+            <div class="slide" id="slide{{rank}}">
+
+                <div class="ui grid page">
+                    <div class=" wide column slider-item">
+                        <div class="ui items">
+                            <div class="item">
+                                <div class="image">
+                                    <img class="ui medium circular image" src="{{image}}" alt="">
+                                </div>
+                                <div class="content">
+                                    <a class="header"> {{name}}</a>
+                                    <div class="meta">
+                                        <span>Description</span>
+                                    </div>
+                                    <div class="description">
+                                        <p>{{description}}</p>
+                                    </div>
+                                    <!-- <div class="extra">
+                                    Additional Details
+                                </div> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+        <div class="section" id="section2">
+            <div class="intro">
+                <h1>Keep it simple!</h1>
+            </div>
+        </div>
+        <div class="section" id="section3">
+            <div class="intro">
+                <h1>Keep it simple!</h1>
+            </div>
+        </div>
+    </div>
+</template>
