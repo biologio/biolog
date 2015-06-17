@@ -1,6 +1,6 @@
 <template name="meds">
     <div class="ui segment">
-        <span class="ui large header">Current Medications</span>&nbsp;&nbsp;&nbsp;&nbsp;{{> bioolookupButton}}
+        <span class="ui large header">Current Medications</span>&nbsp;&nbsp;&nbsp;&nbsp;{{> bioolookupMedsButton}}
         <div class="ui segment">
             <!--<div class="ui items">-->
             <div class="ui divided link items">
@@ -12,7 +12,7 @@
     </div>
 
     <div class="ui segment">
-        <span class="ui large header">Past Medications</span>&nbsp;&nbsp;&nbsp;&nbsp;{{> bioolookupButton}}
+        <span class="ui large header">Past Medications</span>&nbsp;&nbsp;&nbsp;&nbsp;{{> bioolookupMedsButton}}
         <div class="ui segment">
             <!--<div class="ui items">-->
             <div class="ui divided link items">
@@ -23,7 +23,7 @@
         </div>
     </div>
 
-    {{> bioolookupModal}}
+    {{> bioolookupMedsModal}}
     {{> medModal}}
 </template>
 
@@ -51,8 +51,11 @@
 
 
             <div class="ui form segment">
-                <div class="ui message">
-                    <div class="header">{{medName}}</div>
+                <div class="ui center message">
+                    <div class="ui huge image label">
+                        <img src="images/pills.jpg" />
+                        {{medName}}
+                    </div>
                 </div>
                 <div class="two fields">
                     <div class="field">

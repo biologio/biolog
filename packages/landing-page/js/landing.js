@@ -1,7 +1,8 @@
 
 Template.landing.rendered = function() {
+    console.log("loaded from package folder")
     $('#fullpage').fullpage({
-        verticalCentered: false,
+        verticalCentered: true,
         scrollOverflow: false,
         menu:"#menu",
         anchors: ['firstPage', 'secondPage', '3rdPage', '4thPage'],
@@ -14,7 +15,7 @@ Template.landing.rendered = function() {
         css3: true,
         scrollingSpeed: 1000,
         autoScrolling: true,
-        fitToSection: true,
+        fitToSection: false,
         scrollBar: false,
         easing: 'easeInOutBounce',
         easingcss3: 'ease',
@@ -36,7 +37,7 @@ Template.landing.rendered = function() {
         controlArrows: true,
         verticalCentered: true,
         resize: true,
-        paddingBottom: '10px',
+        paddingBottom: '0px',
         fixedElements: '#header, .footer',
         responsiveWidth: 0,
         responsiveHeight: 0,

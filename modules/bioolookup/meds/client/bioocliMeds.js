@@ -3,87 +3,88 @@
  */
 
 Tracker.autorun(function () {
-    if (Session.get("biolog.bioolookup.modal.open")) {
-        $('#bioolookupModal').modal({
+    if (Session.get("biolog.bioolookup.meds.modal.open")) {
+        $('#bioolookupMedsModal').modal({
             closable  : true,
             onApprove    : function(){
-                Session.set("biolog.bioolookup.modal.open", null);
-                submitBioolookup();
+                Session.set("biolog.bioolookup.meds.modal.open", null);
+                submitBioolookupMeds();
                 return true;
             },
             onDeny    : function(){
-                Session.set("biolog.bioolookup.modal.open", null);
+                Session.set("biolog.bioolookup.meds.modal.open", null);
                 return true;
             },
             onHide: function() {
-                Session.set("biolog.bioolookup.modal.open", null);
+                Session.set("biolog.bioolookup.meds.modal.open", null);
                 return true;
             }
         }).modal('show');
 
     } else {
-        //console.log("Hiding modal: " + Session.get("biolog.bioolookup.modal.open"));
-        $('#bioolookupModal').modal('hide');
+        //console.log("Hiding modal: " + Session.get("biolog.bioolookup.meds.modal.open"));
+        $('#bioolookupMedsModal').modal('hide');
     }
 });
 
-Template.bioolookupButton.events({
-    "click #bioolookupButton": function() {
-        Session.set("biolog.bioolookup.modal.open", true);
+Template.bioolookupMedsButton.events({
+    "click #bioolookupMedsButton": function() {
+        Session.set("biolog.bioolookup.meds.modal.open", false);
+        Session.set("biolog.bioolookup.meds.modal.open", true);
     }
 });
 
 
-var results = new ReactiveVar();
+var medsResults = new ReactiveVar();
 
 
-Template.bioolookupContent.helpers({
+Template.bioolookupMedsContent.helpers({
     results: function() {
-        return results.get();
+        return medsResults.get();
     }
 });
 
-Template.bioolookupContent.events({
+Template.bioolookupMedsContent.events({
     "input .prompt": function(event, template) {
         //if return character, submit the form
         if (event.which === 13) {
-            if (Session.get("biolog.bioolookup.results")) {
-                return submitBioolookup();
+            if (Session.get("biolog.bioolookup.meds.results")) {
+                return submitBioolookupMeds();
             }
-            if (results.get() && results.get().length > 0) {
-                Session.set("biolog.bioolookup.results", results.get()[0]);
-                results.set([]);
-                return submitBioolookup();
+            if (medsResults.get() && medsResults.get().length > 0) {
+                Session.set("biolog.bioolookup.meds.results", medsResults.get()[0]);
+                medsResults.set([]);
+                return submitBioolookupMeds();
             }
         }
 
-        Session.set("biolog.bioolookup.results", null);
-        var q = template.find("#biolookupSearchBox").value;
+        Session.set("biolog.bioolookup.meds.results", null);
+        var q = template.find("#biolookupSearchMedsBox").value;
         var url = getUrlLookupMeds(q);
         //console.log("bioolookupContent url=" + url);
         HTTP.get(url, function (err, response) {
             if (err) {
-                return results.set([]);
+                return medsResults.set([]);
             }
             var json = JSON.parse(response.content);
             //console.log("Received data: " + JSON.stringify(json.collection));
-            results.set(json.collection);
+            medsResults.set(json.collection);
         });
     },
 
-    "click .bioolookupResult": function(event, template) {
+    "click .bioolookupMedsResult": function(event, template) {
         var med = this;
         //console.log("clicked: " + JSON.stringify(selectedMed));
-        results.set([med]);
-        Session.set("biolog.bioolookup.results", med);
+        medsResults.set([med]);
+        Session.set("biolog.bioolookup.meds.results", med);
     }
 });
 
 //TODO lookup generic
 //TODO lookup drug class
-submitBioolookup = function() {
-    Session.set("biolog.bioolookup.modal.open", null);
-    var med = Session.get("biolog.bioolookup.results");
+submitBioolookupMeds = function() {
+    Session.set("biolog.bioolookup.meds.modal.open", null);
+    var med = Session.get("biolog.bioolookup.meds.results");
     //console.log("Saving med: " + JSON.stringify(med));
     if (!med) return;
 

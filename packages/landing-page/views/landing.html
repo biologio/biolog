@@ -1,0 +1,132 @@
+<template name="landing">
+    <div id="fullpage">
+        <div class="section " id="section0" data-anchor="firstPage">
+            <div class="ui page grid">
+                <div class="eight wide column">
+                    <div class="intro-sec">
+                        <h1 class="ui header">Biolog.io</h1>
+                        <p class="lead">
+                            Biolog.io is a personal health record + expert system, designed for people to drive their health care. Our mission is to give people the tools to make optimal health decisions and to eliminate medical error.
+                        </p>
+                    </div>
+                </div>
+                <div class="eight wide column">
+                    <div class="intro">
+                        <div class="intro-sec">
+                            <div class="ui form">
+                                <div class="field ui huge fluid icon input">
+                                    <label>User Input</label>
+                                    <input type="text" placeholder="EMAIL ADDRESS">
+                                    <i class="search icon"></i>
+                                    <input type="text">
+                                </div>
+                                <div class="field huge ui aligned teal center button ">
+                                    Sign Up
+                                </div>
+                            </div>
+                            <div class="ui huge fluid icon input">
+                                <input type="text" placeholder="EMAIL ADDRESS">
+                                <i class="search icon"></i>
+                            </div>
+                            <div class="huge ui aligned teal right button">
+                                Sign Up
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section" id="section1">
+            <div class="ui page grid">
+                <div class=" wide column">
+                    <h1 class="header aligned center">
+                Who Uses Biolog?
+            </h1>
+                </div>
+            </div>
+            {{#each list}}
+            <div class="slide" id="slide{{rank}}">
+                <div class="ui grid page">
+                    <div class=" wide column slider-item ">
+                        <div class="ui items">
+                            <div class="item">
+                                <div class="image">
+                                    <img class="ui medium circular image" src="{{image}}" alt="">
+                                </div>
+                                <div class="content">
+                                    <a class="header"> {{name}}</a>
+                                    <div class="meta">
+                                        <span>Description</span>
+                                    </div>
+                                    <div class="description">
+                                        <p>{{description}}</p>
+                                    </div>
+                                    <!-- <div class="extra">
+                                    Additional Details
+                                </div> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+        <div class="section sol " id="section2">
+           <div class=" ">
+                <div class="intro">
+    <div class="ui two column page grid">
+  <div class="column">
+    <div class="ui raised segment">
+      <a class="ui ribbon massive red label">Problem</a>
+      <span>Inline Text</span>
+      <p>
+          It takes 20 years or more for a medical best practice to find its way in mainstream clinical practice.
+      </p>
+      <div class=" divider"></div>
+      
+<p>
+    Physicians are too busy to run through hundreds of advisories in a brief encounter.
+</p>
+ <div class=" divider"></div>
+<p>
+    Decision support built into many EHRs are too verbose to be helpful, and doctors routinely ignore them.
+</p>
+ <div class=" divider"></div>
+<p>
+    EHRs use terms that are not designed for billing and not user-friendly
+</p>
+ <div class=" divider"></div>
+    </div>
+  </div>
+  <div class="column">
+    <div class="ui segment">
+      <a class="ui right ribbon massive  green label">Solution</a>
+          <p>
+          It takes 20 years or more for a medical best practice to find its way in mainstream clinical practice.
+      </p>
+      
+<p>
+    Physicians are too busy to run through hundreds of advisories in a brief encounter.
+</p>
+<p>
+    Decision support built into many EHRs are too verbose to be helpful, and doctors routinely ignore them.
+</p>
+<p>
+    EHRs use terms that are not designed for billing and not user-friendly
+</p>
+     
+    
+    </div>
+  </div>
+</div>
+            </div>
+           </div>
+        </div>
+        <div class="section" id="section3">
+            <div class="intro">
+                <h1>Keep it simple!</h1>
+            </div>
+        </div>
+    </div>
+</template>

@@ -4,7 +4,6 @@
 # but you can also edit it by hand.
 
 meteor-platform
-
 flemay:less-autoprefixer
 jquery
 underscore
@@ -42,3 +41,5 @@ peerlibrary:async
 risul:chance
 velocity:chokidar
 lawshe:full-page
+dandv:jquery-rateit
+
