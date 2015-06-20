@@ -35,10 +35,6 @@ ejson@1.0.6
 email@1.0.6
 facebook@1.2.0
 fastclick@1.0.3
-<<<<<<< HEAD
-flemay:less-autoprefixer@1.0.2
-=======
->>>>>>> aa12742bea8f4fea166b6f706058239d6bf38fd0
 geojson-utils@1.0.3
 google@1.1.5
 houston:admin@2.0.3

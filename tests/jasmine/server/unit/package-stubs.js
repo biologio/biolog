@@ -7089,11 +7089,7 @@ var packageMetadata = {
                 },
                 "version": {
                   "type": "constant",
-<<<<<<< HEAD
-                  "value": "182a448cedbe81a9326f614b707592a42acd8320"
-=======
-                  "value": "cf62d88e34a2f79faa20a7345e0fefe00971f17a"
->>>>>>> aa12742bea8f4fea166b6f706058239d6bf38fd0
+                  "value": "c2de42be52694ef53a48c08d85a8dd663a1ad0ed"
                 },
                 "PUBLIC_SETTINGS": {
                   "type": "undefined"
@@ -7217,11 +7213,7 @@ var packageMetadata = {
             },
             "connections": {
               "type": "constant",
-<<<<<<< HEAD
-              "value": 2
-=======
               "value": 0
->>>>>>> aa12742bea8f4fea166b6f706058239d6bf38fd0
             },
             "timeout": {
               "type": "constant",
@@ -7892,19 +7884,11 @@ var packageMetadata = {
       "members": {
         "autoupdateVersion": {
           "type": "constant",
-<<<<<<< HEAD
-          "value": "4ef3e55a30dc6bfca3b41352a5c0ccbc6d62301b"
+          "value": "5d08dbcfba77e33dd228fedbc6f9bad7656ab857"
         },
         "autoupdateVersionRefreshable": {
           "type": "constant",
-          "value": "5faca9820a915ce6b10b0265bb7f36a0f2e30d14"
-=======
-          "value": "99fc130ad8136e83435a62b6aae29d29d9f2fe9b"
-        },
-        "autoupdateVersionRefreshable": {
-          "type": "constant",
-          "value": "39486be87c24c33c14843c7e1e8ea7f2e5ed6e1b"
->>>>>>> aa12742bea8f4fea166b6f706058239d6bf38fd0
+          "value": "7f5d869e277361abf62dcbbce464709f2b978872"
         },
         "autoupdateVersionCordova": {
           "type": "constant",
@@ -7918,10 +7902,6 @@ var packageMetadata = {
     }
   },
   "meteor-platform": {},
-<<<<<<< HEAD
-  "flemay:less-autoprefixer": {},
-=======
->>>>>>> aa12742bea8f4fea166b6f706058239d6bf38fd0
   "aldeed:simple-schema": {
     "SimpleSchema": {
       "type": "function",
@@ -19892,10 +19872,7 @@ var packageMetadata = {
       }
     }
   },
-<<<<<<< HEAD
-=======
   "biolog:landing-page": {},
->>>>>>> aa12742bea8f4fea166b6f706058239d6bf38fd0
   "semantic:ui-css": {},
   "service-configuration": {
     "ServiceConfiguration": {
@@ -22063,11 +22040,7 @@ var packageMetadata = {
   },
   "lawshe:full-page": {},
   "dandv:jquery-rateit": {},
-<<<<<<< HEAD
-  "biolog:landing-page": {},
-=======
   "less": {},
->>>>>>> aa12742bea8f4fea166b6f706058239d6bf38fd0
   "session": {}
 }
 var globalContext = (typeof global !== 'undefined') ? global : window
