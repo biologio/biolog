@@ -4,7 +4,6 @@
 # but you can also edit it by hand.
 
 meteor-platform
-flemay:less-autoprefixer
 jquery
 underscore
 aldeed:collection2
@@ -18,7 +17,7 @@ useraccounts:semantic-ui
 natestrauser:animate-css
 dburles:collection-helpers
 meteorhacks:fast-render
-
+biolog:landing-page
 semantic:ui-css
 accounts-google
 accounts-password
@@ -42,4 +41,6 @@ risul:chance
 velocity:chokidar
 lawshe:full-page
 dandv:jquery-rateit
+
+less
 

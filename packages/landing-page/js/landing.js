@@ -1,13 +1,13 @@
-
 Template.landing.rendered = function() {
-    console.log("loaded from package folder")
+    $("#section2 .cloumn").addClass('hide');
+    var animations = ["animated slideInLeft", "animated slideInDown", "animated slideInDown", "animated slideInRight", "animated slideInLeft", "animated slideInUp", "animated slideInUp", "animated slideInRight"];
     $('#fullpage').fullpage({
         verticalCentered: true,
         scrollOverflow: false,
-        menu:"#menu",
+        menu: "#menu",
         anchors: ['firstPage', 'secondPage', '3rdPage', '4thPage'],
-        sectionsColor: function(){
-        	return ['#DAC500','#3fC555', '#1BBC9B', '#7E8F7C']
+        sectionsColor: function() {
+            return ['#DAC500', '#3fC555', '#1BBC9B', '#7E8F7C']
         },
         //navigation: true,
         navigationPosition: 'right',
@@ -19,7 +19,7 @@ Template.landing.rendered = function() {
         scrollBar: false,
         easing: 'easeInOutBounce',
         easingcss3: 'ease',
-        loopBottom: true,
+        loopBottom: false,
         loopTop: true,
         loopHorizontal: true,
         continuousVertical: false,
@@ -45,15 +45,57 @@ Template.landing.rendered = function() {
         //Custom selectors
         sectionSelector: '.section',
         slideSelector: '.slide',
-        slidesNavigation: true
+        slidesNavigation: true,
+        afterRender: function() {
+            //on page load, start the slideshow
+            console.log(this);
+            slideTimeout = setInterval(function() {
+                $.fn.fullpage.moveSlideRight();
+            }, 3000);
+        },
+        onLeave: function(index, nextIndex, direction) {
+
+            setTimeout(function() {
+                switch (nextIndex) {
+                    case 1:
+                        $("#section2 .column").addClass('hide');
+                        break;
+                    case 2:
+                        $("#section2 .column").addClass('hide');
+                        break;
+                    case 3:
+
+                        console.log(nextIndex);
+                        var cols = $("#section2 .column");
+                        $.each(cols, function(index, col) {
+                            $(col).removeClass('hide').addClass(animations[index]);
+                        });
+
+                        break;
+                    case 4:
+
+                        $("#section2 .column").addClass('hide');
+                        break;
+                }
+            }, 1000)
+            if (index == '2') {
+                console.log('on leaving the slideshow/section1');
+                clearInterval(slideTimeout);
+            } else {
+                slideTimeout = setInterval(function() {
+                    $.fn.fullpage.moveSlideRight();
+                }, 6000);
+            }
+        }
     });
 }
 Template.landingLayout.events({
-    "click  a.item": function(evt, tpl){
-    	evt.preventDefault();
-      var sNum = $(evt.currentTarget).data().menuanchor;
-      console.log('section number is: '+ sNum);
+    "click  a.item": function(evt, tpl) {
+        evt.preventDefault();
+        var sNum = $(evt.currentTarget).data().menuanchor;
+        console.log('section number is: ' + sNum);
         evt.preventDefault();
         $.fn.fullpage.moveTo(sNum, 0);
+        $(".close-button").trigger("click");
     }
 });
