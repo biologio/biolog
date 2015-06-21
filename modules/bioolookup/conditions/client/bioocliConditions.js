@@ -41,6 +41,12 @@ var conditionsResults = new ReactiveVar();
 Template.bioolookupConditionsContent.helpers({
     results: function() {
         return conditionsResults.get();
+    },
+
+    altLabels: function() {
+        var obj = this;
+        var altLabels = obj.properties["http://www.w3.org/2004/02/skos/core#altLabel"];
+        return altLabels;
     }
 });
 

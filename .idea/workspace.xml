@@ -2,14 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="02e712f0-6afb-4af0-a485-f0f77566c506" name="Default" comment="Merge branch 'master' of https://github.com/biologio/biolog&#10;&#10;Conflicts:&#10;&#9;.meteor/packages&#10;&#9;.meteor/versions&#10;&#9;tests/jasmine/server/unit/package-stubs.js&#10;&#9;tests/jasmine/server/unit/packageMocksSpec.js&#10;">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/stylesheets/app.less" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/lib/client-methods.js" afterPath="$PROJECT_DIR$/client/lib/client-methods.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/util/conditionUtils.js" afterPath="$PROJECT_DIR$/lib/util/conditionUtils.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/views/conditions/conditions.js" afterPath="$PROJECT_DIR$/client/views/conditions/conditions.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/methods/facts.js" afterPath="$PROJECT_DIR$/server/methods/facts.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/jasmine/server/unit/package-stubs.js" afterPath="$PROJECT_DIR$/tests/jasmine/server/unit/package-stubs.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/jasmine/server/unit/packageMocksSpec.js" afterPath="$PROJECT_DIR$/tests/jasmine/server/unit/packageMocksSpec.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/bioolookup/conditions/client/bioocliConditions.js" afterPath="$PROJECT_DIR$/modules/bioolookup/conditions/client/bioocliConditions.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/bioolookup/conditions/client/bioolookupConditions.html" afterPath="$PROJECT_DIR$/modules/bioolookup/conditions/client/bioolookupConditions.html" />
     </list>
     <ignored path="biolog.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -36,9 +30,21 @@
       <file leaf-file-name="bioocliConditions.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/modules/bioolookup/conditions/client/bioocliConditions.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-3.090909" vertical-offset="385" max-vertical-offset="1680">
-              <caret line="37" column="28" selection-start-line="37" selection-start-column="28" selection-end-line="37" selection-end-column="28" />
+            <state vertical-scroll-proportion="-7.3636365" vertical-offset="315" max-vertical-offset="1770">
+              <caret line="48" column="25" selection-start-line="48" selection-start-column="25" selection-end-line="48" selection-end-column="25" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="bioolookupConditions.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/modules/bioolookup/conditions/client/bioolookupConditions.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.668008" vertical-offset="178" max-vertical-offset="750">
+              <caret line="34" column="73" selection-start-line="34" selection-start-column="73" selection-end-line="34" selection-end-column="73" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#template#2;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -63,10 +69,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="client-methods.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="client-methods.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/lib/client-methods.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.17274472" vertical-offset="0" max-vertical-offset="765">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="765">
               <caret line="6" column="21" selection-start-line="6" selection-start-column="21" selection-end-line="6" selection-end-column="21" />
               <folding />
             </state>
@@ -2246,11 +2252,9 @@
         <option value="$PROJECT_DIR$/client/views/conditions/conditions.html" />
         <option value="$PROJECT_DIR$/client/views/layouts/basic.js" />
         <option value="$PROJECT_DIR$/modules/bioolookup/meds/client/bioolookupMeds.html" />
-        <option value="$PROJECT_DIR$/modules/bioolookup/conditions/client/bioolookupConditions.html" />
         <option value="$PROJECT_DIR$/lib/util/init-shared-data.js" />
         <option value="$PROJECT_DIR$/modules/bioolookup/bioontologyFns.js" />
         <option value="$PROJECT_DIR$/modules/bioolookup/meds/client/bioocliMeds.js" />
-        <option value="$PROJECT_DIR$/modules/bioolookup/conditions/client/bioocliConditions.js" />
         <option value="$PROJECT_DIR$/modules/bioolookup/conditions/bioontologyConditionsFns.js" />
         <option value="$PROJECT_DIR$/server/publications/pubs.js" />
         <option value="$PROJECT_DIR$/client/lib/util.js" />
@@ -2263,6 +2267,8 @@
         <option value="$PROJECT_DIR$/lib/util/conditionUtils.js" />
         <option value="$PROJECT_DIR$/client/views/conditions/conditions.js" />
         <option value="$PROJECT_DIR$/client/lib/client-methods.js" />
+        <option value="$PROJECT_DIR$/modules/bioolookup/conditions/client/bioocliConditions.js" />
+        <option value="$PROJECT_DIR$/modules/bioolookup/conditions/client/bioolookupConditions.html" />
       </list>
     </option>
   </component>
@@ -2359,6 +2365,72 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="packages" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="biolog" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="biolog" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="modules" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bioolookup" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="biolog" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="biolog" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="modules" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bioolookup" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="conditions" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="biolog" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="biolog" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="modules" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bioolookup" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="conditions" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="client" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -2742,14 +2814,6 @@
           <folding>
             <element signature="n#!!doc" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/bioolookup/conditions/client/bioolookupConditions.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-19.375" vertical-offset="165" max-vertical-offset="735">
-          <caret line="42" column="0" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -4960,14 +5024,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/modules/bioolookup/conditions/client/bioocliConditions.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.090909" vertical-offset="385" max-vertical-offset="1680">
-          <caret line="37" column="28" selection-start-line="37" selection-start-column="28" selection-end-line="37" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.meteor/packages">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.7782258" vertical-offset="259" max-vertical-offset="780">
@@ -5012,9 +5068,27 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/client/lib/client-methods.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.17274472" vertical-offset="0" max-vertical-offset="765">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="765">
           <caret line="6" column="21" selection-start-line="6" selection-start-column="21" selection-end-line="6" selection-end-column="21" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/bioolookup/conditions/client/bioocliConditions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.3636365" vertical-offset="315" max-vertical-offset="1770">
+          <caret line="48" column="25" selection-start-line="48" selection-start-column="25" selection-end-line="48" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/bioolookup/conditions/client/bioolookupConditions.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.668008" vertical-offset="178" max-vertical-offset="750">
+          <caret line="34" column="73" selection-start-line="34" selection-start-column="73" selection-end-line="34" selection-end-column="73" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#template#2;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

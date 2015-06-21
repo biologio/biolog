@@ -31,8 +31,9 @@
                 <div class="results ui selection list">
                     {{#each results}}
                         <div class="item bioolookupConditionsResult">
-                            <div class="content">
-                                <div class="header">{{prefLabel}}</div>
+                            <div class="content" style="white-space: nowrap;">
+                                <span class="header">{{prefLabel}}</span>
+                                {{altLabels}}
                             </div>
                         </div>
                     {{/each}}
