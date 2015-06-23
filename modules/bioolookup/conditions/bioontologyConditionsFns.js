@@ -21,7 +21,7 @@
 //        "&apikey=95d31cce-3247-4186-ae95-97c61884c50a";
 //};
 
-conditionOntology = "LOINC";
+conditionOntology = "RCD";
 
 //REMOTE
 getUrlLookupConditions = function(q) {
