@@ -1,11 +1,6 @@
 <template name="basicLayout">
     {{> patientModal}}
-    <div class="ui left vertical inverted labeled icon sidebar menu">
-      
-      {{#each sidebarmenus}}
-        {{> sidebarmenu}}
-      {{/each}}
-    </div>
+  {{>sidebar}}
     
     <div class="ui top fixed menu inverted navbar page grid"><div class="container">
         <div class="item main-menu"><i class="item align justify icon"></i></div>
@@ -48,3 +43,11 @@
   </div>
 </template>
 -->
+<template name="sidebar">
+      <div class="ui left vertical inverted labeled icon sidebar menu">
+      
+      {{#each sidebarmenus}}
+        {{> sidebarmenu}}
+      {{/each}}
+    </div>
+</template>
