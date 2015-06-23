@@ -2,7 +2,9 @@ conditionFrowns = new ReactiveVar();
 
 var getFrowns = function() {
     var condition = Session.get("biolog.condition.editing");
-    return getConditionSeverity(condition);
+    if (!condition) return;
+    var frowns = getConditionSeverity(condition);
+    return frowns;
 };
 
 
@@ -95,20 +97,20 @@ Tracker.autorun(function () {
 
 Template.conditionModal.rendered = function() {
     $('.rateit').rateit();
-    $('.rateit').bind(getFrowns);
+    //$('.rateit').bind(getFrowns);
 };
 
 Template.conditionModal.events({
-    "click .rateit": function(event, template) {
-        console.log("click .rateit");
-        var changedElementId = event.currentTarget.id;
-        var condition = Session.get("biolog.condition.editing");
-        var val = $('#' + changedElementId).rateit('value');
-        conditionFrowns.set(val);
-        console.log("Set conditionFrowns=" + conditionFrowns.get());
-        setConditionSeverity(condition, val);
-        //Session.set("selectedDiagnosis", condition);
-    }
+    //"click .rateit": function(event, template) {
+    //    console.log("click .rateit");
+    //    var changedElementId = event.currentTarget.id;
+    //    var condition = Session.get("biolog.condition.editing");
+    //    var val = $('#' + changedElementId).rateit('value');
+    //    conditionFrowns.set(val);
+    //    console.log("Set conditionFrowns=" + conditionFrowns.get());
+    //    setConditionSeverity(condition, val);
+    //    //Session.set("selectedDiagnosis", condition);
+    //}
 });
 
 
@@ -119,8 +121,13 @@ Template.conditionModal.helpers({
     },
 
     frowns: function() {
-        var sev = getConditionSeverity(this);
-        return sev;
+        var frowns = getFrowns();
+        if (!frowns) {
+            $('#conditionSeverityFrowns').rateit('reset');
+            return;
+        }
+        $('#conditionSeverityFrowns').rateit('value', frowns);
+        return frowns;
     },
 
     conditionStartDate: function() {
@@ -171,14 +178,14 @@ Template.conditionModal.helpers({
 
     conditionFrequencyLabel: function(freqVal) {
         return conditionFrequencies[freqVal];
-    },
-
-    frowns: function() {
-        var condition = Session.get("biolog.condition.editing");
-        if (!condition) return;
-        var ratingVal = getConditionSeverity(condition);
-        return ratingVal;
     }
+
+    //frowns: function() {
+    //    var condition = Session.get("biolog.condition.editing");
+    //    if (!condition) return;
+    //    var ratingVal = getConditionSeverity(condition);
+    //    return ratingVal;
+    //}
 });
 
 
@@ -211,7 +218,12 @@ updateCondition = function() {
     condition.endFlag = 0;
     if ($("#conditionEndFlag").prop("checked")) condition.endFlag = 1;
 
-    setConditionSeverity(condition, conditionFrowns.get());
+    //add frowns rating
+    //setConditionSeverity(condition, conditionFrowns.get());
+    var frownsRating = $('#conditionSeverityFrowns').rateit('value');
+    console.log("frownsRating=" + frownsRating);
+    setConditionSeverity(condition, frownsRating);
+
     saveProperty(condition, function(err, success) {
         if (err) {
             console.error("Unable to save condition: " + err + "\n" + JSON.stringify(condition));

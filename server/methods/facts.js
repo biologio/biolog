@@ -213,6 +213,7 @@ _setFact = function(fact, userId) {
         endFlag: Match.Optional(Match.Any),
         created: Date,
         creator: Match.Optional(String),
+        num: Match.Optional(Number),
         //updated: Match.OneOf(undefined, String, Date),
         //updater: Match.Optional(String),
         //source: String,
