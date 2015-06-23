@@ -1,11 +1,12 @@
 Template.landing.rendered = function() {
-    $("#section2 .cloumn").addClass('hide');
-    var animations = ["animated slideInLeft", "animated slideInDown", "animated slideInDown", "animated slideInRight", "animated slideInLeft", "animated slideInUp", "animated slideInUp", "animated slideInRight"];
+    //$("#section2 .cloumn").addClass('hide');
+    var animations = ["animated slideInLeft", "animated slideInDown", "animated slideInUp", "animated slideInRight"];
+    var animations2 =[ "animated bounceInLeft", "animated bounceInDown", "animated bounceInUp", "animated bounceInRight"];
     $('#fullpage').fullpage({
         verticalCentered: true,
         scrollOverflow: false,
         menu: "#menu",
-        anchors: ['firstPage', 'secondPage', '3rdPage', '4thPage'],
+        anchors: ['firstPage', 'secondPage', '3rdPage', '4thPage', '5thPage', '6thPage', '7thPage', '8thPage'],
         sectionsColor: function() {
             return ['#DAC500', '#3fC555', '#1BBC9B', '#7E8F7C']
         },
@@ -13,18 +14,18 @@ Template.landing.rendered = function() {
         navigationPosition: 'right',
         // responsiveWidth: 900,
         css3: true,
-        scrollingSpeed: 1000,
+        //scrollingSpeed: 1000,
         autoScrolling: true,
         fitToSection: false,
         scrollBar: false,
-        easing: 'easeInOutBounce',
+        easing: 'linear',
         easingcss3: 'ease',
         loopBottom: false,
         loopTop: true,
         loopHorizontal: true,
         continuousVertical: false,
         normalScrollElements: '#element1, .element2',
-        scrollOverflow: false,
+        scrollOverflow: true,
         touchSensitivity: 15,
         normalScrollElementTouchThreshold: 5,
 
@@ -59,9 +60,15 @@ Template.landing.rendered = function() {
                 switch (nextIndex) {
                     case 1:
                         $("#section2 .column").addClass('hide');
+                         $("#section2 .top-1rem").addClass('hide');
+                           $("#section3 .top-1rem").addClass('hide');
+                         $("#section3 .column").addClass('hide');
                         break;
                     case 2:
                         $("#section2 .column").addClass('hide');
+                         $("#section2 .top-1rem").addClass('hide');
+                           $("#section3 .top-1rem").addClass('hide');
+                         $("#section3 .column").addClass('hide');
                         break;
                     case 3:
 
@@ -70,11 +77,31 @@ Template.landing.rendered = function() {
                         $.each(cols, function(index, col) {
                             $(col).removeClass('hide').addClass(animations[index]);
                         });
+                         $("#section2 .top-1rem").removeClass('hide').addClass('animated bounceInDown');
+                          $("#section3 .top-1rem").addClass('hide');
+                         $("#section3 .column").addClass('hide');
 
                         break;
-                    case 4:
+                         case 4:
 
-                        $("#section2 .column").addClass('hide');
+                        console.log("nextIndex");
+                        var cols = $("#section3 .column");
+                        $.each(cols, function(index, col) {
+                            $(col).removeClass('hide').addClass(animations[index]);
+                        });
+                         $("#section3 .top-1rem").removeClass('hide').addClass('animated bounceInDown');
+                          $("#section2 .top-1rem").addClass('hide');
+                         $("#section2 .column").addClass('hide');
+
+                        break;
+                    case 5:
+                          var cols = $("#section4 .column");
+                        $.each(cols, function(index, col) {
+                            $(col).removeClass('hide').addClass(animations2[index]);
+                        });
+                         $("#section4 .top-1rem").removeClass('hide').addClass('animated fadeInUp');
+                         $("#section3 .top-1rem").addClass('hide');
+                         $("#section3 .column").addClass('hide');
                         break;
                 }
             }, 1000)
@@ -89,13 +116,4 @@ Template.landing.rendered = function() {
         }
     });
 }
-Template.landingLayout.events({
-    "click  a.item": function(evt, tpl) {
-        evt.preventDefault();
-        var sNum = $(evt.currentTarget).data().menuanchor;
-        console.log('section number is: ' + sNum);
-        evt.preventDefault();
-        $.fn.fullpage.moveTo(sNum, 0);
-        $(".close-button").trigger("click");
-    }
-});
+

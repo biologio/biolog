@@ -10,12 +10,8 @@ Template.basicLayout.events({
     },
     'click .main-menu': function(e) {
         $('.sidebar').sidebar('toggle');
-    },
-    'click .sidebar.menu a': function(e) {
-        // console.log(this);
-        Router.go(this.url);
-        $(".sidebar").sidebar("hide");
     }
+    
 });
 
 Template.basicLayout.rendered = function(){
@@ -24,7 +20,7 @@ Template.basicLayout.rendered = function(){
     }
 }
 
-Template.basicLayout.helpers({
+Template.sidebar.helpers({
     // array of side bar menus
     sidebarmenus:[
         {text:"Home", icon:"home", url:"/"},
@@ -36,6 +32,14 @@ Template.basicLayout.helpers({
         {text:"Admin", icon:"settings", url:"/admin"}
         
     ]
+});
+Template.sidebar.events({
+   'click .sidebar.menu a': function(evt) {
+        // console.log(this);
+        evt.preventDefault();
+        Router.go(this.url);
+        $(".sidebar").sidebar("hide");
+    }
 });
 Avatar.options = {
   fallbackType: 'initials',

@@ -7090,7 +7090,7 @@ var packageMetadata = {
                 },
                 "version": {
                   "type": "constant",
-                  "value": "cf62d88e34a2f79faa20a7345e0fefe00971f17a"
+                  "value": "9fd938e5be7d67b725da9107d4f35141b7205fc1"
                 },
                 "PUBLIC_SETTINGS": {
                   "type": "undefined"
@@ -7885,11 +7885,11 @@ var packageMetadata = {
       "members": {
         "autoupdateVersion": {
           "type": "constant",
-          "value": "99fc130ad8136e83435a62b6aae29d29d9f2fe9b"
+          "value": "6f4489c411d82c35e3a5804f250c5c1efa393e60"
         },
         "autoupdateVersionRefreshable": {
           "type": "constant",
-          "value": "39486be87c24c33c14843c7e1e8ea7f2e5ed6e1b"
+          "value": "953085cf25a91c0576fafbd5c73167c5a829b72e"
         },
         "autoupdateVersionCordova": {
           "type": "constant",
@@ -22042,6 +22042,7 @@ var packageMetadata = {
   "lawshe:full-page": {},
   "dandv:jquery-rateit": {},
   "less": {},
+  "linto:jquery-ui": {},
   "session": {}
 }
 var globalContext = (typeof global !== 'undefined') ? global : window
