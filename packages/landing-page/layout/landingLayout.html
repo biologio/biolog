@@ -1,38 +1,54 @@
-<template name="landingLayout">
 <head>
-      <meta charset="UTF-8" />
+    <title>Landing Page</title>
+    <meta charset="UTF-8" />
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="format-detection" content="telephone-no">
     <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, width=device-width">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-title" content="Dietwz">
+    <meta name="apple-mobile-web-app-title" content="Biolog">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 </head>
- {{>sidebar}}
-<div class=" pusher">
-<div class="landing">
-    
-
-    <div class="ui top fixed menu inverted navbar page grid">
-        <div class="container " id="menu">
-            
-            <a data-menuanchor="firstPage" data-section="0" href="#firstPage" class="brand item landing-menu">HOME</a>
-            <a data-menuanchor="secondPage" data-section="1" href="#secondPage" class="item landing-menu">section 2 </a>
-            <a data-menuanchor="3rdPage" data-section="2" href="#3rdPage" class="item landing-menu">section 3 </a>
-            <a data-menuanchor="4thPage" data-section="3" href="#4thPage" class="item landing-menu">section 4</a>
-            <a  data-menuanchor="5thPage" data-section="4" href="#5thPage" class="item landing-menu">section 5</a>
-             <a  data-menuanchor="6thPage" data-section="5" href="#6thPage" class="item landing-menu">section 6</a>
-             <a  data-menuanchor="7thPage" data-section="6" href="#7thPage" class="item landing-menu">section 7</a>
-              
-            <div class="left menu">
-            <a class="item main-menu"><i class="item align black justify icon"></i></a>
-            </div>
-            <div class="right menu">
-                <a class="item" href="/profile"> Menu</a>
+<template name="landingLayout">
+    <div class="landing">
+        {{#if isPhone}} {{else}}
+        <div class="ui top fixed menu inverted navbar page grid">
+            <div class="container " id="menu">
+                <a data-menuanchor="firstPage" data-section="0" href="#firstPage" class="brand item landing-menu">HOME</a>
+                <a data-menuanchor="secondPage" data-section="1" href="#secondPage" class="item landing-menu">section 2 </a>
+                <a data-menuanchor="3rdPage" data-section="2" href="#3rdPage" class="item landing-menu">section 3 </a>
+                <a data-menuanchor="4thPage" data-section="3" href="#4thPage" class="item landing-menu">section 4</a>
+                <a data-menuanchor="5thPage" data-section="4" href="#5thPage" class="item landing-menu">section 5</a>
+                <a data-menuanchor="6thPage" data-section="5" href="#6thPage" class="item landing-menu">section 6</a>
+                <a data-menuanchor="7thPage" data-section="6" href="#7thPage" class="item landing-menu">section 7</a>
+                <div class="left menu">
+                    <a class="item "><i class="item align black justify icon"></i></a>
+                </div>
+                <div class="right menu">
+                    <a class="item" href="/profile"> Menu</a>
+                </div>
             </div>
         </div>
+        {{/if}}
+        {{> phoneMenu}} 
+        <div class=" pusher">
+            {{> yield}}
+        </div>
     </div>
-    {{> yield}}
+</template>
+<template name="phoneMenu">
+    <div class="ui black big  right attached fixed button main-menu">
+        <a class="item">
+            <i class="sidebar icon"></i>
+        </a>
     </div>
+    <div class="ui inverted labeled icon left inline vertical sidebar menu">
+        <a data-menuanchor="firstPage" data-section="0" href="#firstPage" class="brand item landing-menu">HOME</a>
+        <a data-menuanchor="secondPage" data-section="1" href="#secondPage" class="item landing-menu">section 2 </a>
+        <a data-menuanchor="3rdPage" data-section="2" href="#3rdPage" class="item landing-menu">section 3 </a>
+        <a data-menuanchor="4thPage" data-section="3" href="#4thPage" class="item landing-menu">section 4</a>
+        <a data-menuanchor="5thPage" data-section="4" href="#5thPage" class="item landing-menu">section 5</a>
+        <a data-menuanchor="6thPage" data-section="5" href="#6thPage" class="item landing-menu">section 6</a>
+        <a data-menuanchor="7thPage" data-section="6" href="#7thPage" class="item landing-menu">section 7</a>
     </div>
 </template>

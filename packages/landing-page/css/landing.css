@@ -153,7 +153,13 @@
      background-color: rgb(218, 197, 0);
  }
  
- 
+ #section1 .item div.header{
+    font-size: 1.2rem;
+ }
+  #section1 .item div.description p{
+    font-size: 1rem;
+
+ }
  
  #section2 {
      position: relative;
@@ -278,14 +284,16 @@ border-radius: 500em !important;
  #header,
  #footer {
      position: fixed;
-     height: 50px;
+     max-height: 200px;
+     min-height: 50px;
      display: block;
-     width: 100%;
-     background: #333;
-     z-index: 9;
+     z-index: 9000;
      text-align: center;
      color: #f2f2f2;
      padding: 20px 0 0 0;
+ }
+ #footer{
+    bottom: 0;
  }
  
  #header {
@@ -293,7 +301,7 @@ border-radius: 500em !important;
  }
  
  #fullpage {
-     margin-top: 35px;
+     /*margin-top: 35px;*/
  }
  
  #menu li {
@@ -767,6 +775,17 @@ border-radius: 500em !important;
      padding: .4rem;
      font-size: 2rem;
      color:#34495E;
+ }
+ @media only screen and (width: 768px) and (height: 960px) and (orientation: portrait) {
+
+  .section .column >.icon.massive{
+        font-size: 6rem;
+  }  
+  .section .column p.content{
+  -webkit-justify-content: center; 
+  justify-content: center; 
+  font-size: 1.2rem;
+  }
  }
  
  

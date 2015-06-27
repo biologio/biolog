@@ -1,4 +1,14 @@
 <template name="landing">
+    <!--    <footer id="footer" class="row">
+    
+        <h1 class="ui aligned center  header">Notify when we go beta</h1>
+       <div class="ui action left icon input huge">
+  <i class="mail icon"></i>
+  <input type="email" placeholder="Email Address">
+  <div class="ui blue button">Subscribe</div>
+</div>
+  
+    </footer> -->
     <div id="fullpage">
         <div class="section " id="section0" data-anchor="firstPage">
             <div class="ui page grid">
@@ -21,11 +31,11 @@
             <div class="ui page grid">
                 <div class=" wide column">
                     <h1 class="header aligned center">
-                Who Uses Biolog?
+               Unlike Electronic Health Records Biolog is not
             </h1>
                 </div>
             </div>
-            {{#each list}}
+            <!--    {{#each list}}
             <div class="slide" id="slide{{rank}}">
                 <div class="ui grid page">
                     <div class=" wide column slider-item ">
@@ -42,22 +52,80 @@
                                     <div class="description">
                                         <p>{{description}}</p>
                                     </div>
-                                    <!-- <div class="extra">
-                                    Additional Details
-                                </div> -->
+                              
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            {{/each}}
+            {{/each}} -->
+            <div class="ui two column padded grid">
+                <div class="">
+                    <div class="ui two column grid">
+                        <div class="column">
+                            <div class="ui relaxed animated  list">
+                                <div class="item">
+                                    <img class="ui avatar image tiny" src="/images/asha.png">
+                                    <div class="content">
+                                        <div class="header">An electronic health record</div>
+                                        <div class="description">Last seen watching <a><b>Arrested Development</b></a> just now.
+                                            <p>some content here </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <img class="ui avatar tiny image" src="/images/asha.png">
+                                    <div class="content">
+                                        <div class="header">A medical billing system</div>
+                                        <div class="description">Last seen watching <a><b>Bob's Burgers</b></a> 10 hours ago.</div>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <img class="ui avatar  tiny image" src="/images/asha.png">
+                                    <div class="content">
+                                        <div class="header">Designed for doctors</div>
+                                        <div class="description">Last seen watching <a><b>The Godfather Part 2</b></a> yesterday.</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="column">
+                            <div class="ui relaxed animated list">
+                                <div class="item">
+                                    <img class="ui avatar  tiny image" src="/images/asha.png">
+                                    <div class="content">
+                                        <div class="header">Designed for medical legal compliance</div>
+                                        <div class="description">Last seen watching <a><b>Arrested Development</b></a> just now.</div>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <img class="ui avatar tiny image" src="/images/asha.png">
+                                    <div class="content">
+                                        <div class="header">Designed for “PQRS”   </div>
+                                        <div class="description">Last seen watching <a><b>Bob's Burgers</b></a> 10 hours ago.
+                                            <p>Designed for “Meaningful Use” or “PQRS” or other US payment incentives</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <img class="ui avatar  tiny image" src="/images/asha.png">
+                                    <div class="content">
+                                        <div class="header">Designed for medical insurers</div>
+                                        <div class="description">Last seen watching <a><b>The Godfather Part 2</b></a> yesterday.</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="section sol " id="section2">
             <h1 class="header aligned center el-position hide top-1rem">
                Free your health information
             </h1>
-            <div class="grid padded ui">
+            <div class="grid padded stackable ui">
                 <div class="four wide aligned center  hide column">
                     <i class="icon   unlock alternate aligned ui circular center massive"></i>
                     <h3 class="header">Free</h3>
@@ -92,51 +160,42 @@
             <h1 class="header aligned center el-position hide top-1rem">
                Not your typical health record
             </h1>
-            <div class="grid padded ui">
-          
-                <div class="eight wide column">
-               
-                    <div class="sexteen wide aligned center hide column">
+            <div class="grid padded  stackable ui">
+                <div class="four wide aligned center  hide column">
                     <i class="icon users aligned ui circular center massive"></i>
                     <h3 class="header">Private</h3>
                     <p class="content">
                         You decide who can access your health info, and when.
                     </p>
                 </div>
-                <div class="sexteen wide  aligned center hide column">
+                <div class="four wide aligned center  hide column">
                     <i class="icon share aligned ui circular center massive"></i>
                     <h3 class="header">Collaborative</h3>
                     <p class="content">
                         Share your health information with whoever you choose. You can print it each time you see the doctor, or load it from the ER.
                     </p>
                 </div>
-                </div>
-                 <div class="eight wide column">
-                    <div class="sexteen wide aligned center hide   column">
+                <div class="four wide aligned center  hide column">
                     <i class="icon mobile aligned ui circular center massive"></i>
                     <h3 class="header">Mobile</h3>
                     <p class="content">
                         Access today from any device. iPhone and Android versions coming soon! Global - Access from anywhere.
                     </p>
                 </div>
-                <div class="sexteen wide  aligned center  hide column">
+                <div class="four wide aligned center  hide column">
                     <i class="icon world aligned ui circular center massive"></i>
                     <h3 class="header">Global</h3>
                     <p class="content">
                         Access from anywhere
                     </p>
                 </div>
-                </div>
-         
-              
-              
             </div>
         </div>
         <div class="section sol " id="section4">
             <h1 class="header aligned center el-position hide top-1rem">
                 Biolog is...
             </h1>
-            <div class="grid padded ui">
+            <div class="grid padded stackable ui">
                 <div class="four wide aligned center hide column">
                     <i class="icon users aligned ui circular center massive"></i>
                     <h3 class="header">Private</h3>
@@ -267,7 +326,4 @@
             </div>
         </div>
     </div>
-    <footer id="footer">
-        test
-    </footer>
 </template>
