@@ -1,0 +1,14 @@
+<template name="alerts">
+    {{> isabelChecklist}}
+</template>
+
+<template name="isabelChecklist">
+    <div class="list-group">
+        {{#each diagnoses}}
+            <a href="#" class="{{severityColor}}">
+                <span class="{{isabelIcon}}"></span>&nbsp;
+                {{diagnoses_name}}
+            </a>
+        {{/each}}
+    </div>
+</template>
