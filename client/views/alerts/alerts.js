@@ -1,3 +1,8 @@
+countAlerts = function() {
+    if (! Session.get("biolog.isabelItems")) return null;
+    return Session.get("biolog.isabelItems").diagnosis.length;
+}
+
 Template['alerts'].helpers({
 });
 

@@ -2,15 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="02e712f0-6afb-4af0-a485-f0f77566c506" name="Default" comment="Merge branch 'master' of https://github.com/biologio/biolog&#10;&#10;Conflicts:&#10;&#9;.meteor/packages&#10;&#9;.meteor/versions&#10;&#9;tests/jasmine/server/unit/package-stubs.js&#10;&#9;tests/jasmine/server/unit/packageMocksSpec.js&#10;">
-      <change type="MOVED" beforePath="$PROJECT_DIR$/lib/query/subscriptionQueries.js" afterPath="$PROJECT_DIR$/lib/util/subscriptionQueries.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/views/alerts/alerts.html" afterPath="$PROJECT_DIR$/client/views/alerts/alerts.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/views/alerts/alerts.js" afterPath="$PROJECT_DIR$/client/views/alerts/alerts.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/util/config.js" afterPath="$PROJECT_DIR$/server/util/config.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/jasmine/server/lib/fixtures.js" afterPath="$PROJECT_DIR$/tests/jasmine/server/lib/fixtures.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/methods/isabel.js" afterPath="$PROJECT_DIR$/server/methods/isabel.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/jasmine/server/unit/package-stubs.js" afterPath="$PROJECT_DIR$/tests/jasmine/server/unit/package-stubs.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/jasmine/server/unit/packageMocksSpec.js" afterPath="$PROJECT_DIR$/tests/jasmine/server/unit/packageMocksSpec.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/views/layouts/basic.html" afterPath="$PROJECT_DIR$/client/views/layouts/basic.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/views/layouts/basic.js" afterPath="$PROJECT_DIR$/client/views/layouts/basic.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/views/meds/meds.html" afterPath="$PROJECT_DIR$/client/views/meds/meds.html" />
     </list>
     <ignored path="biolog.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -34,11 +30,41 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="alerts.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="alerts.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/views/alerts/alerts.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.72289157" vertical-offset="0" max-vertical-offset="510">
-              <caret line="24" column="41" selection-start-line="24" selection-start-column="41" selection-end-line="24" selection-end-column="41" />
+            <state vertical-scroll-proportion="1.1772152" vertical-offset="873" max-vertical-offset="1635">
+              <caret line="52" column="26" selection-start-line="52" selection-start-column="26" selection-end-line="52" selection-end-column="26" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="basic.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/views/layouts/basic.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-15.625" vertical-offset="150" max-vertical-offset="885">
+              <caret line="35" column="46" selection-start-line="35" selection-start-column="46" selection-end-line="35" selection-end-column="46" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="basic.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/views/layouts/basic.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="289" max-vertical-offset="825">
+              <caret line="29" column="73" selection-start-line="29" selection-start-column="62" selection-end-line="29" selection-end-column="73" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="meds.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/views/meds/meds.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-45.208332" vertical-offset="670" max-vertical-offset="1860">
+              <caret line="117" column="11" selection-start-line="45" selection-start-column="0" selection-end-line="117" selection-end-column="11" />
               <folding />
             </state>
           </provider>
@@ -54,11 +80,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="alerts.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="alerts.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/client/views/alerts/alerts.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-7.7777777" vertical-offset="30" max-vertical-offset="930">
-              <caret line="16" column="72" selection-start-line="16" selection-start-column="72" selection-end-line="16" selection-end-column="72" />
+            <state vertical-scroll-proportion="0.21212122" vertical-offset="0" max-vertical-offset="1005">
+              <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -119,7 +145,6 @@
         <option value="$PROJECT_DIR$/server/publications/EntitiesPub.js" />
         <option value="$PROJECT_DIR$/client/lib/init-shared-data.js" />
         <option value="$PROJECT_DIR$/client/lib/spacebarHelpers.js" />
-        <option value="$PROJECT_DIR$/client/views/layouts/basic.html" />
         <option value="$PROJECT_DIR$/lib/models/Facts.js" />
         <option value="$PROJECT_DIR$/lib/models/Patients.js" />
         <option value="$PROJECT_DIR$/lib/util/medUtils.js" />
@@ -135,7 +160,6 @@
         <option value="$PROJECT_DIR$/modules/bioolookup/client/bioolookupConditions.html" />
         <option value="$PROJECT_DIR$/modules/bioolookup/client/bioolookupMeds.html" />
         <option value="$PROJECT_DIR$/modules/bioolookup/meds/bioontologyMedsFns.js" />
-        <option value="$PROJECT_DIR$/client/views/meds/meds.html" />
         <option value="$PROJECT_DIR$/client/views/conditions/conditions.html" />
         <option value="$PROJECT_DIR$/modules/bioolookup/meds/client/bioolookupMeds.html" />
         <option value="$PROJECT_DIR$/lib/util/init-shared-data.js" />
@@ -154,7 +178,6 @@
         <option value="$PROJECT_DIR$/modules/bioolookup/conditions/client/bioocliConditions.js" />
         <option value="$PROJECT_DIR$/modules/bioolookup/conditions/client/bioolookupConditions.html" />
         <option value="$PROJECT_DIR$/modules/bioolookup/conditions/bioontologyConditionsFns.js" />
-        <option value="$PROJECT_DIR$/client/views/layouts/basic.js" />
         <option value="$PROJECT_DIR$/routes/alertsRoutes.js" />
         <option value="$PROJECT_DIR$/lib/util/patientUtil.js" />
         <option value="$PROJECT_DIR$/lib/query/subscriptionQueries.js" />
@@ -163,8 +186,11 @@
         <option value="$PROJECT_DIR$/private/config/isabel.yml" />
         <option value="$PROJECT_DIR$/server/methods/isabel.js" />
         <option value="$PROJECT_DIR$/server/util/config.js" />
-        <option value="$PROJECT_DIR$/client/views/alerts/alerts.js" />
+        <option value="$PROJECT_DIR$/client/views/meds/meds.html" />
         <option value="$PROJECT_DIR$/client/views/alerts/alerts.html" />
+        <option value="$PROJECT_DIR$/client/views/layouts/basic.js" />
+        <option value="$PROJECT_DIR$/client/views/layouts/basic.html" />
+        <option value="$PROJECT_DIR$/client/views/alerts/alerts.js" />
       </list>
     </option>
   </component>
@@ -228,56 +254,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="biolog" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="biolog" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="util" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="biolog" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="biolog" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="methods" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="biolog" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="biolog" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="private" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -311,6 +287,82 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="lib" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="biolog" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="biolog" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="biolog" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="biolog" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="meds" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="biolog" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="biolog" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="layouts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="biolog" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="biolog" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="client" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -740,30 +792,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/views/layouts/basic.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2802303" vertical-offset="289" max-vertical-offset="825">
-          <caret line="29" column="52" selection-start-line="29" selection-start-column="52" selection-end-line="29" selection-end-column="52" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/views/layouts/basic.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.40289256" vertical-offset="0" max-vertical-offset="870">
-          <caret line="13" column="32" selection-start-line="13" selection-start-column="32" selection-end-line="13" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/views/meds/meds.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-15.791667" vertical-offset="236" max-vertical-offset="1980">
-          <caret line="41" column="11" selection-start-line="30" selection-start-column="0" selection-end-line="41" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/lib/util.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.07869482" vertical-offset="34" max-vertical-offset="555">
@@ -846,18 +874,42 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/views/alerts/alerts.js">
+    <entry file="file://$PROJECT_DIR$/client/views/meds/meds.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.7777777" vertical-offset="30" max-vertical-offset="930">
-          <caret line="16" column="72" selection-start-line="16" selection-start-column="72" selection-end-line="16" selection-end-column="72" />
+        <state vertical-scroll-proportion="-45.208332" vertical-offset="670" max-vertical-offset="1860">
+          <caret line="117" column="11" selection-start-line="45" selection-start-column="0" selection-end-line="117" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/views/layouts/basic.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-15.625" vertical-offset="150" max-vertical-offset="885">
+          <caret line="35" column="46" selection-start-line="35" selection-start-column="46" selection-end-line="35" selection-end-column="46" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/client/views/alerts/alerts.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.72289157" vertical-offset="0" max-vertical-offset="510">
-          <caret line="24" column="41" selection-start-line="24" selection-start-column="41" selection-end-line="24" selection-end-column="41" />
+        <state vertical-scroll-proportion="1.1772152" vertical-offset="873" max-vertical-offset="1635">
+          <caret line="52" column="26" selection-start-line="52" selection-start-column="26" selection-end-line="52" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/views/layouts/basic.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="289" max-vertical-offset="825">
+          <caret line="29" column="73" selection-start-line="29" selection-start-column="62" selection-end-line="29" selection-end-column="73" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/views/alerts/alerts.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.21212122" vertical-offset="0" max-vertical-offset="1005">
+          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
           <folding />
         </state>
       </provider>

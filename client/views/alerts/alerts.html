@@ -27,3 +27,78 @@
         </a>
     </div>
 </template>
+
+
+<template name="alertModal">
+    <div id="alertModal" class="ui modal small">
+        <div class="content">
+            <div class="ui form segment">
+                <div class="ui center message">
+                    <div class="ui huge image label">
+                        <img src="images/pills.jpg" />
+                        {{alertName}}
+                    </div>
+                </div>
+                <div class="two fields">
+                    <div class="field">
+                        <label>How often do you take it?</label>
+                        <select id="alertFrequency" class="ui dropdown">
+                            <!--<option value="">Frequency</option>-->
+                            <option value=".2" {{medFrequencySelected ".2"}}>{{medFrequencyLabel ".2"}}</option>
+                            <option value=".25" {{medFrequencySelected ".25"}}>{{medFrequencyLabel ".25"}}</option>
+                            <option value=".33" {{medFrequencySelected ".33"}}>{{medFrequencyLabel ".33"}}</option>
+                            <option value=".5" {{medFrequencySelected ".5"}}>{{medFrequencyLabel ".5"}}</option>
+                            <option value="1" {{medFrequencySelected "1"}}>{{medFrequencyLabel "1"}}</option>
+                            <option value="2" {{medFrequencySelected "2"}}>{{medFrequencyLabel "2"}}</option>
+                            <option value="3" {{medFrequencySelected "3"}}>{{medFrequencyLabel "3"}}</option>
+                            <option value="4" {{medFrequencySelected "4"}}>{{medFrequencyLabel "4"}}</option>
+                            <option value="5" {{medFrequencySelected "5"}}>{{medFrequencyLabel "5"}}</option>
+                            <option value="6" {{medFrequencySelected "6"}}>{{medFrequencyLabel "6"}}</option>
+                            <option value="7" {{medFrequencySelected "7"}}>{{medFrequencyLabel "7"}}</option>
+                            <option value="14" {{medFrequencySelected "14"}}>{{medFrequencyLabel "14"}}</option>
+                            <option value="21" {{medFrequencySelected "21"}}>{{medFrequencyLabel "21"}}</option>
+                            <option value="30" {{medFrequencySelected "30"}}>{{medFrequencyLabel "30"}}</option>
+                        </select>
+                    </div>
+
+                    <div class="field">
+                        <label>Your Rating</label>
+                        <div id="medRating" class="ui massive star rating" data-rating="{{medRating}}"></div>
+                    </div>
+                </div>
+                {{#each ingredients}}
+                    <div class="two fields">
+                        <div class="field">
+                            <label>&nbsp;</label>
+                            <div class="ui large image label">
+                                <img src="images/pills.jpg" />
+                                {{text}}
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label>Strength</label>
+                            <input id="medStrength-{{obj}}" class="medStrength" placeholder="Strength in mg" type="text" value="{{ingredientStrength obj}}">
+                        </div>
+                    </div>
+                {{/each}}
+                <div class="two fields">
+                    <div class="field">
+                        <label>Start Date</label>
+                        <input id="medStartDate" placeholder="Text Input" type="date" value="{{medStartDate}}">
+                    </div>
+                    <div class="field">
+                        <label>End Date</label>
+                        <input id="medEndDate" placeholder="Text Input" type="date" value="{{medEndDate}}">
+
+                        <label>Still Taking?</label>
+                        <input id="medEndFlag" type="checkbox" value="1" {{medTakingChecked}}>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="actions">
+            <div class="ui button cancel">Cancel</div>
+            <div class="ui button ok">OK</div>
+        </div>
+    </div>
+</template>
