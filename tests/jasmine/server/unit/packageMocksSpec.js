@@ -7090,7 +7090,7 @@ var packageMetadata = {
                 },
                 "version": {
                   "type": "constant",
-                  "value": "21a4f83bd451d8a5648b3f1e53def4dd2db093d9"
+                  "value": "7c6b4c57b7c86550fa7df565e9bdedea56a8512d"
                 },
                 "PUBLIC_SETTINGS": {
                   "type": "undefined"
@@ -7214,7 +7214,7 @@ var packageMetadata = {
             },
             "connections": {
               "type": "constant",
-              "value": 1
+              "value": 0
             },
             "timeout": {
               "type": "constant",
@@ -7885,11 +7885,11 @@ var packageMetadata = {
       "members": {
         "autoupdateVersion": {
           "type": "constant",
-          "value": "81544226813889fce08130a69337ec57904b6887"
+          "value": "f3af63deded4551b64cd85511780aa09df8688e0"
         },
         "autoupdateVersionRefreshable": {
           "type": "constant",
-          "value": "7dc8b86059bd815c1eaa572b03fd665b37b2b835"
+          "value": "8c4e5099a6a316892bdff220a8556a62fcbf374a"
         },
         "autoupdateVersionCordova": {
           "type": "constant",
@@ -22043,6 +22043,7 @@ var packageMetadata = {
   "dandv:jquery-rateit": {},
   "less": {},
   "linto:jquery-ui": {},
+  "mystor:device-detection": {},
   "session": {}
 }
 var globalContext = (typeof global !== 'undefined') ? global : window

@@ -1,8 +1,8 @@
 Template.landingLayout.events({
-    'click a.main-menu': function(evt, tpl) {
+    'click .button.main-menu': function(evt, tpl) {
         console.log(evt);
         evt.preventDefault();
-        $('.sidebar')
+        $('.sidebar.left')
         .sidebar('setting', 'transition', 'overlay')
         .sidebar('toggle');
     },
