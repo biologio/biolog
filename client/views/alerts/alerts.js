@@ -4,17 +4,18 @@ Template['alerts'].helpers({
 Template['alerts'].events({
 });
 
-isabelItems = new ReactiveVar();
-
 Template.isabelChecklist.helpers({
-    diagnoses: function() {
-        if (! isabelItems.get()) return null;
-        return isabelItems.get().diagnosis;
-    },
+    isabelItems: function() {
+        if (! Session.get("biolog.isabelItems")) return null;
+        return Session.get("biolog.isabelItems").diagnosis;
+    }
+});
+
+Template.isabelItem.helpers({
 
     isabelIcon: function() {
-        if (this.red_flag && this.red_flag == "true") return "warning";
-        return "question";
+        if (this.red_flag && this.red_flag == "true") return "warning circle icon";
+        return "question icon";
     },
 
     severityColor: function() {
@@ -25,17 +26,23 @@ Template.isabelChecklist.helpers({
 
 
 Tracker.autorun(function () {
-    var currentConditions = getPatientConditionsCurrent(getPatient()._id);
+    if (!getPatient()) return;
+    var currentConditionsCursor = getPatientConditionsCurrent(getPatient()._id);
+    if (!currentConditionsCursor) return;
+    var currentConditions = currentConditionsCursor.fetch();
+    console.log("currentConditions=" + JSON.stringify(currentConditions));
     var conditionsList = "";
     for (var di in currentConditions) {
         var dx = currentConditions[di];
+        if (!dx || !dx.objName) continue;
         if (conditionsList.length > 0) conditionsList += "|";
         conditionsList += dx.objName;
     }
-    console.log("searchIsabel: " + conditionsList);
-    var pt = Session.get("patient");
+    console.log("searchIsabel: conditions=" + conditionsList);
+    if (! conditionsList) return;
+    var pt = getPatient();
     var dob = yyyymmdd(getPatientDob());
-    var sex = getValuePath(pt, "data['id/sex']").text;
+    var sex = getPatientSex(pt);
     var pregnant = "false";
     Meteor.call("isabel", dob, sex, pregnant, 12, conditionsList, function(error, result){
         if (error) {
@@ -45,6 +52,6 @@ Tracker.autorun(function () {
         var contentString = result.content.substring(7, result.content.length - 2);
         var content = JSON.parse(contentString);
         console.log("Received RESULT from Isabel: " + JSON.stringify(content, null, "  "));
-        isabelItems.set(content.Diagnosis_checklist)
+        Session.set("biolog.isabelItems", content.Diagnosis_checklist)
     });
 });

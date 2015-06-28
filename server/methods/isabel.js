@@ -5,8 +5,9 @@
 
 Meteor.methods({
     isabel: function(dob, sex, pregnant, region, diagnoses) {
-        var isabelConfig = getConfig("isabel");
         this.unblock();
+        var isabelConfig = getConfig("isabel");
+
         var isabelId = isabelConfig.isabelId;
         var isabelPassword = isabelConfig.isabelPassword;
         var url = "http://www.isabelhealthcare.com/private/emr_diagnosis.jsp?" +

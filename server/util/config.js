@@ -1,4 +1,5 @@
 getConfig = function(config) {
-    var config = YAML.eval(Assets.getText("config/" + config + ".yml"));
-    return JSON.parse(config);
+    return YAML.eval(Assets.getText("config/" + config + ".yml"));
+    //console.log("getConfig(): parsing: " + JSON.stringify(config));
+    //return JSON.parse(config);
 };

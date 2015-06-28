@@ -1,14 +1,29 @@
 <template name="alerts">
-    {{> isabelChecklist}}
+    <div class="ui segment">
+        <span class="ui large header">Alerts from</span>
+        <img src="images/isabel_logo.jpg" />
+        <div class="ui segment">
+            {{> isabelChecklist}}
+        </div>
+    </div>
 </template>
 
 <template name="isabelChecklist">
-    <div class="list-group">
-        {{#each diagnoses}}
-            <a href="#" class="{{severityColor}}">
-                <span class="{{isabelIcon}}"></span>&nbsp;
-                {{diagnoses_name}}
-            </a>
+    <div class="ui divided link items">
+        {{#each isabelItems}}
+            {{> isabelItem}}
         {{/each}}
+    </div>
+</template>
+
+<template name="isabelItem">
+    <div class="item alertsItem">
+        <!--<div class="ui tiny image">-->
+            <!--<img src="images/pills.jpg">-->
+        <!--</div>-->
+        <a href="#" class="{{severityColor}}">
+            <i class="{{isabelIcon}}"></i>&nbsp;
+            {{diagnoses_name}}
+        </a>
     </div>
 </template>
