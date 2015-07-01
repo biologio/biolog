@@ -27,6 +27,7 @@ Template.sidebar.helpers({
         {text:"Conditions", icon:"heart", url:"/conditions"},
         {text:"Meds", icon:"first aid", url:"/meds"},
         {text:"Events", icon:"calendar", url:"/#"},
+        {text:"Alerts", icon:"warning", url:"/alerts", badge: countAlerts()},
         {text:"Timeline", icon:"tasks", url:"/#"},
         {text:"About", icon:"info", url:"/about"},
         {text:"Admin", icon:"settings", url:"/admin"}

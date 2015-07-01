@@ -4,7 +4,7 @@
     
     <div class="ui top fixed menu inverted navbar page grid"><div class="container">
         <div class="item main-menu"><i class="item align justify icon"></i></div>
-        <a href="/" class="brand item">Biolog!</a>
+        <a href="/" class="brand item">Biolog</a>
         <!--<a href="/meds" class="item">Medicines</a>-->
         <a href="/selectPatient" class="item">Patient: {{patient.name}}</a>
         <div class="left menu">
@@ -33,6 +33,7 @@
     <a class="item" data-href="{{url}}">
         <i class="{{icon}} icon"></i>
         {{text}}
+        <span class="ui label">{{badge}}</span>
     </a>
 </template>
 <!--

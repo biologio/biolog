@@ -1,62 +1,48 @@
-<template name="meds">
+<template name="alerts">
     <div class="ui segment">
-        <span class="ui large header">Current Medications</span>&nbsp;&nbsp;&nbsp;&nbsp;{{> bioolookupMedsButton}}
+        <span class="ui large header">Alerts from</span>
+        <img src="images/isabel_logo.jpg" />
         <div class="ui segment">
-            <!--<div class="ui items">-->
-            <div class="ui divided link items">
-                {{#each currentMeds}}
-                    {{>medsItem}}
-                {{/each}}
-            </div>
-        </div>
-    </div>
-
-    <div class="ui segment">
-        <span class="ui large header">Past Medications</span>&nbsp;&nbsp;&nbsp;&nbsp;{{> bioolookupMedsButton}}
-        <div class="ui segment">
-            <!--<div class="ui items">-->
-            <div class="ui divided link items">
-                {{#each pastMeds}}
-                    {{>medsItem}}
-                {{/each}}
-            </div>
-        </div>
-    </div>
-
-    {{> bioolookupMedsModal}}
-    {{> medModal}}
-</template>
-
-
-<template name="medsItem">
-    <div class="item medsItem">
-        <div class="ui tiny image">
-            <img src="images/pills.jpg">
-        </div>
-        <div class="content">
-            <div class="header">{{objName}}</div>
-            <p>{{strength}},&nbsp;&nbsp;{{frequency}}</p>
-            <p>{{timing}}</p>
+            {{> isabelChecklist}}
         </div>
     </div>
 </template>
 
+<template name="isabelChecklist">
+    <div class="ui divided link items">
+        {{#each isabelItems}}
+            {{> isabelItem}}
+        {{/each}}
+    </div>
+</template>
+
+<template name="isabelItem">
+    <div class="item alertsItem">
+        <!--<div class="ui tiny image">-->
+            <!--<img src="images/pills.jpg">-->
+        <!--</div>-->
+        <a href="#" class="{{severityColor}}">
+            <i class="{{isabelIcon}}"></i>&nbsp;
+            {{diagnoses_name}}
+        </a>
+    </div>
+</template>
 
 
-<template name="medModal">
-    <div id="medModal" class="ui modal small">
+<template name="alertModal">
+    <div id="alertModal" class="ui modal small">
         <div class="content">
             <div class="ui form segment">
                 <div class="ui center message">
                     <div class="ui huge image label">
                         <img src="images/pills.jpg" />
-                        {{medName}}
+                        {{alertName}}
                     </div>
                 </div>
                 <div class="two fields">
                     <div class="field">
                         <label>How often do you take it?</label>
-                        <select id="medFrequency" class="ui dropdown">
+                        <select id="alertFrequency" class="ui dropdown">
                             <!--<option value="">Frequency</option>-->
                             <option value=".2" {{medFrequencySelected ".2"}}>{{medFrequencyLabel ".2"}}</option>
                             <option value=".25" {{medFrequencySelected ".25"}}>{{medFrequencyLabel ".25"}}</option>

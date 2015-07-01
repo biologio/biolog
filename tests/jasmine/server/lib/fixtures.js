@@ -17,7 +17,7 @@ createPatients = function() {
 }
 
 addDemographics = function(id) {
-    var pt = getPatient(id);
+    var pt = queryPatient(id);
     if (!pt) {
         throw "Unable to find patient with id: " + id;
     }

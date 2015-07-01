@@ -11,6 +11,10 @@
  * T046=epistaxis
  * T184=pain groin
  * T033=enlarged prostate
+ *
+ * examples:
+ * nosebleed
+ * high blood pressure
  */
 //LOCAL
 //getUrlLookupConditions = function(q) {
@@ -21,7 +25,7 @@
 //        "&apikey=95d31cce-3247-4186-ae95-97c61884c50a";
 //};
 
-conditionOntology = "RCD";
+conditionOntology = "ICPC2P";
 
 //REMOTE
 getUrlLookupConditions = function(q) {
