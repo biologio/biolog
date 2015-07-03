@@ -1,7 +1,7 @@
 <template name="alerts">
     <div class="ui segment">
-        <span class="ui large header">Alerts from</span>
-        <img src="images/isabel_logo.jpg" />
+        <span class="ui large header">Alerts from <a href="http://www.isabelhealthcare.com/">Isabel</a></span>
+        <!--<img src="images/isabel_logo.jpg" />-->
         <div class="ui segment">
             {{> isabelChecklist}}
         </div>
@@ -17,11 +17,11 @@
 </template>
 
 <template name="isabelItem">
-    <div class="item alertsItem">
+    <div class="item alertsItem {{severityColor}}">
         <!--<div class="ui tiny image">-->
             <!--<img src="images/pills.jpg">-->
         <!--</div>-->
-        <a href="#" class="{{severityColor}}">
+        <a href="#">
             <i class="{{isabelIcon}}"></i>&nbsp;
             {{diagnoses_name}}
         </a>

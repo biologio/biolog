@@ -7089,7 +7089,7 @@ var packageMetadata = {
                 },
                 "version": {
                   "type": "constant",
-                  "value": "16a9b1651b308149de3b86da131ae46046a2b545"
+                  "value": "016198bf2a05cbd00d321126829b5c91f0acb9ef"
                 },
                 "PUBLIC_SETTINGS": {
                   "type": "undefined"
@@ -7213,7 +7213,7 @@ var packageMetadata = {
             },
             "connections": {
               "type": "constant",
-              "value": 1
+              "value": 0
             },
             "timeout": {
               "type": "constant",
@@ -7884,7 +7884,7 @@ var packageMetadata = {
       "members": {
         "autoupdateVersion": {
           "type": "constant",
-          "value": "58bfa4ea84d06077d481020afb3d00038e9cfdce"
+          "value": "cf085552cb3c3ce5a4350f63a6feb45497005ce8"
         },
         "autoupdateVersionRefreshable": {
           "type": "constant",
@@ -22043,6 +22043,5497 @@ var packageMetadata = {
   "less": {},
   "linto:jquery-ui": {},
   "mystor:device-detection": {},
+  "digilord:faker": {
+    "faker": {
+      "type": "object",
+      "members": {
+        "name": {
+          "type": "object",
+          "members": {
+            "firstName": {
+              "type": "function"
+            },
+            "lastName": {
+              "type": "function"
+            },
+            "findName": {
+              "type": "function"
+            },
+            "prefix": {
+              "type": "function"
+            },
+            "suffix": {
+              "type": "function"
+            }
+          }
+        },
+        "address": {
+          "type": "object",
+          "members": {
+            "zipCode": {
+              "type": "function"
+            },
+            "city": {
+              "type": "function"
+            },
+            "cityPrefix": {
+              "type": "function"
+            },
+            "citySuffix": {
+              "type": "function"
+            },
+            "streetName": {
+              "type": "function"
+            },
+            "streetAddress": {
+              "type": "function"
+            },
+            "streetSuffix": {
+              "type": "function"
+            },
+            "secondaryAddress": {
+              "type": "function"
+            },
+            "county": {
+              "type": "function"
+            },
+            "country": {
+              "type": "function"
+            },
+            "state": {
+              "type": "function"
+            },
+            "stateAbbr": {
+              "type": "function"
+            },
+            "latitude": {
+              "type": "function"
+            },
+            "longitude": {
+              "type": "function"
+            }
+          }
+        },
+        "phone": {
+          "type": "object",
+          "members": {
+            "phoneNumber": {
+              "type": "function"
+            },
+            "phoneNumberFormat": {
+              "type": "function"
+            },
+            "phoneFormats": {
+              "type": "function"
+            }
+          }
+        },
+        "internet": {
+          "type": "object",
+          "members": {
+            "avatar": {
+              "type": "function"
+            },
+            "email": {
+              "type": "function"
+            },
+            "userName": {
+              "type": "function"
+            },
+            "domainName": {
+              "type": "function"
+            },
+            "domainSuffix": {
+              "type": "function"
+            },
+            "domainWord": {
+              "type": "function"
+            },
+            "ip": {
+              "type": "function"
+            },
+            "userAgent": {
+              "type": "function"
+            },
+            "color": {
+              "type": "function"
+            },
+            "password": {
+              "type": "function"
+            }
+          }
+        },
+        "company": {
+          "type": "object",
+          "members": {
+            "suffixes": {
+              "type": "function"
+            },
+            "companyName": {
+              "type": "function"
+            },
+            "companySuffix": {
+              "type": "function"
+            },
+            "catchPhrase": {
+              "type": "function"
+            },
+            "bs": {
+              "type": "function"
+            },
+            "catchPhraseAdjective": {
+              "type": "function"
+            },
+            "catchPhraseDescriptor": {
+              "type": "function"
+            },
+            "catchPhraseNoun": {
+              "type": "function"
+            },
+            "bsAdjective": {
+              "type": "function"
+            },
+            "bsBuzz": {
+              "type": "function"
+            },
+            "bsNoun": {
+              "type": "function"
+            }
+          }
+        },
+        "image": {
+          "type": "object",
+          "members": {
+            "image": {
+              "type": "function"
+            },
+            "avatar": {
+              "type": "function"
+            },
+            "imageUrl": {
+              "type": "function"
+            },
+            "abstract": {
+              "type": "function"
+            },
+            "animals": {
+              "type": "function"
+            },
+            "business": {
+              "type": "function"
+            },
+            "cats": {
+              "type": "function"
+            },
+            "city": {
+              "type": "function"
+            },
+            "food": {
+              "type": "function"
+            },
+            "nightlife": {
+              "type": "function"
+            },
+            "fashion": {
+              "type": "function"
+            },
+            "people": {
+              "type": "function"
+            },
+            "nature": {
+              "type": "function"
+            },
+            "sports": {
+              "type": "function"
+            },
+            "technics": {
+              "type": "function"
+            },
+            "transport": {
+              "type": "function"
+            }
+          }
+        },
+        "lorem": {
+          "type": "object",
+          "members": {
+            "words": {
+              "type": "function"
+            },
+            "sentence": {
+              "type": "function"
+            },
+            "sentences": {
+              "type": "function"
+            },
+            "paragraph": {
+              "type": "function"
+            },
+            "paragraphs": {
+              "type": "function"
+            }
+          }
+        },
+        "helpers": {
+          "type": "object",
+          "members": {
+            "randomNumber": {
+              "type": "function"
+            },
+            "randomize": {
+              "type": "function"
+            },
+            "slugify": {
+              "type": "function"
+            },
+            "replaceSymbolWithNumber": {
+              "type": "function"
+            },
+            "shuffle": {
+              "type": "function"
+            },
+            "mustache": {
+              "type": "function"
+            },
+            "createCard": {
+              "type": "function"
+            },
+            "contextualCard": {
+              "type": "function"
+            },
+            "userCard": {
+              "type": "function"
+            },
+            "createTransaction": {
+              "type": "function"
+            }
+          }
+        },
+        "date": {
+          "type": "object",
+          "members": {
+            "past": {
+              "type": "function"
+            },
+            "future": {
+              "type": "function"
+            },
+            "between": {
+              "type": "function"
+            },
+            "recent": {
+              "type": "function"
+            }
+          }
+        },
+        "random": {
+          "type": "object",
+          "members": {
+            "number": {
+              "type": "function"
+            },
+            "array_element": {
+              "type": "function"
+            },
+            "object_element": {
+              "type": "function"
+            },
+            "uuid": {
+              "type": "function"
+            }
+          }
+        },
+        "finance": {
+          "type": "object",
+          "members": {
+            "account": {
+              "type": "function"
+            },
+            "accountName": {
+              "type": "function"
+            },
+            "mask": {
+              "type": "function"
+            },
+            "amount": {
+              "type": "function"
+            },
+            "transactionType": {
+              "type": "function"
+            },
+            "currencyCode": {
+              "type": "function"
+            },
+            "currencyName": {
+              "type": "function"
+            },
+            "currencySymbol": {
+              "type": "function"
+            }
+          }
+        },
+        "hacker": {
+          "type": "object",
+          "members": {
+            "abbreviation": {
+              "type": "function"
+            },
+            "adjective": {
+              "type": "function"
+            },
+            "noun": {
+              "type": "function"
+            },
+            "verb": {
+              "type": "function"
+            },
+            "ingverb": {
+              "type": "function"
+            },
+            "phrase": {
+              "type": "function"
+            }
+          }
+        },
+        "locales": {
+          "type": "object",
+          "members": {
+            "de": {
+              "type": "object",
+              "members": {
+                "title": {
+                  "type": "constant",
+                  "value": "German"
+                },
+                "address": {
+                  "type": "object",
+                  "members": {
+                    "city_prefix": {
+                      "type": "array"
+                    },
+                    "city_suffix": {
+                      "type": "array"
+                    },
+                    "country": {
+                      "type": "array"
+                    },
+                    "street_root": {
+                      "type": "array"
+                    },
+                    "building_number": {
+                      "type": "array"
+                    },
+                    "secondary_address": {
+                      "type": "array"
+                    },
+                    "postcode": {
+                      "type": "array"
+                    },
+                    "state": {
+                      "type": "array"
+                    },
+                    "state_abbr": {
+                      "type": "array"
+                    },
+                    "city": {
+                      "type": "array"
+                    },
+                    "street_name": {
+                      "type": "array"
+                    },
+                    "street_address": {
+                      "type": "array"
+                    },
+                    "default_country": {
+                      "type": "array"
+                    }
+                  }
+                },
+                "company": {
+                  "type": "object",
+                  "members": {
+                    "suffix": {
+                      "type": "array"
+                    },
+                    "legal_form": {
+                      "type": "array"
+                    },
+                    "name": {
+                      "type": "array"
+                    }
+                  }
+                },
+                "internet": {
+                  "type": "object",
+                  "members": {
+                    "free_email": {
+                      "type": "array"
+                    },
+                    "domain_suffix": {
+                      "type": "array"
+                    }
+                  }
+                },
+                "lorem": {
+                  "type": "object",
+                  "members": {
+                    "words": {
+                      "type": "array"
+                    }
+                  }
+                },
+                "name": {
+                  "type": "object",
+                  "members": {
+                    "first_name": {
+                      "type": "array"
+                    },
+                    "last_name": {
+                      "type": "array"
+                    },
+                    "prefix": {
+                      "type": "array"
+                    },
+                    "nobility_title_prefix": {
+                      "type": "array"
+                    },
+                    "name": {
+                      "type": "array"
+                    }
+                  }
+                },
+                "phone_number": {
+                  "type": "object",
+                  "members": {
+                    "formats": {
+                      "type": "array"
+                    }
+                  }
+                },
+                "cell_phone": {
+                  "type": "object",
+                  "members": {
+                    "formats": {
+                      "type": "array"
+                    }
+                  }
+                }
+              }
+            },
+            "de_AT": {
+              "type": "object",
+              "members": {
+                "title": {
+                  "type": "constant",
+                  "value": "German (Austria)"
+                },
+                "address": {
+                  "type": "object",
+                  "members": {
+                    "country": {
+                      "type": "array"
+                    },
+                    "street_root": {
+                      "type": "array"
+                    },
+                    "building_number": {
+                      "type": "array"
+                    },
+                    "secondary_address": {
+                      "type": "array"
+                    },
+                    "postcode": {
+                      "type": "array"
+                    },
+                    "state": {
+                      "type": "array"
+                    },
+                    "state_abbr": {
+                      "type": "array"
+                    },
+                    "city_name": {
+                      "type": "array"
+                    },
+                    "city": {
+                      "type": "array"
+                    },
+                    "street_name": {
+                      "type": "array"
+                    },
+                    "street_address": {
+                      "type": "array"
+                    },
+                    "default_country": {
+                      "type": "array"
+                    }
+                  }
+                },
+                "company": {
+                  "type": "object",
+                  "members": {
+                    "suffix": {
+                      "type": "array"
+                    },
+                    "legal_form": {
+                      "type": "array"
+                    },
+                    "name": {
+                      "type": "array"
+                    }
+                  }
+                },
+                "internet": {
+                  "type": "object",
+                  "members": {
+                    "free_email": {
+                      "type": "array"
+                    },
+                    "domain_suffix": {
+                      "type": "array"
+                    }
+                  }
+                },
+                "name": {
+                  "type": "object",
+                  "members": {
+                    "first_name": {
+                      "type": "array"
+                    },
+                    "last_name": {
+                      "type": "array"
+                    },
+                    "prefix": {
+                      "type": "array"
+                    },
+                    "nobility_title_prefix": {
+                      "type": "array"
+                    },
+                    "name": {
+                      "type": "array"
+                    }
+                  }
+                },
+                "phone_number": {
+                  "type": "object",
+                  "members": {
+                    "formats": {
+                      "type": "array"
+                    }
+                  }
+                },
+                "cell_phone": {
+                  "type": "object",
+                  "members": {
+                    "formats": {
+                      "type": "array"
+                    }
+                  }
+                }
+              }
+            },
+            "de_CH": {
+              "type": "object",
+              "members": {
+                "title": {
+                  "type": "constant",
+                  "value": "German (Switzerland)"
+                },
+                "address": {
+                  "type": "object",
+                  "members": {
+                    "country_code": {
+                      "type": "array"
+                    },
+                    "postcode": {
+                      "type": "array"
+                    },
+                    "default_country": {
+                      "type": "array"
+                    }
+                  }
+                },
+                "company": {
+                  "type": "object",
+                  "members": {
+                    "suffix": {
+                      "type": "array"
+                    },
+                    "name": {
+                      "type": "array"
+                    }
+                  }
+                },
+                "internet": {
+                  "type": "object",
+                  "members": {
+                    "domain_suffix": {
+                      "type": "array"
+                    }
+                  }
+                },
+                "phone_number": {
+                  "type": "object",
+                  "members": {
+                    "formats": {
+                      "type": "array"
+                    }
+                  }
+                }
+              }
+            },
+            "en": {
+              "type": "object",
+              "members": {
+                "title": {
+                  "type": "constant",
+                  "value": "English"
+                },
+                "separator": {
+                  "type": "constant",
+                  "value": " & "
+                },
+                "address": {
+                  "type": "object",
+                  "members": {
+                    "city_prefix": {
+                      "type": "array"
+                    },
+                    "city_suffix": {
+                      "type": "array"
+                    },
+                    "county": {
+                      "type": "array"
+                    },
+                    "country": {
+                      "type": "array"
+                    },
+                    "country_code": {
+                      "type": "array"
+                    },
+                    "building_number": {
+                      "type": "array"
+                    },
+                    "street_suffix": {
+                      "type": "array"
+                    },
+                    "secondary_address": {
+                      "type": "array"
+                    },
+                    "postcode": {
+                      "type": "array"
+                    },
+                    "postcode_by_state": {
+                      "type": "array"
+                    },
+                    "state": {
+                      "type": "array"
+                    },
+                    "state_abbr": {
+                      "type": "array"
+                    },
+                    "time_zone": {
+                      "type": "array"
+                    },
+                    "city": {
+                      "type": "array"
+                    },
+                    "street_name": {
+                      "type": "array"
+                    },
+                    "street_address": {
+                      "type": "array"
+                    },
+                    "default_country": {
+                      "type": "array"
+                    }
+                  }
+                },
+                "credit_card": {
+                  "type": "object",
+                  "members": {
+                    "visa": {
+                      "type": "array"
+                    },
+                    "mastercard": {
+                      "type": "array"
+                    },
+                    "discover": {
+                      "type": "array"
+                    },
+                    "american_express": {
+                      "type": "array"
+                    },
+                    "diners_club": {
+                      "type": "array"
+                    },
+                    "jcb": {
+                      "type": "array"
+                    },
+                    "switch": {
+                      "type": "array"
+                    },
+                    "solo": {
+                      "type": "array"
+                    },
+                    "dankort": {
+                      "type": "constant",
+                      "value": "/5019-####-####-###L/"
+                    },
+                    "maestro": {
+                      "type": "array"
+                    },
+                    "forbrugsforeningen": {
+                      "type": "constant",
+                      "value": "/6007-22##-####-###L/"
+                    },
+                    "laser": {
+                      "type": "array"
+                    }
+                  }
+                },
+                "company": {
+                  "type": "object",
+                  "members": {
+                    "suffix": {
+                      "type": "array"
+                    },
+                    "adjective": {
+                      "type": "array"
+                    },
+                    "descriptor": {
+                      "type": "array"
+                    },
+                    "noun": {
+                      "type": "array"
+                    },
+                    "bs_verb": {
+                      "type": "array"
+                    },
+                    "bs_adjective": {
+                      "type": "array"
+                    },
+                    "bs_noun": {
+                      "type": "array"
+                    },
+                    "name": {
+                      "type": "array"
+                    }
+                  }
+                },
+                "internet": {
+                  "type": "object",
+                  "members": {
+                    "free_email": {
+                      "type": "array"
+                    },
+                    "domain_suffix": {
+                      "type": "array"
+                    },
+                    "avatar_uri": {
+                      "type": "array"
+                    }
+                  }
+                },
+                "lorem": {
+                  "type": "object",
+                  "members": {
+                    "words": {
+                      "type": "array"
+                    },
+                    "supplemental": {
+                      "type": "array"
+                    }
+                  }
+                },
+                "name": {
+                  "type": "object",
+                  "members": {
+                    "first_name": {
+                      "type": "array"
+                    },
+                    "last_name": {
+                      "type": "array"
+                    },
+                    "prefix": {
+                      "type": "array"
+                    },
+                    "suffix": {
+                      "type": "array"
+                    },
+                    "title": {
+                      "type": "object",
+                      "members": {
+                        "descriptor": {
+                          "type": "array"
+                        },
+                        "level": {
+                          "type": "array"
+                        },
+                        "job": {
+                          "type": "array"
+                        }
+                      }
+                    },
+                    "name": {
+                      "type": "array"
+                    }
+                  }
+                },
+                "phone_number": {
+                  "type": "object",
+                  "members": {
+                    "formats": {
+                      "type": "array"
+                    }
+                  }
+                },
+                "cell_phone": {
+                  "type": "object",
+                  "members": {
+                    "formats": {
+                      "type": "array"
+                    }
+                  }
+                },
+                "business": {
+                  "type": "object",
+                  "members": {
+                    "credit_card_numbers": {
+                      "type": "array"
+                    },
+                    "credit_card_expiry_dates": {
+                      "type": "array"
+                    },
+                    "credit_card_types": {
+                      "type": "array"
+                    }
+                  }
+                },
+                "commerce": {
+                  "type": "object",
+                  "members": {
+                    "color": {
+                      "type": "array"
+                    },
+                    "department": {
+                      "type": "array"
+                    },
+                    "product_name": {
+                      "type": "object",
+                      "members": {
+                        "adjective": {
+                          "type": "array"
+                        },
+                        "material": {
+                          "type": "array"
+                        },
+                        "product": {
+                          "type": "array"
+                        }
+                      }
+                    }
+                  }
+                },
+                "team": {
+                  "type": "object",
+                  "members": {
+                    "creature": {
+                      "type": "array"
+                    },
+                    "name": {
+                      "type": "array"
+                    }
+                  }
+                },
+                "hacker": {
+                  "type": "object",
+                  "members": {
+                    "abbreviation": {
+                      "type": "array"
+                    },
+                    "adjective": {
+                      "type": "array"
+                    },
+                    "noun": {
+                      "type": "array"
+                    },
+                    "verb": {
+                      "type": "array"
+                    },
+                    "ingverb": {
+                      "type": "array"
+                    }
+                  }
+                },
+                "app": {
+                  "type": "object",
+                  "members": {
+                    "name": {
+                      "type": "array"
+                    },
+                    "version": {
+                      "type": "array"
+                    },
+                    "author": {
+                      "type": "array"
+                    }
+                  }
+                },
+                "finance": {
+                  "type": "object",
+                  "members": {
+                    "account_type": {
+                      "type": "array"
+                    },
+                    "transaction_type": {
+                      "type": "array"
+                    },
+                    "currency": {
+                      "type": "object",
+                      "members": {
+                        "UAE Dirham": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "AED"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": ""
+                            }
+                          }
+                        },
+                        "Afghani": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "AFN"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": "؋"
+                            }
+                          }
+                        },
+                        "Lek": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "ALL"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": "Lek"
+                            }
+                          }
+                        },
+                        "Armenian Dram": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "AMD"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": ""
+                            }
+                          }
+                        },
+                        "Netherlands Antillian Guilder": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "ANG"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": "ƒ"
+                            }
+                          }
+                        },
+                        "Kwanza": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "AOA"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": ""
+                            }
+                          }
+                        },
+                        "Argentine Peso": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "ARS"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": "$"
+                            }
+                          }
+                        },
+                        "Australian Dollar": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "AUD"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": "$"
+                            }
+                          }
+                        },
+                        "Aruban Guilder": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "AWG"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": "ƒ"
+                            }
+                          }
+                        },
+                        "Azerbaijanian Manat": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "AZN"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": "ман"
+                            }
+                          }
+                        },
+                        "Convertible Marks": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "BAM"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": "KM"
+                            }
+                          }
+                        },
+                        "Barbados Dollar": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "BBD"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": "$"
+                            }
+                          }
+                        },
+                        "Taka": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "BDT"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": ""
+                            }
+                          }
+                        },
+                        "Bulgarian Lev": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "BGN"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": "лв"
+                            }
+                          }
+                        },
+                        "Bahraini Dinar": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "BHD"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": ""
+                            }
+                          }
+                        },
+                        "Burundi Franc": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "BIF"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": ""
+                            }
+                          }
+                        },
+                        "Bermudian Dollar (customarily known as Bermuda Dollar)": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "BMD"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": "$"
+                            }
+                          }
+                        },
+                        "Brunei Dollar": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "BND"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": "$"
+                            }
+                          }
+                        },
+                        "Boliviano Mvdol": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "BOB BOV"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": "$b"
+                            }
+                          }
+                        },
+                        "Brazilian Real": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "BRL"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": "R$"
+                            }
+                          }
+                        },
+                        "Bahamian Dollar": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "BSD"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": "$"
+                            }
+                          }
+                        },
+                        "Pula": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "BWP"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": "P"
+                            }
+                          }
+                        },
+                        "Belarussian Ruble": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "BYR"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": "p."
+                            }
+                          }
+                        },
+                        "Belize Dollar": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "BZD"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": "BZ$"
+                            }
+                          }
+                        },
+                        "Canadian Dollar": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "CAD"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": "$"
+                            }
+                          }
+                        },
+                        "Congolese Franc": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "CDF"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": ""
+                            }
+                          }
+                        },
+                        "Swiss Franc": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "CHF"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": "CHF"
+                            }
+                          }
+                        },
+                        "Chilean Peso Unidades de fomento": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "CLP CLF"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": "$"
+                            }
+                          }
+                        },
+                        "Yuan Renminbi": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "CNY"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": "¥"
+                            }
+                          }
+                        },
+                        "Colombian Peso Unidad de Valor Real": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "COP COU"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": "$"
+                            }
+                          }
+                        },
+                        "Costa Rican Colon": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "CRC"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": "₡"
+                            }
+                          }
+                        },
+                        "Cuban Peso Peso Convertible": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "CUP CUC"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": "₱"
+                            }
+                          }
+                        },
+                        "Cape Verde Escudo": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "CVE"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": ""
+                            }
+                          }
+                        },
+                        "Czech Koruna": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "CZK"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": "Kč"
+                            }
+                          }
+                        },
+                        "Djibouti Franc": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "DJF"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": ""
+                            }
+                          }
+                        },
+                        "Danish Krone": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "DKK"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": "kr"
+                            }
+                          }
+                        },
+                        "Dominican Peso": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "DOP"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": "RD$"
+                            }
+                          }
+                        },
+                        "Algerian Dinar": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "DZD"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": ""
+                            }
+                          }
+                        },
+                        "Kroon": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "EEK"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": ""
+                            }
+                          }
+                        },
+                        "Egyptian Pound": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "EGP"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": "£"
+                            }
+                          }
+                        },
+                        "Nakfa": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "ERN"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": ""
+                            }
+                          }
+                        },
+                        "Ethiopian Birr": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "ETB"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": ""
+                            }
+                          }
+                        },
+                        "Euro": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "EUR"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": "€"
+                            }
+                          }
+                        },
+                        "Fiji Dollar": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "FJD"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": "$"
+                            }
+                          }
+                        },
+                        "Falkland Islands Pound": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "FKP"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": "£"
+                            }
+                          }
+                        },
+                        "Pound Sterling": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "GBP"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": "£"
+                            }
+                          }
+                        },
+                        "Lari": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "GEL"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": ""
+                            }
+                          }
+                        },
+                        "Cedi": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "GHS"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": ""
+                            }
+                          }
+                        },
+                        "Gibraltar Pound": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "GIP"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": "£"
+                            }
+                          }
+                        },
+                        "Dalasi": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "GMD"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": ""
+                            }
+                          }
+                        },
+                        "Guinea Franc": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "GNF"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": ""
+                            }
+                          }
+                        },
+                        "Quetzal": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "GTQ"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": "Q"
+                            }
+                          }
+                        },
+                        "Guyana Dollar": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "GYD"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": "$"
+                            }
+                          }
+                        },
+                        "Hong Kong Dollar": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "HKD"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": "$"
+                            }
+                          }
+                        },
+                        "Lempira": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "HNL"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": "L"
+                            }
+                          }
+                        },
+                        "Croatian Kuna": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "HRK"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": "kn"
+                            }
+                          }
+                        },
+                        "Gourde US Dollar": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "HTG USD"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": ""
+                            }
+                          }
+                        },
+                        "Forint": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "HUF"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": "Ft"
+                            }
+                          }
+                        },
+                        "Rupiah": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "IDR"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": "Rp"
+                            }
+                          }
+                        },
+                        "New Israeli Sheqel": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "ILS"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": "₪"
+                            }
+                          }
+                        },
+                        "Indian Rupee": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "INR"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": ""
+                            }
+                          }
+                        },
+                        "Indian Rupee Ngultrum": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "INR BTN"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": ""
+                            }
+                          }
+                        },
+                        "Iraqi Dinar": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "IQD"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": ""
+                            }
+                          }
+                        },
+                        "Iranian Rial": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "IRR"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": "﷼"
+                            }
+                          }
+                        },
+                        "Iceland Krona": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "ISK"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": "kr"
+                            }
+                          }
+                        },
+                        "Jamaican Dollar": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "JMD"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": "J$"
+                            }
+                          }
+                        },
+                        "Jordanian Dinar": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "JOD"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": ""
+                            }
+                          }
+                        },
+                        "Yen": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "JPY"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": "¥"
+                            }
+                          }
+                        },
+                        "Kenyan Shilling": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "KES"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": ""
+                            }
+                          }
+                        },
+                        "Som": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "KGS"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": "лв"
+                            }
+                          }
+                        },
+                        "Riel": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "KHR"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": "៛"
+                            }
+                          }
+                        },
+                        "Comoro Franc": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "KMF"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": ""
+                            }
+                          }
+                        },
+                        "North Korean Won": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "KPW"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": "₩"
+                            }
+                          }
+                        },
+                        "Won": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "KRW"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": "₩"
+                            }
+                          }
+                        },
+                        "Kuwaiti Dinar": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "KWD"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": ""
+                            }
+                          }
+                        },
+                        "Cayman Islands Dollar": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "KYD"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": "$"
+                            }
+                          }
+                        },
+                        "Tenge": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "KZT"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": "лв"
+                            }
+                          }
+                        },
+                        "Kip": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "LAK"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": "₭"
+                            }
+                          }
+                        },
+                        "Lebanese Pound": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "LBP"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": "£"
+                            }
+                          }
+                        },
+                        "Sri Lanka Rupee": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "LKR"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": "₨"
+                            }
+                          }
+                        },
+                        "Liberian Dollar": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "LRD"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": "$"
+                            }
+                          }
+                        },
+                        "Lithuanian Litas": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "LTL"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": "Lt"
+                            }
+                          }
+                        },
+                        "Latvian Lats": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "LVL"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": "Ls"
+                            }
+                          }
+                        },
+                        "Libyan Dinar": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "LYD"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": ""
+                            }
+                          }
+                        },
+                        "Moroccan Dirham": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "MAD"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": ""
+                            }
+                          }
+                        },
+                        "Moldovan Leu": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "MDL"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": ""
+                            }
+                          }
+                        },
+                        "Malagasy Ariary": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "MGA"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": ""
+                            }
+                          }
+                        },
+                        "Denar": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "MKD"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": "ден"
+                            }
+                          }
+                        },
+                        "Kyat": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "MMK"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": ""
+                            }
+                          }
+                        },
+                        "Tugrik": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "MNT"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": "₮"
+                            }
+                          }
+                        },
+                        "Pataca": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "MOP"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": ""
+                            }
+                          }
+                        },
+                        "Ouguiya": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "MRO"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": ""
+                            }
+                          }
+                        },
+                        "Mauritius Rupee": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "MUR"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": "₨"
+                            }
+                          }
+                        },
+                        "Rufiyaa": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "MVR"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": ""
+                            }
+                          }
+                        },
+                        "Kwacha": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "MWK"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": ""
+                            }
+                          }
+                        },
+                        "Mexican Peso Mexican Unidad de Inversion (UDI)": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "MXN MXV"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": "$"
+                            }
+                          }
+                        },
+                        "Malaysian Ringgit": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "MYR"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": "RM"
+                            }
+                          }
+                        },
+                        "Metical": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "MZN"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": "MT"
+                            }
+                          }
+                        },
+                        "Naira": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "NGN"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": "₦"
+                            }
+                          }
+                        },
+                        "Cordoba Oro": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "NIO"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": "C$"
+                            }
+                          }
+                        },
+                        "Norwegian Krone": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "NOK"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": "kr"
+                            }
+                          }
+                        },
+                        "Nepalese Rupee": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "NPR"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": "₨"
+                            }
+                          }
+                        },
+                        "New Zealand Dollar": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "NZD"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": "$"
+                            }
+                          }
+                        },
+                        "Rial Omani": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "OMR"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": "﷼"
+                            }
+                          }
+                        },
+                        "Balboa US Dollar": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "PAB USD"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": "B/."
+                            }
+                          }
+                        },
+                        "Nuevo Sol": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "PEN"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": "S/."
+                            }
+                          }
+                        },
+                        "Kina": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "PGK"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": ""
+                            }
+                          }
+                        },
+                        "Philippine Peso": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "PHP"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": "Php"
+                            }
+                          }
+                        },
+                        "Pakistan Rupee": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "PKR"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": "₨"
+                            }
+                          }
+                        },
+                        "Zloty": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "PLN"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": "zł"
+                            }
+                          }
+                        },
+                        "Guarani": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "PYG"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": "Gs"
+                            }
+                          }
+                        },
+                        "Qatari Rial": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "QAR"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": "﷼"
+                            }
+                          }
+                        },
+                        "New Leu": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "RON"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": "lei"
+                            }
+                          }
+                        },
+                        "Serbian Dinar": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "RSD"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": "Дин."
+                            }
+                          }
+                        },
+                        "Russian Ruble": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "RUB"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": "руб"
+                            }
+                          }
+                        },
+                        "Rwanda Franc": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "RWF"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": ""
+                            }
+                          }
+                        },
+                        "Saudi Riyal": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "SAR"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": "﷼"
+                            }
+                          }
+                        },
+                        "Solomon Islands Dollar": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "SBD"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": "$"
+                            }
+                          }
+                        },
+                        "Seychelles Rupee": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "SCR"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": "₨"
+                            }
+                          }
+                        },
+                        "Sudanese Pound": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "SDG"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": ""
+                            }
+                          }
+                        },
+                        "Swedish Krona": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "SEK"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": "kr"
+                            }
+                          }
+                        },
+                        "Singapore Dollar": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "SGD"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": "$"
+                            }
+                          }
+                        },
+                        "Saint Helena Pound": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "SHP"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": "£"
+                            }
+                          }
+                        },
+                        "Leone": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "SLL"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": ""
+                            }
+                          }
+                        },
+                        "Somali Shilling": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "SOS"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": "S"
+                            }
+                          }
+                        },
+                        "Surinam Dollar": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "SRD"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": "$"
+                            }
+                          }
+                        },
+                        "Dobra": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "STD"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": ""
+                            }
+                          }
+                        },
+                        "El Salvador Colon US Dollar": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "SVC USD"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": "$"
+                            }
+                          }
+                        },
+                        "Syrian Pound": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "SYP"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": "£"
+                            }
+                          }
+                        },
+                        "Lilangeni": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "SZL"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": ""
+                            }
+                          }
+                        },
+                        "Baht": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "THB"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": "฿"
+                            }
+                          }
+                        },
+                        "Somoni": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "TJS"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": ""
+                            }
+                          }
+                        },
+                        "Manat": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "TMT"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": ""
+                            }
+                          }
+                        },
+                        "Tunisian Dinar": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "TND"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": ""
+                            }
+                          }
+                        },
+                        "Pa'anga": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "TOP"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": ""
+                            }
+                          }
+                        },
+                        "Turkish Lira": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "TRY"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": "TL"
+                            }
+                          }
+                        },
+                        "Trinidad and Tobago Dollar": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "TTD"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": "TT$"
+                            }
+                          }
+                        },
+                        "New Taiwan Dollar": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "TWD"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": "NT$"
+                            }
+                          }
+                        },
+                        "Tanzanian Shilling": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "TZS"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": ""
+                            }
+                          }
+                        },
+                        "Hryvnia": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "UAH"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": "₴"
+                            }
+                          }
+                        },
+                        "Uganda Shilling": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "UGX"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": ""
+                            }
+                          }
+                        },
+                        "US Dollar": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "USD"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": "$"
+                            }
+                          }
+                        },
+                        "Peso Uruguayo Uruguay Peso en Unidades Indexadas": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "UYU UYI"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": "$U"
+                            }
+                          }
+                        },
+                        "Uzbekistan Sum": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "UZS"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": "лв"
+                            }
+                          }
+                        },
+                        "Bolivar Fuerte": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "VEF"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": "Bs"
+                            }
+                          }
+                        },
+                        "Dong": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "VND"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": "₫"
+                            }
+                          }
+                        },
+                        "Vatu": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "VUV"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": ""
+                            }
+                          }
+                        },
+                        "Tala": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "WST"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": ""
+                            }
+                          }
+                        },
+                        "CFA Franc BEAC": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "XAF"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": ""
+                            }
+                          }
+                        },
+                        "Silver": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "XAG"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": ""
+                            }
+                          }
+                        },
+                        "Gold": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "XAU"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": ""
+                            }
+                          }
+                        },
+                        "Bond Markets Units European Composite Unit (EURCO)": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "XBA"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": ""
+                            }
+                          }
+                        },
+                        "European Monetary Unit (E.M.U.-6)": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "XBB"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": ""
+                            }
+                          }
+                        },
+                        "European Unit of Account 9(E.U.A.-9)": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "XBC"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": ""
+                            }
+                          }
+                        },
+                        "European Unit of Account 17(E.U.A.-17)": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "XBD"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": ""
+                            }
+                          }
+                        },
+                        "East Caribbean Dollar": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "XCD"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": "$"
+                            }
+                          }
+                        },
+                        "SDR": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "XDR"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": ""
+                            }
+                          }
+                        },
+                        "UIC-Franc": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "XFU"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": ""
+                            }
+                          }
+                        },
+                        "CFA Franc BCEAO": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "XOF"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": ""
+                            }
+                          }
+                        },
+                        "Palladium": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "XPD"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": ""
+                            }
+                          }
+                        },
+                        "CFP Franc": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "XPF"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": ""
+                            }
+                          }
+                        },
+                        "Platinum": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "XPT"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": ""
+                            }
+                          }
+                        },
+                        "Codes specifically reserved for testing purposes": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "XTS"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": ""
+                            }
+                          }
+                        },
+                        "Yemeni Rial": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "YER"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": "﷼"
+                            }
+                          }
+                        },
+                        "Rand": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "ZAR"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": "R"
+                            }
+                          }
+                        },
+                        "Rand Loti": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "ZAR LSL"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": ""
+                            }
+                          }
+                        },
+                        "Rand Namibia Dollar": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "ZAR NAD"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": ""
+                            }
+                          }
+                        },
+                        "Zambian Kwacha": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "ZMK"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": ""
+                            }
+                          }
+                        },
+                        "Zimbabwe Dollar": {
+                          "type": "object",
+                          "members": {
+                            "code": {
+                              "type": "constant",
+                              "value": "ZWL"
+                            },
+                            "symbol": {
+                              "type": "constant",
+                              "value": ""
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "en_AU": {
+              "type": "object",
+              "members": {
+                "title": {
+                  "type": "constant",
+                  "value": "Australia (English)"
+                },
+                "name": {
+                  "type": "object",
+                  "members": {
+                    "first_name": {
+                      "type": "array"
+                    },
+                    "last_name": {
+                      "type": "array"
+                    }
+                  }
+                },
+                "company": {
+                  "type": "object",
+                  "members": {
+                    "suffix": {
+                      "type": "array"
+                    }
+                  }
+                },
+                "internet": {
+                  "type": "object",
+                  "members": {
+                    "domain_suffix": {
+                      "type": "array"
+                    }
+                  }
+                },
+                "address": {
+                  "type": "object",
+                  "members": {
+                    "state_abbr": {
+                      "type": "array"
+                    },
+                    "state": {
+                      "type": "array"
+                    },
+                    "postcode": {
+                      "type": "array"
+                    },
+                    "building_number": {
+                      "type": "array"
+                    },
+                    "street_suffix": {
+                      "type": "array"
+                    },
+                    "default_country": {
+                      "type": "array"
+                    }
+                  }
+                },
+                "phone_number": {
+                  "type": "object",
+                  "members": {
+                    "formats": {
+                      "type": "array"
+                    }
+                  }
+                }
+              }
+            },
+            "en_BORK": {
+              "type": "object",
+              "members": {
+                "title": {
+                  "type": "constant",
+                  "value": "Bork (English)"
+                },
+                "lorem": {
+                  "type": "object",
+                  "members": {
+                    "words": {
+                      "type": "array"
+                    }
+                  }
+                }
+              }
+            },
+            "en_CA": {
+              "type": "object",
+              "members": {
+                "title": {
+                  "type": "constant",
+                  "value": "Canada (English)"
+                },
+                "address": {
+                  "type": "object",
+                  "members": {
+                    "postcode": {
+                      "type": "array"
+                    },
+                    "state": {
+                      "type": "array"
+                    },
+                    "state_abbr": {
+                      "type": "array"
+                    },
+                    "default_country": {
+                      "type": "array"
+                    }
+                  }
+                },
+                "internet": {
+                  "type": "object",
+                  "members": {
+                    "free_email": {
+                      "type": "array"
+                    },
+                    "domain_suffix": {
+                      "type": "array"
+                    }
+                  }
+                },
+                "phone_number": {
+                  "type": "object",
+                  "members": {
+                    "formats": {
+                      "type": "array"
+                    }
+                  }
+                }
+              }
+            },
+            "en_GB": {
+              "type": "object",
+              "members": {
+                "title": {
+                  "type": "constant",
+                  "value": "Great Britain (English)"
+                },
+                "address": {
+                  "type": "object",
+                  "members": {
+                    "postcode": {
+                      "type": "constant",
+                      "value": "/[A-PR-UWYZ][A-HK-Y]?[0-9][ABEHMNPRVWXY0-9]? [0-9][ABD-HJLN-UW-Z]{2}/"
+                    },
+                    "county": {
+                      "type": "array"
+                    },
+                    "uk_country": {
+                      "type": "array"
+                    },
+                    "default_country": {
+                      "type": "array"
+                    }
+                  }
+                },
+                "internet": {
+                  "type": "object",
+                  "members": {
+                    "domain_suffix": {
+                      "type": "array"
+                    }
+                  }
+                },
+                "phone_number": {
+                  "type": "object",
+                  "members": {
+                    "formats": {
+                      "type": "array"
+                    }
+                  }
+                },
+                "cell_phone": {
+                  "type": "object",
+                  "members": {
+                    "formats": {
+                      "type": "array"
+                    }
+                  }
+                }
+              }
+            },
+            "en_IND": {
+              "type": "object",
+              "members": {
+                "title": {
+                  "type": "constant",
+                  "value": "India (English)"
+                },
+                "name": {
+                  "type": "object",
+                  "members": {
+                    "first_name": {
+                      "type": "array"
+                    },
+                    "last_name": {
+                      "type": "array"
+                    }
+                  }
+                },
+                "address": {
+                  "type": "object",
+                  "members": {
+                    "postcode": {
+                      "type": "array"
+                    },
+                    "state": {
+                      "type": "array"
+                    },
+                    "state_abbr": {
+                      "type": "array"
+                    },
+                    "default_country": {
+                      "type": "array"
+                    }
+                  }
+                },
+                "internet": {
+                  "type": "object",
+                  "members": {
+                    "free_email": {
+                      "type": "array"
+                    },
+                    "domain_suffix": {
+                      "type": "array"
+                    }
+                  }
+                },
+                "company": {
+                  "type": "object",
+                  "members": {
+                    "suffix": {
+                      "type": "array"
+                    }
+                  }
+                },
+                "phone_number": {
+                  "type": "object",
+                  "members": {
+                    "formats": {
+                      "type": "array"
+                    }
+                  }
+                }
+              }
+            },
+            "en_US": {
+              "type": "object",
+              "members": {
+                "title": {
+                  "type": "constant",
+                  "value": "United States (English)"
+                },
+                "internet": {
+                  "type": "object",
+                  "members": {
+                    "domain_suffix": {
+                      "type": "array"
+                    }
+                  }
+                },
+                "address": {
+                  "type": "object",
+                  "members": {
+                    "default_country": {
+                      "type": "array"
+                    },
+                    "postcode_by_state": {
+                      "type": "object",
+                      "members": {
+                        "AL": {
+                          "type": "constant",
+                          "value": "350##"
+                        },
+                        "AK": {
+                          "type": "constant",
+                          "value": "995##"
+                        },
+                        "AS": {
+                          "type": "constant",
+                          "value": "967##"
+                        },
+                        "AZ": {
+                          "type": "constant",
+                          "value": "850##"
+                        },
+                        "AR": {
+                          "type": "constant",
+                          "value": "717##"
+                        },
+                        "CA": {
+                          "type": "constant",
+                          "value": "900##"
+                        },
+                        "CO": {
+                          "type": "constant",
+                          "value": "800##"
+                        },
+                        "CT": {
+                          "type": "constant",
+                          "value": "061##"
+                        },
+                        "DC": {
+                          "type": "constant",
+                          "value": "204##"
+                        },
+                        "DE": {
+                          "type": "constant",
+                          "value": "198##"
+                        },
+                        "FL": {
+                          "type": "constant",
+                          "value": "322##"
+                        },
+                        "GA": {
+                          "type": "constant",
+                          "value": "301##"
+                        },
+                        "HI": {
+                          "type": "constant",
+                          "value": "967##"
+                        },
+                        "ID": {
+                          "type": "constant",
+                          "value": "832##"
+                        },
+                        "IL": {
+                          "type": "constant",
+                          "value": "600##"
+                        },
+                        "IN": {
+                          "type": "constant",
+                          "value": "463##"
+                        },
+                        "IA": {
+                          "type": "constant",
+                          "value": "510##"
+                        },
+                        "KS": {
+                          "type": "constant",
+                          "value": "666##"
+                        },
+                        "KY": {
+                          "type": "constant",
+                          "value": "404##"
+                        },
+                        "LA": {
+                          "type": "constant",
+                          "value": "701##"
+                        },
+                        "ME": {
+                          "type": "constant",
+                          "value": "042##"
+                        },
+                        "MD": {
+                          "type": "constant",
+                          "value": "210##"
+                        },
+                        "MA": {
+                          "type": "constant",
+                          "value": "026##"
+                        },
+                        "MI": {
+                          "type": "constant",
+                          "value": "480##"
+                        },
+                        "MN": {
+                          "type": "constant",
+                          "value": "555##"
+                        },
+                        "MS": {
+                          "type": "constant",
+                          "value": "387##"
+                        },
+                        "MO": {
+                          "type": "constant",
+                          "value": "650##"
+                        },
+                        "MT": {
+                          "type": "constant",
+                          "value": "590##"
+                        },
+                        "NE": {
+                          "type": "constant",
+                          "value": "688##"
+                        },
+                        "NV": {
+                          "type": "constant",
+                          "value": "898##"
+                        },
+                        "NH": {
+                          "type": "constant",
+                          "value": "036##"
+                        },
+                        "NJ": {
+                          "type": "constant",
+                          "value": "076##"
+                        },
+                        "NM": {
+                          "type": "constant",
+                          "value": "880##"
+                        },
+                        "NY": {
+                          "type": "constant",
+                          "value": "122##"
+                        },
+                        "NC": {
+                          "type": "constant",
+                          "value": "288##"
+                        },
+                        "ND": {
+                          "type": "constant",
+                          "value": "586##"
+                        },
+                        "OH": {
+                          "type": "constant",
+                          "value": "444##"
+                        },
+                        "OK": {
+                          "type": "constant",
+                          "value": "730##"
+                        },
+                        "OR": {
+                          "type": "constant",
+                          "value": "979##"
+                        },
+                        "PA": {
+                          "type": "constant",
+                          "value": "186##"
+                        },
+                        "RI": {
+                          "type": "constant",
+                          "value": "029##"
+                        },
+                        "SC": {
+                          "type": "constant",
+                          "value": "299##"
+                        },
+                        "SD": {
+                          "type": "constant",
+                          "value": "577##"
+                        },
+                        "TN": {
+                          "type": "constant",
+                          "value": "383##"
+                        },
+                        "TX": {
+                          "type": "constant",
+                          "value": "798##"
+                        },
+                        "UT": {
+                          "type": "constant",
+                          "value": "847##"
+                        },
+                        "VT": {
+                          "type": "constant",
+                          "value": "050##"
+                        },
+                        "VA": {
+                          "type": "constant",
+                          "value": "222##"
+                        },
+                        "WA": {
+                          "type": "constant",
+                          "value": "990##"
+                        },
+                        "WV": {
+                          "type": "constant",
+                          "value": "247##"
+                        },
+                        "WI": {
+                          "type": "constant",
+                          "value": "549##"
+                        },
+                        "WY": {
+                          "type": "constant",
+                          "value": "831##"
+                        }
+                      }
+                    }
+                  }
+                },
+                "phone_number": {
+                  "type": "object",
+                  "members": {
+                    "area_code": {
+                      "type": "array"
+                    },
+                    "exchange_code": {
+                      "type": "array"
+                    }
+                  }
+                }
+              }
+            },
+            "en_au_ocker": {
+              "type": "object",
+              "members": {
+                "title": {
+                  "type": "constant",
+                  "value": "Australia Ocker (English)"
+                },
+                "name": {
+                  "type": "object",
+                  "members": {
+                    "first_name": {
+                      "type": "array"
+                    },
+                    "last_name": {
+                      "type": "array"
+                    },
+                    "ocker_first_name": {
+                      "type": "array"
+                    }
+                  }
+                },
+                "company": {
+                  "type": "object",
+                  "members": {
+                    "suffix": {
+                      "type": "array"
+                    }
+                  }
+                },
+                "internet": {
+                  "type": "object",
+                  "members": {
+                    "domain_suffix": {
+                      "type": "array"
+                    }
+                  }
+                },
+                "address": {
+                  "type": "object",
+                  "members": {
+                    "street_root": {
+                      "type": "array"
+                    },
+                    "street_name": {
+                      "type": "array"
+                    },
+                    "city_prefix": {
+                      "type": "array"
+                    },
+                    "city": {
+                      "type": "array"
+                    },
+                    "state_abbr": {
+                      "type": "array"
+                    },
+                    "region": {
+                      "type": "array"
+                    },
+                    "state": {
+                      "type": "array"
+                    },
+                    "postcode": {
+                      "type": "array"
+                    },
+                    "building_number": {
+                      "type": "array"
+                    },
+                    "street_suffix": {
+                      "type": "array"
+                    },
+                    "default_country": {
+                      "type": "array"
+                    }
+                  }
+                },
+                "phone_number": {
+                  "type": "object",
+                  "members": {
+                    "formats": {
+                      "type": "array"
+                    }
+                  }
+                }
+              }
+            },
+            "es": {
+              "type": "object",
+              "members": {
+                "title": {
+                  "type": "constant",
+                  "value": "Spanish"
+                },
+                "address": {
+                  "type": "object",
+                  "members": {
+                    "city_prefix": {
+                      "type": "array"
+                    },
+                    "country": {
+                      "type": "array"
+                    },
+                    "building_number": {
+                      "type": "array"
+                    },
+                    "street_suffix": {
+                      "type": "array"
+                    },
+                    "secondary_address": {
+                      "type": "array"
+                    },
+                    "postcode": {
+                      "type": "array"
+                    },
+                    "province": {
+                      "type": "array"
+                    },
+                    "state": {
+                      "type": "array"
+                    },
+                    "state_abbr": {
+                      "type": "array"
+                    },
+                    "time_zone": {
+                      "type": "array"
+                    },
+                    "city": {
+                      "type": "array"
+                    },
+                    "street_name": {
+                      "type": "array"
+                    },
+                    "street_address": {
+                      "type": "array"
+                    },
+                    "default_country": {
+                      "type": "array"
+                    }
+                  }
+                },
+                "company": {
+                  "type": "object",
+                  "members": {
+                    "suffix": {
+                      "type": "array"
+                    },
+                    "noun": {
+                      "type": "array"
+                    },
+                    "descriptor": {
+                      "type": "array"
+                    },
+                    "adjective": {
+                      "type": "array"
+                    },
+                    "name": {
+                      "type": "array"
+                    }
+                  }
+                },
+                "internet": {
+                  "type": "object",
+                  "members": {
+                    "free_email": {
+                      "type": "array"
+                    },
+                    "domain_suffix": {
+                      "type": "array"
+                    }
+                  }
+                },
+                "name": {
+                  "type": "object",
+                  "members": {
+                    "first_name": {
+                      "type": "array"
+                    },
+                    "last_name": {
+                      "type": "array"
+                    },
+                    "prefix": {
+                      "type": "array"
+                    },
+                    "suffix": {
+                      "type": "array"
+                    },
+                    "title": {
+                      "type": "object",
+                      "members": {
+                        "descriptor": {
+                          "type": "array"
+                        },
+                        "level": {
+                          "type": "array"
+                        },
+                        "job": {
+                          "type": "array"
+                        }
+                      }
+                    },
+                    "name": {
+                      "type": "array"
+                    }
+                  }
+                },
+                "phone_number": {
+                  "type": "object",
+                  "members": {
+                    "formats": {
+                      "type": "array"
+                    }
+                  }
+                },
+                "cell_phone": {
+                  "type": "object",
+                  "members": {
+                    "formats": {
+                      "type": "array"
+                    }
+                  }
+                }
+              }
+            },
+            "fa": {
+              "type": "object",
+              "members": {
+                "title": {
+                  "type": "constant",
+                  "value": "Farsi"
+                },
+                "name": {
+                  "type": "object",
+                  "members": {
+                    "first_name": {
+                      "type": "array"
+                    },
+                    "last_name": {
+                      "type": "array"
+                    },
+                    "prefix": {
+                      "type": "array"
+                    }
+                  }
+                }
+              }
+            },
+            "fr": {
+              "type": "object",
+              "members": {
+                "title": {
+                  "type": "constant",
+                  "value": "French"
+                },
+                "address": {
+                  "type": "object",
+                  "members": {
+                    "building_number": {
+                      "type": "array"
+                    },
+                    "street_prefix": {
+                      "type": "array"
+                    },
+                    "secondary_address": {
+                      "type": "array"
+                    },
+                    "postcode": {
+                      "type": "array"
+                    },
+                    "state": {
+                      "type": "array"
+                    },
+                    "city_name": {
+                      "type": "array"
+                    },
+                    "city": {
+                      "type": "array"
+                    },
+                    "street_suffix": {
+                      "type": "array"
+                    },
+                    "street_name": {
+                      "type": "array"
+                    },
+                    "street_address": {
+                      "type": "array"
+                    },
+                    "default_country": {
+                      "type": "array"
+                    }
+                  }
+                },
+                "company": {
+                  "type": "object",
+                  "members": {
+                    "suffix": {
+                      "type": "array"
+                    },
+                    "adjective": {
+                      "type": "array"
+                    },
+                    "descriptor": {
+                      "type": "array"
+                    },
+                    "noun": {
+                      "type": "array"
+                    },
+                    "bs_verb": {
+                      "type": "array"
+                    },
+                    "bs_adjective": {
+                      "type": "array"
+                    },
+                    "bs_noun": {
+                      "type": "array"
+                    },
+                    "name": {
+                      "type": "array"
+                    }
+                  }
+                },
+                "internet": {
+                  "type": "object",
+                  "members": {
+                    "free_email": {
+                      "type": "array"
+                    },
+                    "domain_suffix": {
+                      "type": "array"
+                    }
+                  }
+                },
+                "lorem": {
+                  "type": "object",
+                  "members": {
+                    "words": {
+                      "type": "array"
+                    },
+                    "supplemental": {
+                      "type": "array"
+                    }
+                  }
+                },
+                "name": {
+                  "type": "object",
+                  "members": {
+                    "first_name": {
+                      "type": "array"
+                    },
+                    "last_name": {
+                      "type": "array"
+                    },
+                    "prefix": {
+                      "type": "array"
+                    },
+                    "title": {
+                      "type": "object",
+                      "members": {
+                        "job": {
+                          "type": "array"
+                        }
+                      }
+                    },
+                    "name": {
+                      "type": "array"
+                    }
+                  }
+                },
+                "phone_number": {
+                  "type": "object",
+                  "members": {
+                    "formats": {
+                      "type": "array"
+                    }
+                  }
+                }
+              }
+            },
+            "it": {
+              "type": "object",
+              "members": {
+                "title": {
+                  "type": "constant",
+                  "value": "Italian"
+                },
+                "address": {
+                  "type": "object",
+                  "members": {
+                    "city_prefix": {
+                      "type": "array"
+                    },
+                    "city_suffix": {
+                      "type": "array"
+                    },
+                    "country": {
+                      "type": "array"
+                    },
+                    "building_number": {
+                      "type": "array"
+                    },
+                    "street_suffix": {
+                      "type": "array"
+                    },
+                    "secondary_address": {
+                      "type": "array"
+                    },
+                    "postcode": {
+                      "type": "array"
+                    },
+                    "state": {
+                      "type": "array"
+                    },
+                    "state_abbr": {
+                      "type": "array"
+                    },
+                    "city": {
+                      "type": "array"
+                    },
+                    "street_name": {
+                      "type": "array"
+                    },
+                    "street_address": {
+                      "type": "array"
+                    },
+                    "default_country": {
+                      "type": "array"
+                    }
+                  }
+                },
+                "company": {
+                  "type": "object",
+                  "members": {
+                    "suffix": {
+                      "type": "array"
+                    },
+                    "noun": {
+                      "type": "array"
+                    },
+                    "descriptor": {
+                      "type": "array"
+                    },
+                    "adjective": {
+                      "type": "array"
+                    },
+                    "bs_noun": {
+                      "type": "array"
+                    },
+                    "bs_verb": {
+                      "type": "array"
+                    },
+                    "bs_adjective": {
+                      "type": "array"
+                    },
+                    "name": {
+                      "type": "array"
+                    }
+                  }
+                },
+                "internet": {
+                  "type": "object",
+                  "members": {
+                    "free_email": {
+                      "type": "array"
+                    },
+                    "domain_suffix": {
+                      "type": "array"
+                    }
+                  }
+                },
+                "name": {
+                  "type": "object",
+                  "members": {
+                    "first_name": {
+                      "type": "array"
+                    },
+                    "last_name": {
+                      "type": "array"
+                    },
+                    "prefix": {
+                      "type": "array"
+                    },
+                    "suffix": {
+                      "type": "array"
+                    },
+                    "name": {
+                      "type": "array"
+                    }
+                  }
+                },
+                "phone_number": {
+                  "type": "object",
+                  "members": {
+                    "formats": {
+                      "type": "array"
+                    }
+                  }
+                }
+              }
+            },
+            "ja": {
+              "type": "object",
+              "members": {
+                "title": {
+                  "type": "constant",
+                  "value": "Japanese"
+                },
+                "address": {
+                  "type": "object",
+                  "members": {
+                    "postcode": {
+                      "type": "array"
+                    },
+                    "state": {
+                      "type": "array"
+                    },
+                    "state_abbr": {
+                      "type": "array"
+                    },
+                    "city_prefix": {
+                      "type": "array"
+                    },
+                    "city_suffix": {
+                      "type": "array"
+                    },
+                    "city": {
+                      "type": "array"
+                    },
+                    "street_name": {
+                      "type": "array"
+                    }
+                  }
+                },
+                "phone_number": {
+                  "type": "object",
+                  "members": {
+                    "formats": {
+                      "type": "array"
+                    }
+                  }
+                },
+                "cell_phone": {
+                  "type": "object",
+                  "members": {
+                    "formats": {
+                      "type": "array"
+                    }
+                  }
+                },
+                "name": {
+                  "type": "object",
+                  "members": {
+                    "last_name": {
+                      "type": "array"
+                    },
+                    "first_name": {
+                      "type": "array"
+                    },
+                    "name": {
+                      "type": "array"
+                    }
+                  }
+                }
+              }
+            },
+            "ko": {
+              "type": "object",
+              "members": {
+                "title": {
+                  "type": "constant",
+                  "value": "Korean"
+                },
+                "address": {
+                  "type": "object",
+                  "members": {
+                    "postcode": {
+                      "type": "array"
+                    },
+                    "state": {
+                      "type": "array"
+                    },
+                    "state_abbr": {
+                      "type": "array"
+                    },
+                    "city_suffix": {
+                      "type": "array"
+                    },
+                    "city_name": {
+                      "type": "array"
+                    },
+                    "city": {
+                      "type": "array"
+                    },
+                    "street_root": {
+                      "type": "array"
+                    },
+                    "street_suffix": {
+                      "type": "array"
+                    },
+                    "street_name": {
+                      "type": "array"
+                    }
+                  }
+                },
+                "phone_number": {
+                  "type": "object",
+                  "members": {
+                    "formats": {
+                      "type": "array"
+                    }
+                  }
+                },
+                "company": {
+                  "type": "object",
+                  "members": {
+                    "suffix": {
+                      "type": "array"
+                    },
+                    "prefix": {
+                      "type": "array"
+                    },
+                    "name": {
+                      "type": "array"
+                    }
+                  }
+                },
+                "internet": {
+                  "type": "object",
+                  "members": {
+                    "free_email": {
+                      "type": "array"
+                    },
+                    "domain_suffix": {
+                      "type": "array"
+                    }
+                  }
+                },
+                "lorem": {
+                  "type": "object",
+                  "members": {
+                    "words": {
+                      "type": "array"
+                    }
+                  }
+                },
+                "name": {
+                  "type": "object",
+                  "members": {
+                    "last_name": {
+                      "type": "array"
+                    },
+                    "first_name": {
+                      "type": "array"
+                    },
+                    "name": {
+                      "type": "array"
+                    }
+                  }
+                }
+              }
+            },
+            "nb_NO": {
+              "type": "object",
+              "members": {
+                "title": {
+                  "type": "constant",
+                  "value": "Norwegian"
+                },
+                "address": {
+                  "type": "object",
+                  "members": {
+                    "city_root": {
+                      "type": "array"
+                    },
+                    "city_suffix": {
+                      "type": "array"
+                    },
+                    "street_prefix": {
+                      "type": "array"
+                    },
+                    "street_root": {
+                      "type": "array"
+                    },
+                    "street_suffix": {
+                      "type": "array"
+                    },
+                    "common_street_suffix": {
+                      "type": "array"
+                    },
+                    "building_number": {
+                      "type": "array"
+                    },
+                    "secondary_address": {
+                      "type": "array"
+                    },
+                    "postcode": {
+                      "type": "array"
+                    },
+                    "state": {
+                      "type": "array"
+                    },
+                    "city": {
+                      "type": "array"
+                    },
+                    "street_name": {
+                      "type": "array"
+                    },
+                    "street_address": {
+                      "type": "array"
+                    },
+                    "default_country": {
+                      "type": "array"
+                    }
+                  }
+                },
+                "company": {
+                  "type": "object",
+                  "members": {
+                    "suffix": {
+                      "type": "array"
+                    },
+                    "name": {
+                      "type": "array"
+                    }
+                  }
+                },
+                "internet": {
+                  "type": "object",
+                  "members": {
+                    "domain_suffix": {
+                      "type": "array"
+                    }
+                  }
+                },
+                "name": {
+                  "type": "object",
+                  "members": {
+                    "first_name": {
+                      "type": "array"
+                    },
+                    "feminine_name": {
+                      "type": "array"
+                    },
+                    "masculine_name": {
+                      "type": "array"
+                    },
+                    "last_name": {
+                      "type": "array"
+                    },
+                    "prefix": {
+                      "type": "array"
+                    },
+                    "suffix": {
+                      "type": "array"
+                    },
+                    "name": {
+                      "type": "array"
+                    }
+                  }
+                },
+                "phone_number": {
+                  "type": "object",
+                  "members": {
+                    "formats": {
+                      "type": "array"
+                    }
+                  }
+                }
+              }
+            },
+            "nep": {
+              "type": "object",
+              "members": {
+                "title": {
+                  "type": "constant",
+                  "value": "Nepalese"
+                },
+                "name": {
+                  "type": "object",
+                  "members": {
+                    "first_name": {
+                      "type": "array"
+                    },
+                    "last_name": {
+                      "type": "array"
+                    }
+                  }
+                },
+                "address": {
+                  "type": "object",
+                  "members": {
+                    "postcode": {
+                      "type": "array"
+                    },
+                    "state": {
+                      "type": "array"
+                    },
+                    "city": {
+                      "type": "array"
+                    },
+                    "default_country": {
+                      "type": "array"
+                    }
+                  }
+                },
+                "internet": {
+                  "type": "object",
+                  "members": {
+                    "free_email": {
+                      "type": "array"
+                    },
+                    "domain_suffix": {
+                      "type": "array"
+                    }
+                  }
+                },
+                "company": {
+                  "type": "object",
+                  "members": {
+                    "suffix": {
+                      "type": "array"
+                    }
+                  }
+                },
+                "phone_number": {
+                  "type": "object",
+                  "members": {
+                    "formats": {
+                      "type": "array"
+                    }
+                  }
+                }
+              }
+            },
+            "nl": {
+              "type": "object",
+              "members": {
+                "title": {
+                  "type": "constant",
+                  "value": "Dutch"
+                },
+                "address": {
+                  "type": "object",
+                  "members": {
+                    "city_prefix": {
+                      "type": "array"
+                    },
+                    "city_suffix": {
+                      "type": "array"
+                    },
+                    "city": {
+                      "type": "array"
+                    },
+                    "country": {
+                      "type": "array"
+                    },
+                    "building_number": {
+                      "type": "array"
+                    },
+                    "street_suffix": {
+                      "type": "array"
+                    },
+                    "secondary_address": {
+                      "type": "array"
+                    },
+                    "street_name": {
+                      "type": "array"
+                    },
+                    "street_address": {
+                      "type": "array"
+                    },
+                    "postcode": {
+                      "type": "array"
+                    },
+                    "state": {
+                      "type": "array"
+                    },
+                    "default_country": {
+                      "type": "array"
+                    }
+                  }
+                },
+                "company": {
+                  "type": "object",
+                  "members": {
+                    "suffix": {
+                      "type": "array"
+                    }
+                  }
+                },
+                "internet": {
+                  "type": "object",
+                  "members": {
+                    "free_email": {
+                      "type": "array"
+                    },
+                    "domain_suffix": {
+                      "type": "array"
+                    }
+                  }
+                },
+                "lorem": {
+                  "type": "object",
+                  "members": {
+                    "words": {
+                      "type": "array"
+                    },
+                    "supplemental": {
+                      "type": "array"
+                    }
+                  }
+                },
+                "name": {
+                  "type": "object",
+                  "members": {
+                    "first_name": {
+                      "type": "array"
+                    },
+                    "tussenvoegsel": {
+                      "type": "array"
+                    },
+                    "last_name": {
+                      "type": "array"
+                    },
+                    "prefix": {
+                      "type": "array"
+                    },
+                    "suffix": {
+                      "type": "array"
+                    },
+                    "name": {
+                      "type": "array"
+                    }
+                  }
+                },
+                "phone_number": {
+                  "type": "object",
+                  "members": {
+                    "formats": {
+                      "type": "array"
+                    }
+                  }
+                }
+              }
+            },
+            "pl": {
+              "type": "object",
+              "members": {
+                "title": {
+                  "type": "constant",
+                  "value": "Polish"
+                },
+                "name": {
+                  "type": "object",
+                  "members": {
+                    "first_name": {
+                      "type": "array"
+                    },
+                    "last_name": {
+                      "type": "array"
+                    },
+                    "prefix": {
+                      "type": "array"
+                    },
+                    "title": {
+                      "type": "object",
+                      "members": {
+                        "descriptor": {
+                          "type": "array"
+                        },
+                        "level": {
+                          "type": "array"
+                        },
+                        "job": {
+                          "type": "array"
+                        }
+                      }
+                    },
+                    "name": {
+                      "type": "array"
+                    }
+                  }
+                },
+                "address": {
+                  "type": "object",
+                  "members": {
+                    "country": {
+                      "type": "array"
+                    },
+                    "building_number": {
+                      "type": "array"
+                    },
+                    "street_prefix": {
+                      "type": "array"
+                    },
+                    "secondary_address": {
+                      "type": "array"
+                    },
+                    "postcode": {
+                      "type": "array"
+                    },
+                    "state": {
+                      "type": "array"
+                    },
+                    "state_abbr": {
+                      "type": "array"
+                    },
+                    "city_name": {
+                      "type": "array"
+                    },
+                    "city": {
+                      "type": "array"
+                    },
+                    "street_name": {
+                      "type": "array"
+                    },
+                    "street_address": {
+                      "type": "array"
+                    },
+                    "default_country": {
+                      "type": "array"
+                    }
+                  }
+                },
+                "company": {
+                  "type": "object",
+                  "members": {
+                    "suffix": {
+                      "type": "array"
+                    },
+                    "adjetive": {
+                      "type": "array"
+                    },
+                    "descriptor": {
+                      "type": "array"
+                    },
+                    "noun": {
+                      "type": "array"
+                    },
+                    "bs_verb": {
+                      "type": "array"
+                    },
+                    "bs_adjective": {
+                      "type": "array"
+                    },
+                    "bs_noun": {
+                      "type": "array"
+                    },
+                    "name": {
+                      "type": "array"
+                    }
+                  }
+                },
+                "internet": {
+                  "type": "object",
+                  "members": {
+                    "free_email": {
+                      "type": "array"
+                    },
+                    "domain_suffix": {
+                      "type": "array"
+                    }
+                  }
+                },
+                "lorem": {
+                  "type": "object",
+                  "members": {
+                    "words": {
+                      "type": "array"
+                    },
+                    "supplemental": {
+                      "type": "array"
+                    }
+                  }
+                },
+                "phone_number": {
+                  "type": "object",
+                  "members": {
+                    "formats": {
+                      "type": "array"
+                    }
+                  }
+                },
+                "cell_phone": {
+                  "type": "object",
+                  "members": {
+                    "formats": {
+                      "type": "array"
+                    }
+                  }
+                }
+              }
+            },
+            "pt_BR": {
+              "type": "object",
+              "members": {
+                "title": {
+                  "type": "constant",
+                  "value": "Portuguese (Brazil)"
+                },
+                "address": {
+                  "type": "object",
+                  "members": {
+                    "city_prefix": {
+                      "type": "array"
+                    },
+                    "city_suffix": {
+                      "type": "array"
+                    },
+                    "country": {
+                      "type": "array"
+                    },
+                    "building_number": {
+                      "type": "array"
+                    },
+                    "street_suffix": {
+                      "type": "array"
+                    },
+                    "secondary_address": {
+                      "type": "array"
+                    },
+                    "postcode": {
+                      "type": "array"
+                    },
+                    "state": {
+                      "type": "array"
+                    },
+                    "state_abbr": {
+                      "type": "array"
+                    },
+                    "default_country": {
+                      "type": "array"
+                    }
+                  }
+                },
+                "company": {
+                  "type": "object",
+                  "members": {
+                    "suffix": {
+                      "type": "array"
+                    },
+                    "name": {
+                      "type": "array"
+                    }
+                  }
+                },
+                "internet": {
+                  "type": "object",
+                  "members": {
+                    "free_email": {
+                      "type": "array"
+                    },
+                    "domain_suffix": {
+                      "type": "array"
+                    }
+                  }
+                },
+                "lorem": {
+                  "type": "object",
+                  "members": {
+                    "words": {
+                      "type": "array"
+                    }
+                  }
+                },
+                "name": {
+                  "type": "object",
+                  "members": {
+                    "first_name": {
+                      "type": "array"
+                    },
+                    "last_name": {
+                      "type": "array"
+                    },
+                    "prefix": {
+                      "type": "array"
+                    },
+                    "suffix": {
+                      "type": "array"
+                    }
+                  }
+                },
+                "phone_number": {
+                  "type": "object",
+                  "members": {
+                    "formats": {
+                      "type": "array"
+                    }
+                  }
+                }
+              }
+            },
+            "ru": {
+              "type": "object",
+              "members": {
+                "title": {
+                  "type": "constant",
+                  "value": "Russian"
+                },
+                "separator": {
+                  "type": "constant",
+                  "value": " и "
+                },
+                "address": {
+                  "type": "object",
+                  "members": {
+                    "country": {
+                      "type": "array"
+                    },
+                    "building_number": {
+                      "type": "array"
+                    },
+                    "street_suffix": {
+                      "type": "array"
+                    },
+                    "secondary_address": {
+                      "type": "array"
+                    },
+                    "postcode": {
+                      "type": "array"
+                    },
+                    "state": {
+                      "type": "array"
+                    },
+                    "street_title": {
+                      "type": "array"
+                    },
+                    "city_name": {
+                      "type": "array"
+                    },
+                    "city": {
+                      "type": "array"
+                    },
+                    "street_name": {
+                      "type": "array"
+                    },
+                    "street_address": {
+                      "type": "array"
+                    },
+                    "default_country": {
+                      "type": "array"
+                    }
+                  }
+                },
+                "internet": {
+                  "type": "object",
+                  "members": {
+                    "free_email": {
+                      "type": "array"
+                    },
+                    "domain_suffix": {
+                      "type": "array"
+                    }
+                  }
+                },
+                "name": {
+                  "type": "object",
+                  "members": {
+                    "male_first_name": {
+                      "type": "array"
+                    },
+                    "male_middle_name": {
+                      "type": "array"
+                    },
+                    "male_last_name": {
+                      "type": "array"
+                    },
+                    "female_first_name": {
+                      "type": "array"
+                    },
+                    "female_middle_name": {
+                      "type": "array"
+                    },
+                    "female_last_name": {
+                      "type": "array"
+                    },
+                    "name": {
+                      "type": "array"
+                    }
+                  }
+                },
+                "phone_number": {
+                  "type": "object",
+                  "members": {
+                    "formats": {
+                      "type": "array"
+                    }
+                  }
+                },
+                "commerce": {
+                  "type": "object",
+                  "members": {
+                    "color": {
+                      "type": "array"
+                    },
+                    "department": {
+                      "type": "array"
+                    },
+                    "product_name": {
+                      "type": "object",
+                      "members": {
+                        "adjective": {
+                          "type": "array"
+                        },
+                        "material": {
+                          "type": "array"
+                        },
+                        "product": {
+                          "type": "array"
+                        }
+                      }
+                    }
+                  }
+                },
+                "company": {
+                  "type": "object",
+                  "members": {
+                    "prefix": {
+                      "type": "array"
+                    },
+                    "suffix": {
+                      "type": "array"
+                    },
+                    "name": {
+                      "type": "array"
+                    }
+                  }
+                }
+              }
+            },
+            "sk": {
+              "type": "object",
+              "members": {
+                "title": {
+                  "type": "constant",
+                  "value": "Slovakian"
+                },
+                "address": {
+                  "type": "object",
+                  "members": {
+                    "city_prefix": {
+                      "type": "array"
+                    },
+                    "city_suffix": {
+                      "type": "array"
+                    },
+                    "country": {
+                      "type": "array"
+                    },
+                    "building_number": {
+                      "type": "array"
+                    },
+                    "secondary_address": {
+                      "type": "array"
+                    },
+                    "postcode": {
+                      "type": "array"
+                    },
+                    "state": {
+                      "type": "array"
+                    },
+                    "state_abbr": {
+                      "type": "array"
+                    },
+                    "time_zone": {
+                      "type": "array"
+                    },
+                    "city_name": {
+                      "type": "array"
+                    },
+                    "city": {
+                      "type": "array"
+                    },
+                    "street": {
+                      "type": "array"
+                    },
+                    "street_name": {
+                      "type": "array"
+                    },
+                    "street_address": {
+                      "type": "array"
+                    },
+                    "default_country": {
+                      "type": "array"
+                    }
+                  }
+                },
+                "company": {
+                  "type": "object",
+                  "members": {
+                    "suffix": {
+                      "type": "array"
+                    },
+                    "adjective": {
+                      "type": "array"
+                    },
+                    "descriptor": {
+                      "type": "array"
+                    },
+                    "noun": {
+                      "type": "array"
+                    },
+                    "bs_verb": {
+                      "type": "array"
+                    },
+                    "bs_noun": {
+                      "type": "array"
+                    },
+                    "name": {
+                      "type": "array"
+                    }
+                  }
+                },
+                "internet": {
+                  "type": "object",
+                  "members": {
+                    "free_email": {
+                      "type": "array"
+                    },
+                    "domain_suffix": {
+                      "type": "array"
+                    }
+                  }
+                },
+                "lorem": {
+                  "type": "object",
+                  "members": {
+                    "words": {
+                      "type": "array"
+                    },
+                    "supplemental": {
+                      "type": "array"
+                    }
+                  }
+                },
+                "name": {
+                  "type": "object",
+                  "members": {
+                    "man_first_name": {
+                      "type": "array"
+                    },
+                    "woman_first_name": {
+                      "type": "array"
+                    },
+                    "man_last_name": {
+                      "type": "array"
+                    },
+                    "woman_last_name": {
+                      "type": "array"
+                    },
+                    "prefix": {
+                      "type": "array"
+                    },
+                    "suffix": {
+                      "type": "array"
+                    },
+                    "title": {
+                      "type": "object",
+                      "members": {
+                        "descriptor": {
+                          "type": "array"
+                        },
+                        "level": {
+                          "type": "array"
+                        },
+                        "job": {
+                          "type": "array"
+                        }
+                      }
+                    },
+                    "name": {
+                      "type": "array"
+                    }
+                  }
+                },
+                "phone_number": {
+                  "type": "object",
+                  "members": {
+                    "formats": {
+                      "type": "array"
+                    }
+                  }
+                }
+              }
+            },
+            "sv": {
+              "type": "object",
+              "members": {
+                "title": {
+                  "type": "constant",
+                  "value": "Swedish"
+                },
+                "address": {
+                  "type": "object",
+                  "members": {
+                    "city_prefix": {
+                      "type": "array"
+                    },
+                    "city_suffix": {
+                      "type": "array"
+                    },
+                    "country": {
+                      "type": "array"
+                    },
+                    "common_street_suffix": {
+                      "type": "array"
+                    },
+                    "street_prefix": {
+                      "type": "array"
+                    },
+                    "street_root": {
+                      "type": "array"
+                    },
+                    "street_suffix": {
+                      "type": "array"
+                    },
+                    "state": {
+                      "type": "array"
+                    },
+                    "city": {
+                      "type": "array"
+                    },
+                    "street_name": {
+                      "type": "array"
+                    },
+                    "postcode": {
+                      "type": "array"
+                    },
+                    "building_number": {
+                      "type": "array"
+                    },
+                    "secondary_address": {
+                      "type": "array"
+                    },
+                    "street_address": {
+                      "type": "array"
+                    },
+                    "default_country": {
+                      "type": "array"
+                    }
+                  }
+                },
+                "company": {
+                  "type": "object",
+                  "members": {
+                    "suffix": {
+                      "type": "array"
+                    },
+                    "name": {
+                      "type": "array"
+                    }
+                  }
+                },
+                "internet": {
+                  "type": "object",
+                  "members": {
+                    "domain_suffix": {
+                      "type": "array"
+                    }
+                  }
+                },
+                "name": {
+                  "type": "object",
+                  "members": {
+                    "first_name_women": {
+                      "type": "array"
+                    },
+                    "first_name_men": {
+                      "type": "array"
+                    },
+                    "last_name": {
+                      "type": "array"
+                    },
+                    "prefix": {
+                      "type": "array"
+                    },
+                    "title": {
+                      "type": "object",
+                      "members": {
+                        "descriptor": {
+                          "type": "array"
+                        },
+                        "level": {
+                          "type": "array"
+                        },
+                        "job": {
+                          "type": "array"
+                        }
+                      }
+                    },
+                    "name": {
+                      "type": "array"
+                    }
+                  }
+                },
+                "phone_number": {
+                  "type": "object",
+                  "members": {
+                    "formats": {
+                      "type": "array"
+                    }
+                  }
+                },
+                "cell_phone": {
+                  "type": "object",
+                  "members": {
+                    "common_cell_prefix": {
+                      "type": "array"
+                    },
+                    "formats": {
+                      "type": "array"
+                    }
+                  }
+                },
+                "commerce": {
+                  "type": "object",
+                  "members": {
+                    "color": {
+                      "type": "array"
+                    },
+                    "department": {
+                      "type": "array"
+                    },
+                    "product_name": {
+                      "type": "object",
+                      "members": {
+                        "adjective": {
+                          "type": "array"
+                        },
+                        "material": {
+                          "type": "array"
+                        },
+                        "product": {
+                          "type": "array"
+                        }
+                      }
+                    }
+                  }
+                },
+                "team": {
+                  "type": "object",
+                  "members": {
+                    "suffix": {
+                      "type": "array"
+                    },
+                    "name": {
+                      "type": "array"
+                    }
+                  }
+                }
+              }
+            },
+            "vi": {
+              "type": "object",
+              "members": {
+                "title": {
+                  "type": "constant",
+                  "value": "Vietnamese"
+                },
+                "address": {
+                  "type": "object",
+                  "members": {
+                    "city_root": {
+                      "type": "array"
+                    },
+                    "city": {
+                      "type": "array"
+                    },
+                    "postcode": {
+                      "type": "constant",
+                      "value": "/[A-PR-UWYZ0-9][A-HK-Y0-9][AEHMNPRTVXY0-9]?[ABEHMNPRVWXY0-9]? {1,2}[0-9][ABD-HJLN-UW-Z]{2}/"
+                    },
+                    "county": {
+                      "type": "array"
+                    },
+                    "default_country": {
+                      "type": "array"
+                    }
+                  }
+                },
+                "internet": {
+                  "type": "object",
+                  "members": {
+                    "domain_suffix": {
+                      "type": "array"
+                    }
+                  }
+                },
+                "phone_number": {
+                  "type": "object",
+                  "members": {
+                    "formats": {
+                      "type": "array"
+                    }
+                  }
+                },
+                "cell_phone": {
+                  "type": "object",
+                  "members": {
+                    "formats": {
+                      "type": "array"
+                    }
+                  }
+                },
+                "name": {
+                  "type": "object",
+                  "members": {
+                    "first_name": {
+                      "type": "array"
+                    },
+                    "last_name": {
+                      "type": "array"
+                    },
+                    "name": {
+                      "type": "array"
+                    }
+                  }
+                },
+                "company": {
+                  "type": "object",
+                  "members": {
+                    "prefix": {
+                      "type": "array"
+                    },
+                    "name": {
+                      "type": "array"
+                    }
+                  }
+                },
+                "lorem": {
+                  "type": "object",
+                  "members": {
+                    "words": {
+                      "type": "array"
+                    }
+                  }
+                }
+              }
+            },
+            "zh_CN": {
+              "type": "object",
+              "members": {
+                "title": {
+                  "type": "constant",
+                  "value": "Chinese"
+                },
+                "address": {
+                  "type": "object",
+                  "members": {
+                    "city_prefix": {
+                      "type": "array"
+                    },
+                    "city_suffix": {
+                      "type": "array"
+                    },
+                    "building_number": {
+                      "type": "array"
+                    },
+                    "street_suffix": {
+                      "type": "array"
+                    },
+                    "postcode": {
+                      "type": "array"
+                    },
+                    "state": {
+                      "type": "array"
+                    },
+                    "state_abbr": {
+                      "type": "array"
+                    },
+                    "city": {
+                      "type": "array"
+                    },
+                    "street_name": {
+                      "type": "array"
+                    },
+                    "street_address": {
+                      "type": "array"
+                    },
+                    "default_country": {
+                      "type": "array"
+                    }
+                  }
+                },
+                "name": {
+                  "type": "object",
+                  "members": {
+                    "first_name": {
+                      "type": "array"
+                    },
+                    "last_name": {
+                      "type": "array"
+                    },
+                    "name": {
+                      "type": "array"
+                    }
+                  }
+                },
+                "phone_number": {
+                  "type": "object",
+                  "members": {
+                    "formats": {
+                      "type": "array"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "locale": {
+          "type": "constant",
+          "value": "en"
+        },
+        "localeFallback": {
+          "type": "constant",
+          "value": "en"
+        },
+        "definitions": {
+          "type": "object",
+          "members": {
+            "name": {
+              "type": "object"
+            },
+            "address": {
+              "type": "object"
+            },
+            "company": {
+              "type": "object"
+            },
+            "lorem": {
+              "type": "object"
+            },
+            "hacker": {
+              "type": "object"
+            },
+            "phone_number": {
+              "type": "object"
+            },
+            "finance": {
+              "type": "object"
+            },
+            "internet": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    }
+  },
   "session": {}
 }
 var globalContext = (typeof global !== 'undefined') ? global : window

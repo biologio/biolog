@@ -8,7 +8,7 @@ createPatients = function() {
 
         var name = chance.name();
         var pt = createPatientEntity(id, name);
-        addDemographics(id);
+        addDemographics(pt);
 
         submitPatient(pt);
 
@@ -16,11 +16,7 @@ createPatients = function() {
     }
 }
 
-addDemographics = function(id) {
-    var pt = queryPatient(id);
-    if (!pt) {
-        throw "Unable to find patient with id: " + id;
-    }
+addDemographics = function(pt) {
 
     var dob = chance.date();
     var sex = "male";
