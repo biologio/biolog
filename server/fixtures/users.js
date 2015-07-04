@@ -1,5 +1,5 @@
 Meteor.startup(function () {
-    var user_to_create = 10;
+    var user_to_create = 1000;
     var no_of_users = Meteor.users.find().count();
     if(no_of_users < user_to_create) {
       _.each(_.range(user_to_create - no_of_users), function(){
@@ -20,23 +20,16 @@ Meteor.startup(function () {
         // console.log(user);
         var patientId = "patient/" + user_id;
         
-        Meteor.call("getEntity", patientId, function(err, foundPatient) {
-            if (err) {
-                console.error(err);
-            }
-            if (foundPatient) {
-                patient = foundPatient;
-                // setPatient(patient);
-                return patient;
-            }
-            patient = createPatientEntity(patientId, randomName);
+        var entity = createPatientEntity(patientId, randomName);
+        entity.creator = user_id;
+        entity.owners = [user_id];
+        var theDate = new Date();
+        entity.created = theDate;
+        entity.valid = 1;
+        Entities.insert(entity);
+        // console.log(entity);
 
-            // setPatient(patient);
-            Meteor.call("addEntity", patient);
-
-
-            return patient;
-        });
+        
         
         
       });
