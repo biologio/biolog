@@ -120,7 +120,7 @@ underscorestring:underscore.string@3.0.3_1
 url@1.0.4
 useraccounts:core@1.9.1
 useraccounts:semantic-ui@1.9.1
-velocity:chokidar@1.0.3_1
+velocity:chokidar@1.0.1_1
 velocity:core@0.6.5
 velocity:html-reporter@0.6.2
 velocity:meteor-internals@1.1.0_7
