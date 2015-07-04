@@ -1,6 +1,7 @@
 /**
  * If patient not defined, open the dialog to select a patient!
  */
+/*
 Tracker.autorun(function () {
     if (Session.get("biolog.patient.modal.open")) {
         $('#patientModal').modal({
@@ -25,7 +26,7 @@ Tracker.autorun(function () {
         $('#patientModal').modal('hide');
     }
 });
-
+ */
 
 Template.patientDemographics.rendered = function() {
     $('.ui.checkbox')

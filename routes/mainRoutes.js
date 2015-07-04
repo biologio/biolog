@@ -17,8 +17,8 @@ Router.route('/', function () {
   SEO.set({ title: 'Home -' + Meteor.App.NAME });
 });
 
-Router.route('/profile/:name', {name: 'user.profile'}, function () {
-  this.render('profile');
+Router.route('/profile/:name', {name: 'user.profile', template:"profile"}, function () {
+  // this.render('profile');
   SEO.set({ title: 'Profile -' + Meteor.App.NAME });
 });
 
