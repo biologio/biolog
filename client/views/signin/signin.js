@@ -14,9 +14,11 @@ Accounts.onLogin(function() {
 */
 
 Tracker.autorun(function () {
+    /*
     console.log("deps runned");
-  if (Meteor.user() && Meteor.user().profile.newUser) {
-      Router.go("user.profile");
-  }
+    if (Meteor.user() && Meteor.user().profile.newUser) {
+      Router.go("user.profile", {name: Meteor.user().username});
+    }
+    */
 
 });
