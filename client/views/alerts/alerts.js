@@ -12,8 +12,16 @@ Template['alerts'].events({
 Template.isabelChecklist.helpers({
     isabelItems: function() {
         if (! Session.get("biolog.isabelItems")) return null;
+        //console.log(JSON.stringify(Session.get("biolog.isabelItems").diagnosis));
         return Session.get("biolog.isabelItems").diagnosis;
     }
+});
+
+Template.isabelItem.events({
+   "click .alertsItem": function(event) {
+       console.log("Clicked: " + JSON.stringify(event.currentTarget.id));
+
+   }
 });
 
 Template.isabelItem.helpers({
@@ -35,7 +43,7 @@ Tracker.autorun(function () {
     var currentConditionsCursor = getPatientConditionsCurrent(getPatient()._id);
     if (!currentConditionsCursor) return;
     var currentConditions = currentConditionsCursor.fetch();
-    console.log("currentConditions=" + JSON.stringify(currentConditions));
+    //console.log("currentConditions=" + JSON.stringify(currentConditions));
     var conditionsList = "";
     for (var di in currentConditions) {
         var dx = currentConditions[di];
@@ -43,7 +51,7 @@ Tracker.autorun(function () {
         if (conditionsList.length > 0) conditionsList += "|";
         conditionsList += dx.objName;
     }
-    console.log("searchIsabel: conditions=" + conditionsList);
+    //console.log("searchIsabel: conditions=" + conditionsList);
     if (! conditionsList) return;
     var pt = getPatient();
     var dob = yyyymmdd(getPatientDob());
@@ -53,10 +61,11 @@ Tracker.autorun(function () {
         if (error) {
             return console.error("ERROR calling Isabel: " + error);
         }
-        console.log("Received response from Isabel: " + JSON.stringify(result, null, "  "));
-        var contentString = result.content.substring(7, result.content.length - 2);
-        var content = JSON.parse(contentString);
-        console.log("Received RESULT from Isabel: " + JSON.stringify(content, null, "  "));
-        Session.set("biolog.isabelItems", content.Diagnosis_checklist)
+        //console.log("Received response from Isabel: " + JSON.stringify(result, null, "  "));
+        //var contentString = result.content.substring(7, result.content.length - 2);
+        //var content = JSON.parse(contentString);
+        //console.log("Received RESULT from Isabel: " + JSON.stringify(content, null, "  "));
+        //Session.set("biolog.isabelItems", content.Diagnosis_checklist);
+        Session.set("biolog.isabelItems", result.Diagnosis_checklist);
     });
 });
