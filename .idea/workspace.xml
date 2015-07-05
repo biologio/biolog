@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="02e712f0-6afb-4af0-a485-f0f77566c506" name="Default" comment="Merge branch 'master' of https://github.com/biologio/biolog&#10;&#10;# Please enter a commit message to explain why this merge is necessary,&#10;# especially if it merges an updated upstream into a topic branch.&#10;#&#10;# Lines starting with '#' will be ignored, and an empty message aborts&#10;# the commit.&#10;">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/models/Entities.js" afterPath="$PROJECT_DIR$/lib/models/Entities.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/jasmine/server/unit/package-stubs.js" afterPath="$PROJECT_DIR$/tests/jasmine/server/unit/package-stubs.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/jasmine/server/unit/packageMocksSpec.js" afterPath="$PROJECT_DIR$/tests/jasmine/server/unit/packageMocksSpec.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.meteor/versions" afterPath="$PROJECT_DIR$/.meteor/versions" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/methods/isabel.js" afterPath="$PROJECT_DIR$/server/methods/isabel.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="biolog.iws" />
@@ -90,21 +87,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="isabel.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="isabel.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/server/methods/isabel.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="405" max-vertical-offset="1080">
-              <caret line="36" column="70" selection-start-line="36" selection-start-column="70" selection-end-line="36" selection-end-column="70" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Entities.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/lib/models/Entities.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.35555556" vertical-offset="0" max-vertical-offset="675">
-              <caret line="16" column="15" selection-start-line="16" selection-start-column="15" selection-end-line="16" selection-end-column="15" />
+            <state vertical-scroll-proportion="0.92598426" vertical-offset="402" max-vertical-offset="1185">
+              <caret line="66" column="16" selection-start-line="66" selection-start-column="16" selection-end-line="66" selection-end-column="16" />
               <folding />
             </state>
           </provider>
@@ -113,7 +100,7 @@
       <file leaf-file-name="bioontologyFns.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/modules/bioolookup/bioontologyFns.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="958" max-vertical-offset="1395">
+            <state vertical-scroll-proportion="0.0" vertical-offset="720" max-vertical-offset="1395">
               <caret line="74" column="16" selection-start-line="74" selection-start-column="0" selection-end-line="74" selection-end-column="16" />
               <folding />
             </state>
@@ -187,8 +174,8 @@
         <option value="$PROJECT_DIR$/client/views/alerts/alerts.html" />
         <option value="$PROJECT_DIR$/client/views/alerts/alerts.js" />
         <option value="$PROJECT_DIR$/modules/bioolookup/conditions/bioontologyConditionsFns.js" />
-        <option value="$PROJECT_DIR$/server/methods/isabel.js" />
         <option value="$PROJECT_DIR$/lib/models/Entities.js" />
+        <option value="$PROJECT_DIR$/server/methods/isabel.js" />
       </list>
     </option>
   </component>
@@ -871,14 +858,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/modules/bioolookup/bioontologyFns.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="958" max-vertical-offset="1395">
-          <caret line="74" column="16" selection-start-line="74" selection-start-column="0" selection-end-line="74" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/views/alerts/alerts.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-12.074074" vertical-offset="649" max-vertical-offset="1140">
@@ -887,18 +866,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/methods/isabel.js">
+    <entry file="file://$PROJECT_DIR$/lib/models/Entities.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="405" max-vertical-offset="1080">
-          <caret line="36" column="70" selection-start-line="36" selection-start-column="70" selection-end-line="36" selection-end-column="70" />
+        <state vertical-scroll-proportion="0.35555556" vertical-offset="0" max-vertical-offset="675">
+          <caret line="16" column="51" selection-start-line="16" selection-start-column="51" selection-end-line="16" selection-end-column="51" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/models/Entities.js">
+    <entry file="file://$PROJECT_DIR$/modules/bioolookup/bioontologyFns.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.35555556" vertical-offset="0" max-vertical-offset="675">
-          <caret line="16" column="15" selection-start-line="16" selection-start-column="15" selection-end-line="16" selection-end-column="15" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="958" max-vertical-offset="1395">
+          <caret line="74" column="16" selection-start-line="74" selection-start-column="0" selection-end-line="74" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/methods/isabel.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.92598426" vertical-offset="402" max-vertical-offset="1185">
+          <caret line="66" column="16" selection-start-line="66" selection-start-column="16" selection-end-line="66" selection-end-column="16" />
           <folding />
         </state>
       </provider>

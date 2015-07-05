@@ -20,7 +20,7 @@ Meteor.methods({
         var result = HTTP.get(url, {timeout: 20000});
         var contentString = result.content.substring(7, result.content.length - 2);
         var content = JSON.parse(contentString);
-        var diagnoses = content.Diagnosis_checklist;
+        var diagnoses = content.Diagnosis_checklist.diagnosis;
 
         console.log("diagnoses from Isabel=" + JSON.stringify(diagnoses));
         //lookup CUIs from snomed id
@@ -55,10 +55,17 @@ Meteor.methods({
             }
             console.log("Batch queried SNOMED IDs: " + JSON.stringify(result.data, null , "  "));
 
-            //for (var idx in result.data["http://www.w3.org/2002/07/owl#Class"]) {
-            //    var obj = result.data["http://www.w3.org/2002/07/owl#Class"][idx];
-            //}
-            //callback();
+            for (var idx in result.data["http://www.w3.org/2002/07/owl#Class"]) {
+                var obj = result.data["http://www.w3.org/2002/07/owl#Class"][idx];
+                var uri = obj["@id"];
+                var prefixLength = uri.lastIndexOf("/") + 1;
+                var id = uri.substring(prefixLength);
+                var cuis = obj.cui;
+                console.log("cuis = " + cuis + "; id=" + id);
+
+                //TODO add cuis to this record in diagnoses
+                
+            }
         });
 
 
