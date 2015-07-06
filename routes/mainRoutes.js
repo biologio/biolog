@@ -17,9 +17,17 @@ Router.route('/', function () {
   SEO.set({ title: 'Home -' + Meteor.App.NAME });
 });
 
-Router.route('/profile/:name', {name: 'user.profile', template:"profile"}, function () {
-  // this.render('profile');
-  SEO.set({ title: 'Profile -' + Meteor.App.NAME });
-});
+Router.route('/profile/:name',
+    {
+        name: 'user.profile',
+        template:"profile"
+    },
+    function () {
+        var sex = Meteor.user().profile.sex;
+            
+        // this.render('profile');
+        SEO.set({ title: 'Profile -' + Meteor.App.NAME });
+    }
+);
 
 
