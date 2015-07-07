@@ -48,11 +48,10 @@ Meteor.methods({
         console.log("snomedUris=" + snomedUris);
         if (!snomedUris) return diagnoses;
 
-        HTTP.post(getUrlBatchQuery(), {data: batchData}, function(err, result) {
-            if (err) {
-                console.error("Unable to batch refine condition ancestors at url: " + batchUrl + ":\n" + err + "\nbatchData=" + JSON.stringify(batchData));
-                callback(err);
-            }
+        var postAsync = Meteor.wrapAsync(HTTP.post);
+
+        try {
+            var result = postAsync(getUrlBatchQuery(), {data: batchData});
             console.log("Batch queried SNOMED IDs: " + JSON.stringify(result.data, null , "  "));
 
             for (var idx in result.data["http://www.w3.org/2002/07/owl#Class"]) {
@@ -64,11 +63,19 @@ Meteor.methods({
                 console.log("cuis = " + cuis + "; id=" + id);
 
                 //TODO add cuis to this record in diagnoses
-                
+                for (var dxi in diagnoses) {
+                    if (diagnoses[dxi].snomed_diagnoses_id == id) {
+                        diagnoses[dxi].cuis = cuis;
+                        break;
+                    }
+                }
+
             }
-        });
 
-
-        return diagnoses;
+            return diagnoses;
+        } catch (err) {
+            console.error("Unable to batch refine condition ancestors at url: " + batchUrl + ":\n" + err + "\nbatchData=" + JSON.stringify(batchData));
+            return diagnoses;
+        }
     }
 });

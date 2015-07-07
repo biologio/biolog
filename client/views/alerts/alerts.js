@@ -1,6 +1,6 @@
 countAlerts = function() {
     if (! Session.get("biolog.isabelItems")) return null;
-    return Session.get("biolog.isabelItems").diagnosis.length;
+    return Session.get("biolog.isabelItems").length;
 }
 
 Template['alerts'].helpers({
@@ -13,7 +13,7 @@ Template.isabelChecklist.helpers({
     isabelItems: function() {
         if (! Session.get("biolog.isabelItems")) return null;
         //console.log(JSON.stringify(Session.get("biolog.isabelItems").diagnosis));
-        return Session.get("biolog.isabelItems").diagnosis;
+        return Session.get("biolog.isabelItems");
     }
 });
 
@@ -57,7 +57,9 @@ Tracker.autorun(function () {
     var dob = yyyymmdd(getPatientDob());
     var sex = getPatientSex(pt);
     var pregnant = "false";
-    Meteor.call("isabel", dob, sex, pregnant, 12, conditionsList, function(error, result){
+    console.log("Searching Isabel for: " + conditionsList);
+
+    Meteor.call("isabel", dob, sex, pregnant, 12, conditionsList, function(error, result) {
         if (error) {
             return console.error("ERROR calling Isabel: " + error);
         }
@@ -66,6 +68,6 @@ Tracker.autorun(function () {
         //var content = JSON.parse(contentString);
         //console.log("Received RESULT from Isabel: " + JSON.stringify(content, null, "  "));
         //Session.set("biolog.isabelItems", content.Diagnosis_checklist);
-        Session.set("biolog.isabelItems", result.Diagnosis_checklist);
+        Session.set("biolog.isabelItems", result);
     });
 });
