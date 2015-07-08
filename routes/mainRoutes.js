@@ -1,4 +1,5 @@
 Iron.utils.debug = true;
+/*
 Router.onBeforeAction(function () {
   // all properties available in the route function
   // are also available here such as this.params
@@ -12,10 +13,12 @@ Router.onBeforeAction(function () {
     this.next();
   }
 });
+*/
 Router.route('/', function () {
   this.render('home');
   SEO.set({ title: 'Home -' + Meteor.App.NAME });
 });
+
 
 Router.route('/profile/:name',
     {
