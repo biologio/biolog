@@ -17,6 +17,65 @@ Meteor.methods({
             "&flag=sortbyRW_advanced&callback=isabel";
         console.log("Isabel URL: " + url);
 
-        return HTTP.get(url, {timeout: 20000});
+        var result = HTTP.get(url, {timeout: 20000});
+        var contentString = result.content.substring(7, result.content.length - 2);
+        var content = JSON.parse(contentString);
+        var diagnoses = content.Diagnosis_checklist.diagnosis;
+
+        console.log("diagnoses from Isabel=" + JSON.stringify(diagnoses));
+        //lookup CUIs from snomed id
+        var batchData = {
+            "http://www.w3.org/2002/07/owl#Class": {
+                "collection": [],
+                "display": "prefLabel,synonym,semanticTypes,cui"
+            }
+        };
+
+        var snomedUris = [];
+        for (var dxi in diagnoses) {
+            var diagnosis = diagnoses[dxi];
+            console.log("\n\ndiagnosis=" + JSON.stringify(diagnosis));
+            var snomedId = diagnosis.snomed_diagnoses_id;
+            var snomedUri = "http://purl.bioontology.org/ontology/SNOMEDCT/" + snomedId;
+            snomedUris.push(snomedUri);
+
+            batchData["http://www.w3.org/2002/07/owl#Class"].collection.push({
+                "class": snomedUri,
+                "ontology": "http://data.bioontology.org/ontologies/SNOMEDCT"
+            });
+        }
+
+        console.log("snomedUris=" + snomedUris);
+        if (!snomedUris) return diagnoses;
+
+        var postAsync = Meteor.wrapAsync(HTTP.post);
+
+        try {
+            var result = postAsync(getUrlBatchQuery(), {data: batchData});
+            console.log("Batch queried SNOMED IDs: " + JSON.stringify(result.data, null , "  "));
+
+            for (var idx in result.data["http://www.w3.org/2002/07/owl#Class"]) {
+                var obj = result.data["http://www.w3.org/2002/07/owl#Class"][idx];
+                var uri = obj["@id"];
+                var prefixLength = uri.lastIndexOf("/") + 1;
+                var id = uri.substring(prefixLength);
+                var cuis = obj.cui;
+                console.log("cuis = " + cuis + "; id=" + id);
+
+                //TODO add cuis to this record in diagnoses
+                for (var dxi in diagnoses) {
+                    if (diagnoses[dxi].snomed_diagnoses_id == id) {
+                        diagnoses[dxi].cuis = cuis;
+                        break;
+                    }
+                }
+
+            }
+
+            return diagnoses;
+        } catch (err) {
+            console.error("Unable to batch refine condition ancestors at url: " + batchUrl + ":\n" + err + "\nbatchData=" + JSON.stringify(batchData));
+            return diagnoses;
+        }
     }
 });

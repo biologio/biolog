@@ -38,7 +38,7 @@ matteodem:easy-security
 ongoworks:security
 peerlibrary:async
 risul:chance
-velocity:chokidar
+velocity:chokidar@1.0.3_1
 lawshe:full-page
 dandv:jquery-rateit
 

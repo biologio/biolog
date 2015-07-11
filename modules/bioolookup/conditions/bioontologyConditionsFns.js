@@ -54,31 +54,31 @@ addConditionClasses = function(condition, fact, callback) {
         //batch query
         var batchUrl = getUrlBatchQuery();
         var batchData = {
-            "http://www.w3.org/2002/07/owl#Class": {
-                "collection": [],
-                "display": "prefLabel,synonym,semanticTypes,cui"
+                "http://www.w3.org/2002/07/owl#Class": {
+                    "collection": [],
+                    "display": "prefLabel,synonym,semanticTypes,cui"
+                }
+            };
+            for (var ancestorIdx in json) {
+                var ancestor = json[ancestorIdx];
+                var clazz = ancestor["@id"];
+                batchData["http://www.w3.org/2002/07/owl#Class"].collection.push({
+                    "class": clazz,
+                    "ontology": "http://data.bioontology.org/ontologies/" + conditionOntology
+                });
             }
-        };
-        for (var ancestorIdx in json) {
-            var ancestor = json[ancestorIdx];
-            var clazz = ancestor["@id"];
-            batchData["http://www.w3.org/2002/07/owl#Class"].collection.push({
-                "class": clazz,
-                "ontology": "http://data.bioontology.org/ontologies/" + conditionOntology
-            });
-        }
-        HTTP.post(batchUrl, {data: batchData}, function(err, result) {
-            if (err) {
-                console.error("Unable to batch refine condition ancestors at url: " + batchUrl + ":\n" + err + "\nbatchData=" + JSON.stringify(batchData));
-                callback(err);
-            }
-            console.log("Batch queried these ancestors: " + JSON.stringify(result.data, null , "  "));
+            HTTP.post(batchUrl, {data: batchData}, function(err, result) {
+                if (err) {
+                    console.error("Unable to batch refine condition ancestors at url: " + batchUrl + ":\n" + err + "\nbatchData=" + JSON.stringify(batchData));
+                    callback(err);
+                }
+                console.log("Batch queried these ancestors: " + JSON.stringify(result.data, null , "  "));
 
-            for (var ancestorIdx in result.data["http://www.w3.org/2002/07/owl#Class"]) {
-                var ancestor = result.data["http://www.w3.org/2002/07/owl#Class"][ancestorIdx];
-                addConditionClass(fact, ancestor);
-            }
-            callback();
+                for (var ancestorIdx in result.data["http://www.w3.org/2002/07/owl#Class"]) {
+                    var ancestor = result.data["http://www.w3.org/2002/07/owl#Class"][ancestorIdx];
+                    addConditionClass(fact, ancestor);
+                }
+                callback();
         });
 
     });

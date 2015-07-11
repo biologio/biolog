@@ -1,4 +1,5 @@
 Template.basicLayout.events({
+    /*
     'click #btnSignIn': function(e) {
         e.preventDefault();
         Router.go('signin');
@@ -8,6 +9,7 @@ Template.basicLayout.events({
         Meteor.logout();
         Router.go('home');
     },
+    */
     'click .main-menu': function(e) {
         $('.sidebar').sidebar('toggle');
     }
