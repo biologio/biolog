@@ -42,7 +42,10 @@ velocity:chokidar@1.0.3_1
 lawshe:full-page
 dandv:jquery-rateit
 
+
 less
-linto:jquery-ui
 mystor:device-detection
 digilord:faker
+miro:mailchimp
+matb33:collection-hooks
+

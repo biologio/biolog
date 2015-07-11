@@ -1,0 +1,8 @@
+{
+    "private": {
+        "MailChimp": {
+            "default": "8af5c972ba88a8bdb7e6875ebbe1dd4f-us11",
+            "listId": "b39c6811e2"
+        }
+    }
+}
