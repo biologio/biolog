@@ -6,8 +6,6 @@ accounts-password@1.1.1
 accounts-twitter@1.0.4
 accounts-ui@1.1.5
 accounts-ui-unstyled@1.1.7
-aldeed:collection2@2.3.3
-aldeed:simple-schema@1.3.3
 aldeed:template-extension@3.4.3
 amplify@1.0.0
 autoupdate@1.2.1
@@ -51,6 +49,7 @@ iron:location@1.0.7
 iron:middleware-stack@1.0.7
 iron:router@1.0.7
 iron:url@1.0.7
+jagi:astronomy@0.11.0
 jparker:crypto-core@0.1.0
 jparker:crypto-md5@0.1.1
 jparker:gravatar@0.3.1

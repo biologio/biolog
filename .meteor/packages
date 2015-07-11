@@ -6,7 +6,6 @@
 meteor-platform
 jquery
 underscore
-aldeed:collection2
 iron:router
 raix:handlebar-helpers
 fastclick
@@ -49,3 +48,4 @@ digilord:faker
 miro:mailchimp
 matb33:collection-hooks
 
+jagi:astronomy
