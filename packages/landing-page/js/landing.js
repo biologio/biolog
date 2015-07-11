@@ -1,7 +1,7 @@
 Template.landing.rendered = function() {
     //$("#section2 .cloumn").addClass('hide');
-    var animations = ["animated slideInLeft", "animated slideInDown", "animated slideInUp", "animated slideInRight"];
-    var animations2 =[ "animated bounceInLeft", "animated bounceInDown", "animated bounceInUp", "animated bounceInRight"];
+    var animations = ["animated fadeIn", "animated fadeIn", "animated fadeIn", "animated fadeIn"];
+    var animations2 = ["animated fadeIn", "animated fadeIn", "animated fadeIn", "animated fadeIn"];
     $('#fullpage').fullpage({
         verticalCentered: true,
         scrollOverflow: false,
@@ -21,7 +21,7 @@ Template.landing.rendered = function() {
         easing: 'linear',
         easingcss3: 'ease',
         loopBottom: false,
-        loopTop: true,
+        loopTop: false,
         loopHorizontal: true,
         continuousVertical: false,
         normalScrollElements: '#element1, .element2',
@@ -56,55 +56,51 @@ Template.landing.rendered = function() {
         },
         onLeave: function(index, nextIndex, direction) {
 
-            setTimeout(function() {
-                switch (nextIndex) {
-                    case 1:
-                        $("#section2 .column").addClass('hide');
-                         $("#section2 .top-1rem").addClass('hide');
-                           $("#section3 .top-1rem").addClass('hide');
-                         $("#section3 .column").addClass('hide');
-                        break;
-                    case 2:
-                        $("#section2 .column").addClass('hide');
-                         $("#section2 .top-1rem").addClass('hide');
-                           $("#section3 .top-1rem").addClass('hide');
-                         $("#section3 .column").addClass('hide');
-                        break;
-                    case 3:
 
-                        console.log(nextIndex);
-                        var cols = $("#section2 .column");
-                        $.each(cols, function(index, col) {
-                            $(col).removeClass('hide').addClass(animations[index]);
-                        });
-                         $("#section2 .top-1rem").removeClass('hide').addClass('animated bounceInDown');
-                          $("#section3 .top-1rem").addClass('hide');
-                         $("#section3 .column").addClass('hide');
 
-                        break;
-                         case 4:
 
-                        console.log("nextIndex");
-                        var cols = $("#section3 .column");
-                        $.each(cols, function(index, col) {
-                            $(col).removeClass('hide').addClass(animations[index]);
-                        });
-                         $("#section3 .top-1rem").removeClass('hide').addClass('animated bounceInDown');
-                          $("#section2 .top-1rem").addClass('hide');
-                         $("#section2 .column").addClass('hide');
+            // switch (nextIndex) {
+            //     case 1:
 
-                        break;
-                    case 5:
-                          var cols = $("#section4 .column");
-                        $.each(cols, function(index, col) {
-                            $(col).removeClass('hide').addClass(animations2[index]);
-                        });
-                         $("#section4 .top-1rem").removeClass('hide').addClass('animated fadeInUp');
-                         $("#section3 .top-1rem").addClass('hide');
-                         $("#section3 .column").addClass('hide');
-                        break;
-                }
-            }, 1000)
+            //         break;
+            //     case 2:
+
+            //         break;
+            //     case 3:
+
+            //         console.log(nextIndex);
+            //         var cols = $("#section2 .column");
+            //         $.each(cols, function(index, col) {
+            //             $(col).removeClass('hide').addClass(animations[index]);
+            //         });
+            //          $("#section2 .top-1rem").removeClass('hide').addClass('animated fadeIn');
+            //           $("#section3 .top-1rem").addClass('hide');
+            //          $("#section3 .column").addClass('hide');
+
+            //         break;
+            //          case 4:
+
+            //         console.log("nextIndex");
+            //         var cols = $("#section3 .column");
+            //         $.each(cols, function(index, col) {
+            //             $(col).removeClass('hide').addClass(animations[index]);
+            //         });
+            //          $("#section3 .top-1rem").removeClass('hide').addClass('animated fadeIn');
+            //           $("#section2 .top-1rem").addClass('hide');
+            //          $("#section2 .column").addClass('hide');
+
+            //         break;
+            //     case 5:
+            //           var cols = $("#section4 .column");
+            //         $.each(cols, function(index, col) {
+            //             $(col).removeClass('hide').addClass(animations2[index]);
+            //         });
+            //          $("#section4 .top-1rem").removeClass('hide').addClass('animated fadeIn');
+            //          $("#section3 .top-1rem").addClass('hide');
+            //          $("#section3 .column").addClass('hide');
+            //         break;
+            // }
+
             if (index == '2') {
                 console.log('on leaving the slideshow/section1');
                 clearInterval(slideTimeout);
@@ -115,5 +111,42 @@ Template.landing.rendered = function() {
             }
         }
     });
-}
 
+    $('.ui.accordion')
+        .accordion();
+    console.log($('.ui.form.subscribe'));
+    $('.ui.form.subscribe')
+        .form({
+            fields: {
+                name: {
+                    identifier: 'mce-EMAIL',
+                    rules: [{
+                        type: 'empty',
+                        prompt: 'Please enter your name'
+                    }]
+                }
+            }
+        });
+}
+Template.landing.events({
+    'submit .ui.form': function(e, tpl) {
+        var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+        input = tpl.find('#mce-EMAIL');
+        if (input.value && re.test(input.value)) {
+            $(tpl.find('.field')).removeClass("error");
+            Meteor.setTimeout(function() {
+                clearInput(input);
+            }, 300)
+
+        } else {
+            $(tpl.find('.field')).addClass("error");
+            return false;
+        }
+        
+
+    }
+});
+
+function clearInput(input) {
+    input.value = '';
+}

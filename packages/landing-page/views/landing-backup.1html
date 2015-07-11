@@ -1,0 +1,249 @@
+<template name="landing">
+    <!--    <footer id="footer" class="row">
+    
+        <h1 class="ui aligned center  header">Notify when we go beta</h1>
+       <div class="ui action left icon input huge">
+  <i class="mail icon"></i>
+  <input type="email" placeholder="Email Address">
+  <div class="ui blue button">Subscribe</div>
+</div>
+  
+    </footer> -->
+    <div id="fullpage">
+        <div class="section " id="section0" data-anchor="firstPage">
+            <div class="ui page grid">
+                <div class="  sixteen aligned center wide column">
+                    <div class="ntro-sec">
+                        <h1 class="ui header color-white  font-huge">Biolog.io</h1>
+                        <p class=" font-small color-white">
+                            Biolog.io is a personal health record + expert system, designed for people to drive their health care. Our mission is to give people the tools to make optimal health decisions and to eliminate medical error.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="ui two column page grid stackable  sec-subscribe">
+                <div class="column row aligned center">
+                    <h2 class="header sub-header">Be notified when we go beta</h2></div>
+                <div class="row">
+                    <div class="column  ">
+                        <button class="button ui blue button--isi biolog-button huge">
+                            Try Biolog Alpha
+                        </button>
+                    </div>
+                    <div class="column aligned right ">
+                        <div class="ui left icon action fluid input huge">
+                            <i class="mail outline icon"></i>
+                            <input type="email" placeholder="Email">
+                            <div class="ui light-orange submit button huge">subscribe</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+      
+        <div class="section sol " id="section2">
+            <h1 class="header aligned center el-position  top-1rem">
+               Free Your Health Information
+            </h1>
+            <div class="grid padded stackable ui">
+                <div class="four wide aligned center col-first   column">
+                    <i class="icon   unlock alternate aligned ui circular center massive"></i>
+                    <h3 class="header">Free</h3>
+                    <p class="content">
+                        We are devoted to transforming health care and eliminating medical error. Biolog.io is open source
+                    </p>
+                </div>
+                <div class="four wide aligned center  col-second column">
+                    <i class="icon first aid aligned ui circular center massive"></i>
+                    <h3 class="header">Easy</h3>
+                    <p class="content">
+                        Health records do not have to be hard. Post on your wall. Tap on meds/conditions. Add friends/trustees.
+                    </p>
+                </div>
+                <div class="four wide  aligned center col-third  column">
+                    <i class="icon heartbeat aligned ui circular center massive"></i>
+                    <h3 class="header">Live</h3>
+                    <p class="content">
+                        Health is every day, not just when you got an appointment. Track key metrics as they happen. See flags or targeted questions as you post.
+                    </p>
+                </div>
+                <div class="four wide aligned center col-fourth  column">
+                    <i class="icon treatment aligned ui circular center massive"></i>
+                    <h3 class="header">Expert</h3>
+                    <p class="content">
+                        Biolog.io is an expert system. It delivers best practices based on your health data, pulled from latest research
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="section sol " id="section3">
+            <h1 class="header aligned center el-position  top-1rem">
+               Not your Typical Health Record
+            </h1>
+            <div class="grid padded  stackable ui">
+                <div class="four wide aligned center col-first   column">
+                    <i class="icon users aligned ui circular center massive"></i>
+                    <h3 class="header">Private</h3>
+                    <p class="content">
+                        You decide who can access your health info, and when.
+                    </p>
+                </div>
+                <div class="four wide aligned center  col-second  column">
+                    <i class="icon share aligned ui circular center massive"></i>
+                    <h3 class="header">Collaborative</h3>
+                    <p class="content">
+                        Share your health information with whoever you choose. You can print it each time you see the doctor, or load it from the ER.
+                    </p>
+                </div>
+                <div class="four wide aligned center col-third   column">
+                    <i class="icon mobile aligned ui circular center massive"></i>
+                    <h3 class="header">Mobile</h3>
+                    <p class="content">
+                        Access today from any device. iPhone and Android versions coming soon! Global - Access from anywhere.
+                    </p>
+                </div>
+                <div class="four wide aligned center col-fourth   column">
+                    <i class="icon world aligned ui circular center massive"></i>
+                    <h3 class="header">Global</h3>
+                    <p class="content">
+                        Access from anywhere
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="section sol " id="section4">
+            <h1 class="header aligned center el-position  top-1rem">
+                Biolog is...
+            </h1>
+            <div class="grid padded stackable ui">
+                <div class="four wide aligned center  column">
+                    <i class="icon users aligned ui circular center massive"></i>
+                    <h3 class="header">Private</h3>
+                    <p class="content">
+                        You decide who can access your health info, and when.
+                    </p>
+                </div>
+                <div class="four wide  aligned center  column">
+                    <i class="icon share aligned ui circular center massive"></i>
+                    <h3 class="header">Collaborative</h3>
+                    <p class="content">
+                        Share your health information with whoever you choose. You can print it each time you see the doctor, or load it from the ER.
+                    </p>
+                </div>
+                <div class="four wide aligned center    column">
+                    <i class="icon mobile aligned ui circular center massive"></i>
+                    <h3 class="header">Mobile</h3>
+                    <p class="content">
+                        Access today from any device. iPhone and Android versions coming soon! Global - Access from anywhere.
+                    </p>
+                </div>
+                <div class="four wide  aligned center   column">
+                    <i class="icon world aligned ui circular center massive"></i>
+                    <h3 class="header">Global</h3>
+                    <p class="content">
+                        Access from anywhere
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="section" id="section5">
+            <div class="intro">
+                {{ >grid}}
+            </div>
+        </div>
+        <div class="section" id="section6">
+            <div class="intro">
+                <h1 class="header aligned center">Potential Customers</h1>
+                <div class=" grid padded  ui ">
+                    <div class="four wide  aligned center  column">
+                        <a class="grid__item" href="#">
+                            <div class="aligned ui  center">
+                                <img class="image meta__avatar  ui circular  small" src="/images/asha.png" />
+                            </div>
+                            <h2 class=" title--preview">Patient with multiple chronic diseases</h2>
+                            <!-- <div class="loader"></div>
+ -->
+                            <span class="category">some content here if needed. this is test content</span>
+                            <!--  <div class="meta meta-1-preview">
+                        <img class="meta__avatar" src="/images/asha.png" alt="author05" />
+                        <span class="meta__date"><i class="icon calendar"></i> 6 Apr</span>
+                        <span class="meta__reading-time"><i class="icon clock-o"></i> 2 min read</span>
+                    </div> -->
+                        </a>
+                    </div>
+                    <div class="four wide  aligned center  column">
+                        <a class="grid__item" href="#">
+                            <div class="aligned ui  center">
+                                <i class="icon users  ui circular  huge"></i>
+                            </div>
+                            <h2 class=" title--preview">People who have experienced medical error</h2>
+                            <!-- <div class="loader"></div>
+ -->
+                            <!--      <span class="category">Nature vs. Nurture</span> -->
+                            <div class="meta meta-1-preview">
+                                <!--  <span class="meta__date"><i class="icon calendar"></i> 6 Apr</span>
+                        <span class="meta__reading-time"><i class="icon clock-o"></i> 2 min read</span> -->
+                            </div>
+                        </a>
+                    </div>
+                    <div class="four wide  aligned center  column">
+                        <a class="grid__item" href="#">
+                            <div class="aligned ui  center">
+                                <i class="icon users  ui circular  huge"></i>
+                            </div>
+                            <h2 class=" title--preview">Parents of kids with health conditions (asthma, diabetes, etc)</h2>
+                        </a>
+                    </div>
+                    <div class="four wide  aligned center  column">
+                        <a class="grid__item" href="#">
+                            <div class="aligned ui  center">
+                                <i class="icon users  ui circular  huge"></i>
+                            </div>
+                            <h2 class=" title--preview">QSer/Self Tracker who like to track personal metrics</h2>
+                        </a>
+                    </div>
+                    <div class="four wide  aligned center  column">
+                        <a class="grid__item" href="#">
+                            <div class="aligned ui  center">
+                                <i class="icon users  ui circular  huge"></i>
+                            </div>
+                            <h2 class=" title--preview">People who have no time for the inefficiencies and clumsiness of modern US medicine</h2>
+                            <!-- <div class="loader"></div>
+ -->
+                            <!--  <span class="category">Nature vs. Nurture</span> -->
+                            <!--  <div class="meta meta-1-preview">
+                        <img class="meta__avatar" src="/images/asha.png" alt="author05" />
+                        <span class="meta__date"><i class="icon calendar"></i> 6 Apr</span>
+                        <span class="meta__reading-time"><i class="icon clock-o"></i> 2 min read</span>
+                    </div> -->
+                        </a>
+                    </div>
+                    <div class="four wide  aligned center  column">
+                        <a class="grid__item" href="#">
+                            <div class="aligned ui  center">
+                                <i class="icon users  ui circular  huge"></i>
+                            </div>
+                            <h2 class=" title--preview">Physicians who want rigor in their practice of medicine - might encourage use by their patients</h2>
+                        </a>
+                    </div>
+                    <div class="four wide  aligned center  column">
+                        <a class="grid__item" href="#">
+                            <div class="aligned ui  center">
+                                <i class="icon users  ui circular  huge"></i>
+                            </div>
+                            <h2 class=" title--preview">Public health workers in remote areas - might encourage use by others</h2>
+                        </a>
+                    </div>
+                    <div class="four wide  aligned center  column">
+                        <a class="grid__item" href="#">
+                            <div class="aligned ui  center">
+                                <i class="icon users  ui circular  huge"></i>
+                            </div>
+                            <h2 class=" title--preview">Health Agencies - Rather than providing best practices and advisories as just unstructured text, they can be encoded as rules which instantly go live</h2>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
