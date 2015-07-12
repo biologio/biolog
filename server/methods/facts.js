@@ -138,7 +138,7 @@ Meteor.methods(FactMethods = {
             console.error(message);
             return { success: false, error: message};
         }
-        check (skipFact, Match.Optional(Boolean));
+        //check (skipFact, Match.Optional(Boolean));
 
         if (! skipFact) {
             //var result = FactMethods.setFact(fact);
@@ -198,31 +198,35 @@ _setFact = function(fact, userId) {
     //if (!fact._id) fact._id = new Meteor.Collection.ObjectID()._str;
     //if (!fact.source) fact.source = "smartbio/server/facts";
 
-    check(fact, {
-        //_id: String,
-        subj: String,
-        pred: String,
-        data: Match.Optional(Match.Any),
-        obj: Match.Optional(String),
-        subjName: Match.Optional(String),
-        objName: Match.Optional(String),
-        text: Match.Optional(String),
-        startDate: Match.Optional(Match.OneOf(undefined, null, String, Date)),
-        endDate: Match.Optional(Match.OneOf(undefined, null, String, Date)),
-        startFlag: Match.Optional(Match.Any),
-        endFlag: Match.Optional(Match.Any),
-        created: Date,
-        creator: Match.Optional(String),
-        num: Match.Optional(Number),
-        //updated: Match.OneOf(undefined, String, Date),
-        //updater: Match.Optional(String),
-        //source: String,
-        valid: Match.Optional(Match.Integer)
-    });
+    //check(fact, {
+    //    //_id: String,
+    //    subj: String,
+    //    pred: String,
+    //    data: Match.Optional(Match.Any),
+    //    obj: Match.Optional(String),
+    //    subjName: Match.Optional(String),
+    //    objName: Match.Optional(String),
+    //    text: Match.Optional(String),
+    //    startDate: Match.Optional(Match.OneOf(undefined, null, String, Date)),
+    //    endDate: Match.Optional(Match.OneOf(undefined, null, String, Date)),
+    //    startFlag: Match.Optional(Match.Any),
+    //    endFlag: Match.Optional(Match.Any),
+    //    created: Date,
+    //    creator: Match.Optional(String),
+    //    num: Match.Optional(Number),
+    //    //updated: Match.OneOf(undefined, String, Date),
+    //    //updater: Match.Optional(String),
+    //    //source: String,
+    //    valid: Match.Optional(Match.Integer)
+    //});
+    if (!fact.validate()) {
+        return {success: false, error: "Unable to store fact because it is invalid"};
+    }
 
-    fact._id = new Meteor.Collection.ObjectID()._str;
-    console.log("Inserting fact: " + JSON.stringify(fact));
-    Facts.insert(fact);
+    //fact._id = new Meteor.Collection.ObjectID()._str;
+    //console.log("Inserting fact: " + JSON.stringify(fact));
+    //Facts.insert(fact);
+    fact.save();
 
     return {success: true};
 };

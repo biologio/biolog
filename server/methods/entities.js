@@ -3,18 +3,25 @@ Meteor.methods({
     /* save an entity and associated methods */
 
     getEntity: function(id) {
-        check(id, String);
+        //check(id, String);
         var entity = Entities.findOne(id);
         return entity;
     },
 
     addEntity: function (entity) {
-        check(entity, {
-            _id: String,
-            name: String,
-            //source: String,
-            etypes: [String]
-        });
+        //check(entity, {
+        //    _id: String,
+        //    name: String,
+        //    //source: String,
+        //    etypes: [String]
+        //});
+
+        if (!entity.validate()) {
+            var message = "Unable to addEntity: it is invalid";
+            console.error(message);
+            return { success: false, message: message};
+        }
+
         // Make sure the user is logged in before inserting a task
         if (!this.userId) {
             var message = "User not authenticated";
@@ -23,7 +30,7 @@ Meteor.methods({
         }
 
         //make sure the entity  does not already exists
-        check(entity._id, String);
+        //check(entity._id, String);
         var alreadyExisting = Entities.findOne(entity._id);
         if (alreadyExisting) {
             var message = "Entity already exists";
@@ -40,7 +47,8 @@ Meteor.methods({
         entity.valid = 1;
         //if (!entity.source) entity.source = "biolog/server/entities";
         console.log("Inserting entity: " + JSON.stringify(entity));
-        Entities.insert(entity);
+        //Entities.insert(entity);
+        entity.save();
 
         return {success: true};
 
