@@ -26,6 +26,10 @@ Router.route('/profile/:name',
         template:"profile"
     },
     function () {
+        /*
+        if (this.params.name == 'undefined') {
+            this.redirect('/profile/' + Meteor.user().username);
+        }*/
         var sex = Meteor.user().profile.sex;
             
         // this.render('profile');
@@ -33,4 +37,7 @@ Router.route('/profile/:name',
     }
 );
 
+
+Router.route('/privacy', function () {
+});
 

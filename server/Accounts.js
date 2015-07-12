@@ -33,9 +33,10 @@ var telescope = {
 
     //console.log(newUser);
     console.log("options n/", options);
-    
+
 
     if (user.profile == undefined) user.profile = {};
+    if(user.services.google) user.username = user.services.google.email.split("@")[0];
     _.extend(user.profile, {
         name: user.username,
         isAdmin: false,

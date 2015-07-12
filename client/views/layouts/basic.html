@@ -14,13 +14,6 @@
         <div class="right menu">
             {{#if currentUser}}<a class="item" href="/profile/{{currentUser.username}}"> <!--{{currentUser.username}}-->  {{> avatar user=currentUser size='small' shape='circle'}}</a>{{/if}}
             {{> atNavButton}}
-            <!--
-            {{#if currentUser}}
-            <div class="item"><button id="btnSignOut" class="ui green button">Sign Out</button></div>
-            {{else}}
-            <div class="item"><button id="btnSignIn" class="ui green button">Sign in</button></div>
-            {{/if}}
-            -->
         </div>
     </div></div>
     <div class="main container pusher">
