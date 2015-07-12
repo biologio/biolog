@@ -88,7 +88,7 @@ submitBioolookupMeds = function() {
     //console.log("Saving med: " + JSON.stringify(med));
     if (!med) return;
 
-    var fact = createMedFact(getPatient()._id, med);
+    var fact = createMedication(getPatient()._id, med);
 
     addIngredients(med, fact, function(err) {
         if (err) {

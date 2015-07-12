@@ -94,7 +94,7 @@ submitBioolookupConditions = function() {
     //console.log("Saving med: " + JSON.stringify(med));
     if (!cond) return;
 
-    var fact = createConditionFact(getPatient()._id, cond);
+    var fact = createCondition(getPatient()._id, cond);
 
     addConditionClasses(cond, fact, function(err) {
         if (err) {
