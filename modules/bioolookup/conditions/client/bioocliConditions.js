@@ -94,16 +94,16 @@ submitBioolookupConditions = function() {
     //console.log("Saving med: " + JSON.stringify(med));
     if (!cond) return;
 
-    var fact = createCondition(getPatient()._id, cond);
+    var condition = createCondition(getPatient()._id, cond);
 
-    addConditionClasses(cond, fact, function(err) {
+    addConditionClasses(cond, condition, function(err) {
         if (err) {
             console.error("Unable to addClasses: " + err);
         }
 
-        saveProperty(fact, function(err, success) {
+        saveProperty(condition, function(err, success) {
             if (err) {
-                console.error("Unable to save condition fact: " + err + "\n" + JSON.stringify(fact));
+                console.error("Unable to save condition: " + err + "\n" + JSON.stringify(condition));
                 return;
             }
         });

@@ -3,7 +3,7 @@ conditionFrowns = new ReactiveVar();
 var getFrowns = function() {
     var condition = Session.get("biolog.condition.editing");
     if (!condition) return;
-    var frowns = getConditionSeverity(condition);
+    var frowns = condition.getConditionSeverity();
     return frowns;
 };
 
@@ -45,7 +45,7 @@ Template.conditionsItem.events({
 Template.conditionsItem.helpers({
 
     frowns: function() {
-        var sev = getConditionSeverity(this);
+        var sev = this.getConditionSeverity();
         return sev;
     },
 
@@ -117,7 +117,7 @@ Template.conditionModal.events({
 Template.conditionModal.helpers({
     conditionName: function() {
         var condition = Session.get("biolog.condition.editing");
-        return getConditionName(condition);
+        return condition.getConditionName();
     },
 
     frowns: function() {
@@ -167,7 +167,7 @@ Template.conditionModal.helpers({
     conditionFrequencySelected: function(aFreqVal) {
         var condition = Session.get("biolog.condition.editing");
         if (!condition) return;
-        var freqVal = getConditionFrequency(condition);
+        var freqVal = condition.getConditionFrequency();
         if (!freqVal) {
             if (aFreqVal=="1") return "selected";
             return "";
@@ -222,7 +222,7 @@ updateCondition = function() {
     //setConditionSeverity(condition, conditionFrowns.get());
     var frownsRating = $('#conditionSeverityFrowns').rateit('value');
     console.log("frownsRating=" + frownsRating);
-    setConditionSeverity(condition, frownsRating);
+    condition.setConditionSeverity(frownsRating);
 
     saveProperty(condition, function(err, success) {
         if (err) {

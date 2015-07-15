@@ -110,13 +110,13 @@ Template.medModal.rendered = function() {
 Template.medModal.helpers({
     medName: function() {
         var med = Session.get("biolog.med.editing");
-        return getMedName(med);
+        return med.getMedName();
     },
 
     ingredients: function() {
         var med = Session.get("biolog.med.editing");
         //console.log("med=" + JSON.stringify(med));
-        var medIngredients = getMedIngredients(med);
+        var medIngredients = med.getMedIngredients();
 
         return medIngredients;
     },
@@ -124,7 +124,7 @@ Template.medModal.helpers({
     ingredientStrength: function(cui) {
         var med = Session.get("biolog.med.editing");
         if (!med) return;
-        return getIngredientStrength(med, cui);
+        return med.getIngredientStrength(cui);
     },
 
     //medFrequency: function() {
@@ -136,6 +136,7 @@ Template.medModal.helpers({
     medStartDate: function() {
         var med = Session.get("biolog.med.editing");
         if (!med) return;
+        if (!med.startDate) return "";
         var dateStr = yyyy_mm_dd(med.startDate);
         return dateStr;
     },
@@ -143,7 +144,6 @@ Template.medModal.helpers({
     medEndDate: function() {
         var med = Session.get("biolog.med.editing");
         if (!med) return;
-        //return med.endDate;
         if (!med.endDate) return "";
         var dateStr = yyyy_mm_dd(med.endDate);
         return dateStr;
@@ -168,7 +168,7 @@ Template.medModal.helpers({
     medFrequencySelected: function(aFreqVal) {
         var med = Session.get("biolog.med.editing");
         if (!med) return;
-        var freqVal = getMedFrequency(med);
+        var freqVal = med.getMedFrequency();
         if (!freqVal) {
             if (aFreqVal=="1") return "selected";
             return "";
@@ -184,7 +184,7 @@ Template.medModal.helpers({
     medRating: function() {
         var med = Session.get("biolog.med.editing");
         if (!med) return;
-        var ratingVal = getFactRating(med);
+        var ratingVal = med.getRating();
         //console.log("ratingVal=" + ratingVal);
         $('.ui.rating').rating('set rating', ratingVal);
         return ratingVal;
@@ -203,12 +203,12 @@ updateMed = function() {
     var rating = null;
     rating = $('.ui.rating').rating('get rating');
     if (rating) {
-        setFactRating(med, String(rating));
+        med.setRating(String(rating));
     }
-    setMedFrequency(med, frequency);
+    med.setMedFrequency(frequency);
 
     //setMedStrength(med, strength);
-    var ingredients = getMedIngredients(med);
+    var ingredients = med.getMedIngredients();
     for (var ingredientIdx in ingredients) {
         var ingredient = ingredients[ingredientIdx];
         var inputId = "#medStrength-" + ingredient.obj;
