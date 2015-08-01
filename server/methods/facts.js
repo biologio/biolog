@@ -158,7 +158,7 @@ Meteor.methods(FactMethods = {
 _setFact = function(fact, userId) {
     //make sure the subject exists
     var subjId = fact.subj;
-    var subj = Entities.findOne(subjId);
+    var subj = biolog_entities.findOne(subjId);
     if (! subj || subj.valid < 0) {
         var message = "Subject does not exist or is no longer valid: " + subjId;
         console.error(message);
@@ -174,14 +174,14 @@ _setFact = function(fact, userId) {
 
     //find other existing valid facts with the same signature and invalidate them
     if (fact.obj) {
-        Facts.update(
+        biolog_facts.update(
             { subj: fact.subj, pred: fact.pred, obj: fact.obj, valid: 1 },
             { $set: {
                 valid: 0
             }}
         );
     } else {
-        Facts.update(
+        biolog_facts.update(
             { subj: fact.subj, pred: fact.pred, valid: 1 },
             { $set: {
                 valid: 0
@@ -234,7 +234,7 @@ _setFact = function(fact, userId) {
 
 _setProperty = function(fact, userId, skipFact) {
 
-    var subj = Entities.findOne(fact.subj);
+    var subj = biolog_entities.findOne(fact.subj);
     if (subj.creator != userId && ! _.contains(subj.editors, userId)) {
         var message = "User: " + userId + " not authorized to add property to entity: " + fact.subj;
         console.error(message);
@@ -260,7 +260,7 @@ _setProperty = function(fact, userId, skipFact) {
 
     console.log("_setProperty: newProperty=" + JSON.stringify(newProperty));
 
-    Entities.update(subj._id,
+    biolog_entities.update(subj._id,
         { $set: newProperty },
         { validate: false }
     );
@@ -269,7 +269,7 @@ _setProperty = function(fact, userId, skipFact) {
     //if (fact.data) {
     //    var vals = getDataForUpdate(fact, userId);
     //    console.log("Upserting data into entity: " + JSON.stringify(vals));
-    //    Entities.update(subj._id,
+    //    biolog_entities.update(subj._id,
     //        { $set: vals },
     //        { validate: false }
     //    );
@@ -347,7 +347,7 @@ _setProperty = function(fact, userId, skipFact) {
 //        return { success: false, error: message};
 //    }
 //
-//    var subj = Entities.findOne(fact.subj);
+//    var subj = biolog_entities.findOne(fact.subj);
 //    if (subj.creator != this.userId && subj.editors && ! _.contains(subj.editors, this.userId)) {
 //        var message = "User: " + this.userId + " not authorized to add property to entity: " + fact.subj;
 //        console.error(message);
@@ -366,7 +366,7 @@ _setProperty = function(fact, userId, skipFact) {
 //    var slimmedFact = slimFact(fact);
 //    newProperty[signature] = slimmedFact;
 //    console.log("Saving newProperty for entity: " + fact.subj + " = " + JSON.stringify(newProperty));
-//    Entities.upsert({_id: fact.subj},
+//    biolog_entities.upsert({_id: fact.subj},
 //        { $set: newProperty },
 //        { validate: false },
 //        function(err, count) {
@@ -440,7 +440,7 @@ _setProperty = function(fact, userId, skipFact) {
 //
 //    //make sure the subject exists
 //    var subjId = fact.subj;
-//    var subj = Entities.findOne(subjId);
+//    var subj = biolog_entities.findOne(subjId);
 //    if (! subj || subj.valid < 0) {
 //        var message = "Subject does not exist or is no longer valid";
 //        console.error(message);

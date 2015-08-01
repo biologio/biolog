@@ -26,14 +26,14 @@ getUrlLookupMeds = function(q) {
 //};
 
 
-addIngredients = function(med, fact, callback) {
+addIngredients = function(med, medication, callback) {
     var uriEntries = med.properties["http://purl.bioontology.org/ontology/MESH/tradename_of"];
     if (!uriEntries) {
         uriEntries = med.properties["http://purl.bioontology.org/ontology/RXNORM/tradename_of"];
     }
     if (!uriEntries) {
         console.log("No generic info present - add self as the sole ingredient");
-        var addingError = addMedIngredient(fact, med);
+        var addingError = medication.addMedIngredient(med);
         if (addingError) return callback(addingError);
         return callback();
     };
@@ -58,7 +58,7 @@ addIngredients = function(med, fact, callback) {
             }
             var json = JSON.parse(response.content);
             console.log("\n\nReceived ingredient from: " + lookupUrl);
-            var addingError = addMedIngredient(fact, json);
+            var addingError = medication.addMedIngredient(json);
             if (addingError) return callbk(addingError);
             callbk();
         });

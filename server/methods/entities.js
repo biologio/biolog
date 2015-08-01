@@ -4,7 +4,7 @@ Meteor.methods({
 
     getEntity: function(id) {
         //check(id, String);
-        var entity = Entities.findOne(id);
+        var entity = biolog_entities.findOne(id);
         return entity;
     },
 
@@ -15,7 +15,7 @@ Meteor.methods({
         //    //source: String,
         //    etypes: [String]
         //});
-
+        console.log("addEntity: " + JSON.stringify(entity));
         if (!entity.validate()) {
             var message = "Unable to addEntity: it is invalid";
             console.error(message);
@@ -31,7 +31,7 @@ Meteor.methods({
 
         //make sure the entity  does not already exists
         //check(entity._id, String);
-        var alreadyExisting = Entities.findOne(entity._id);
+        var alreadyExisting = biolog_entities.findOne(entity._id);
         if (alreadyExisting) {
             var message = "Entity already exists";
             console.error(message);

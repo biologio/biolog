@@ -1,3 +1,3 @@
-Meteor.publish('Facts', function () {
-  return Facts.find();
-});
+//Meteor.publish('Facts', function () {
+//  return biolog_facts.find();
+//});

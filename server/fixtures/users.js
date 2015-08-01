@@ -20,13 +20,13 @@ Meteor.startup(function () {
         // console.log(user);
         var patientId = "patient/" + user_id;
         
-        var entity = createPatientEntity(patientId, randomName);
+        var entity = createPatient(patientId, randomName);
         entity.creator = user_id;
         entity.owners = [user_id];
         var theDate = new Date();
         entity.created = theDate;
         entity.valid = 1;
-        Entities.insert(entity);
+        biolog_entities.insert(entity);
         // console.log(entity);
 
         

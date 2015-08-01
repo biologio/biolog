@@ -50,6 +50,12 @@ iron:middleware-stack@1.0.9
 iron:router@1.0.9
 iron:url@1.0.9
 jagi:astronomy@0.12.1
+jagi:astronomy-behaviors@0.6.0
+jagi:astronomy-query-builder@0.1.0
+jagi:astronomy-softremove-behavior@0.3.1
+jagi:astronomy-timestamp-behavior@0.5.0
+jagi:astronomy-validators@0.10.8
+jagi:reactive-map@0.2.2
 jparker:crypto-core@0.1.0
 jparker:crypto-md5@0.1.1
 jparker:gravatar@0.3.1

@@ -87,6 +87,7 @@ Template.patientDemographics.helpers({
     //    return pts;
     //},
 
+    //TODO remove patient creation from this template helper
     patient: function() {
         if (getPatient()) return getPatient();
         if (Meteor.user()) {
@@ -96,7 +97,7 @@ Template.patientDemographics.helpers({
                     console.error(err);
                 }
                 if (foundPatient) {
-                    patient = foundPatient;
+                    var patient = foundPatient;
                     //console.log("found patient");
                     setPatient(patient);
                     //ensureDemographics();
@@ -104,9 +105,11 @@ Template.patientDemographics.helpers({
                     ;
                     return patient;
                 }
-                patient = createPatientEntity(patientId, Meteor.user().profile.name);
+                patient = createPatient(patientId, Meteor.user().profile.name);
 
                 setPatient(patient);
+                console.log("Created patient: " + JSON.stringify(patient));
+                console.log("Valid patient?" + patient.validate());
                 Meteor.call("addEntity", patient);
 
                 //ensureDemographics();
@@ -118,7 +121,9 @@ Template.patientDemographics.helpers({
 
     femaleChecked: function() {
         //var sex = getValuePath(this, "data['id/sex']");
-        var sex = getPatientSex();
+        var pt = getPatient();
+        if (! pt) return;
+        var sex = pt.getPatientSex();
         if (!sex) return;
         if (sex=="female") return "checked";
         return "";
@@ -126,22 +131,26 @@ Template.patientDemographics.helpers({
 
     maleChecked: function() {
         //var sex = getValuePath(this, "data['id/sex']");
-        var sex = getPatientSex();
+        var pt = getPatient();
+        if (! pt) return;
+        var sex = pt.getPatientSex();
         if (!sex) return;
         if (sex=="male") return "checked";
         return "";
     },
 
     nickname: function() {
-        //var nickname = getValuePath(this, "data['id/nickname']");
-        var nickname = getPatientNickname();
+        var pt = getPatient();
+        if (! pt) return;
+        var nickname = pt.getPatientNickname();
         if (!nickname) return;
         return nickname;
     },
 
     dob: function() {
-        //var dob = getValuePath(this, "data['id/dob']");
-        var dob = getPatientDob();
+        var pt = getPatient();
+        if (! pt) return;
+        var dob = pt.getPatientDob();
         if (!dob) return;
         var dobDate = new Date(String(dob));
         //console.log("dob: this=" + JSON.stringify(this));

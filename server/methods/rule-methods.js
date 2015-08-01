@@ -26,7 +26,8 @@ Meteor.methods({
             rule.updated = theDate;
             rule.source = "biolog/server/rules.js";
             console.log("Inserting rule: " + JSON.stringify(rule, null, "  "));
-            Entities.insert(rule);
+            //biolog_entities.insert(rule);
+            rule.save();
             return {success: true};
         }
 
@@ -36,7 +37,8 @@ Meteor.methods({
         rule.updated = theDate;
         console.log("Updating rule: " + JSON.stringify(rule, null, "  "));
 
-        Entities.update(rule._id, rule);
+        //biolog_entities.update(rule._id, rule);
+        rule.save();
 
         return {success: true};
 

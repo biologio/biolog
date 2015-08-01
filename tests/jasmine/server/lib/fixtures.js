@@ -7,7 +7,7 @@ createPatients = function() {
         var id = Meteor.Collection.ObjectID()._str;
 
         var name = chance.name();
-        var pt = createPatientEntity(id, name);
+        var pt = createPatient(id, name);
         addDemographics(pt);
 
         submitPatient(pt);

@@ -110,12 +110,13 @@ Template.medModal.rendered = function() {
 Template.medModal.helpers({
     medName: function() {
         var med = Session.get("biolog.med.editing");
+        if (!med) return;
         return med.getMedName();
     },
 
     ingredients: function() {
         var med = Session.get("biolog.med.editing");
-        //console.log("med=" + JSON.stringify(med));
+        if (!med) return;
         var medIngredients = med.getMedIngredients();
 
         return medIngredients;
