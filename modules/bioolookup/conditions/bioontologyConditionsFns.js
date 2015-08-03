@@ -37,11 +37,11 @@ getUrlLookupConditions = function(q) {
 };
 
 
-addConditionClasses = function(condition, fact, callback) {
+addConditionClasses = function(conditionInfo, conditionObj, callback) {
     //add current condition as a class
-    addConditionClass(fact, condition);
+    conditionObj.addConditionClass(conditionInfo);
     //get ancestors
-    var ancestorsUrl = condition.links.ancestors;
+    var ancestorsUrl = conditionInfo.links.ancestors;
     ancestorsUrl += "?apikey=" + getBioontologyApikey();
     HTTP.get(ancestorsUrl, function (err, response) {
         if (err) {
@@ -76,7 +76,7 @@ addConditionClasses = function(condition, fact, callback) {
 
                 for (var ancestorIdx in result.data["http://www.w3.org/2002/07/owl#Class"]) {
                     var ancestor = result.data["http://www.w3.org/2002/07/owl#Class"][ancestorIdx];
-                    addConditionClass(fact, ancestor);
+                    conditionObj.addConditionClass(ancestor);
                 }
                 callback();
         });

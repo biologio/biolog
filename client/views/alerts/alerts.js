@@ -54,8 +54,8 @@ Tracker.autorun(function () {
     //console.log("searchIsabel: conditions=" + conditionsList);
     if (! conditionsList) return;
     var pt = getPatient();
-    var dob = yyyymmdd(getPatientDob());
-    var sex = getPatientSex(pt);
+    var dob = yyyymmdd(pt.getPatientDob());
+    var sex = pt.getPatientSex();
     var pregnant = "false";
     console.log("Searching Isabel for: " + conditionsList);
 

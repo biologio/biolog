@@ -80,7 +80,7 @@ Template.bioolookupConditionsContent.events({
 
     "click .bioolookupConditionsResult": function(event, template) {
         var selectedCondition = this;
-        console.log("clicked: " + JSON.stringify(selectedCondition));
+        //console.log("clicked: " + JSON.stringify(selectedCondition));
         conditionsResults.set([selectedCondition]);
         Session.set("biolog.bioolookup.conditions.results", selectedCondition);
     }
@@ -90,20 +90,20 @@ Template.bioolookupConditionsContent.events({
 //TODO lookup drug class
 submitBioolookupConditions = function() {
     Session.set("biolog.bioolookup.conditions.modal.open", null);
-    var cond = Session.get("biolog.bioolookup.conditions.results");
+    var conditionInfo = Session.get("biolog.bioolookup.conditions.results");
     //console.log("Saving med: " + JSON.stringify(med));
-    if (!cond) return;
+    if (!conditionInfo) return;
 
-    var condition = createCondition(getPatient()._id, cond);
+    var conditionObj = createCondition(getPatient()._id, conditionInfo);
 
-    addConditionClasses(cond, condition, function(err) {
+    addConditionClasses(conditionInfo, conditionObj, function(err) {
         if (err) {
             console.error("Unable to addClasses: " + err);
         }
 
-        saveProperty(condition, function(err, success) {
+        saveProperty(conditionObj, function(err, success) {
             if (err) {
-                console.error("Unable to save condition: " + err + "\n" + JSON.stringify(condition));
+                console.error("Unable to save condition: " + err + "\n" + JSON.stringify(conditionObj));
                 return;
             }
         });

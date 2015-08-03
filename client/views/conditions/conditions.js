@@ -117,6 +117,7 @@ Template.conditionModal.events({
 Template.conditionModal.helpers({
     conditionName: function() {
         var condition = Session.get("biolog.condition.editing");
+        if (!condition) return;
         return condition.getConditionName();
     },
 
