@@ -1,19 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="02e712f0-6afb-4af0-a485-f0f77566c506" name="Default" comment="Merge branch 'master' of https://github.com/biologio/biolog&#10;&#10;# Please enter a commit message to explain why this merge is necessary,&#10;# especially if it merges an updated upstream into a topic branch.&#10;#&#10;# Lines starting with '#' will be ignored, and an empty message aborts&#10;# the commit.&#10;">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/models/Condition.js" afterPath="$PROJECT_DIR$/lib/models/Condition.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/models/lib/_Entity.js" afterPath="$PROJECT_DIR$/lib/models/lib/_Entity.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/views/alerts/alerts.js" afterPath="$PROJECT_DIR$/client/views/alerts/alerts.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/bioolookup/conditions/client/bioocliConditions.js" afterPath="$PROJECT_DIR$/modules/bioolookup/conditions/client/bioocliConditions.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/bioolookup/conditions/bioontologyConditionsFns.js" afterPath="$PROJECT_DIR$/modules/bioolookup/conditions/bioontologyConditionsFns.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/util/conditionUtils.js" afterPath="$PROJECT_DIR$/lib/util/conditionUtils.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/views/conditions/conditions.js" afterPath="$PROJECT_DIR$/client/views/conditions/conditions.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/util/medUtils.js" afterPath="$PROJECT_DIR$/lib/util/medUtils.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/util/patientUtil.js" afterPath="$PROJECT_DIR$/lib/util/patientUtil.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/util/stringUtils.js" afterPath="$PROJECT_DIR$/lib/util/stringUtils.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="02e712f0-6afb-4af0-a485-f0f77566c506" name="Default" comment="Merge branch 'master' of https://github.com/biologio/biolog&#10;&#10;# Please enter a commit message to explain why this merge is necessary,&#10;# especially if it merges an updated upstream into a topic branch.&#10;#&#10;# Lines starting with '#' will be ignored, and an empty message aborts&#10;# the commit.&#10;" />
     <ignored path="biolog.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
