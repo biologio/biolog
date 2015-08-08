@@ -12,9 +12,14 @@
  * T184=pain groin
  * T033=enlarged prostate
  *
- * examples:
- * nosebleed
- * high blood pressure
+ * Ontology Candidates
+ * ICPC2P
+ * ICD10
+ *
+ * Conditions we want to find:
+ * nosebleed - NDFRT, MEDDRA, MEDLINEPLUS, VANDF, WHO-ART, MESH, SNOMEDCT
+ * high blood pressure - MEDLINEPLUS, ICPC2P, NCIT, MESH, CRISP, SNOMEDCT, SOPHARM, RCD, EFO, CSSO, ICD10CM, SNMI, MP
+ * kidney stones - MEDLINEPLUS, OMIM, MEDDRA, LOINC, BDO, MESH, NDFRT, EFO, DOID, HP, MP
  */
 //LOCAL
 //getUrlLookupConditions = function(q) {
@@ -25,7 +30,7 @@
 //        "&apikey=95d31cce-3247-4186-ae95-97c61884c50a";
 //};
 
-conditionOntology = "ICPC2P";
+conditionOntology = "MEDLINEPLUS,ICD10CM";
 
 //REMOTE
 getUrlLookupConditions = function(q) {
@@ -62,11 +67,14 @@ addConditionClasses = function(condition, fact, callback) {
             for (var ancestorIdx in json) {
                 var ancestor = json[ancestorIdx];
                 var clazz = ancestor["@id"];
+                var theOntology = ancestor.links.ontology;
                 batchData["http://www.w3.org/2002/07/owl#Class"].collection.push({
                     "class": clazz,
-                    "ontology": "http://data.bioontology.org/ontologies/" + conditionOntology
+                    "ontology": theOntology
+                    //"ontology": "http://data.bioontology.org/ontologies/" + conditionOntology
                 });
             }
+        console.log("assembled batchData for batch lookup of disease class CUIs:" + JSON.stringify(batchData));
             HTTP.post(batchUrl, {data: batchData}, function(err, result) {
                 if (err) {
                     console.error("Unable to batch refine condition ancestors at url: " + batchUrl + ":\n" + err + "\nbatchData=" + JSON.stringify(batchData));
