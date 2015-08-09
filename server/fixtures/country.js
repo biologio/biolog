@@ -1,8 +1,8 @@
 Meteor.startup(function () {
-    Country = new Mongo.Collection("country");
+    
     if(Country.find({}).count() !== 250) {
         Country.remove({});
-        Country.insert([
+        var countries = [
             {code:"", name:"Select Country"},
             {code:"AF", name:"Afghanistan"},
             {code:"AX", name:"Åland Islands"},
@@ -252,6 +252,10 @@ Meteor.startup(function () {
             {code:"EH", name:"Western Sahara"},
             {code:"YE", name:"Yemen"},
             {code:"ZM", name:"Zambia"},
-            {code:"ZW", name:"Zimbabwe"}]);
+            {code:"ZW", name:"Zimbabwe"}
+        ];
+        for (var country in countries) {
+            Country.insert(countries[country]);
+        }
     }
 });

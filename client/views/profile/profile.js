@@ -1,3 +1,4 @@
+Meteor.subscribe("country");
 Template.profile.rendered = function() {
     $('.ui.radio.checkbox').checkbox();
 };
@@ -11,17 +12,28 @@ Template.profile.helpers({
         console.log("isFemale : " + sex);
         return "Female" == sex;
     },
+    
     countries: function () {
-        return Meteor.call("countries");
+        console.log("countries called");
+        // var Country = new Mongo.Collection("country");
+        console.log(Country.find({}));
+        return Country.find({});
+        // console.log(aa);
+        // return Meteor.call("countries");
     }
     
     
 });
-
+Template.country.helpers({
+    isResidenceOf: function(countryOfResidenceCode) {
+        return Meteor.user().profile.countryOfResidence == countryOfResidenceCode;
+    }
+});
 Template.profile.events({
     'click #saveProfile': function(e) {
         // Update profile
         var data = _.object($("#profileForm").serializeArray().map(function(v) {return [v.name, v.value];} ));
+        console.log(data);
         Meteor.call('updateProfile', data);
         
         // create Entity for user.
