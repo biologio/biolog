@@ -15,7 +15,7 @@ createRandomPatient = function() {
     var pt = createPatientEntity(id, name);
     addRandomDemographics(pt);
 
-    submitPatient(pt);
+    savePatientDemographics(pt);
 
     //addMedications(pt);
 }

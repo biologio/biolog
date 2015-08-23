@@ -44,28 +44,27 @@ Template.profile.events({
         setPatientSex(pt, $("input:radio[name='profile.sex']").val());
         setPatientCountry(pt, $("select[name='profile.countryOfResidence']").val());
         setPatientZip(pt, $("select[name='profile.postalCode']").val());
+        savePatientDemographics(pt);
         setPatient(pt);
-        
-        
-        
+
         var patientId = "patient/" + Meteor.user()._id;
-        Meteor.call("getEntity", patientId, function(err, foundPatient) {
-            if (err) {
-                console.error(err);
-            }
-            if (foundPatient) {
-                patient = foundPatient;
-                setPatient(patient);
-            }
-            patient = createPatientEntity(patientId, Meteor.user().profile.name);
-
-            setPatient(patient);
-            Meteor.call("addEntity", patient);
-
-            
-
-            
-        });
+        //Meteor.call("getEntity", patientId, function(err, foundPatient) {
+        //    if (err) {
+        //        console.error(err);
+        //    }
+        //    if (foundPatient) {
+        //        patient = foundPatient;
+        //        setPatient(patient);
+        //    }
+        //    patient = createPatientEntity(patientId, Meteor.user().profile.name);
+        //
+        //    setPatient(patient);
+        //    Meteor.call("addEntity", patient);
+        //
+        //
+        //
+        //
+        //});
         
         Router.go("/");
        

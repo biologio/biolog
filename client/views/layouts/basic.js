@@ -20,7 +20,14 @@ Template.basicLayout.rendered = function(){
     if (! getPatient()) {
         Session.set("biolog.patient.modal.open", "true");
     }
-}
+};
+
+Template.basicLayout.helpers({
+    getUserId: function() {
+        return Meteor.user()._id;
+    }
+});
+
 
 Template.sidebar.helpers({
     // array of side bar menus
@@ -35,6 +42,8 @@ Template.sidebar.helpers({
         {text:"Admin", icon:"settings", url:"/admin"}
         
     ]
+
+
 });
 Template.sidebar.events({
    'click .sidebar.menu a': function(evt) {
@@ -44,6 +53,7 @@ Template.sidebar.events({
         $(".sidebar").sidebar("hide");
     }
 });
+
 Avatar.options = {
   fallbackType: 'initials',
   gravatarDefault: 'identicon'

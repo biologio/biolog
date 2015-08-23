@@ -1,10 +1,11 @@
-PATIENT_COUNT = 100;
+PATIENT_COUNT = 2;
 
 //var chance = new Chance();
 
 createRandomPatients = function() {
-    console.log("Creating " + PATIENT_COUNT + " random patients");
+
     for (var i=0; i<PATIENT_COUNT; i++) {
+        console.log("\n\nCreating patient #" + (i+1) + " of " + PATIENT_COUNT + " random patients");
         createRandomPatient();
     }
 };
@@ -18,7 +19,7 @@ createRandomPatient = function() {
     Meteor.call("addEntity", pt);
     addRandomDemographics(pt);
     console.log("\n\nAdded demographics: " + pt);
-    submitPatient(pt);
+    savePatientDemographics(pt);
 
     //addMedications(pt);
 }

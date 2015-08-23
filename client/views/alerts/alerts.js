@@ -54,8 +54,9 @@ Tracker.autorun(function () {
     //console.log("searchIsabel: conditions=" + conditionsList);
     if (! conditionsList) return;
     var pt = getPatient();
+    //console.log("searchIsabel: getPatientDob=" + getPatientDob(pt));
     if (! pt) {
-
+        return;
     }
     var dob = yyyymmdd(getPatientDob(pt));
     var sex = getPatientSex(pt);
