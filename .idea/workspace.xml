@@ -2,15 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="02e712f0-6afb-4af0-a485-f0f77566c506" name="Default" comment="Merge branch 'master' of https://github.com/biologio/biolog&#10;&#10;# Please enter a commit message to explain why this merge is necessary,&#10;# especially if it merges an updated upstream into a topic branch.&#10;#&#10;# Lines starting with '#' will be ignored, and an empty message aborts&#10;# the commit.&#10;">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/views/alerts/alerts.js" afterPath="$PROJECT_DIR$/client/views/alerts/alerts.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/views/layouts/basic.html" afterPath="$PROJECT_DIR$/client/views/layouts/basic.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/views/layouts/basic.js" afterPath="$PROJECT_DIR$/client/views/layouts/basic.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/jasmine/server/lib/fixtures.js" afterPath="$PROJECT_DIR$/tests/jasmine/server/lib/fixtures.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/startup/loadRandomPatients.js" afterPath="$PROJECT_DIR$/client/startup/loadRandomPatients.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/views/patient/patient.js" afterPath="$PROJECT_DIR$/client/views/patient/patient.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/util/patientUtil.js" afterPath="$PROJECT_DIR$/lib/util/patientUtil.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/views/profile/profile.js" afterPath="$PROJECT_DIR$/client/views/profile/profile.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/config/at_config.js" afterPath="$PROJECT_DIR$/lib/config/at_config.js" />
     </list>
     <ignored path="biolog.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -54,16 +46,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="alerts.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/client/views/alerts/alerts.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5706522" vertical-offset="645" max-vertical-offset="1230">
-              <caret line="57" column="15" selection-start-line="57" selection-start-column="15" selection-end-line="57" selection-end-column="15" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="profile.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/views/profile/profile.html">
           <provider selected="true" editor-type-id="text-editor">
@@ -100,8 +82,18 @@
       <file leaf-file-name="basic.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/views/layouts/basic.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1005">
+            <state vertical-scroll-proportion="0.0" vertical-offset="637" max-vertical-offset="1005">
               <caret line="27" column="5" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="at_config.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/lib/config/at_config.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.48913044" vertical-offset="405" max-vertical-offset="1440">
+              <caret line="39" column="5" selection-start-line="39" selection-start-column="5" selection-end-line="39" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -145,7 +137,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/modules/bioolookup/client/bioocli.js" />
         <option value="$PROJECT_DIR$/modules/bioolookup/client/bioolookupConditions.html" />
         <option value="$PROJECT_DIR$/modules/bioolookup/client/bioolookupMeds.html" />
         <option value="$PROJECT_DIR$/modules/bioolookup/meds/bioontologyMedsFns.js" />
@@ -196,6 +187,7 @@
         <option value="$PROJECT_DIR$/client/views/profile/profile.js" />
         <option value="$PROJECT_DIR$/client/views/patient/patient.js" />
         <option value="$PROJECT_DIR$/client/views/alerts/alerts.js" />
+        <option value="$PROJECT_DIR$/lib/config/at_config.js" />
       </list>
     </option>
   </component>
@@ -475,13 +467,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/client/views/meds/meds.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3855">
-          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/routes/medsRoutes.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="135">
@@ -825,22 +810,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/packages/tests-proxy/tests/jasmine/server/lib/fixtures.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="133" max-vertical-offset="1155">
-          <caret line="17" column="32" selection-start-line="17" selection-start-column="4" selection-end-line="17" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/views/layouts/basic.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="120" max-vertical-offset="1005">
-          <caret line="27" column="5" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/views/patient/patient.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1303" max-vertical-offset="2355">
@@ -877,6 +846,30 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5706522" vertical-offset="645" max-vertical-offset="1230">
           <caret line="57" column="15" selection-start-line="57" selection-start-column="15" selection-end-line="57" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/packages/tests-proxy/tests/jasmine/server/lib/fixtures.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="133" max-vertical-offset="1155">
+          <caret line="17" column="32" selection-start-line="17" selection-start-column="4" selection-end-line="17" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/views/layouts/basic.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="120" max-vertical-offset="1005">
+          <caret line="27" column="5" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/config/at_config.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.48913044" vertical-offset="405" max-vertical-offset="1440">
+          <caret line="39" column="5" selection-start-line="39" selection-start-column="5" selection-end-line="39" selection-end-column="5" />
           <folding />
         </state>
       </provider>
