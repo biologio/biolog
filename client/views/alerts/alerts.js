@@ -54,10 +54,13 @@ Tracker.autorun(function () {
     //console.log("searchIsabel: conditions=" + conditionsList);
     if (! conditionsList) return;
     var pt = getPatient();
-    var dob = yyyymmdd(getPatientDob());
+    if (! pt) {
+
+    }
+    var dob = yyyymmdd(getPatientDob(pt));
     var sex = getPatientSex(pt);
     var pregnant = "false";
-    console.log("Searching Isabel for: " + conditionsList);
+    console.log("Searching Isabel for: dob: " + dob + ", sex: " + sex + ", conditions:" + conditionsList);
 
     Meteor.call("isabel", dob, sex, pregnant, 12, conditionsList, function(error, result) {
         if (error) {

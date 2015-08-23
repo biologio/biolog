@@ -16,6 +16,20 @@ saveProperty = function(fact, callback) {
     });
 };
 
+saveFact = function(fact, callback) {
+    //console.log("saveProperty: " + JSON.stringify(fact));
+    Meteor.call("setFact", fact, function(response) {
+        if (callback) return callback(response);
+        if (response) {
+            if (response.success) {
+                console.log("Successfully inserted fact.")
+            } else {
+                console.log("Error setting fact: " + response.error);
+            }
+        }
+    });
+};
+
 
 
 //addProperty = function(fact, callback) {

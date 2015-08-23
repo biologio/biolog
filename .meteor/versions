@@ -114,6 +114,7 @@ srp@1.0.3
 stylus@1.0.7
 templating@1.1.1
 tmeasday:paginated-subscription@0.2.4
+tmeasday:publish-counts@0.5.1
 tracker@1.0.7
 twitter@1.1.4
 ui@1.0.6

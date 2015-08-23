@@ -1,20 +1,23 @@
 PATIENT_COUNT = 100;
 
-var chance = new Chance();
+//var chance = new Chance();
 
 createRandomPatients = function() {
+    console.log("Creating " + PATIENT_COUNT + " random patients");
     for (var i=0; i<PATIENT_COUNT; i++) {
         createRandomPatient();
     }
 };
 
 createRandomPatient = function() {
-    var id = Meteor.Collection.ObjectID()._str;
+    var id = "patient/" + guid();
 
     var name = chance.name();
     var pt = createPatientEntity(id, name);
+    console.log("\n\nCreated patient: " + pt);
+    Meteor.call("addEntity", pt);
     addRandomDemographics(pt);
-
+    console.log("\n\nAdded demographics: " + pt);
     submitPatient(pt);
 
     //addMedications(pt);
@@ -56,15 +59,12 @@ addMedications = function(pt) {
     }
 };
 
-
-
-//Meteor.subscribe("patientCount");
+Meteor.subscribe("patientCount");
 
 
 
-Tracker.autorun(function() {
-    //var patientCount = Counts.get('patient-counter');
-    var patientCount = Entities.count({"etypes": "patient"});
+Meteor.startup(function () {
+    var patientCount = Counts.get("patient-counter");
     console.log("patientCount=" + patientCount);
     if (patientCount < PATIENT_COUNT) {
         createRandomPatients();
