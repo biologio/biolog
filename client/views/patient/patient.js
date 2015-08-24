@@ -8,7 +8,7 @@ Tracker.autorun(function () {
             closable  : true,
             onApprove    : function(){
                 Session.set("biolog.patient.modal.open", null);
-                submitPatient();
+                savePatientDemographics();
                 return true;
             },
             onDeny    : function(){
@@ -104,12 +104,11 @@ Template.patientDemographics.helpers({
                     ;
                     return patient;
                 }
-                patient = createPatientEntity(patientId, Meteor.user().profile.name);
 
+                //no patient found.  create and save it.
+                patient = createPatientEntity(patientId, Meteor.user().profile.name);
                 setPatient(patient);
                 Meteor.call("addEntity", patient);
-
-                //ensureDemographics();
 
                 return patient;
             });
