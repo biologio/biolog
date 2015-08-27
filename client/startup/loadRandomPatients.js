@@ -1,5 +1,5 @@
-DESIRED_PATIENT_COUNT = 2;
-MAX_RANDOM_MEDS_PER_PATIENT = 2;
+DESIRED_PATIENT_COUNT = 5;
+MAX_RANDOM_MEDS_PER_PATIENT = 5;
 //var chance = new Chance();
 
 createRandomPatients = function() {
