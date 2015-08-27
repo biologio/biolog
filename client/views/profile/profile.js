@@ -5,25 +5,18 @@ Template.profile.rendered = function() {
 
 Template.profile.helpers({
     isMale: function(sex) {
-        console.log("isMale : " + sex);
         return "Male" == sex;
     },
     isFemale: function(sex) {
-        console.log("isFemale : " + sex);
         return "Female" == sex;
     },
     
     countries: function () {
-        console.log("countries called");
-        // var Country = new Mongo.Collection("country");
         console.log(Country.find({}));
         return Country.find({});
-        // console.log(aa);
-        // return Meteor.call("countries");
     }
-    
-    
 });
+
 Template.country.helpers({
     isResidenceOf: function(countryOfResidenceCode) {
         return Meteor.user().profile.countryOfResidence == countryOfResidenceCode;

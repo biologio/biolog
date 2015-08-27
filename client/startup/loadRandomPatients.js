@@ -1,13 +1,14 @@
-PATIENT_COUNT = 2;
-
+DESIRED_PATIENT_COUNT = 2;
+MAX_RANDOM_MEDS_PER_PATIENT = 2;
 //var chance = new Chance();
 
 createRandomPatients = function() {
-
-    for (var i=0; i<PATIENT_COUNT; i++) {
-        console.log("\n\nCreating patient #" + (i+1) + " of " + PATIENT_COUNT + " random patients");
+    console.log("CREATING " + DESIRED_PATIENT_COUNT + " createRandomPatients...");
+    for (var i=0; i<DESIRED_PATIENT_COUNT; i++) {
+        console.log("\n\nCreating patient #" + (i+1) + " of " + DESIRED_PATIENT_COUNT + " random patients");
         createRandomPatient();
     }
+    console.log("FINISHED " + DESIRED_PATIENT_COUNT + " createRandomPatients...");
 };
 
 createRandomPatient = function() {
@@ -18,10 +19,10 @@ createRandomPatient = function() {
     console.log("\n\nCreated patient: " + pt);
     Meteor.call("addEntity", pt);
     addRandomDemographics(pt);
-    console.log("\n\nAdded demographics: " + pt);
+    console.log("\n\nAdded demographics: " + JSON.stringify(pt));
     savePatientDemographics(pt);
 
-    //addMedications(pt);
+    addMedications(pt);
 }
 
 addRandomDemographics = function(pt) {
@@ -41,21 +42,28 @@ addRandomDemographics = function(pt) {
 };
 
 addMedications = function(pt) {
-    var countMeds = chance.integer({min: 0, max: 50});
+    var countMeds = chance.integer({min: 1, max: MAX_RANDOM_MEDS_PER_PATIENT});
     for (var i=0; i < countMeds; i++) {
+        console.log("Adding med " + i + " of " + countMeds + " medications");
         //lookup and add this medication:
         var q = chance.string({length: 2});
         var url = getUrlLookupMeds(q);
-        //console.log("bioolookupContent url=" + url);
+        console.log("addMedications: bioolookupContent url=" + url);
         HTTP.get(url, function (err, response) {
             if (err) {
+                console.error("Error adding medication: " + err);
                 return results.set([]);
             }
             var json = JSON.parse(response.content);
-            var index = chance.integer({min:0, max: json.length - 1});
-            var med = json[index];
-
-            //TODO: lookup attributes of this medicine
+            var medList = json.collection;
+            var index = chance.integer({min:0, max: medList.length - 1});
+            var med = medList[index];
+            console.log("Saving medication: " + JSON.stringify(med));
+            saveMedFactWithIngredientsAndClasses(pt._id, med, function(err, medFact) {
+                if (medFact) {
+                    console.log("Random Patient: " + JSON.stringify(pt) + "\nSaved medFact: " + JSON.stringify(medFact));
+                }
+            });
         });
     }
 };
@@ -67,7 +75,7 @@ Meteor.subscribe("patientCount");
 Meteor.startup(function () {
     var patientCount = Counts.get("patient-counter");
     console.log("patientCount=" + patientCount);
-    if (patientCount < PATIENT_COUNT) {
+    if (patientCount < DESIRED_PATIENT_COUNT) {
         createRandomPatients();
     }
 });

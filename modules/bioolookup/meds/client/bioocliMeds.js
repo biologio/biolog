@@ -80,19 +80,27 @@ Template.bioolookupMedsContent.events({
     }
 });
 
-//TODO lookup generic
-//TODO lookup drug class
+
 submitBioolookupMeds = function() {
     Session.set("biolog.bioolookup.meds.modal.open", null);
     var med = Session.get("biolog.bioolookup.meds.results");
+    var ptid = getPatient()._id;
+
+    saveMedFactWithIngredientsAndClasses(ptid, med);
+};
+
+saveMedFactWithIngredientsAndClasses = function(ptid, med, callback) {
     //console.log("Saving med: " + JSON.stringify(med));
     if (!med) return;
 
-    var fact = createMedFact(getPatient()._id, med);
+    var fact = createMedFact(ptid, med);
 
     addIngredients(med, fact, function(err) {
         if (err) {
-            console.error("Unable to addIngredients: " + err);
+            var msg = "Unable to addIngredients: " + err;
+            console.error(msg);
+            if (callback) callback(msg);
+            return;
         }
 
         var ingredients = fact.data["medication/ingredient"];
@@ -106,13 +114,14 @@ submitBioolookupMeds = function() {
             console.log("\n\n\nSaving med fact:" + JSON.stringify(fact));
             saveProperty(fact, function(err, success) {
                 if (err) {
-                    console.error("Unable to save medication fact: " + err + "\n" + JSON.stringify(fact));
+                    var msg = "Unable to save medication fact: " + err + "\n" + JSON.stringify(fact);
+                    console.error(msg);
+                    if (callback) callback(msg);
                     return;
                 }
+                if (callback) return callback(null, fact);
             });
-
-        })
-
+        });
     });
 };
 

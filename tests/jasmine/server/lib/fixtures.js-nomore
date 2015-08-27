@@ -1,9 +1,9 @@
-PATIENT_COUNT = 100;
+DESIRED_PATIENT_COUNT = 100;
 
 var chance = new Chance();
 
 createRandomPatients = function() {
-    for (var i=0; i<PATIENT_COUNT; i++) {
+    for (var i=0; i<DESIRED_PATIENT_COUNT; i++) {
         createRandomPatient();
     }
 };
@@ -17,7 +17,7 @@ createRandomPatient = function() {
 
     savePatientDemographics(pt);
 
-    //addMedications(pt);
+    addMedications(pt);
 }
 
 addRandomDemographics = function(pt) {
@@ -37,7 +37,7 @@ addRandomDemographics = function(pt) {
 };
 
 addMedications = function(pt) {
-    var countMeds = chance.integer({min: 0, max: 50});
+    var countMeds = chance.integer({min: 0, max: 20});
     for (var i=0; i < countMeds; i++) {
         //lookup and add this medication:
         var q = chance.string({length: 2});
@@ -66,7 +66,7 @@ Tracker.autorun(function() {
     //var patientCount = Counts.get('patient-counter');
     var patientCount = Entities.count({"etypes": "patient"});
     console.log("patientCount=" + patientCount);
-    if (patientCount < PATIENT_COUNT) {
+    if (patientCount < DESIRED_PATIENT_COUNT) {
         createRandomPatients();
     }
 });

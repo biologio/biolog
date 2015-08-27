@@ -192,14 +192,15 @@ Template.medModal.helpers({
 });
 
 
-
+/**
+ * Save the medicine based on the user input
+ */
 updateMed = function() {
     var med = Session.get("biolog.med.editing");
     delete med._id;
     //console.log("\n\nSaving med: " + JSON.stringify(med));
     if (!med) return;
     var frequency = $("#medFrequency").val();
-    //var strength = $("#medStrength").val();
     var rating = null;
     rating = $('.ui.rating').rating('get rating');
     if (rating) {
