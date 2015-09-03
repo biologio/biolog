@@ -13,11 +13,15 @@ Package.describe({
 Package.onUse(function(api) {
     api.versionsFrom('1.1.0.3');
     api.use('tracker');
-    api.use('session');
-    api.use('biolog:bioontology');
-    api.addFiles('api/condition-fact-api.js');
-    api.addFiles('view/conditions.js');
-    api.addFiles('view/conditions.html');
+    api.use('session', 'client');
+    api.use('jquery', 'client');
+    api.use('templating', 'client');
+    api.use('reactive-var', 'client');
+    api.use('biolog:bioontology', 'client');
+    api.addFiles('api/condition-fact-api.js', 'client');
+    api.addFiles('view/conditions.html', 'client');
+    api.addFiles('view/conditions.js', 'client');
+
 });
 
 Package.onTest(function(api) {
