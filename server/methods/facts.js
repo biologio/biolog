@@ -204,6 +204,7 @@ _setFact = function(fact, userId) {
         pred: String,
         data: Match.Optional(Match.Any),
         obj: Match.Optional(String),
+        postId: Match.Optional(String),
         subjName: Match.Optional(String),
         objName: Match.Optional(String),
         text: Match.Optional(String),
@@ -385,17 +386,17 @@ _setProperty = function(fact, userId, skipFact) {
  * Update an existing fact of the same id.  First check permissions and use count.
  * If use count > 0, then fail.  Return true if successful
  */
-//updateFact: function (fact) {
+// updateFact: function (fact) {
 //    // Make sure the user is logged in before inserting a task
 //    console.log("Updating fact: " + fact._id);
-//
+
 //    if (!this.userId) {
 //        var message = "User not authenticated";
 //        console.error(message);
 //        return { success: false, error: message};
 //    }
 //    return _updateFact(fact, this.userId);
-//},
+// },
 
 
 /**
@@ -459,23 +460,23 @@ _setProperty = function(fact, userId, skipFact) {
 //};
 //
 //
-//_updateFact = function(fact, userId) {
+// _updateFact = function(fact, userId) {
 //    var existingFact = Facts.findOne(fact._id);
-//
+
 //    //if previous fact not found, abort
 //    if (!existingFact) {
 //        var message = "No such fact to update";
 //        console.error(message);
 //        return { success: false, error: message};
 //    }
-//
+
 //    //if not permitted, abort
 //    if (existingFact.creator != userId && existingFact.editors && ! _.contains(existingFact.editors, userId)) {
 //        var message = "User: " + userId + " not authorized to update fact: " + JSON.stringify(fact);
 //        console.error(message);
 //        return { success: false, error: message};
 //    }
-//
+
 //    //if new fact has different subject or predicate than previous, abort
 //    if (existingFact.subj != fact.subj) {
 //        var message = "Subjects do not match";
@@ -487,7 +488,7 @@ _setProperty = function(fact, userId, skipFact) {
 //        console.error(message);
 //        return { success: false, error: message};
 //    }
-//
+
 //    //todo: if the fact is already used, then mark it as not current and create a new fact
 //    console.log("Updating fact which has data: " + JSON.stringify(fact.data));
 //    Facts.upsert( fact._id,
@@ -505,7 +506,7 @@ _setProperty = function(fact, userId, skipFact) {
 //        }},
 //        {validate: false}
 //    );
-//
+
 //    //if there is fact data, set that
 //    if (fact.data) {
 //        var vals = getDataForUpdate(fact, userId);
@@ -516,4 +517,4 @@ _setProperty = function(fact, userId, skipFact) {
 //        );
 //    }
 //    return {success: true};
-//};
+// };

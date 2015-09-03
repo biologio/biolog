@@ -11,4 +11,5 @@ Tracker.autorun(function() {
     Meteor.subscribe("patientQuestions", getPatient()._id);
 
     Meteor.subscribe("patientMeds", getPatient()._id);
+   
 });
