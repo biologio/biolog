@@ -39,6 +39,12 @@ Template.conditionsItem.events({
 
 
 
+Template.bioolookupConditionsButton.events({
+    "click #bioolookupConditionsButton": function() {
+        Session.set("biolog.bioolookup.conditions.modal.open", false);
+        Session.set("biolog.bioolookup.conditions.modal.open", true);
+    }
+});
 
 
 

@@ -34,7 +34,6 @@ aldeed:template-extension
 sanjo:jasmine
 velocity:html-reporter
 houston:admin
-matteodem:easy-security
 ongoworks:security
 peerlibrary:async
 risul:chance
@@ -50,6 +49,6 @@ miro:mailchimp
 matb33:collection-hooks
 
 tmeasday:publish-counts
+useraccounts:iron-routing
 biolog:feed
-
-
+biolog:bioontology-facts

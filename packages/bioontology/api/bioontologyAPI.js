@@ -21,37 +21,54 @@
  * high blood pressure - MEDLINEPLUS, ICPC2P, NCIT, MESH, CRISP, SNOMEDCT, SOPHARM, RCD, EFO, CSSO, ICD10CM, SNMI, MP
  * kidney stones - MEDLINEPLUS, OMIM, MEDDRA, LOINC, BDO, MESH, NDFRT, EFO, DOID, HP, MP
  */
-//LOCAL
-//getUrlLookupConditions = function(q) {
-//    return "http://bioportal.smart-bio.org:8080/search?ontologies=" + conditionOntology + "&suggest=true" +
-//        //"&semantic_types=T116,T109,T121,T002,T197,T127" +
-//        "&include=prefLabel,synonym,definition,notation,cui,semanticType,properties" +
-//        "&display_context=false&q=" + encodeURIComponent(q) +
-//        "&apikey=95d31cce-3247-4186-ae95-97c61884c50a";
-//};
+BIOONTOLOGY_ONTOLOGY_CONDITIONS = "MEDLINEPLUS,ICD10CM";
 
-conditionOntology = "MEDLINEPLUS,ICD10CM";
+//if (Meteor.settings.bioontology.BIOONTOLOGY_ONTOLOGY_CONDITIONS) {
+//    BIOONTOLOGY_ONTOLOGY_CONDITIONS = Meteor.settings.bioontology.BIOONTOLOGY_ONTOLOGY_CONDITIONS
+//}
 
-//REMOTE
-getUrlLookupConditions = function(q) {
-    return "http://data.bioontology.org/search?ontologies=" + conditionOntology + "&suggest=true" +
-        //"&semantic_types=T116,T109,T121,T002,T197,T127" +
+//var bSettings = Meteor.settings.bioontology.cond;
+//if (! bSettings || ! bSettings.apiKey) return;
+//var searchUrl = "http://data.bioontology.org/search";
+//if (bSettings.searchUrl) {
+//    searchUrl = bSettings.searchUrl;
+//}
+//var apiKey = bSettings.apiKey;
+
+/**
+ * Gets the URL for searching the bioontology server for health conditions.  uses these ontologies: MEDLINEPLUS,ICD10CM to find a combination of
+ * clinical + plain language terms (e.g. it can find "nosebleed" or also "epistaxis").
+ * @param q - the query that the user has typed
+ * @param apiKey - (required) the API key
+ * @param searchUrl - (optional) the URL to the Biontology server's search service
+ * @returns {string} the URL that looks up matching conditions,
+ */
+getUrlLookupConditions = function(q, apiKey, searchUrl) {
+    if (!searchUrl) searchUrl = "http://data.bioontology.org/search";
+    return searchUrl + "?ontologies=" + BIOONTOLOGY_ONTOLOGY_CONDITIONS + "&suggest=true" +
         "&include=prefLabel,synonym,definition,notation,cui,semanticType,properties" +
         "&display_context=false&q=" + encodeURIComponent(q) +
-        "&apikey=89b05cf1-2e81-48f6-baad-58236f6af05d";
+        "&apikey=" + apiKey;
 };
 
-
-addConditionClasses = function(condition, fact, callback) {
+/**
+ * Given a condition result object found from the Bioontology server, performs a series of queries on the Bioontology server.
+ * It then adds all disease classes (parent categories, grandparents, etc) to the provided callbackForEachClassFound.
+ * @param condition - the Bioontology result object
+ * @param apiKey - the Bioontology API key
+ * @param callbackForEachClassFound - this is called for each disease class to be added
+ * @param finalCallback
+ */
+addConditionClasses = function(condition, apiKey, callbackForEachClassFound, finalCallback) {
     //add current condition as a class
-    addConditionClass(fact, condition);
+    callbackForEachClassFound(condition);
     //get ancestors
     var ancestorsUrl = condition.links.ancestors;
-    ancestorsUrl += "?apikey=" + getBioontologyApikey();
+    ancestorsUrl += "?apikey=" + apiKey;
     HTTP.get(ancestorsUrl, function (err, response) {
         if (err) {
             console.error("Unable to look up condition ancestors at url: " + ancestorsUrl + ":\n" + err);
-            callback(err);
+            finalCallback(err);
         }
         var json = JSON.parse(response.content);
         console.log("\n\nReceived condition ancestors from: " + ancestorsUrl);
@@ -71,22 +88,22 @@ addConditionClasses = function(condition, fact, callback) {
                 batchData["http://www.w3.org/2002/07/owl#Class"].collection.push({
                     "class": clazz,
                     "ontology": theOntology
-                    //"ontology": "http://data.bioontology.org/ontologies/" + conditionOntology
+                    //"ontology": "http://data.bioontology.org/ontologies/" + BIOONTOLOGY_ONTOLOGY_CONDITIONS
                 });
             }
-        console.log("assembled batchData for batch lookup of disease class CUIs:" + JSON.stringify(batchData));
+            console.log("assembled batchData for batch lookup of disease class CUIs:" + JSON.stringify(batchData));
             HTTP.post(batchUrl, {data: batchData}, function(err, result) {
                 if (err) {
                     console.error("Unable to batch refine condition ancestors at url: " + batchUrl + ":\n" + err + "\nbatchData=" + JSON.stringify(batchData));
-                    callback(err);
+                    finalCallback(err);
                 }
                 console.log("Batch queried these ancestors: " + JSON.stringify(result.data, null , "  "));
 
                 for (var ancestorIdx in result.data["http://www.w3.org/2002/07/owl#Class"]) {
                     var ancestor = result.data["http://www.w3.org/2002/07/owl#Class"][ancestorIdx];
-                    addConditionClass(fact, ancestor);
+                    callbackForEachClassFound(ancestor);
                 }
-                callback();
+                finalCallback();
         });
 
     });

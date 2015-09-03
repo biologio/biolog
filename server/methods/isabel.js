@@ -5,6 +5,7 @@
 
 Meteor.methods({
     isabel: function(dob, sex, pregnant, region, diagnoses) {
+        if (!dob || !sex || !pregnant || !region || !diagnoses) return;
         this.unblock();
         var isabelConfig = getConfig("isabel");
 

@@ -27,12 +27,7 @@ Tracker.autorun(function () {
     }
 });
 
-Template.bioolookupConditionsButton.events({
-    "click #bioolookupConditionsButton": function() {
-        Session.set("biolog.bioolookup.conditions.modal.open", false);
-        Session.set("biolog.bioolookup.conditions.modal.open", true);
-    }
-});
+
 
 
 var conditionsResults = new ReactiveVar();
@@ -64,9 +59,11 @@ Template.bioolookupConditionsContent.events({
             }
         }
 
+
+
         Session.set("biolog.bioolookup.conditions.results", null);
         var q = template.find("#biolookupSearchConditionsBox").value;
-        var url = getUrlLookupConditions(q);
+        var url = getUrlLookupConditions(q, apiKey);
         //console.log("bioolookupContent url=" + url);
         HTTP.get(url, function (err, response) {
             if (err) {
