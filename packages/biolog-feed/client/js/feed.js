@@ -1,25 +1,4 @@
-// Router.onBeforeAction(function () {
-
-//   if (!Meteor.userId()) {
-//     // if the user is not logged in, render the Login template
-// // 
-
-//         Router.go('/sign-in');
-//         this.next();
-//     }
-//    else {
-//     // otherwise don't hold up the rest of hooks or our route/action function
-//     // from running
-//     this.next();
-//   }
-// });
-
-// Router.route('/feed', function() {
-//     this.render('feed');
-// });
-// var arr = [];
 Template.feed.helpers({
-   
     postLists: function() {
         return {
             facts: Facts.find({
@@ -35,10 +14,15 @@ Template.feed.helpers({
                     postId: fact._id
                 }).count()
                 fact.isOwner = Meteor.userId() == fact.creator ? true : false;
+                 var owner = Meteor.users.findOne({
+                _id: fact.creator
+            });
+            console.log(owner)
+            fact.owner = owner.profile.firstName + ' ' + owner.profile.lastName;
+          
                 return fact;
             }),
             name: Meteor.user().profile.firstName + ' ' + Meteor.user().profile.lastName,
-
 
         }
     },
@@ -65,35 +49,21 @@ Template.feed.helpers({
             console.log(post);
             return post;
         });
-
-
     }
 });
 Template.feed.rendered = function() {
-
-
-    this.isEditMode = new ReactiveVar(false);
-
-    console.log('loaded')
     $('body').addClass('feed');
     $("#post").atwho({
         at: "@",
         displayTpl: '<li data-sign="${at}" data-name="${data}">${name} <small>${desc}</small></li>',
 
         callbacks: {
-            /*
-             It function is given, At.js will invoke it if local filter can not find any data
-             @param query [String] matched query
-             @param callback [Function] callback to render page.
-            */
             remoteFilter: function(query, callback) {
                 $.getJSON('http://data.bioontology.org/search?ontologies=MEDLINEPLUS,ICD10CM&suggest=t…play_context=false&apikey=89b05cf1-2e81-48f6-baad-58236f6af05d', {
                     q: query
                 }, function(data) {
                     console.log(data);
                     if (data.collection.length > 0) {
-
-
                         conditions = $.map(data.collection, function(value, i) {
                             return {
                                 'id': i,
@@ -116,21 +86,13 @@ Template.feed.rendered = function() {
         at: "#",
 
         displayTpl: '<li data-sign="${at}" data-name="${data}">${name} <small>${desc}</small></li>',
-
         callbacks: {
-            /*
-             It function is given, At.js will invoke it if local filter can not find any data
-             @param query [String] matched query
-             @param callback [Function] callback to render page.
-            */
             remoteFilter: function(query, callback) {
                 $.getJSON('http://bioportal.smart-bio.org:8080/search?ontologies=RXNORM&suggest=true&s…play_context=false&apikey=95d31cce-3247-4186-ae95-97c61884c50a', {
                     q: query
                 }, function(data) {
                     console.log(data);
                     if (data.collection.length > 0) {
-
-
                         conditions = $.map(data.collection, function(value, i) {
                             return {
                                 'id': i,
@@ -166,8 +128,6 @@ Template.feed.rendered = function() {
         //document.body.appendChild(link);
 
     });
-
-
 };
 Template.feed.events({
     'click .publish': function(e, tpl) {
@@ -193,14 +153,6 @@ Template.feed.events({
     'click a.comment': function(e, tpl) {
         console.log(this);
         $(e.target).parents('.event').find('.input').toggleClass('hide');
-        //this.comment = !this.comment;
-        // Facts.update({
-        //     "_id":this._id
-        // }, {
-        //     "comment": !this.comment
-        // }, function(err, data) {
-        //     if (!err) console.log(data);
-        // });
         e.preventDefault();
     },
     'keypress .input input': function(e, tpl) {
@@ -236,13 +188,7 @@ Template.feed.events({
             $(".post-input").atwho({
                 at: "@",
                 displayTpl: '<li data-sign="${at}" data-name="${data}">${name} <small>${desc}</small></li>',
-
                 callbacks: {
-                    /*
-                     It function is given, At.js will invoke it if local filter can not find any data
-                     @param query [String] matched query
-                     @param callback [Function] callback to render page.
-                    */
                     remoteFilter: function(query, callback) {
                         $.getJSON('http://data.bioontology.org/search?ontologies=MEDLINEPLUS,ICD10CM&suggest=t…play_context=false&apikey=89b05cf1-2e81-48f6-baad-58236f6af05d', {
                             q: query
@@ -279,17 +225,8 @@ Template.feed.events({
         }
 
         console.log(this)
-
-        // Facts.update({_id:this._id}, {isEditMode: true}, function(err, data){
-        //     if(err){
-        //         console.log(err);
-        //     }
-        //});
     },
     'click button.post-update': function(e, tpl) {
-
-
-        // removeLocalProps(this)
         this.text = $(e.target).parent('div').siblings('.textarea').val();
         console.log(this);
         Facts.update({
@@ -318,22 +255,8 @@ UI.registerHelper("momentNow", function(date) {
     if (m.isValid()) return m.fromNow();
 })
 
-
-
-// Template.comment.helpers({
-//     getPostComments: function(id) {
-//         console.log(id);
-//         return Facts.find({
-//             pred: "post/comment",
-//             postId: id
-//         }, sort: {
-//             created: -1
-//         });
-//     }
-// });
-
-function removeLocalProps(obj){
+function removeLocalProps(obj) {
     delete obj.commentCount;
-        delete obj.isOwner;
-        return obj
+    delete obj.isOwner;
+    return obj
 }
