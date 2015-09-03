@@ -2,18 +2,27 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="02e712f0-6afb-4af0-a485-f0f77566c506" name="Default" comment="Merge branch 'master' of https://github.com/biologio/biolog&#10;&#10;# Please enter a commit message to explain why this merge is necessary,&#10;# especially if it merges an updated upstream into a topic branch.&#10;#&#10;# Lines starting with '#' will be ignored, and an empty message aborts&#10;# the commit.&#10;">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/packages/bioontology/meds/bioocliMeds.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/packages/bioontology/meds/bioolookupMeds.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/packages/bioontology/api/bioontologyAPI.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/packages/bioontology/bioontologyFns.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/packages/bioontology/meds/bioontologyMedsFns.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/packages/bioontology-facts/api/condition-fact-api.js" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/bioolookup/conditions/bioontologyConditionsFns.js" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/modules/bioolookup/conditions/client/bioocliConditions.js" afterPath="$PROJECT_DIR$/packages/bioontology-facts/view/conditions.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/modules/bioolookup/conditions/client/bioolookupConditions.html" afterPath="$PROJECT_DIR$/packages/bioontology-facts/view/conditions.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.meteor/packages" afterPath="$PROJECT_DIR$/.meteor/packages" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.meteor/versions" afterPath="$PROJECT_DIR$/.meteor/versions" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.bowerrc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/publications/UsersPub.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/packages/biolog-feed/client/_partials/_footer.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bower.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/packages/biolog-feed/client/templates/feed.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/packages/biolog-feed/client/js/feed.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/packages/biolog-feed/client/css/feed.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/packages/biolog-feed/client/js/feedLayout.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/packages/biolog-feed/client/templates/loading.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/packages/biolog-feed/client/css/material.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/packages/biolog-feed/client/js/materialize.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/packages/biolog-feed/package.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/packages/biolog-feed/lib/route.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/packages/biolog-feed/lib/routes/route.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/packages/biolog-feed/scss.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/models/Facts.js" afterPath="$PROJECT_DIR$/lib/models/Facts.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/methods/facts.js" afterPath="$PROJECT_DIR$/server/methods/facts.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/landing-page/css/grid.css" afterPath="$PROJECT_DIR$/packages/landing-page/css/grid.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/landing-page/css/landing.css" afterPath="$PROJECT_DIR$/packages/landing-page/css/landing.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/startup/loadRandomPatients.js" afterPath="$PROJECT_DIR$/client/startup/loadRandomPatients.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/subscriptions/subscriptions.js" afterPath="$PROJECT_DIR$/client/subscriptions/subscriptions.js" />
     </list>
     <ignored path="biolog.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -41,7 +50,7 @@
         <entry file="file://$PROJECT_DIR$/.meteor/versions">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="7.08" vertical-offset="1167" max-vertical-offset="2160">
-              <caret line="66" column="18" selection-start-line="66" selection-start-column="18" selection-end-line="66" selection-end-column="18" />
+              <caret line="66" column="13" selection-start-line="66" selection-start-column="13" selection-end-line="66" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -71,7 +80,7 @@
         <entry file="file://$PROJECT_DIR$/.meteor/packages">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="-0.31205675" vertical-offset="462" max-vertical-offset="885">
-              <caret line="22" column="17" selection-start-line="22" selection-start-column="17" selection-end-line="22" selection-end-column="17" />
+              <caret line="22" column="4" selection-start-line="22" selection-start-column="4" selection-end-line="22" selection-end-column="4" />
               <folding />
             </state>
           </provider>
@@ -890,7 +899,7 @@
     <entry file="file://$PROJECT_DIR$/.meteor/versions">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="7.08" vertical-offset="1167" max-vertical-offset="2160">
-          <caret line="66" column="18" selection-start-line="66" selection-start-column="18" selection-end-line="66" selection-end-column="18" />
+          <caret line="66" column="13" selection-start-line="66" selection-start-column="13" selection-end-line="66" selection-end-column="13" />
           <folding />
         </state>
       </provider>
@@ -898,7 +907,7 @@
     <entry file="file://$PROJECT_DIR$/.meteor/packages">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.31205675" vertical-offset="462" max-vertical-offset="885">
-          <caret line="22" column="17" selection-start-line="22" selection-start-column="17" selection-end-line="22" selection-end-column="17" />
+          <caret line="22" column="4" selection-start-line="22" selection-start-column="4" selection-end-line="22" selection-end-column="4" />
           <folding />
         </state>
       </provider>

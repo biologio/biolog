@@ -76,6 +76,6 @@ Meteor.startup(function () {
     var patientCount = Counts.get("patient-counter");
     console.log("patientCount=" + patientCount);
     if (patientCount < DESIRED_PATIENT_COUNT) {
-        createRandomPatients();
+        //createRandomPatients();
     }
 });
