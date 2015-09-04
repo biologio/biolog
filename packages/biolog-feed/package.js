@@ -15,20 +15,18 @@ Package.onUse(function(api) {
         'momentjs:moment',
         'risul:autocomplete'
 
-    ], ['client']);
+    ]);
 
     // i18n config (must come first)
 
 
 
-    api.add_files("client/js/materialize.min.js", ["client"]);
+    
     api.add_files("client/templates/loading.html", ["client"]);
     api.add_files("client/templates/feed.html", ["client"]);
     api.add_files("client/_partials/_footer.html", ["client"]);
     api.add_files("lib/route.js", ["client"]);
-
     api.add_files("scss.json", ["client", "server"]);
-
     api.add_files("client/js/feed.js", ["client"]);
     api.add_files("client/css/material.css", ["client"]);
     api.add_files("client/css/feed.scss", ["client"]);
