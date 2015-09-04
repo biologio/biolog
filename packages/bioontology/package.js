@@ -11,8 +11,9 @@ Package.describe({
 });
 
 Package.onUse(function(api) {
-  api.versionsFrom('1.1.0.3');
-  api.addFiles('bioontology.js');
+    api.versionsFrom('1.1.0.3');
+    api.addFiles('api/bioontology-api.js');
+    api.addFiles('bioontology.js');
 });
 
 Package.onTest(function(api) {
