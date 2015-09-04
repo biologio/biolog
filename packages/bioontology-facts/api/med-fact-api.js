@@ -1,23 +1,24 @@
 /**
- * Created by dd on 5/24/15.
- * This provides functions for helping processing of medications
+ * Created by dd on 9/4/15.
  */
 
-medFrequencies = {
-    ".2" : "5 times a day",
-    ".25": "4 times a day",
-    ".33": "3 times a day",
-    ".5" : "twice a day",
-    "1"  : "daily",
-    "2"  : "every 2 days",
-    "3"  : "every 3 days",
-    "4"  : "every 4 days",
-    "5"  : "every 5 days",
-    "6"  : "every 6 days",
-    "7"  : "weekly",
-    "14"  : "every 2 weeks",
-    "21"  : "every 3 weeks",
-    "30"  : "monthly"
+BioontologyMedFact = {
+    MED_FREQUENCIES: {
+        ".2" : "5 times a day",
+        ".25": "4 times a day",
+        ".33": "3 times a day",
+        ".5" : "twice a day",
+        "1"  : "daily",
+        "2"  : "every 2 days",
+        "3"  : "every 3 days",
+        "4"  : "every 4 days",
+        "5"  : "every 5 days",
+        "6"  : "every 6 days",
+        "7"  : "weekly",
+        "14"  : "every 2 weeks",
+        "21"  : "every 3 weeks",
+        "30"  : "monthly"
+    }
 };
 
 /**
@@ -26,7 +27,7 @@ medFrequencies = {
  * @param med
  * @returns {{subj: *, pred: (medicationPredicate._id|*), obj: *, objName: *, startDate: Date, endFlag: number}}
  */
-createMedFact = function(patientId, med) {
+BioontologyMedFact.createMedFact = function(patientId, med) {
     var cui = med.cui[0];
     var fact = {
         subj: patientId,
@@ -40,22 +41,18 @@ createMedFact = function(patientId, med) {
     return fact;
 };
 
-getMedName = function(medFact) {
+BioontologyMedFact.getMedName = function(medFact) {
     if (! medFact) return;
     return medFact.objName;
 };
 
-
-
-getMedFrequency = function(medFact) {
+BioontologyMedFact.getMedFrequency = function(medFact) {
     if (! medFact) return;
     //return getValuePath(medFact, "data.medication/frequency").text;
     return getValuePath(medFact, "data.medication/frequency.text");
 };
 
-
-
-setMedFrequency = function(medFact, frequency) {
+BioontologyMedFact.setMedFrequency = function(medFact, frequency) {
     if (! medFact) return;
     if (! frequency || !isNumber(frequency)) return;
     var frequencyNum = Number(frequency);
@@ -68,8 +65,7 @@ setMedFrequency = function(medFact, frequency) {
     setValuePath(medFact, "data.medication/frequency", frequencyFact);
 };
 
-
-getMedIngredients = function(medFact) {
+BioontologyMedFact.getMedIngredients = function(medFact) {
     if (!medFact) return;
     var ingredients = getValuePath(medFact, "data.medication/ingredient");
     var ingredientsArr = [];
@@ -81,7 +77,7 @@ getMedIngredients = function(medFact) {
 };
 
 
-addMedIngredient = function(medFact, ingredient) {
+BioontologyMedFact.addMedIngredient = function(medFact, ingredient) {
     if (! medFact) return "No fact specified";
     if (! ingredient) return ("no ingredient specified");
     var cui = ingredient.cui[0];
@@ -105,7 +101,7 @@ addMedIngredient = function(medFact, ingredient) {
 };
 
 
-addMedClass = function(medFact, clazz) {
+BioontologyMedFact.addMedClass = function(medFact, clazz) {
     var cui = clazz.cui[0];
     //if (! cui) cui = clazz.cui[0];
     if (! cui) return "med class lacks a cui";
@@ -121,8 +117,7 @@ addMedClass = function(medFact, clazz) {
 };
 
 
-
-getIngredientStrength = function(medFact, ingredientCui) {
+BioontologyMedFact.getIngredientStrength = function(medFact, ingredientCui) {
     if (! medFact || !ingredientCui) return;
     var strength;
     try {
@@ -133,7 +128,8 @@ getIngredientStrength = function(medFact, ingredientCui) {
     return strength;
 };
 
-setIngredientStrength = function(medFact, ingredientCui, strength) {
+
+BioontologyMedFact.setIngredientStrength = function(medFact, ingredientCui, strength) {
     if (! medFact || !ingredientCui) return;
     if (! strength || !isNumber(strength)) return;
     var ingredient;
@@ -146,26 +142,3 @@ setIngredientStrength = function(medFact, ingredientCui, strength) {
     var strengthNum = Number(strength);
     ingredient.num = strengthNum;
 };
-
-
-//getMedStrength = function(medFact) {
-//    if (! medFact) return;
-//    return getValuePath(medFact, "data.medication/strength.num");
-//    //return getValuePath(medFact, "data.medication/strength").num;
-//};
-//
-//setMedStrength = function(medFact, strength) {
-//    if (! medFact) return;
-//    if (! strength || !isNumber(strength)) return;
-//    var strengthNum = Number(strength);
-//    var strengthFact = {
-//        pred: 'medication/strength',
-//        text: strength,
-//        num: strengthNum
-//    };
-//    //setValuePath(medFact, "data['medication/strength']", strengthFact);
-//    setValuePath(medFact, "data.medication/strength", strengthFact);
-//};
-
-
-

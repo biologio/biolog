@@ -43,3 +43,87 @@
     <!--</div>-->
 
 </template>
+
+
+<template name="conditions">
+    <div class="ui segment">
+        <span class="ui large header">Current Conditions</span>&nbsp;&nbsp;&nbsp;&nbsp;{{> bioolookupConditionsButton}}
+        <div class="ui segment">
+            <!--<div class="ui items">-->
+            <div class="ui divided link items">
+                {{#each currentConditions}}
+                    {{>conditionsItem}}
+                {{/each}}
+            </div>
+        </div>
+    </div>
+
+    <div class="ui segment">
+        <span class="ui large header">Past Conditions</span>&nbsp;&nbsp;&nbsp;&nbsp;{{> bioolookupConditionsButton}}
+        <div class="ui segment">
+            <!--<div class="ui items">-->
+            <div class="ui divided link items">
+                {{#each pastConditions}}
+                    {{>conditionsItem}}
+                {{/each}}
+            </div>
+        </div>
+    </div>
+
+    {{> bioolookupConditionsModal}}
+    {{> conditionModal}}
+</template>
+
+
+<template name="conditionsItem">
+    <div class="item conditionsItem">
+        <div class="ui tiny image">
+            <img src="images/heartbeat.jpg">
+        </div>
+        <div class="content">
+            <div class="header">{{objName}}</div>
+            <p>{{timing}}</p>
+            <div class="rateit faces-sm" data-rateit-starwidth="16" data-rateit-starheight="16" data-rateit-value="{{frowns}}" data-rateit-readonly="true"></div>
+        </div>
+    </div>
+</template>
+
+
+
+<template name="conditionModal">
+    <div id="conditionModal" class="ui modal small">
+        <div class="content">
+            <div class="ui form segment">
+                <div class="ui message">
+                    <div class="header">{{conditionName}}</div>
+                </div>
+
+                <div class="field">
+                    <label>How severe?</label>
+                    <div id="conditionSeverityFrowns" class="rateit faces" data-rateit-starwidth="32" data-rateit-starheight="32" data-rateit-value="{{frowns}}"></div>
+                </div>
+
+                <div class="two fields">
+                    <div class="field">
+                        <label>Start Date</label>
+                        <input id="conditionStartDate" placeholder="Text Input" type="date" value="{{conditionStartDate}}">
+
+                        <label>Since Birth</label>
+                        <input id="conditionStartFlag" type="checkbox" value="0" {{conditionSinceBirthChecked}}>
+                    </div>
+                    <div class="field">
+                        <label>End Date</label>
+                        <input id="conditionEndDate" placeholder="Text Input" type="date" value="{{conditionEndDate}}">
+
+                        <label>Ongoing</label>
+                        <input id="conditionEndFlag" type="checkbox" value="1" {{conditionOngoingChecked}}>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="actions">
+            <div class="ui button cancel">Cancel</div>
+            <div class="ui button ok">OK</div>
+        </div>
+    </div>
+</template>

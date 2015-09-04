@@ -1,3 +1,134 @@
+/**
+ * Created by dd on 5/16/15.
+ */
+
+Tracker.autorun(function () {
+    if (Session.get("biolog.bioolookup.meds.modal.open")) {
+        $('#bioolookupMedsModal').modal({
+            closable  : true,
+            onApprove    : function(){
+                Session.set("biolog.bioolookup.meds.modal.open", null);
+                submitBioolookupMeds();
+                return true;
+            },
+            onDeny    : function(){
+                Session.set("biolog.bioolookup.meds.modal.open", null);
+                return true;
+            },
+            onHide: function() {
+                Session.set("biolog.bioolookup.meds.modal.open", null);
+                return true;
+            }
+        }).modal('show');
+
+    } else {
+        //console.log("Hiding modal: " + Session.get("biolog.bioolookup.meds.modal.open"));
+        $('#bioolookupMedsModal').modal('hide');
+    }
+});
+
+Template.bioolookupMedsButton.events({
+    "click #bioolookupMedsButton": function() {
+        Session.set("biolog.bioolookup.meds.modal.open", false);
+        Session.set("biolog.bioolookup.meds.modal.open", true);
+    }
+});
+
+
+var medsResults = new ReactiveVar();
+
+
+Template.bioolookupMedsContent.helpers({
+    results: function() {
+        return medsResults.get();
+    }
+});
+
+Template.bioolookupMedsContent.events({
+    "input .prompt": function(event, template) {
+        //if return character, submit the form
+        if (event.which === 13) {
+            if (Session.get("biolog.bioolookup.meds.results")) {
+                return submitBioolookupMeds();
+            }
+            if (medsResults.get() && medsResults.get().length > 0) {
+                Session.set("biolog.bioolookup.meds.results", medsResults.get()[0]);
+                medsResults.set([]);
+                return submitBioolookupMeds();
+            }
+        }
+
+        Session.set("biolog.bioolookup.meds.results", null);
+        var q = template.find("#biolookupSearchMedsBox").value;
+        var url = getUrlLookupMeds(q);
+        //console.log("bioolookupContent url=" + url);
+        HTTP.get(url, function (err, response) {
+            if (err) {
+                return medsResults.set([]);
+            }
+            var json = JSON.parse(response.content);
+            //console.log("Received data: " + JSON.stringify(json.collection));
+            medsResults.set(json.collection);
+        });
+    },
+
+    "click .bioolookupMedsResult": function(event, template) {
+        var med = this;
+        //console.log("clicked: " + JSON.stringify(selectedMed));
+        medsResults.set([med]);
+        Session.set("biolog.bioolookup.meds.results", med);
+    }
+});
+
+
+submitBioolookupMeds = function() {
+    Session.set("biolog.bioolookup.meds.modal.open", null);
+    var med = Session.get("biolog.bioolookup.meds.results");
+    var ptid = getPatient()._id;
+
+    saveMedFactWithIngredientsAndClasses(ptid, med);
+};
+
+saveMedFactWithIngredientsAndClasses = function(ptid, med, callback) {
+    //console.log("Saving med: " + JSON.stringify(med));
+    if (!med) return;
+
+    var fact = BioontologyMedFact.createMedFact(ptid, med);
+
+    addIngredients(med, fact, function(err) {
+        if (err) {
+            var msg = "Unable to addIngredients: " + err;
+            console.error(msg);
+            if (callback) callback(msg);
+            return;
+        }
+
+        var ingredients = fact.data["medication/ingredient"];
+        console.log("\n\nNext add med classes: " + JSON.stringify(ingredients));
+        var ingredientCuis = Object.keys(ingredients);
+
+        addMedClassesForEachGenericCui(ingredientCuis, fact, function(err, result) {
+            if (err) {
+                console.error("Error adding med class: " + err);
+            }
+            console.log("\n\n\nSaving med fact:" + JSON.stringify(fact));
+            saveProperty(fact, function(err, success) {
+                if (err) {
+                    var msg = "Unable to save medication fact: " + err + "\n" + JSON.stringify(fact);
+                    console.error(msg);
+                    if (callback) callback(msg);
+                    return;
+                }
+                if (callback) return callback(null, fact);
+            });
+        });
+    });
+};
+
+
+
+
+
 Template.meds.helpers({
     currentMeds: function () {
         if (!getPatient()) return;
@@ -110,13 +241,13 @@ Template.medModal.rendered = function() {
 Template.medModal.helpers({
     medName: function() {
         var med = Session.get("biolog.med.editing");
-        return getMedName(med);
+        return BioontologyMedFact.getMedName(med);
     },
 
     ingredients: function() {
         var med = Session.get("biolog.med.editing");
         //console.log("med=" + JSON.stringify(med));
-        var medIngredients = getMedIngredients(med);
+        var medIngredients = BioontologyMedFact.getMedIngredients(med);
 
         return medIngredients;
     },
@@ -124,7 +255,7 @@ Template.medModal.helpers({
     ingredientStrength: function(cui) {
         var med = Session.get("biolog.med.editing");
         if (!med) return;
-        return getIngredientStrength(med, cui);
+        return BioontologyMedFact.getIngredientStrength(med, cui);
     },
 
     //medFrequency: function() {
@@ -168,7 +299,7 @@ Template.medModal.helpers({
     medFrequencySelected: function(aFreqVal) {
         var med = Session.get("biolog.med.editing");
         if (!med) return;
-        var freqVal = getMedFrequency(med);
+        var freqVal = BioontologyMedFact.getMedFrequency(med);
         if (!freqVal) {
             if (aFreqVal=="1") return "selected";
             return "";
@@ -178,7 +309,7 @@ Template.medModal.helpers({
     },
 
     medFrequencyLabel: function(freqVal) {
-        return medFrequencies[freqVal];
+        return BioontologyMedFact.MED_FREQUENCIES[freqVal];
     },
 
     medRating: function() {
@@ -206,7 +337,7 @@ updateMed = function() {
     if (rating) {
         setFactRating(med, String(rating));
     }
-    setMedFrequency(med, frequency);
+    BioontologyMedFact.setMedFrequency(med, frequency);
 
     //setMedStrength(med, strength);
     var ingredients = getMedIngredients(med);
@@ -215,7 +346,7 @@ updateMed = function() {
         var inputId = "#medStrength-" + ingredient.obj;
         var ingredientStrength = $(inputId).val();
         console.log("ingredient: " + ingredient.text + " has id: " + inputId + " has strength:" + ingredientStrength);
-        setIngredientStrength(med, ingredient.obj, ingredientStrength);
+        BioontologyMedFact.setIngredientStrength(med, ingredient.obj, ingredientStrength);
     }
 
     var startDateStr = $("#medStartDate").val();

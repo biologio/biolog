@@ -2,7 +2,7 @@
  * Created by dd on 8/30/15.
  */
 
-
+BioontologyConditionFact = {};
 /**
  * Create a condition fact object, from a Biontology search result object from lookup of MEDLINEPLUS,ICD10CM
  * The fact states: this patient has this condition.
@@ -10,7 +10,7 @@
  * @param condition
  * @returns Biolog fact object
  */
-createConditionFact = function(patientId, condition) {
+BioontologyConditionFact.createConditionFact = function(patientId, condition) {
     var cui = condition.cui[0];
     var fact = {
         subj: patientId,
@@ -20,7 +20,6 @@ createConditionFact = function(patientId, condition) {
         startDate: new Date(),
         endFlag: 1
     };
-
     return fact;
 };
 
@@ -29,7 +28,7 @@ createConditionFact = function(patientId, condition) {
  * @param conditionFact
  * @returns the name of the condition
  */
-getConditionName = function(conditionFact) {
+BioontologyConditionFact.getConditionName = function(conditionFact) {
     if (! conditionFact) return;
     return conditionFact.objName;
 };
@@ -39,7 +38,7 @@ getConditionName = function(conditionFact) {
  * @param conditionFact
  * @returns the severity rating
  */
-getConditionSeverity = function(conditionFact) {
+BioontologyConditionFact.getConditionSeverity = function(conditionFact) {
     if (! conditionFact) return;
     return conditionFact.num;
 };
@@ -49,7 +48,7 @@ getConditionSeverity = function(conditionFact) {
  * @param conditionFact
  * @param severity
  */
-setConditionSeverity = function(conditionFact, severity) {
+BioontologyConditionFact.setConditionSeverity = function(conditionFact, severity) {
     if (! conditionFact) return;
     //console.log("setConditionSeverity=" + severity);
     if (!isNumber(severity)) return;
@@ -64,7 +63,7 @@ setConditionSeverity = function(conditionFact, severity) {
  * @param conditionFact
  * @param clazz - the object from within the Bioontology search results, which contains the class information
  */
-addConditionClass = function(conditionFact, clazz) {
+BioontologyConditionFact.addConditionClass = function(conditionFact, clazz) {
     console.log("Adding condition class: " + JSON.stringify(clazz));
     var cuiVal = clazz.cui;
     var cuis = [cuiVal];
@@ -94,12 +93,12 @@ addConditionClass = function(conditionFact, clazz) {
  * @param apiKey - the Bioontology API key
  * @param callback
  */
-addConditionClassesToFacts = function(condition, fact, apiKey, callback) {
+BioontologyConditionFact.addConditionClassesToFacts = function(condition, fact, apiKey, callback) {
     //add current condition as a class
     //addConditionClass(fact, condition);
 
     //To the provided fact, add parent classes of this condition as a class
-    return addConditionClasses(condition, apiKey, function(ancestor) {
+    return BioontologyConditionFact.addConditionClasses(condition, apiKey, function(ancestor) {
         addConditionClass(fact, ancestor);
     }, callback);
 };
