@@ -63,10 +63,10 @@ Template.bioolookupConditionsContent.events({
 
         Session.set("biolog.bioolookup.conditions.results", null);
         var q = template.find("#biolookupSearchConditionsBox").value;
-        var apiKey = Bioontology.getApiKey();
-        var url = BioontologyConditions.getUrlSearchConditions(q, apiKey);
+        //var apiKey = Bioontology.getApiKey();
+        //var url = Bioontology.getUrlSearchConditions(q);
 
-        BioontologyConditions.searchConditions(q, function(err, conditions) {
+        Bioontology.searchConditions(q, function(err, conditions) {
             if (err) {
                 return conditionsResults.set([]);
             }
@@ -99,7 +99,7 @@ submitBioolookupConditions = function() {
 
     var fact = createConditionFact(getPatient()._id, cond);
 
-    BioontologyConditions.addConditionClasses(cond, Bioontology.getApiKey(),
+    Bioontology.addConditionClasses(cond, Bioontology.getApiKey(),
         //callback to add a condition:
         function(conditionToAdd) {
             //add condition to the fact
