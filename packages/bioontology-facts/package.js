@@ -25,18 +25,21 @@ Package.onUse(function(api) {
         ],
         'client');
 
+    //api.addFiles('db/bioontology-publications.js', 'server');
+
     api.addFiles([
             'api/condition-fact-api.js',
             'view/conditions.html',
             'view/conditions.js',
+            'api/med-fact-api.js',
             'view/meds.html',
             'view/meds.js'
         ],
         'client');
 
     api.addFiles('routes/bioontology-routes.js', 'client');
-    api.export('BioontologyConditionFact', 'client');
-    api.export('BioontologyMedFact', 'client');
+    api.export('BioontologyConditions', 'client');
+    api.export('BioontologyMedications', 'client');
 });
 
 Package.onTest(function(api) {

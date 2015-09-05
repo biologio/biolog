@@ -103,7 +103,7 @@ submitBioolookupConditions = function() {
         //callback to add a condition:
         function(conditionToAdd) {
             //add condition to the fact
-            BioontologyConditionFact.addConditionClass(fact, conditionToAdd);
+            BioontologyConditions.addConditionClass(fact, conditionToAdd);
         },
         //final callback:
         function(err) {
@@ -129,7 +129,7 @@ conditionFrowns = new ReactiveVar();
 var getFrowns = function() {
     var condition = Session.get("biolog.condition.editing");
     if (!condition) return;
-    var frowns = getConditionSeverity(condition);
+    var frowns = BioontologyConditions.getConditionSeverity(condition);
     return frowns;
 };
 
@@ -177,7 +177,7 @@ Template.bioolookupConditionsButton.events({
 Template.conditionsItem.helpers({
 
     frowns: function() {
-        var sev = getConditionSeverity(this);
+        var sev = BioontologyConditions.getConditionSeverity(this);
         return sev;
     },
 
@@ -249,7 +249,7 @@ Template.conditionModal.events({
 Template.conditionModal.helpers({
     conditionName: function() {
         var condition = Session.get("biolog.condition.editing");
-        return getConditionName(condition);
+        return BioontologyConditions.getConditionName(condition);
     },
 
     frowns: function() {
@@ -354,7 +354,7 @@ updateCondition = function() {
     //setConditionSeverity(condition, conditionFrowns.get());
     var frownsRating = $('#conditionSeverityFrowns').rateit('value');
     console.log("frownsRating=" + frownsRating);
-    setConditionSeverity(condition, frownsRating);
+    BioontologyConditions.setConditionSeverity(condition, frownsRating);
 
     saveProperty(condition, function(err, success) {
         if (err) {

@@ -93,7 +93,7 @@ saveMedFactWithIngredientsAndClasses = function(ptid, med, callback) {
     //console.log("Saving med: " + JSON.stringify(med));
     if (!med) return;
 
-    var fact = BioontologyMedFact.createMedFact(ptid, med);
+    var fact = BioontologyMedications.createMedFact(ptid, med);
 
     addIngredients(med, fact, function(err) {
         if (err) {
@@ -160,11 +160,11 @@ Template.medsItem.helpers({
 
     strength: function() {
         var med = this;
-        var ingredients = getMedIngredients(med);
+        var ingredients = BioontologyMedications.getMedIngredients(med);
         var display = "";
         for (var ingredientIdx in ingredients) {
             var ingredient = ingredients[ingredientIdx];
-            var strength = getIngredientStrength(med, ingredient.obj);
+            var strength = BioontologyMedications.getIngredientStrength(med, ingredient.obj);
             if (!strength) strength = "?";
             if (display.length > 0) display += " + ";
             display += ingredient.text + " " + strength + " mg";
@@ -174,9 +174,9 @@ Template.medsItem.helpers({
     },
 
     frequency: function() {
-        var freq = getMedFrequency(this);
+        var freq = BioontologyMedications.getMedFrequency(this);
         if (!freq) return "? frequency";
-        return medFrequencies[freq];
+        return BioontologyMedications.MED_FREQUENCIES[freq];
     },
 
     timing: function() {
@@ -241,13 +241,13 @@ Template.medModal.rendered = function() {
 Template.medModal.helpers({
     medName: function() {
         var med = Session.get("biolog.med.editing");
-        return BioontologyMedFact.getMedName(med);
+        return BioontologyMedications.getMedName(med);
     },
 
     ingredients: function() {
         var med = Session.get("biolog.med.editing");
         //console.log("med=" + JSON.stringify(med));
-        var medIngredients = BioontologyMedFact.getMedIngredients(med);
+        var medIngredients = BioontologyMedications.getMedIngredients(med);
 
         return medIngredients;
     },
@@ -255,7 +255,7 @@ Template.medModal.helpers({
     ingredientStrength: function(cui) {
         var med = Session.get("biolog.med.editing");
         if (!med) return;
-        return BioontologyMedFact.getIngredientStrength(med, cui);
+        return BioontologyMedications.getIngredientStrength(med, cui);
     },
 
     //medFrequency: function() {
@@ -299,7 +299,7 @@ Template.medModal.helpers({
     medFrequencySelected: function(aFreqVal) {
         var med = Session.get("biolog.med.editing");
         if (!med) return;
-        var freqVal = BioontologyMedFact.getMedFrequency(med);
+        var freqVal = BioontologyMedications.getMedFrequency(med);
         if (!freqVal) {
             if (aFreqVal=="1") return "selected";
             return "";
@@ -309,7 +309,7 @@ Template.medModal.helpers({
     },
 
     medFrequencyLabel: function(freqVal) {
-        return BioontologyMedFact.MED_FREQUENCIES[freqVal];
+        return BioontologyMedications.MED_FREQUENCIES[freqVal];
     },
 
     medRating: function() {
@@ -337,16 +337,16 @@ updateMed = function() {
     if (rating) {
         setFactRating(med, String(rating));
     }
-    BioontologyMedFact.setMedFrequency(med, frequency);
+    BioontologyMedications.setMedFrequency(med, frequency);
 
     //setMedStrength(med, strength);
-    var ingredients = getMedIngredients(med);
+    var ingredients = BioontologyMedications.getMedIngredients(med);
     for (var ingredientIdx in ingredients) {
         var ingredient = ingredients[ingredientIdx];
         var inputId = "#medStrength-" + ingredient.obj;
         var ingredientStrength = $(inputId).val();
         console.log("ingredient: " + ingredient.text + " has id: " + inputId + " has strength:" + ingredientStrength);
-        BioontologyMedFact.setIngredientStrength(med, ingredient.obj, ingredientStrength);
+        BioontologyMedications.setIngredientStrength(med, ingredient.obj, ingredientStrength);
     }
 
     var startDateStr = $("#medStartDate").val();

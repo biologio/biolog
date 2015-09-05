@@ -4,12 +4,11 @@
 
 Tracker.autorun(function() {
     if (!getPatient()) return;
-    Meteor.subscribe("patientConditions", getPatient()._id);
 
     Meteor.subscribe("patientFlags", getPatient()._id);
 
-    Meteor.subscribe("patientQuestions", getPatient()._id);
+    //Meteor.subscribe("patientQuestions", getPatient()._id);
 
+    Meteor.subscribe("patientConditions", getPatient()._id);
     Meteor.subscribe("patientMeds", getPatient()._id);
-   
 });

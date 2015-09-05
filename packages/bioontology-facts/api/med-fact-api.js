@@ -2,7 +2,7 @@
  * Created by dd on 9/4/15.
  */
 
-BioontologyMedFact = {
+BioontologyMedications = {
     MED_FREQUENCIES: {
         ".2" : "5 times a day",
         ".25": "4 times a day",
@@ -27,7 +27,7 @@ BioontologyMedFact = {
  * @param med
  * @returns {{subj: *, pred: (medicationPredicate._id|*), obj: *, objName: *, startDate: Date, endFlag: number}}
  */
-BioontologyMedFact.createMedFact = function(patientId, med) {
+BioontologyMedications.createMedFact = function(patientId, med) {
     var cui = med.cui[0];
     var fact = {
         subj: patientId,
@@ -41,18 +41,18 @@ BioontologyMedFact.createMedFact = function(patientId, med) {
     return fact;
 };
 
-BioontologyMedFact.getMedName = function(medFact) {
+BioontologyMedications.getMedName = function(medFact) {
     if (! medFact) return;
     return medFact.objName;
 };
 
-BioontologyMedFact.getMedFrequency = function(medFact) {
+BioontologyMedications.getMedFrequency = function(medFact) {
     if (! medFact) return;
     //return getValuePath(medFact, "data.medication/frequency").text;
     return getValuePath(medFact, "data.medication/frequency.text");
 };
 
-BioontologyMedFact.setMedFrequency = function(medFact, frequency) {
+BioontologyMedications.setMedFrequency = function(medFact, frequency) {
     if (! medFact) return;
     if (! frequency || !isNumber(frequency)) return;
     var frequencyNum = Number(frequency);
@@ -65,7 +65,7 @@ BioontologyMedFact.setMedFrequency = function(medFact, frequency) {
     setValuePath(medFact, "data.medication/frequency", frequencyFact);
 };
 
-BioontologyMedFact.getMedIngredients = function(medFact) {
+BioontologyMedications.getMedIngredients = function(medFact) {
     if (!medFact) return;
     var ingredients = getValuePath(medFact, "data.medication/ingredient");
     var ingredientsArr = [];
@@ -77,7 +77,7 @@ BioontologyMedFact.getMedIngredients = function(medFact) {
 };
 
 
-BioontologyMedFact.addMedIngredient = function(medFact, ingredient) {
+BioontologyMedications.addMedIngredient = function(medFact, ingredient) {
     if (! medFact) return "No fact specified";
     if (! ingredient) return ("no ingredient specified");
     var cui = ingredient.cui[0];
@@ -101,7 +101,7 @@ BioontologyMedFact.addMedIngredient = function(medFact, ingredient) {
 };
 
 
-BioontologyMedFact.addMedClass = function(medFact, clazz) {
+BioontologyMedications.addMedClass = function(medFact, clazz) {
     var cui = clazz.cui[0];
     //if (! cui) cui = clazz.cui[0];
     if (! cui) return "med class lacks a cui";
@@ -117,7 +117,7 @@ BioontologyMedFact.addMedClass = function(medFact, clazz) {
 };
 
 
-BioontologyMedFact.getIngredientStrength = function(medFact, ingredientCui) {
+BioontologyMedications.getIngredientStrength = function(medFact, ingredientCui) {
     if (! medFact || !ingredientCui) return;
     var strength;
     try {
@@ -129,7 +129,7 @@ BioontologyMedFact.getIngredientStrength = function(medFact, ingredientCui) {
 };
 
 
-BioontologyMedFact.setIngredientStrength = function(medFact, ingredientCui, strength) {
+BioontologyMedications.setIngredientStrength = function(medFact, ingredientCui, strength) {
     if (! medFact || !ingredientCui) return;
     if (! strength || !isNumber(strength)) return;
     var ingredient;
@@ -142,3 +142,5 @@ BioontologyMedFact.setIngredientStrength = function(medFact, ingredientCui, stre
     var strengthNum = Number(strength);
     ingredient.num = strengthNum;
 };
+
+
