@@ -13,15 +13,33 @@ Package.describe({
 Package.onUse(function(api) {
     api.versionsFrom('1.1.0.3');
     api.use('tracker');
-    api.use('session', 'client');
-    api.use('jquery', 'client');
-    api.use('templating', 'client');
-    api.use('reactive-var', 'client');
-    api.use('biolog:bioontology', 'client');
-    api.addFiles('api/condition-fact-api.js', 'client');
-    api.addFiles('view/conditions.html', 'client');
-    api.addFiles('view/conditions.js', 'client');
 
+    api.use([
+            'session',
+            'iron:router',
+            'jquery',
+            'templating',
+            'reactive-var',
+            'biolog:bioontology',
+            'dandv:jquery-rateit'
+        ],
+        'client');
+
+    //api.addFiles('db/bioontology-publications.js', 'server');
+
+    api.addFiles([
+            'api/condition-fact-api.js',
+            'view/conditions.html',
+            'view/conditions.js',
+            'api/med-fact-api.js',
+            'view/meds.html',
+            'view/meds.js'
+        ],
+        'client');
+
+    api.addFiles('routes/bioontology-routes.js', 'client');
+    api.export('BioontologyConditions', 'client');
+    api.export('BioontologyMedications', 'client');
 });
 
 Package.onTest(function(api) {

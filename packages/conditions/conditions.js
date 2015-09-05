@@ -2,25 +2,37 @@
  * Created by dd on 8/30/15.
  */
 
+Conditions = {
+    PREDICATE: {
+        _id: "patient/condition",
+        name: "condition",
+        nameLC: "condition",
+        description: "a health condition or diagnosis that a person (patient) has or had in the past",
+        subjectEtypes: ["patient"],
+        objectEtypes: ["healthcondition"],
+        creator: "dave"
+    }
+};
 
 /**
  * Create a condition fact object, from a Biontology search result object from lookup of MEDLINEPLUS,ICD10CM
  * The fact states: this patient has this condition.
  * @param patientId
- * @param condition
+ * @param bioontologyConditionItem
  * @returns Biolog fact object
  */
-createConditionFact = function(patientId, condition) {
-    var cui = condition.cui[0];
+Conditions.createConditionFact = function(patientId, bioontologyConditionItem) {
+    var cui = Bioontology.getItemCui(bioontologyConditionItem);
+    if (! cui) return console.error("Unable to get CUI for condition: " + JSON.stringify(bioontologyConditionItem));
+    var name = Bioontology.getItemPreferredLabel(bioontologyConditionItem);
     var fact = {
         subj: patientId,
-        pred: conditionPredicate._id,
+        pred: Conditions.PREDICATE._id,
         obj: cui,
-        objName: condition.prefLabel,
+        objName: name,
         startDate: new Date(),
         endFlag: 1
     };
-
     return fact;
 };
 
@@ -29,7 +41,7 @@ createConditionFact = function(patientId, condition) {
  * @param conditionFact
  * @returns the name of the condition
  */
-getConditionName = function(conditionFact) {
+Conditions.getConditionName = function(conditionFact) {
     if (! conditionFact) return;
     return conditionFact.objName;
 };
@@ -39,7 +51,7 @@ getConditionName = function(conditionFact) {
  * @param conditionFact
  * @returns the severity rating
  */
-getConditionSeverity = function(conditionFact) {
+Conditions.getConditionSeverity = function(conditionFact) {
     if (! conditionFact) return;
     return conditionFact.num;
 };
@@ -49,7 +61,7 @@ getConditionSeverity = function(conditionFact) {
  * @param conditionFact
  * @param severity
  */
-setConditionSeverity = function(conditionFact, severity) {
+Conditions.setConditionSeverity = function(conditionFact, severity) {
     if (! conditionFact) return;
     //console.log("setConditionSeverity=" + severity);
     if (!isNumber(severity)) return;
@@ -64,9 +76,10 @@ setConditionSeverity = function(conditionFact, severity) {
  * @param conditionFact
  * @param clazz - the object from within the Bioontology search results, which contains the class information
  */
-addConditionClass = function(conditionFact, clazz) {
+Conditions.addConditionClass = function(conditionFact, clazz) {
     console.log("Adding condition class: " + JSON.stringify(clazz));
-    var cuiVal = clazz.cui;
+    //var cuiVal = clazz.cui;
+    var cuiVal = Bioontology.getItemCui(clazz);
     var cuis = [cuiVal];
     if (Array.isArray(cuiVal)) {
         cuis = cuiVal;
@@ -94,12 +107,14 @@ addConditionClass = function(conditionFact, clazz) {
  * @param apiKey - the Bioontology API key
  * @param callback
  */
-addConditionClassesToFacts = function(condition, fact, apiKey, callback) {
+Conditions.addConditionClassesToFacts = function(condition, fact, apiKey, callback) {
     //add current condition as a class
     //addConditionClass(fact, condition);
 
     //To the provided fact, add parent classes of this condition as a class
-    return addConditionClasses(condition, apiKey, function(ancestor) {
+    return Conditions.addConditionClasses(condition, apiKey, function(ancestor) {
         addConditionClass(fact, ancestor);
     }, callback);
 };
+
+

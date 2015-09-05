@@ -1,3 +1,50 @@
+
+<!-- CONDITIONS -->
+<template name="bioolookupConditionsButton">
+    <span id="bioolookupConditionsButton" class="ui icon small button">
+        <i class="plus icon"></i>
+    </span>
+</template>
+
+
+<template name="bioolookupConditionsModal">
+    <div id="bioolookupConditionsModal" class="ui modal small">
+        <div class="content">
+            {{>bioolookupConditionsContent}}
+        </div>
+        <div class="actions">
+            <div class="ui button cancel">Cancel</div>
+            <div class="ui button ok">OK</div>
+        </div>
+    </div>
+</template>
+
+
+<template name="bioolookupConditionsContent">
+    <!--<div class="ui page grid">-->
+        <!--<div class="three column row">-->
+            <!--<div class="column"></div>-->
+            <!--<div class="left aligned starter column">-->
+                <div class="ui icon input loading">
+                    <input class="prompt" type="text" placeholder="Search for conditions..." id="biolookupSearchConditionsBox">
+                </div>
+                <div class="results ui selection list">
+                    {{#each results}}
+                        <div class="item bioolookupConditionsResult">
+                            <div class="content" style="white-space: nowrap;">
+                                <span class="header">{{prefLabel}}</span>
+                                {{altLabels}}
+                            </div>
+                        </div>
+                    {{/each}}
+                </div>
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+
+</template>
+
+
 <template name="conditions">
     <div class="ui segment">
         <span class="ui large header">Current Conditions</span>&nbsp;&nbsp;&nbsp;&nbsp;{{> bioolookupConditionsButton}}

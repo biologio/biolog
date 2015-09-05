@@ -11,8 +11,10 @@ Package.describe({
 });
 
 Package.onUse(function(api) {
-  api.versionsFrom('1.1.0.3');
-  api.addFiles('bioontology.js');
+    api.versionsFrom('1.1.0.3');
+    api.use('peerlibrary:async')
+    api.addFiles('bioontology.js');
+    api.export('Bioontology', 'client');
 });
 
 Package.onTest(function(api) {

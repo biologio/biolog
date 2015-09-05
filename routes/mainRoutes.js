@@ -15,8 +15,8 @@ Router.onBeforeAction(function () {
 });
 */
 Router.route('/', function () {
-  this.render('home');
-  SEO.set({ title: 'Home -' + Meteor.App.NAME });
+  this.render('feed');
+    SEO.set({ title: Meteor.App.NAME });
 });
 
 

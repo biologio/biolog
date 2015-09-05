@@ -52,7 +52,7 @@ Meteor.methods({
         var postAsync = Meteor.wrapAsync(HTTP.post);
 
         try {
-            var result = postAsync(getUrlBatchQuery(), {data: batchData});
+            var result = postAsync(Bioontology.getUrlBatchQuery(), {data: batchData});
             console.log("Batch queried SNOMED IDs: " + JSON.stringify(result.data, null , "  "));
 
             for (var idx in result.data["http://www.w3.org/2002/07/owl#Class"]) {
@@ -75,7 +75,7 @@ Meteor.methods({
 
             return diagnoses;
         } catch (err) {
-            console.error("Unable to batch refine condition ancestors at url: " + batchUrl + ":\n" + err + "\nbatchData=" + JSON.stringify(batchData));
+            console.error("Unable to batch refine condition ancestors:\n" + err + "\nbatchData=" + JSON.stringify(batchData));
             return diagnoses;
         }
     }
