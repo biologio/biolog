@@ -13,8 +13,8 @@ Package.describe({
 Package.onUse(function(api) {
     api.versionsFrom('1.1.0.3');
     api.use('peerlibrary:async')
-    api.addFiles('bioontology.js');
-    api.export('Bioontology', 'client');
+    api.addFiles('bioontology.js', ['client', 'server']);
+    api.export('Bioontology', ['client', 'server']);
 });
 
 Package.onTest(function(api) {
