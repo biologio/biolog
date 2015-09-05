@@ -13,7 +13,8 @@ Package.onUse(function(api) {
         'iron:router',
         'fourseven:scss',
         'momentjs:moment',
-        'risul:autocomplete'
+        'risul:autocomplete',
+        'vazco:universe-html-purifier'
 
     ]);
 

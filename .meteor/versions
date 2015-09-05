@@ -131,6 +131,7 @@ url@1.0.4
 useraccounts:core@1.12.3
 useraccounts:iron-routing@1.12.3
 useraccounts:semantic-ui@1.12.3
+vazco:universe-html-purifier@1.0.3
 velocity:chokidar@1.0.3_1
 velocity:core@0.9.3
 velocity:html-reporter@0.8.2
