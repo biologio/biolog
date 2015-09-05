@@ -2,6 +2,10 @@
 
 The documents the biolog.io codebase.
 
+### Setup of Biolog
+Biolog requires some settings files in the **private** directory.
+
+
 ### Data Model
 Biolog.io uses a generic and extensible data model.
 
