@@ -51,4 +51,5 @@ matb33:collection-hooks
 tmeasday:publish-counts
 useraccounts:iron-routing
 biolog:feed
-biolog:bioontology-facts
+biolog:conditions
+biolog:medications

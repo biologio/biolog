@@ -2,7 +2,27 @@
  * Created by dd on 9/4/15.
  */
 
-BioontologyMedications = {
+Medications = {
+    PREDICATE: {
+        _id: "patient/medication",
+        name: "medication",
+        nameLC: "medication",
+        description: "a medication that a person (patient) takes or has taken in the past",
+        subjectEtypes: ["patient"],
+        objectEtypes: ["medication"],
+        creator: "dave"
+    },
+
+    PREDICATE_INGREDIENT: {
+        _id: "medication/ingredient",
+        name: "ingredient",
+        nameLC: "ingredient",
+        description: "an ingredient of a medication",
+        subjectEtypes: ["medication"],
+        objectEtypes: ["medication"],
+        creator: "dave"
+    },
+
     MED_FREQUENCIES: {
         ".2" : "5 times a day",
         ".25": "4 times a day",
@@ -27,13 +47,14 @@ BioontologyMedications = {
  * @param med
  * @returns {{subj: *, pred: (medicationPredicate._id|*), obj: *, objName: *, startDate: Date, endFlag: number}}
  */
-BioontologyMedications.createMedFact = function(patientId, med) {
-    var cui = med.cui[0];
+Medications.createMedFact = function(patientId, med) {
+    var cui = Bioontology.getItemCui(med);
+    var name = Bioontology.getItemPreferredLabel(med);
     var fact = {
         subj: patientId,
-        pred: medicationPredicate._id,
+        pred: Medications.PREDICATE._id,
         obj: cui,
-        objName: med.prefLabel,
+        objName: name,
         startDate: new Date(),
         endFlag: 1
     };
@@ -41,18 +62,18 @@ BioontologyMedications.createMedFact = function(patientId, med) {
     return fact;
 };
 
-BioontologyMedications.getMedName = function(medFact) {
+Medications.getMedName = function(medFact) {
     if (! medFact) return;
     return medFact.objName;
 };
 
-BioontologyMedications.getMedFrequency = function(medFact) {
+Medications.getMedFrequency = function(medFact) {
     if (! medFact) return;
     //return getValuePath(medFact, "data.medication/frequency").text;
     return getValuePath(medFact, "data.medication/frequency.text");
 };
 
-BioontologyMedications.setMedFrequency = function(medFact, frequency) {
+Medications.setMedFrequency = function(medFact, frequency) {
     if (! medFact) return;
     if (! frequency || !isNumber(frequency)) return;
     var frequencyNum = Number(frequency);
@@ -65,9 +86,9 @@ BioontologyMedications.setMedFrequency = function(medFact, frequency) {
     setValuePath(medFact, "data.medication/frequency", frequencyFact);
 };
 
-BioontologyMedications.getMedIngredients = function(medFact) {
+Medications.getMedIngredients = function(medFact) {
     if (!medFact) return;
-    var ingredients = getValuePath(medFact, "data.medication/ingredient");
+    var ingredients = getValuePath(medFact, "data." + Medications.PREDICATE_INGREDIENT._id);
     var ingredientsArr = [];
     for (var cui in ingredients) {
         var ingredient = ingredients[cui];
@@ -77,35 +98,29 @@ BioontologyMedications.getMedIngredients = function(medFact) {
 };
 
 
-BioontologyMedications.addMedIngredient = function(medFact, ingredient) {
+Medications.addMedIngredient = function(medFact, ingredient) {
     if (! medFact) return "No fact specified";
     if (! ingredient) return ("no ingredient specified");
-    var cui = ingredient.cui[0];
+    var cui = Bioontology.getItemCui(ingredient);
     //if (! cui) cui = ingredient.cui[0];
     if (! cui) return "ingredient lacks a cui";
-    var prefLabel = ingredient.prefLabel;
+    var prefLabel = Bioontology.getItemPreferredLabel(ingredient);
     if (!prefLabel) return "ingredient lacks a prefLabel";
     prefLabel = prefLabel.toLowerCase();
-    var signature = "data.medication/ingredient." + cui;
+    var signature = "data." + Medications.PREDICATE_INGREDIENT._id + "." + cui;
 
     var ingrObj = {
         obj: cui,
         text: prefLabel
     };
     setValuePath(medFact, signature, ingrObj);
-
-    //add medication classes to a temporary field in the fact
-    //var classes = ingredient.properties["http://purl.bioontology.org/ontology/MESH/isa"];
-    //if (!medFact.medClasses) medFact.medClasses = [];
-    //medFact.medClasses.push(classes);
 };
 
 
-BioontologyMedications.addMedClass = function(medFact, clazz) {
-    var cui = clazz.cui[0];
-    //if (! cui) cui = clazz.cui[0];
+Medications.addMedClass = function(medFact, clazz) {
+    var cui = Bioontology.getItemCui(clazz);
     if (! cui) return "med class lacks a cui";
-    var prefLabel = clazz.prefLabel;
+    var prefLabel = Bioontology.getItemPreferredLabel(clazz);
     if (!prefLabel) return "med class lacks a prefLabel";
     var signature = "data.medication/class." + cui;
 
@@ -117,11 +132,11 @@ BioontologyMedications.addMedClass = function(medFact, clazz) {
 };
 
 
-BioontologyMedications.getIngredientStrength = function(medFact, ingredientCui) {
+Medications.getIngredientStrength = function(medFact, ingredientCui) {
     if (! medFact || !ingredientCui) return;
     var strength;
     try {
-        strength = medFact.data["medication/ingredient"][ingredientCui].num;
+        strength = medFact.data[Medications.PREDICATE_INGREDIENT._id][ingredientCui].num;
     } catch (unable) {
         //return null
     }
@@ -129,12 +144,12 @@ BioontologyMedications.getIngredientStrength = function(medFact, ingredientCui) 
 };
 
 
-BioontologyMedications.setIngredientStrength = function(medFact, ingredientCui, strength) {
+Medications.setIngredientStrength = function(medFact, ingredientCui, strength) {
     if (! medFact || !ingredientCui) return;
     if (! strength || !isNumber(strength)) return;
     var ingredient;
     try {
-        ingredient = medFact.data["medication/ingredient"][ingredientCui];
+        ingredient = medFact.data[Medications.PREDICATE_INGREDIENT._id][ingredientCui];
     } catch (unable) {
         //return null
     }

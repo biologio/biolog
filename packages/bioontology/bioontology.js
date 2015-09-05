@@ -6,8 +6,10 @@
 Bioontology = {
     ONTOLOGY_CONDITIONS: "MEDLINEPLUS,ICD10CM",
     ONTOLOGY_MEDS: "RXNORM",
+    ONTOLOGY_MESH: "MESH",
     SEMANTIC_TYPES_MEDS: "T116,T109,T121,T002,T197,T127",
-    URI_MED_TRADENAME_OF: "http://purl.bioontology.org/ontology/MESH/tradename_of"
+    URI_MESH_TRADENAME_OF: "http://purl.bioontology.org/ontology/MESH/tradename_of",
+    URI_RXNORM_TRADENAME_OF: "http://purl.bioontology.org/ontology/RXNORM/tradename_of"
 };
 
 Bioontology.getApiKey = function() {
@@ -22,7 +24,7 @@ Bioontology.getBaseUrl = function() {
 };
 
 Bioontology.getBaseUrlSearch = function() {
-    return Bioontology.getBaseUrl + "/search";
+    return Bioontology.getBaseUrl() + "/search";
 };
 
 
@@ -35,7 +37,7 @@ Bioontology.getUrlLookupMesh = function(q) {
     var apiKey = Bioontology.getApiKey();
     var searchUrl = Bioontology.getBaseUrlSearch();
     return searchUrl + "?suggest=false" +
-        "&ontologies=MESH" +
+        "&ontologies=" + Bioontology.ONTOLOGY_MESH +
         "&include=prefLabel,synonym,definition,notation,cui,semanticType,properties" +
         "&display_context=false&q=" + encodeURIComponent(q) +
         "&apikey=" + apiKey;
@@ -143,7 +145,7 @@ Bioontology.addConditionClasses = function(condition, apiKey, callbackForEachCla
         console.log("\n\nReceived condition ancestors from: " + ancestorsUrl);
 
         //batch query
-        var batchUrl = getUrlBatchQuery();
+        var batchUrl = Bioontology.getUrlBatchQuery();
         var batchData = {
             "http://www.w3.org/2002/07/owl#Class": {
                 "collection": [],
@@ -207,17 +209,30 @@ Bioontology.getUrlSearchMeds = function(q) {
     return Bioontology.getUrlSearchSemanticTypes(Bioontology.ONTOLOGY_MEDS, Bioontology.SEMANTIC_TYPES_MEDS, q);
 };
 
+/**
+ * Search for medicines matching the provided query
+ * @param q - the query to search.  Expected to be a string that the user is entering in a text box.  Optimized for typeahead functionality
+ * @param callback - the callback to which the result array is passed
+ */
+Bioontology.searchMeds = function(q, callback) {
+    var url = Bioontology.getUrlSearchMeds(q);
+    HTTP.get(url, function (err, response) {
+        if (err) {
+            return callback(err);
+        }
+        var json = JSON.parse(response.content);
+        return callback(null, json.collection);
+    });
+};
 
 Bioontology.addIngredients = function(med, callbackForEachIngredient, callback) {
-    var uriEntries = med.properties[Bioontology.URI_MED_TRADENAME_OF];
+    var uriEntries = med.properties[Bioontology.URI_MESH_TRADENAME_OF];
     if (!uriEntries) {
-        uriEntries = med.properties[Bioontology.URI_MED_TRADENAME_OF];
+        uriEntries = med.properties[Bioontology.URI_RXNORM_TRADENAME_OF];
     }
     if (!uriEntries) {
         console.log("No generic info present - add self as the sole ingredient");
         callbackForEachIngredient(med);
-        //var addingError = addMedIngredient(fact, med);
-        //if (addingError) return callback(addingError);
         return callback();
     };
     var genericUris = [];
@@ -229,22 +244,18 @@ Bioontology.addIngredients = function(med, callbackForEachIngredient, callback) 
             genericUris.push(uriItem);
         }
     }
-    async.each(genericUris, function(uri, callbk) {
+    async.each(genericUris, function(uri, asyncCallback) {
         //lookup each uri and add it as a medication/ingredient
-        var lookupUrl = getUrlLookupClass(Bioontology.ONTOLOGY_MEDS, uri);
-        //var lookupUrl = getUrlLookupMeds(encodeURIComponent(genericUrl));
-        //console.log("Looking up generic at: " + lookupUrl);
+        var lookupUrl = Bioontology.getUrlLookupClass(Bioontology.ONTOLOGY_MEDS, uri);
         HTTP.get(lookupUrl, function (err, response) {
             if (err) {
                 console.error("Unable to look up generic ar url: " + lookupUrl + ":\n" + err);
-                callbk(err);
+                asyncCallback(err);
             }
             var json = JSON.parse(response.content);
             console.log("\n\nReceived ingredient from: " + lookupUrl);
             callbackForEachIngredient(json);
-            //var addingError = addMedIngredient(fact, json);
-            //if (addingError) return callbk(addingError);
-            callbk();
+            asyncCallback();
         });
     }, callback);
 };
@@ -252,19 +263,16 @@ Bioontology.addIngredients = function(med, callbackForEachIngredient, callback) 
 
 Bioontology.addMedClassesForEachGenericCui = function(ingredientCuis, callbackForEachMedClass, callback) {
     if (!ingredientCuis) return callback("No ingredient CUIs were provided");
-    async.each(ingredientCuis, function(cui, callbk) {
+    async.each(ingredientCuis, function(cui, asyncCallback) {
         //lookup each uri and add it as a medication/ingredient
-        var lookupUrl = getUrlLookupMesh(cui);
-        //var lookupUrl = getUrlLookupMeds(encodeURIComponent(genericUrl));
+        var lookupUrl = Bioontology.getUrlLookupMesh(cui);
         console.log("\n\nLooking up med class at: " + lookupUrl);
         HTTP.get(lookupUrl, function (err, response) {
             if (err) {
                 console.error("Unable to look up med class at url: " + lookupUrl + ":\n" + err);
-                callbk(err);
+                asyncCallback(err);
             }
             var json = JSON.parse(response.content);
-            //console.log("\n\nReceived ingredient: " + JSON.stringify(json));
-
             var props;
             try {
                 props = json.collection[0].properties;
@@ -288,14 +296,9 @@ Bioontology.addMedClassesForEachGenericCui = function(ingredientCuis, callbackFo
                 callback("No classes found");
             }
 
-            //for (var classIdx in classes) {
-            //    var drugClassUri = classes[classIdx];
-            //    console.log("\n\nlookup drug class: " + drugClassUri);
-            //}
-
             Bioontology.addMedClassesForEachClassUri(uris, callbackForEachMedClass, function(err) {
-                if (err) return callbk(err);
-                callbk();
+                if (err) return asyncCallback(err);
+                asyncCallback();
             });
         });
     }, callback);
@@ -303,16 +306,35 @@ Bioontology.addMedClassesForEachGenericCui = function(ingredientCuis, callbackFo
 
 Bioontology.addMedClassesForEachClassUri = function(classUris, callbackForEachMedClass, callback) {
     if (!classUris) return callback("No class URIs were provided");
-    async.each(classUris, function(uri, callbk) {
-        var lookupUrl = getUrlLookupClass("MESH", uri);
-        //var lookupUrl = getUrlLookupMeds(encodeURIComponent(genericUrl));
-        console.log("\n\nGetting med class at: " + lookupUrl);
+    async.each(classUris, function(uri, asyncCallback) {
+        var lookupUrl = Bioontology.getUrlLookupClass("MESH", uri);
+        //console.log("\n\nGetting med class at: " + lookupUrl);
         HTTP.get(lookupUrl, function (err, response) {
             var json = JSON.parse(response.content);
-            //var addingError = addMedClass(fact, json);
-            //if (addingError) return callbk(addingError);
             callbackForEachMedClass(json);
-            callbk();
+            asyncCallback();
         });
     }, callback);
+};
+
+/**
+ * Given an item retrieved from Bioontology, get the CUI
+ * @param condition
+ */
+Bioontology.getItemCui = function(item) {
+    var cuis = item.cui;
+    if (! cuis) return;
+    if ( typeof cuis === 'string') return cuis;
+    if( Object.prototype.toString.call( cuis ) === '[object Array]' ) {
+        return cuis[0];
+    }
+};
+
+/**
+ * Given an item retrieved from Bioontology, get the preferred label
+ * @param condition
+ */
+Bioontology.getItemPreferredLabel = function(item) {
+    if (!item) return;
+    return item.prefLabel;
 };

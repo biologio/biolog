@@ -30,7 +30,7 @@ createMedFact = function(patientId, med) {
        var cui = med.cui[0];
        var fact = {
            subj: patientId,
-           pred: medicationPredicate._id,
+           pred: Medications.PREDICATE._id,
            obj: cui,
            objName: med.prefLabel,
            startDate: new Date(),
