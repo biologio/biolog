@@ -2,6 +2,31 @@
 
 The documents the biolog.io codebase.
 
+### Setup of Biolog
+Biolog requires a **settings.json** file in the **private** directory.
+Contact Dave and he will send you the contents of this file.
+The file looks like this.
+
+    {
+      "public": {
+        "bioontology": {
+          "baseUrl": "http://data.bioontology.org",
+          "apiKey": "put-your-apikey-here"
+        }
+      },
+
+      "isabel": {
+        "isabelId": "put-your-isabel-id-here",
+        "isabelPassword": "put-your-isabel-password-here"
+      }
+    }
+
+
+To start biolog, run this
+
+    meteor run --settings private/settings.json
+
+
 ### Data Model
 Biolog.io uses a generic and extensible data model.
 
