@@ -27,6 +27,13 @@ To start biolog, run this
     meteor run --settings private/settings.json
 
 
+### Unit Testing
+To test the Bioontology package, first stop Meteor.  Then run this:
+
+    VELOCITY_TEST_PACKAGES=1 meteor test-packages --driver-package velocity:html-reporter biolog:bioontology --settings private/settings.json
+
+Then browse to localhost:3000
+
 ### Data Model
 Biolog.io uses a generic and extensible data model.
 

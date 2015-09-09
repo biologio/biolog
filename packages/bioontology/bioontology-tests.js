@@ -13,3 +13,14 @@ describe('test Bioontology settings', function () {
     });
 });
 
+describe('test Bioontology annotator', function () {
+    it('expect Bioontology annotator to annotate known text', function () {
+        var text = "I have a bad diabetes and I think I got it because I took steroids and also crestor.";
+        Bioontology.annotate(text, function(err, annotations){
+            expect(err).toBeNull();
+            expect(annotations).toBeDefined();
+            console.log("Bioontology annotations=" + JSON.stringify(annotations, null, "  "));
+        });
+
+    });
+});

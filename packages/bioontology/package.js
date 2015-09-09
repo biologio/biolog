@@ -12,6 +12,7 @@ Package.describe({
 
 Package.onUse(function(api) {
     api.versionsFrom('1.1.0.3');
+    api.use('http@1.1.0');
     api.use('peerlibrary:async');
     api.addFiles([
         'bioontology.js', 'annotator.js'
@@ -21,6 +22,9 @@ Package.onUse(function(api) {
 });
 
 Package.onTest(function(api) {
+    api.versionsFrom('1.1.0.3');
+    api.use('http@1.1.0');
+    api.use('peerlibrary:async');
     api.use('sanjo:jasmine@0.18.0');
     api.use('biolog:bioontology');
     api.addFiles('bioontology-tests.js');
