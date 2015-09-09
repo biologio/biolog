@@ -4,8 +4,9 @@
  */
 
 Bioontology = {
-    ONTOLOGY_CONDITIONS: "MEDLINEPLUS,ICD10CM",
-    ONTOLOGY_MEDS: "RXNORM",
+    ONTOLOGIES_CONDITIONS: "MEDLINEPLUS,ICD10CM",
+    ONTOLOGIES_MEDS: "RXNORM",
+    ONTOLOGIES_ANNOTATOR: "MEDLINEPLUS,ICD10CM,RXNORM",
     ONTOLOGY_MESH: "MESH",
     SEMANTIC_TYPES_MEDS: "T116,T109,T121,T002,T197,T127",
     URI_MESH_TRADENAME_OF: "http://purl.bioontology.org/ontology/MESH/tradename_of",
@@ -63,7 +64,7 @@ Bioontology.getUrlLookup = function(ontology, entity) {
 /**
  * Get the URL to look up any entity within the provided ontology
  * @param ontology
- * @param entity
+ * @param q - the query
  * @returns {string}
  */
 Bioontology.getUrlSearch = function(ontology, q) {
@@ -123,7 +124,7 @@ Bioontology.getUrlBatchQuery = function() {
  * @returns {string}
  */
 Bioontology.getUrlSearchConditions = function(q) {
-    return Bioontology.getUrlSearch(Bioontology.ONTOLOGY_CONDITIONS, q);
+    return Bioontology.getUrlSearch(Bioontology.ONTOLOGIES_CONDITIONS, q);
 };
 
 
@@ -206,7 +207,7 @@ Bioontology.searchConditions = function(q, callback) {
  * @returns {string}
  */
 Bioontology.getUrlSearchMeds = function(q) {
-    return Bioontology.getUrlSearchSemanticTypes(Bioontology.ONTOLOGY_MEDS, Bioontology.SEMANTIC_TYPES_MEDS, q);
+    return Bioontology.getUrlSearchSemanticTypes(Bioontology.ONTOLOGIES_MEDS, Bioontology.SEMANTIC_TYPES_MEDS, q);
 };
 
 /**
@@ -246,7 +247,7 @@ Bioontology.addIngredients = function(med, callbackForEachIngredient, callback) 
     }
     async.each(genericUris, function(uri, asyncCallback) {
         //lookup each uri and add it as a medication/ingredient
-        var lookupUrl = Bioontology.getUrlLookupClass(Bioontology.ONTOLOGY_MEDS, uri);
+        var lookupUrl = Bioontology.getUrlLookupClass(Bioontology.ONTOLOGIES_MEDS, uri);
         HTTP.get(lookupUrl, function (err, response) {
             if (err) {
                 console.error("Unable to look up generic ar url: " + lookupUrl + ":\n" + err);
