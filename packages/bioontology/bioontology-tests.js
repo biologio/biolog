@@ -14,13 +14,22 @@ describe('test Bioontology settings', function () {
 });
 
 describe('test Bioontology annotator', function () {
-    it('expect Bioontology annotator to annotate known text', function () {
+    var theError = null;
+    var theAnnotations = null;
+    beforeEach(function(done) {
         var text = "I have a bad diabetes and I think I got it because I took steroids and also crestor.";
+
         Bioontology.annotate(text, function(err, annotations){
-            expect(err).toBeNull();
-            expect(annotations).toBeDefined();
-            console.log("Bioontology annotations=" + JSON.stringify(annotations, null, "  "));
+            theError = err;
+            theAnnotations = annotations;
+            done();
         });
 
+    });
+
+    it('expect Bioontology annotator to annotate known text', function () {
+        expect(theError).toBeNull();
+        expect(theAnnotations).toBeDefined();
+        console.log("Bioontology annotations=" + JSON.stringify(theAnnotations, null, "  "));
     });
 });
