@@ -10,7 +10,8 @@ Bioontology = {
     ONTOLOGY_MESH: "MESH",
     SEMANTIC_TYPES_MEDS: "T116,T109,T121,T002,T197,T127",
     URI_MESH_TRADENAME_OF: "http://purl.bioontology.org/ontology/MESH/tradename_of",
-    URI_RXNORM_TRADENAME_OF: "http://purl.bioontology.org/ontology/RXNORM/tradename_of"
+    URI_RXNORM_TRADENAME_OF: "http://purl.bioontology.org/ontology/RXNORM/tradename_of",
+    URI_ALT_LABEL: "http://www.w3.org/2004/02/skos/core#altLabel"
 };
 
 Bioontology.getApiKey = function() {
@@ -338,4 +339,22 @@ Bioontology.getItemCui = function(item) {
 Bioontology.getItemPreferredLabel = function(item) {
     if (!item) return;
     return item.prefLabel;
+};
+
+/**
+ * Given an item retrieved from Bioontology, get the alternate labels (if any)
+ * @param condition
+ */
+Bioontology.getItemAlternateLabels = function(item) {
+    if (!item || !item.properties) return;
+    return item.properties[Bioontology.URI_ALT_LABEL];
+};
+
+/**
+ * Given an item retrieved from Bioontology, get the alternate labels (if any)
+ * @param condition
+ */
+Bioontology.getItemSemanticTypes = function(item) {
+    if (!item) return;
+    return item.semanticType;
 };
