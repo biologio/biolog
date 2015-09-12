@@ -23,7 +23,7 @@ Meteor.methods({
         var content = JSON.parse(contentString);
         var diagnoses = content.Diagnosis_checklist.diagnosis;
 
-        console.log("diagnoses from Isabel=" + JSON.stringify(diagnoses));
+        //console.log("diagnoses from Isabel=" + JSON.stringify(diagnoses));
         //lookup CUIs from snomed id
         var batchData = {
             "http://www.w3.org/2002/07/owl#Class": {
@@ -35,7 +35,7 @@ Meteor.methods({
         var snomedUris = [];
         for (var dxi in diagnoses) {
             var diagnosis = diagnoses[dxi];
-            console.log("\n\ndiagnosis=" + JSON.stringify(diagnosis));
+            //console.log("\n\ndiagnosis=" + JSON.stringify(diagnosis));
             var snomedId = diagnosis.snomed_diagnoses_id;
             var snomedUri = "http://purl.bioontology.org/ontology/SNOMEDCT/" + snomedId;
             snomedUris.push(snomedUri);
@@ -73,7 +73,7 @@ Meteor.methods({
 
             return diagnoses;
         } catch (err) {
-            console.error("Unable to batch refine condition ancestors:\n" + err + "\nbatchData=" + JSON.stringify(batchData));
+            console.error("Unable to batch refine condition ancestors:\n" + err);
             return diagnoses;
         }
     }
