@@ -14,10 +14,10 @@ Router.onBeforeAction(function () {
   }
 });
 */
-Router.route('/', function () {
-  this.render('feed');
-    SEO.set({ title: Meteor.App.NAME });
-});
+// Router.route('/', function () {
+//   this.render('feed');
+//     SEO.set({ title: Meteor.App.NAME });
+// });
 
 
 Router.route('/profile/:name',

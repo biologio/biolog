@@ -1,0 +1,17 @@
+<template name="comment">
+    <div class="comment">
+        {{> avatar userId=creator shape="circle"}}
+        <div class="content">
+            <a class="author">{{owner}}</a>
+            <div class="metadata">
+                <div class="date">{{momentNow created}}</div>
+            </div>
+            <div class="text">
+                <p>{{text}}</p>
+            </div>
+            <div class="actions">
+                <a class="reply">Reply</a>
+            </div>
+        </div>
+    </div>
+</template>

@@ -1,0 +1,40 @@
+<template name="conditionsMedicationsFeed">
+    <div class="animated">
+        <!--  {{#each medications}}
+    <div class="notice info">
+        <p>{{objName}} <br>
+        {{pred}}
+        </p>
+    </div>
+{{/each}} -->
+        {{#each medications}}
+        <div class="bubble ">
+            <i class="icon ion-close"></i>
+            <div class="header ui">{{objName}}</div>
+            <p>
+                Do you want to give some details about {{objName}} ?
+            </p>
+        </div>
+        {{/each}} {{#each medications}}
+        <!-- <div class="card">
+            <div class="card-content">
+                 <span class="card-title">{{objName}}
+    <i class="icon write right"></i>
+                 </span>
+              <p>I am a very simple card. I am good at containing small bits of information.
+              I am convenient because I require little markup to use effectively.</p>
+            </div>
+            <div class="card-action">
+              <a href="#">This is a link</a>
+            </div>
+          </div> -->
+        <!--  <div class="notice info ">
+        <p class="header ui">{{objName}} 
+        
+        </p>
+
+        <p>{{pred}}</p>
+    </div> -->
+        {{/each}}
+    </div>
+</template>

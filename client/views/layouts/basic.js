@@ -1,3 +1,6 @@
+Meteor.startup(function(){
+     FeedMedications = new Mongo.Collection(null);
+})
 Template.basicLayout.events({
     /*
     'click #btnSignIn': function(e) {
@@ -10,16 +13,23 @@ Template.basicLayout.events({
         Router.go('home');
     },
     */
-    'click .main-menu': function(e) {
-        $('.sidebar').sidebar('toggle');
+    'click a.toc': function(e) {
+        $('.ui.sidebar').sidebar('setting', 'transition', 'scale down').sidebar('toggle');
     }
-    
+
 });
 
-Template.basicLayout.rendered = function(){
-    if (! getPatient()) {
+Template.basicLayout.rendered = function() {
+
+    $("#at-nav-button").removeClass("ui button");
+    if (!getPatient()) {
         Session.set("biolog.patient.modal.open", "true");
     }
+// show dropdown on hover
+      $('.user.dropdown').dropdown({
+        on: 'hover'
+      });
+
 };
 
 Template.basicLayout.helpers({
@@ -31,32 +41,57 @@ Template.basicLayout.helpers({
 
 Template.sidebar.helpers({
     // array of side bar menus
-    sidebarmenus:[
-        {text:"Home", icon:"home", url:"/"},
-        {text:"Conditions", icon:"heart", url:"/conditions"},
-        {text:"Meds", icon:"first aid", url:"/meds"},
-        {text:"Events", icon:"calendar", url:"/#"},
-        {text:"Alerts", icon:"warning", url:"/alerts", badge: countAlerts()},
-        {text:"Timeline", icon:"tasks", url:"/#"},
-        {text:"About", icon:"info", url:"/about"},
-        {text:"Admin", icon:"settings", url:"/admin"}
-        
+    sidebarmenus: [{
+            text: "Home",
+            icon: "ion-ios-home",
+            url: "/"
+        }, {
+            text: "Conditions",
+            icon: "heartbeat",
+            url: "/conditions"
+        }, {
+            text: "Meds",
+            icon: "ion-medkit",
+            url: "/meds"
+        }, {
+            text: "Events",
+            icon: "calendar",
+            url: "/#"
+        }, {
+            text: "Alerts",
+            icon: "ion-ios-bell",
+            url: "/alerts",
+            badge: countAlerts()
+        }, {
+            text: "Timeline",
+            icon: "ion-ios-pulse-strong",
+            url: "/#"
+        }, {
+            text: "About",
+            icon: "ion-ios-people",
+            url: "/about"
+        }, {
+            text: "Admin",
+            icon: "settings",
+            url: "/admin"
+        }
+
     ]
 
 
 });
 Template.sidebar.events({
-   'click .sidebar.menu a': function(evt) {
+    'click .sidebar.menu a': function(evt) {
         // console.log(this);
         evt.preventDefault();
         Router.go(this.url);
-        $(".sidebar").sidebar("hide");
+        $(".ui.sidebar").sidebar("hide");
     }
 });
 
 Avatar.options = {
-  fallbackType: 'initials',
-  gravatarDefault: 'identicon'
-  //defaultImageUrl: 'img/avatar.jpg'
+    fallbackType: 'initials',
+    gravatarDefault: 'identicon'
+        //defaultImageUrl: 'img/avatar.jpg'
 };
 // Template.avatar.replaces("avatarSemanticUI");
