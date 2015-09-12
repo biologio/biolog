@@ -1,34 +1,76 @@
 <template name="basicLayout">
     {{> patientModal}}
-  {{>sidebar}}
-    
-    <div class="ui top fixed menu inverted navbar page grid"><div class="container">
-        <div class="item main-menu"><i class="item align justify icon"></i></div>
-        <a href="/" class="brand item">Biolog</a>
-        <!--<a href="/meds" class="item">Medicines</a>-->
-        <a href="/selectPatient" class="item">Patient: {{patient.name}}</a>
-        <div class="left menu">
-
-        </div>
+     
+    <div class="ui large  fixed   menu main-nav">
+        <a class="toc item main-menu">
+          <i class="ion-android-menu icon"></i>
+        </a>
+          <a href="/" class="header item">Biolog</a>
+      
         
-        <div class="right menu">
-            {{#if currentUser}}<a class="item" href="/profile/{{currentUser._id}}">  {{> avatar user=currentUser size='small' shape='circle'}}</a>{{/if}}
-            {{> atNavButton}}
+        <div class="right item">
+              {{#if currentUser}}<a class="item user ui pointing dropdown" href="#">  {{> avatar user=currentUser size='small' shape='circle'}} <span class="user-name">{{patient.name}} </span>  
+              <div class="menu floating transition hidden" tabindex="-1">
+               
+          <a href="/profile/{{currentUser._id}}" class="item">Profile</a>
+          <div class="item">Link Item</div>
+          <div class="divider"></div>
+          <div class="header">Header Item</div>
+        
+           {{> atNavButton}}
+         
+          <div class="item">Link Item</div>
         </div>
-    </div></div>
+            </a>
+
+
+                
+                <!-- <a href="/selectPatient" class="item user-name"> {{patient.name}}</a> -->
+                {{/if}}
+                <a href="" class="item user ui pointing dropdown">
+                  <i class="ion-android-more-horizontal icon"></i>
+
+              <div class="menu floating transition hidden" tabindex="-1">
+               
+          <div class="item">Profile</div>
+          <div class="item">Link Item</div>
+          <div class="divider"></div>
+          <div class="header">Header Item</div>
+          <div class="item">
+            <i class="dropdown icon"></i>
+            Sub Menu
+            <div class="menu transition hidden">
+              <div class="item">Link Item</div>
+              <div class="item">Link Item</div>
+            </div>
+          </div>
+          <div class="item">Link Item</div>
+        </div>
+                </a>
+                 
+        </div>
+        {{> userPopup}}
+      </div>
+      {{>sidebar}}
     <div class="main container pusher">
-        <div class="ui page grid"><div class="column"><h1>&nbsp;</h1></div></div>
-    {{> yield}}
+        <div class="ui page grid">
+            <div class="column">
+                <h1>&nbsp;</h1></div>
+        </div>
+
+        {{> yield}}
+       
     </div>
 </template>
-
 <template name="sidebarmenu">
     <a class="item" data-href="{{url}}">
-        <i class="{{icon}} icon"></i>
-        {{text}}
-        <span class="ui label">{{badge}}</span>
+        <i class="{{icon}} icon"></i> {{text}}
+        {{#if badge}}
+<span class="ui label">{{badge}}</span>
+{{/if}}
     </a>
 </template>
+
 <!--
 <template name="avatarSemanticUI">
   <div class="avatar {{size}} {{shape}} {{class}}">
@@ -38,10 +80,49 @@
 </template>
 -->
 <template name="sidebar">
-      <div class="ui left vertical inverted labeled icon sidebar menu">
-      
-      {{#each sidebarmenus}}
-        {{> sidebarmenu}}
-      {{/each}}
+    <div class="ui left vertical  labeled icon sidebar menu">
+        {{#each sidebarmenus}} {{> sidebarmenu}} {{/each}}
     </div>
+</template>
+<template name ="userPopup">
+   <div class="ui fluid popup bottom left transition hidden">
+            <div class="ui four column relaxed equal height divided grid">
+                <div class="column">
+                    <h4 class="ui header">Fabrics</h4>
+                    <div class="ui link list">
+                        <a class="item">Cashmere</a>
+                        <a class="item">Linen</a>
+                        <a class="item">Cotton</a>
+                        <a class="item">Viscose</a>
+                    </div>
+                </div>
+                <div class="column">
+                    <h4 class="ui header">Size</h4>
+                    <div class="ui link list">
+                        <a class="item">Small</a>
+                        <a class="item">Medium</a>
+                        <a class="item">Large</a>
+                        <a class="item">Plus Sizes</a>
+                    </div>
+                </div>
+                <div class="column">
+                    <h4 class="ui header">Colored</h4>
+                    <div class="ui link list">
+                        <a class="item">Neutrals</a>
+                        <a class="item">Brights</a>
+                        <a class="item">Pastels</a>
+                    </div>
+                </div>
+                <div class="column">
+                    <h4 class="ui header">Types</h4>
+                    <div class="ui link list">
+                        <a class="item">Knitwear</a>
+                        <a class="item">Outerwear</a>
+                        <a class="item">Pants</a>
+                        <a class="item">Shoes</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
 </template>

@@ -20,7 +20,8 @@ Package.onUse(function(api) {
             'jquery',
             'templating',
             'reactive-var',
-            'biolog:bioontology'
+            'biolog:bioontology',
+            'gwendall:template-animations'
         ],
         'client');
 

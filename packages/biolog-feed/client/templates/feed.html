@@ -4,9 +4,6 @@
 <template name="feed">
     <article class="feed">
         <div class="bl-container">
-            <div class="bl-column">
-                <p>&nbsp;</p>
-            </div>
             <div class="bl-column main material">
                 <div class="card small post-field">
                     <div class="card-content">
@@ -47,7 +44,7 @@
                                             </button>
                                         </div>
                                     </div>
-                                    <i class="icon write post-edit"></i> {{else}} {{/if}}
+                                    <i class="icon ion-edit post-edit"></i> {{else}} {{/if}}
                                     <div class="extra text">
                                         {{{text}}}
                                     </div>
@@ -56,7 +53,7 @@
                                             Like
                                         </a>
                                         <a class="comment">comment</a>
-                                        <a class=""> <i class="thumbs up icon"></i> 23</a>
+                                        <a class=""> <i class="heart icon"></i> 23</a>
                                         <a class=""><i class="comments icon"></i> {{commentCount}}</a>
                                     </div>
                                 </div>
@@ -73,26 +70,14 @@
                     </div>
                 </div>
             </div>
-            <div class="bl-column material">
-                <p>&nbsp;</p>
+            <div class="bl-column material sidebar-right">
+                {{>conditionsMedicationsFeed}}
             </div>
+            <!-- <div class="bl-column sidebar-left">
+                <p>&nbsp;</p>
+            </div> -->
         </div>
+        {{>conditionsMedicationsModals}}
     </article>
 </template>
-<template name="comment">
-    <div class="comment">
-        {{> avatar userId=creator shape="circle"}}
-        <div class="content">
-            <a class="author">{{owner}}</a>
-            <div class="metadata">
-                <div class="date">{{momentNow created}}</div>
-            </div>
-            <div class="text">
-                <p>{{text}}</p>
-            </div>
-            <div class="actions">
-                <a class="reply">Reply</a>
-            </div>
-        </div>
-    </div>
-</template>
+

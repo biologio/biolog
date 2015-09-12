@@ -1,1 +1,3 @@
 local
+private/settings.json 
+server/settings.json

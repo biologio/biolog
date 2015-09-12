@@ -17,7 +17,7 @@ useraccounts:semantic-ui
 natestrauser:animate-css
 dburles:collection-helpers
 meteorhacks:fast-render
-biolog:landing-page
+
 semantic:ui-css
 accounts-google
 accounts-password
@@ -52,4 +52,9 @@ useraccounts:iron-routing
 biolog:feed
 biolog:conditions
 biolog:medications
+
+pagebakers:ionicons
+u2622:persistent-session
+
 biolog:bioontology
+

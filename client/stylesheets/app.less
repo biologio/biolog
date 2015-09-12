@@ -1,5 +1,7 @@
 
-
+body{
+  -webkit-font-smoothing: antialiased;
+}
 div.faces div.rateit-range
 {
   background: url(images/faces/smile32.png);
@@ -41,3 +43,28 @@ div.faces-sm div.rateit-reset:hover
 {
   background: url(images/faces/smile16.png);
 }
+
+.ui.menu .item{
+padding: .3em 1.1em;
+  font-weight:100 ;
+}
+.ui.menu .item:before{
+  width:0;
+}
+.right.menu a.user-name{
+  padding:0;
+  position:relative;
+  left:-.5rem;
+}
+.right.menu a.user-dropdown{
+  display:inline-flex;
+  align-items: center;
+  padding:0;
+
+}
+ span.user-name{
+  padding:.4rem;
+  }
+  .ui.slide.out.sidebar.visible{
+      z-index: 200;
+  }
