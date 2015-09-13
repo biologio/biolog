@@ -204,7 +204,6 @@ _setFact = function(fact, userId) {
         pred: String,
         data: Match.Optional(Match.Any),
         obj: Match.Optional(String),
-        postId: Match.Optional(String),
         subjName: Match.Optional(String),
         objName: Match.Optional(String),
         text: Match.Optional(String),
@@ -215,10 +214,14 @@ _setFact = function(fact, userId) {
         created: Date,
         creator: Match.Optional(String),
         num: Match.Optional(Number),
+       
         //updated: Match.OneOf(undefined, String, Date),
         //updater: Match.Optional(String),
         //source: String,
-        valid: Match.Optional(Match.Integer)
+        valid: Match.Optional(Match.Integer),
+         //updated:Rashid - 11-Sept 2015  
+        postId: Match.Optional(String),
+        likes: Match.Optional(Array)
     });
 
     fact._id = new Meteor.Collection.ObjectID()._str;

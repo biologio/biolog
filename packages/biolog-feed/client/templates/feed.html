@@ -22,7 +22,7 @@
                 </div>
                 <div class="row">
                     <div class="col s12">
-                        <div class="ui feed">
+                        <div class="ui feed ">
                             {{#each postLists.facts}}
                             <div class="event">
                                 <div class="label">
@@ -49,11 +49,18 @@
                                         {{{text}}}
                                     </div>
                                     <div class="meta">
-                                        <a class="like">
-                                            Like
+                                        {{#if liked}}
+                                          <a class=" unlike">
+                                            Unlike 
                                         </a>
+                                        {{else}}
+                                          <a class="like">
+                                            Like 
+                                        </a>
+                                            {{/if}}
+                                      
                                         <a class="comment">comment</a>
-                                        <a class=""> <i class="heart icon"></i> 23</a>
+                                        <a class=""> <i class="heart liked-{{liked}} icon"></i> {{likesCount}}</a>
                                         <a class=""><i class="comments icon"></i> {{commentCount}}</a>
                                     </div>
                                 </div>

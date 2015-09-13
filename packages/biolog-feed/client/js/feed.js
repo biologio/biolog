@@ -23,6 +23,12 @@
                      postId: fact._id
                  }).count()
                  fact.isOwner = Meteor.userId() == fact.creator ? true : false;
+                 if (fact.likes) {
+                     fact.likesCount = fact.likes.length;
+                 } else {
+                     fact.likesCount = 0;
+                 }
+                 fact.liked = _.contains(fact.likes, Meteor.userId())
                  var owner = Meteor.users.findOne({
                      _id: fact.creator
                  });
@@ -61,6 +67,7 @@
      }
  });
  Template.feed.rendered = function() {
+
 
      $('#post').highlightTextarea({
          words: ['{/\#(.+?):/g}'],
@@ -242,7 +249,7 @@
      'click a.comment': function(e, tpl) {
          // console.log(this);
          $(e.target).parents('.event').find('.input').toggleClass('hide');
-       
+
          e.preventDefault();
      },
      'keypress .input input': function(e, tpl) {
@@ -354,6 +361,42 @@
              }
          });
 
+     },
+     'click a.like': function(e, tpl) {
+         // this.text = $(e.target).parent('div').siblings('.textarea').val();
+         //console.log(this);
+         Facts.update({
+             _id: this._id
+         }, {
+             $push: {
+                 likes: Meteor.userId()
+             }
+         }, function(err, data) {
+             if (err) {
+                 console.log(err)
+             } else {
+                 console.log(data)
+             }
+         });
+
+     },
+     'click a.unlike': function(e, tpl) {
+         // this.text = $(e.target).parent('div').siblings('.textarea').val();
+         //console.log(this);
+         Facts.update({
+             _id: this._id
+         }, {
+             $pop: {
+                 likes: Meteor.userId()
+             }
+         }, function(err, data) {
+             if (err) {
+                 console.log(err)
+             } else {
+                 console.log(data)
+             }
+         });
+
      }
 
  });
@@ -372,7 +415,7 @@
 
  Template.feed.animations({
 
-     ".feed": {
+     "feed1": {
          animateInitial: true, // animate the intial elements
          animateInitialStep: 500, // Step between each animation for each initial item
          animateInitialDelay: 0,

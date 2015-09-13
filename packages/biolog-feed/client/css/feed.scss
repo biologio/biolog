@@ -11,7 +11,7 @@ body.feed {
     justify-content: space-between;
     align-items: center;
     align-items: flex-start;
-    max-height: 100vh;
+    min-height: 100vh;
     width: 900px;
     margin: 1rem auto;
     margin-top: 1.5rem;
@@ -22,10 +22,10 @@ body.feed {
         margin: 0 .6rem;
         padding: 0 .5em;
         /* box-shadow: -1px 0px 0px 0px #ccc, 1px 0px 0px 0px #ccc;
-
+overflow: scroll;
          */
         width: 60%;
-        overflow: scroll;
+        
     }
     .row .col {
         padding: 0;
@@ -271,7 +271,7 @@ body.feed {
 .sidebar-right,
 .sidebar-left {
     width: 20%;
-    overflow: scroll;
+    /*overflow: scroll;*/
 }
 
 .ui.comments .comment .author,
@@ -409,4 +409,7 @@ body.feed {
 .ui.menu a.item:active {
     color: #fff;
     background-color: #78D2DC;
+}
+.liked-true {
+    color: #E91E63;
 }
