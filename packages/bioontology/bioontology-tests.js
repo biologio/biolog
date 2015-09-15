@@ -26,7 +26,7 @@ describe('test Bioontology annotator', function () {
     beforeEach(function(done) {
         var text = "I have a bad diabetes and I think I got it because I took steroids and also crestor.";
 
-        Bioontology.annotate(text, function(err, annotations){
+        Bioontology.annotateHealth(text, function(err, annotations){
             theError = err;
             theAnnotations = annotations;
             done();

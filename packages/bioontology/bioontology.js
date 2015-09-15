@@ -283,8 +283,15 @@ Bioontology.getIngredients = function(med, callbackForEachIngredient, callback) 
 };
 
 
-Bioontology.getMedClassesForEachGenericCui = function(ingredientCuis, callbackForEachMedClass, callback) {
-    if (!ingredientCuis) return callback("No ingredient CUIs were provided");
+/**
+ * For each medicine ingredient, lookup med classes
+ * @param ingredientCuis - array of med ingredients
+ * @param callbackForEachMedClass - called for each class found
+ * @param finalCallback - called when complete
+ * @returns {*}
+ */
+Bioontology.getMedClassesForEachGenericCui = function(ingredientCuis, callbackForEachMedClass, finalCallback) {
+    if (!ingredientCuis) return finalCallback("No ingredient CUIs were provided");
     async.each(ingredientCuis, function(cui, asyncCallback) {
         //lookup each uri and add it as a medication/ingredient
         var lookupUrl = Bioontology.getUrlLookupMesh(cui);
@@ -311,11 +318,11 @@ Bioontology.getMedClassesForEachGenericCui = function(ingredientCuis, callbackFo
             if (!props) {
                 var err = "Unable to find properties from: " + lookupUrl;
                 console.error(err);
-                return callback(err);
+                return finalCallback(err);
             }
             var uris = props["http://purl.bioontology.org/ontology/MESH/isa"];
             if (! uris) {
-                callback("No classes found");
+                finalCallback("No classes found");
             }
 
             Bioontology.getMedClassesForEachClassUri(uris, callbackForEachMedClass, function(err) {
@@ -323,7 +330,7 @@ Bioontology.getMedClassesForEachGenericCui = function(ingredientCuis, callbackFo
                 asyncCallback();
             });
         });
-    }, callback);
+    }, finalCallback);
 };
 
 Bioontology.getMedClassesForEachClassUri = function(classUris, callbackForEachMedClass, callback) {

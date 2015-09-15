@@ -10,8 +10,8 @@ This package enables you to perform these operations:
 
 1. Search against Bioontolgy server, any ontologies
 2. Annotate free text against any ontologies
-3. Lookup health conditions/diseases for their disease class information
-4. Lookup medicines for their ingredients + medicine class information
+3. Lookup health conditions/diseases for their disease class information, against these 2 ontologies: MEDLINEPLUS, ICD10CM
+4. Lookup medicines for their ingredients + medicine class information, against the RXNORM ontology
 
 Please see API documentation below.
 
@@ -60,10 +60,12 @@ Bioontology.searchConditions(q, callback) | Search for conditions matching the p
 Bioontology.getConditionClasses(condition, callbackForEachClassFound, finalCallback) | For a given condition item (found by calling searchConditions() ), lookup its classes (parents, grandparents, ... in the ontology).  Each class is sent to callbackForEachClassFound(), then when all is done, finalCallback() is called.
 Bioontology.searchMeds(q, callback) | Search for medicines matching the provided query - @param q - the query to search.  Expected to be a string that the user is entering in a text box.  Optimized for typeahead functionality; @param callback - the callback to which the result array is passed
 Bioontology.getIngredients(med, callbackForEachIngredient, callback) | Query bioontology to get ingredients for a medicine item found. Typically such medicines would have been found by calling Bioontology.searchMeds().  Each ingredient is passed to callbackForEachIngredient
-
-
-
-
-
+Bioontology.getMedClassesForEachGenericCui(ingredientCuis, callbackForEachMedClass, finalCallback) | For each medicine ingredient, lookup med classes - @param ingredientCuis - array of med ingredients; @param callbackForEachMedClass - called for each class found; @param finalCallback - called when complete
+Bioontology.getItemCui(item) | get the (first) CUI for an item found by searching Bioontology
+Bioontology.getItemPreferredLabel(item) | get the preferred label for an item
+Bioontology.getItemAlternateLabels(item) | get alternate labels for an item (if any)
+Bioontology.getItemSemanticTypes(item) | get semantic types for an item
+Bioontology.annotate(text, ontologies, callback) | annotated the provided text against the list of ontologies
+Bioontology.annotateHealth(text, callback) | annotated the provided text against our list of health of ontologies
 
 

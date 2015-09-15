@@ -23,9 +23,32 @@ Bioontology.getUrlAnnotator = function(ontology, q) {
         "&apikey=" + apiKey;
 };
 
-Bioontology.annotate = function(q, callback) {
-    var url = Bioontology.getUrlAnnotator(Bioontology.ONTOLOGIES_ANNOTATOR, q);
-    console.log("Bioontology.annotate at URL=" + url);
+/**
+ * Annotate a block of text against the desired ontologies
+ * @param text
+ * @param ontologies
+ * @param callback
+ */
+Bioontology.annotate = function(text, ontologies, callback) {
+    var url = Bioontology.getUrlAnnotator(ontologies, text);
+    //console.log("Bioontology.annotate at URL=" + url);
+    HTTP.get(url, function (err, response) {
+        if (err) {
+            return callback(err);
+        }
+        var json = JSON.parse(response.content);
+        return callback(null, json);
+    });
+};
+
+/**
+ * Annotate a block of text against Bioontology
+ * @param text
+ * @param callback
+ */
+Bioontology.annotateHealth = function(text, callback) {
+    var url = Bioontology.getUrlAnnotator(Bioontology.ONTOLOGIES_ANNOTATOR, text);
+    //console.log("Bioontology.annotate at URL=" + url);
     HTTP.get(url, function (err, response) {
         if (err) {
             return callback(err);
