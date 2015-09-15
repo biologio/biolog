@@ -447,7 +447,7 @@
              Session.setPersistent("postFacts", [fact]);
          }
          return
-         Bioontology.addConditionClasses(med, Bioontology.getApiKey(),
+         Bioontology.getConditionClasses(med,
              //callback to add a condition:
              function(conditionToAdd) {
                  //add condition to the fact
@@ -477,7 +477,7 @@
              Session.setPersistent("postFacts", [fact]);
          }
          return
-         Bioontology.addIngredients(med,
+         Bioontology.getIngredients(med,
              function(ingred) {
                  var addingError = Medications.addMedIngredient(fact, ingred);
                  if (addingError) return callback(addingError);
@@ -494,7 +494,7 @@
                  console.log("\n\nNext add med classes: " + JSON.stringify(ingredients));
                  var ingredientCuis = Object.keys(ingredients);
 
-                 Bioontology.addMedClassesForEachGenericCui(ingredientCuis,
+                 Bioontology.getMedClassesForEachGenericCui(ingredientCuis,
                      function(medClass) {
                          var addingError = Medications.addMedClass(fact, medClass);
                          if (addingError) return callback(addingError);

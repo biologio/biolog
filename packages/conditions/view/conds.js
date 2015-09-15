@@ -103,7 +103,7 @@ submitBioolookupConditions = function() {
 
     var fact = Conditions.createConditionFact(getPatient()._id, cond);
 
-    Bioontology.addConditionClasses(cond, Bioontology.getApiKey(),
+    Bioontology.getConditionClasses(cond,
         //callback to add a condition:
         function(conditionToAdd) {
             //add condition to the fact

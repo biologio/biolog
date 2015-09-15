@@ -106,7 +106,7 @@ saveMedFactWithIngredientsAndClasses = function(ptid, med, callback) {
 
     var fact = Medications.createMedFact(ptid, med);
 
-    Bioontology.addIngredients(med,
+    Bioontology.getIngredients(med,
         function(ingred) {
             var addingError = Medications.addMedIngredient(fact, ingred);
             if (addingError) return callback(addingError);
@@ -123,7 +123,7 @@ saveMedFactWithIngredientsAndClasses = function(ptid, med, callback) {
             console.log("\n\nNext add med classes: " + JSON.stringify(ingredients));
             var ingredientCuis = Object.keys(ingredients);
 
-            Bioontology.addMedClassesForEachGenericCui(ingredientCuis,
+            Bioontology.getMedClassesForEachGenericCui(ingredientCuis,
                 function(medClass) {
                     var addingError = Medications.addMedClass(fact, medClass);
                     if (addingError) return callback(addingError);

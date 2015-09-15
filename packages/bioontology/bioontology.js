@@ -64,24 +64,25 @@ Bioontology.getUrlLookup = function(ontology, entity) {
 
 /**
  * Get the URL to look up any entity within the provided ontology
- * @param ontology
+ * @param ontologies - a comma-separated list of ontology identifiers
  * @param q - the query
  * @returns {string}
  */
-Bioontology.getUrlSearch = function(ontology, q) {
+Bioontology.getUrlSearch = function(ontologies, q) {
     var apiKey = Bioontology.getApiKey();
     var searchUrl = Bioontology.getBaseUrlSearch();
     return searchUrl + "?suggest=true" +
-        "&ontologies=" + ontology +
+        "&ontologies=" + ontologies +
         "&include=prefLabel,synonym,definition,notation,cui,semanticType,properties" +
         "&display_context=false&q=" + encodeURIComponent(q) +
         "&apikey=" + apiKey;
 };
 
 /**
- * Get the URL to look up any entity within the provided ontologies
+ * Get the URL to look up any entity within the provided ontologies, limiting to the list of semantic types
  * @param ontologies
- * @param entity
+ * @param semanticTypes - the list of semantic types to restrict to (these begin with a capital T)
+ * @param q - the query ter
  * @returns {string}
  */
 Bioontology.getUrlSearchSemanticTypes = function(ontologies, semanticTypes, q) {
@@ -129,7 +130,35 @@ Bioontology.getUrlSearchConditions = function(q) {
 };
 
 
-Bioontology.addConditionClasses = function(condition, apiKey, callbackForEachClassFound, finalCallback) {
+
+//CONDITIONS
+
+/**
+ * Search for conditions matching the provided query
+ * @param q - the query to search.  Expected to be a string that the user is entering in a text box.  Optimized for typeahead functionality
+ * @param callback - the callback to which the result array is passed
+ */
+Bioontology.searchConditions = function(q, callback) {
+    var url = Bioontology.getUrlSearchConditions(q);
+    HTTP.get(url, function (err, response) {
+        if (err) {
+            return callback(err);
+        }
+        var json = JSON.parse(response.content);
+        return callback(null, json.collection);
+    });
+};
+
+/**
+ * For a given condition item (found by calling searchConditions() ), lookup its classes (parents, grandparents, ... in the ontology)
+ * @param condition
+ * @param apiKey
+ * @param callbackForEachClassFound
+ * @param finalCallback
+ * @returns {*}
+ */
+Bioontology.getConditionClasses = function(condition, callbackForEachClassFound, finalCallback) {
+    var apiKey = Bioontology.getApiKey();
     //add current condition as a class
     callbackForEachClassFound(condition);
     //get ancestors
@@ -183,23 +212,6 @@ Bioontology.addConditionClasses = function(condition, apiKey, callbackForEachCla
 };
 
 
-/**
- * Search for conditions matching the provided query
- * @param q - the query to search.  Expected to be a string that the user is entering in a text box.  Optimized for typeahead functionality
- * @param callback - the callback to which the result array is passed
- */
-Bioontology.searchConditions = function(q, callback) {
-    var url = Bioontology.getUrlSearchConditions(q);
-    HTTP.get(url, function (err, response) {
-        if (err) {
-            return callback(err);
-        }
-        var json = JSON.parse(response.content);
-        return callback(null, json.collection);
-    });
-};
-
-
 //MEDICATIONS:
 
 /**
@@ -227,7 +239,15 @@ Bioontology.searchMeds = function(q, callback) {
     });
 };
 
-Bioontology.addIngredients = function(med, callbackForEachIngredient, callback) {
+/**
+ * Query bioontology to get ingredients for a medicine item found.
+ * Typically such medicines would have been found by calling Bioontology.searchMeds()
+ * @param med
+ * @param callbackForEachIngredient
+ * @param callback
+ * @returns {*}
+ */
+Bioontology.getIngredients = function(med, callbackForEachIngredient, callback) {
     var uriEntries = med.properties[Bioontology.URI_MESH_TRADENAME_OF];
     if (!uriEntries) {
         uriEntries = med.properties[Bioontology.URI_RXNORM_TRADENAME_OF];
@@ -263,7 +283,7 @@ Bioontology.addIngredients = function(med, callbackForEachIngredient, callback) 
 };
 
 
-Bioontology.addMedClassesForEachGenericCui = function(ingredientCuis, callbackForEachMedClass, callback) {
+Bioontology.getMedClassesForEachGenericCui = function(ingredientCuis, callbackForEachMedClass, callback) {
     if (!ingredientCuis) return callback("No ingredient CUIs were provided");
     async.each(ingredientCuis, function(cui, asyncCallback) {
         //lookup each uri and add it as a medication/ingredient
@@ -298,7 +318,7 @@ Bioontology.addMedClassesForEachGenericCui = function(ingredientCuis, callbackFo
                 callback("No classes found");
             }
 
-            Bioontology.addMedClassesForEachClassUri(uris, callbackForEachMedClass, function(err) {
+            Bioontology.getMedClassesForEachClassUri(uris, callbackForEachMedClass, function(err) {
                 if (err) return asyncCallback(err);
                 asyncCallback();
             });
@@ -306,7 +326,7 @@ Bioontology.addMedClassesForEachGenericCui = function(ingredientCuis, callbackFo
     }, callback);
 };
 
-Bioontology.addMedClassesForEachClassUri = function(classUris, callbackForEachMedClass, callback) {
+Bioontology.getMedClassesForEachClassUri = function(classUris, callbackForEachMedClass, callback) {
     if (!classUris) return callback("No class URIs were provided");
     async.each(classUris, function(uri, asyncCallback) {
         var lookupUrl = Bioontology.getUrlLookupClass("MESH", uri);
@@ -321,7 +341,7 @@ Bioontology.addMedClassesForEachClassUri = function(classUris, callbackForEachMe
 
 /**
  * Given an item retrieved from Bioontology, get the CUI
- * @param condition
+ * @param item
  */
 Bioontology.getItemCui = function(item) {
     var cuis = item.cui;
@@ -334,7 +354,7 @@ Bioontology.getItemCui = function(item) {
 
 /**
  * Given an item retrieved from Bioontology, get the preferred label
- * @param condition
+ * @param item
  */
 Bioontology.getItemPreferredLabel = function(item) {
     if (!item) return;
@@ -343,7 +363,7 @@ Bioontology.getItemPreferredLabel = function(item) {
 
 /**
  * Given an item retrieved from Bioontology, get the alternate labels (if any)
- * @param condition
+ * @param item
  */
 Bioontology.getItemAlternateLabels = function(item) {
     if (!item || !item.properties) return;
@@ -352,7 +372,7 @@ Bioontology.getItemAlternateLabels = function(item) {
 
 /**
  * Given an item retrieved from Bioontology, get the alternate labels (if any)
- * @param condition
+ * @param item
  */
 Bioontology.getItemSemanticTypes = function(item) {
     if (!item) return;

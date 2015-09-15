@@ -104,15 +104,14 @@ Conditions.addConditionClass = function(conditionFact, clazz) {
  * It then adds all disease classes (parent categories, grandparents, etc) to the provided Fact object.
  * @param condition
  * @param fact
- * @param apiKey - the Bioontology API key
  * @param callback
  */
-Conditions.addConditionClassesToFacts = function(condition, fact, apiKey, callback) {
+Conditions.addConditionClassesToFacts = function(condition, fact, callback) {
     //add current condition as a class
     //addConditionClass(fact, condition);
 
     //To the provided fact, add parent classes of this condition as a class
-    return Conditions.addConditionClasses(condition, apiKey, function(ancestor) {
+    return Conditions.getConditionClasses(condition, function(ancestor) {
         addConditionClass(fact, ancestor);
     }, callback);
 };
