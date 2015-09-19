@@ -78,7 +78,7 @@ Bioontology.getConditionClasses = function(condition, callback) {
                 console.error("Unable to batch refine condition ancestors at url: " + batchUrl + ":\n" + err + "\nbatchData=" + JSON.stringify(batchData));
                 callback(err);
             }
-            console.log("Batch queried these ancestors: " + JSON.stringify(result.data, null , "  "));
+            //console.log("Batch queried these ancestors: " + JSON.stringify(result.data, null , "  "));
 
             for (var ancestorIdx in result.data["http://www.w3.org/2002/07/owl#Class"]) {
                 var ancestor = result.data["http://www.w3.org/2002/07/owl#Class"][ancestorIdx];

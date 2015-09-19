@@ -14,7 +14,7 @@ function contains(a, obj) {
 
 describe('Bioontology Settings', function () {
     beforeAll(function() {
-        jasmine.DEFAULT_TIMEOUT_INTERVAL = jasmine.getEnv().defaultTimeoutInterval = 10000;
+        jasmine.DEFAULT_TIMEOUT_INTERVAL = jasmine.getEnv().defaultTimeoutInterval = 30000;
     });
 
     it('expect Bioontology settings to be present', function () {
@@ -27,37 +27,45 @@ describe('Bioontology Settings', function () {
 
 describe('Bioontology Conditions', function () {
 
-    var error = null;
+    var errors = [];
+    var ancestorErrors = [];
     var conditions = null;
+    var classes = null;
     beforeEach(function(done) {
         var q = "diab";
 
         Bioontology.searchConditions(q, function(err, results){
-            error = err;
+            if (err) {
+                errors.push(err);
+                console.error(err);
+            }
             conditions = results;
 
-            //lookup ancestors for each condition
-            for (var ci in conditions) {
-                var condition = conditions[ci];
-                Bioontology.getConditionClasses(condition, function(err, classes) {
-
-                });
-            }
-
-            done();
+            //lookup ancestors for first condition
+            Bioontology.getConditionClasses(conditions[0], function(err, conditionClasses) {
+                if (err) {
+                    //console.error(err);
+                    errors.push(err);
+                }
+                if (conditionClasses) classes = conditionClasses;
+                done();
+            });
         });
     });
 
     it('expect Bioontology search conditions for: diab', function () {
-        expect(error).toBeNull();
+        if (errors && errors.length) console.error(errors);
+        expect(errors.length).toBe(0);
         expect(conditions).toBeDefined();
         expect(conditions.length).toBeGreaterThan(10);
+        console.log("conditionClasses=" + JSON.stringify(classes, null, "  "));
     });
 
-    it('expect Bioontology to properly annotate conditions with their ancestors', function () {
-        expect(error).toBeNull();
-        expect(conditions).toBeDefined();
-        expect(conditions.length).toBeGreaterThan(10);
+    it('expect Bioontology to properly enrich conditions with their ancestors', function () {
+        if (ancestorErrors && ancestorErrors.length) console.error(ancestorErrors);
+        expect(ancestorErrors.length).toBe(0);
+        expect(classes).toBeDefined();
+        expect(classes.length).toBeGreaterThan(2);
 
     });
 });
