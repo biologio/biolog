@@ -111,9 +111,16 @@ Conditions.addConditionClassesToFacts = function(condition, fact, callback) {
     //addConditionClass(fact, condition);
 
     //To the provided fact, add parent classes of this condition as a class
-    return Conditions.getConditionClasses(condition, function(ancestor) {
-        addConditionClass(fact, ancestor);
-    }, callback);
+    return Conditions.getConditionClasses(condition, function(err, classes) {
+        if (err) {
+            return callback(err);
+        }
+        for (var ci in classes) {
+            var ancestorClass = classes[ci];
+            addConditionClass(fact, ancestorClass);
+        }
+        callback(null, fact);
+    });
 };
 
 

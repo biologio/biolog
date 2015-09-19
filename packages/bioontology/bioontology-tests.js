@@ -12,7 +12,7 @@ function contains(a, obj) {
     return false;
 }
 
-describe('test Bioontology settings', function () {
+describe('Bioontology Settings', function () {
     beforeAll(function() {
         jasmine.DEFAULT_TIMEOUT_INTERVAL = jasmine.getEnv().defaultTimeoutInterval = 10000;
     });
@@ -25,7 +25,7 @@ describe('test Bioontology settings', function () {
 });
 
 
-describe('test Bioontology search conditions', function () {
+describe('Bioontology Conditions', function () {
 
     var error = null;
     var conditions = null;
@@ -35,6 +35,15 @@ describe('test Bioontology search conditions', function () {
         Bioontology.searchConditions(q, function(err, results){
             error = err;
             conditions = results;
+
+            //lookup ancestors for each condition
+            for (var ci in conditions) {
+                var condition = conditions[ci];
+                Bioontology.getConditionClasses(condition, function(err, classes) {
+
+                });
+            }
+
             done();
         });
     });
@@ -43,27 +52,19 @@ describe('test Bioontology search conditions', function () {
         expect(error).toBeNull();
         expect(conditions).toBeDefined();
         expect(conditions.length).toBeGreaterThan(10);
-        //console.log("Bioontology annotations=" + JSON.stringify(theAnnotations, null, "  "));
-        var a0 = conditions[0];
-        var a1 = conditions[1];
-        var a2 = conditions[2];
-        //expect(Bioontology.getItemCui(a0.annotatedClass)).toEqual("C0011849");
-        //expect(Bioontology.getItemPreferredLabel(a0.annotatedClass)).toEqual("Diabetes Mellitus");
-        //var altLabels = Bioontology.getItemAlternateLabels(a0.annotatedClass);
-        //expect(contains(altLabels, "Diabetes")).toBe(true);
-        //var semanticTypes = Bioontology.getItemSemanticTypes(a0.annotatedClass);
-        //expect(contains(semanticTypes, "T047")).toBe(true);
-        //
-        //expect(Bioontology.getItemCui(a1.annotatedClass)).toEqual("C0038317");
-        //expect(Bioontology.getItemPreferredLabel(a1.annotatedClass)).toEqual("Steroids");
-        //
-        //expect(Bioontology.getItemCui(a2.annotatedClass)).toEqual("C1098080");
-        //expect(Bioontology.getItemPreferredLabel(a2.annotatedClass)).toEqual("Crestor");
+    });
+
+    it('expect Bioontology to properly annotate conditions with their ancestors', function () {
+        expect(error).toBeNull();
+        expect(conditions).toBeDefined();
+        expect(conditions.length).toBeGreaterThan(10);
+
     });
 });
 
 
-describe('test Bioontology search medicines', function () {
+
+describe('Bioontology Medicines', function () {
 
     var error = null;
     var meds = null;
@@ -87,7 +88,7 @@ describe('test Bioontology search medicines', function () {
 
 
 
-describe('test Bioontology annotator', function () {
+describe('Bioontology Annotator', function () {
 
     var theError = null;
     var theAnnotations = null;
@@ -124,7 +125,7 @@ describe('test Bioontology annotator', function () {
     });
 });
 
-describe('test Bioontology annotator LONG text', function () {
+describe('Bioontology Annotator Long Text', function () {
     var theError = null;
     var theAnnotations = null;
     beforeEach(function(done) {
@@ -138,7 +139,7 @@ describe('test Bioontology annotator LONG text', function () {
 
     });
 
-    it('expect Bioontology annotator to annotate LONG text', function () {
+    it('expect Bioontology annotator to annotate long text', function () {
         expect(theError).toBeNull();
         expect(theAnnotations).toBeDefined();
         //console.log("Bioontology annotations=" + JSON.stringify(theAnnotations, null, "  "));

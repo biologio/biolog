@@ -15,7 +15,7 @@ Package.onUse(function(api) {
     api.use('http@1.1.0');
     api.use('peerlibrary:async');
     api.addFiles([
-        'bioontology.js', 'annotator.js'
+        'bioontologyAPI.js', 'conditionsAPI.js', 'medicinesAPI.js', 'annotatorAPI.js'
         ],
         ['client', 'server']);
     api.export('Bioontology', ['client', 'server']);
