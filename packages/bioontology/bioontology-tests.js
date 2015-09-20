@@ -12,6 +12,8 @@ function contains(a, obj) {
     return false;
 }
 
+var MED_QUERY="midri";
+
 describe('Bioontology Settings', function () {
     beforeAll(function() {
         jasmine.DEFAULT_TIMEOUT_INTERVAL = jasmine.getEnv().defaultTimeoutInterval = 30000;
@@ -31,7 +33,7 @@ describe('Bioontology Conditions', function () {
     var ancestorErrors = [];
     var conditions = null;
     var classes = null;
-    beforeEach(function(done) {
+    beforeAll(function(done) {
         var q = "diab";
 
         Bioontology.searchConditions(q, function(err, results){
@@ -44,8 +46,7 @@ describe('Bioontology Conditions', function () {
             //lookup ancestors for first condition
             Bioontology.getConditionClasses(conditions[0], function(err, conditionClasses) {
                 if (err) {
-                    //console.error(err);
-                    errors.push(err);
+                    ancestorErrors.push(err);
                 }
                 if (conditionClasses) classes = conditionClasses;
                 done();
@@ -61,13 +62,15 @@ describe('Bioontology Conditions', function () {
         console.log("conditionClasses=" + JSON.stringify(classes, null, "  "));
     });
 
-    it('expect Bioontology to properly enrich conditions with their ancestors', function () {
+    it('expect Bioontology to properly find classes for a condition', function () {
         if (ancestorErrors && ancestorErrors.length) console.error(ancestorErrors);
         expect(ancestorErrors.length).toBe(0);
         expect(classes).toBeDefined();
         expect(classes.length).toBeGreaterThan(2);
 
     });
+
+
 });
 
 
@@ -76,20 +79,63 @@ describe('Bioontology Medicines', function () {
 
     var error = null;
     var meds = null;
-    beforeEach(function(done) {
-        var q = "hydrochlorothiaz";
+    var ingredientErrors = [];
+    var ancestorErrors = [];
+    var ingredients = null;
+    var classes = null;
+    beforeAll(function(done) {
 
-        Bioontology.searchMeds(q, function(err, results){
+        Bioontology.searchMeds(MED_QUERY, function(err, results){
             error = err;
             meds = results;
-            done();
+
+            var med = meds[0];
+            ingredients = [med];
+            Bioontology.getIngredients(med, function(err, ingreds) {
+                if (err) {
+                    ingredientErrors.push(err);
+                }
+                if (!ingreds) {
+                    done();
+                    return;
+                }
+                ingredients = ingredients.concat(ingreds);
+
+                console.log("\n\nNext test adding med classes to ingredients: " + JSON.stringify(ingredients));
+
+                //lookup ancestors for first ingredient
+                Bioontology.getMedClassesForEachIngredient(ingredients, function(err, medClasses) {
+                    if (err) {
+                        ancestorErrors.push(err);
+                    }
+                    if (medClasses) classes = medClasses;
+                    done();
+                });
+            });
         });
     });
 
-    it('expect Bioontology search medicines for: hydrochlorothiaz', function () {
+    it('expect Bioontology search medicines for: ' + MED_QUERY, function () {
         expect(error).toBeNull();
         expect(meds).toBeDefined();
-        expect(meds.length).toBeGreaterThan(10);
+        expect(meds.length).toBeGreaterThan(0);
+    });
+
+    it('expect Bioontology to properly find ingredients for a medicine', function () {
+        if (ingredientErrors && ingredientErrors.length) console.error(ancestorErrors);
+        expect(ingredientErrors.length).toBe(0);
+        expect(ingredients).toBeDefined();
+        expect(ingredients.length).toBe(4);
+
+    });
+
+    it('expect Bioontology to properly find classes for a medicine', function () {
+        if (ancestorErrors && ancestorErrors.length) console.log("\nExceptions found looking up med ingredients (possibly because the info is lacking in MESH)" + ancestorErrors);
+        //expect(ancestorErrors.length).toBe(0);
+        expect(classes).toBeDefined();
+
+        console.log("Medicine classes=" + JSON.stringify(classes, null, "  "));
+        expect(classes.length).toBeGreaterThan(0);
     });
 });
 

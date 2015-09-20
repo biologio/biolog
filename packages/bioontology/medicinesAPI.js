@@ -73,20 +73,28 @@ Bioontology.getIngredients = function(med, callback) {
 
 /**
  * For each medicine ingredient, lookup med classes
- * @param ingredientCuis - array of med ingredients
+ * @param ingredients - array of med ingredients, as found from search of bioontology
+ * We expect some ingredients to lack class information
  * @param callback - called when complete
  * @returns {*}
  */
-Bioontology.getMedClassesForEachGenericCui = function(ingredientCuis, callback) {
+Bioontology.getMedClassesForEachIngredient = function(ingredients, callback) {
     var classes = [];
-    if (!ingredientCuis) return callback("No ingredient CUIs were provided");
-    async.each(ingredientCuis, function(cui, asyncCallback) {
+    var cuis = [];
+    for (var ii in ingredients) {
+        var ingredient = ingredients[ii];
+        var cui = Bioontology.getItemCui(ingredient);
+        cuis.push(cui);
+    }
+    if (!cuis) return callback("No ingredients with CUIs were provided");
+    console.log("\n\n**** getMedClassesForEachIngredient: lookup these ingredients:" + cuis);
+    async.each(cuis, function(cui, asyncCallback) {
         //lookup each uri and add it as a medication/ingredient
         var lookupUrl = Bioontology.getUrlLookupMesh(cui);
-        console.log("\n\nLooking up med class at: " + lookupUrl);
+        console.log("\n\nLooking up med classes at: " + lookupUrl);
         HTTP.get(lookupUrl, function (err, response) {
             if (err) {
-                console.error("Unable to look up med class at url: " + lookupUrl + ":\n" + err);
+                console.error("Unable to look up med classes at url: " + lookupUrl + ":\n" + err);
                 asyncCallback(err);
             }
             var json = JSON.parse(response.content);
@@ -110,12 +118,19 @@ Bioontology.getMedClassesForEachGenericCui = function(ingredientCuis, callback) 
             }
             var uris = props["http://purl.bioontology.org/ontology/MESH/isa"];
             if (! uris) {
-                callback("No classes found");
+                var err = "No classes found for ingredient: " + cui;
+                console.log(err);
+                //return callback(err);
+                return asyncCallback();
             }
 
+            console.log("For ingredient: " + cui + ", found this link to class info: " + uris);
             Bioontology.getMedClassesForEachClassUri(uris, function(err, subClasses) {
-                if (err) return asyncCallback(err);
-                classes.push(subClasses);
+                if (err) {
+                    console.error("ERROR looking up classes for ingredient: " + cui + ": " + err);
+                    return asyncCallback(err);
+                }
+                classes = classes.concat(subClasses);
                 asyncCallback();
             });
         });
@@ -124,15 +139,24 @@ Bioontology.getMedClassesForEachGenericCui = function(ingredientCuis, callback) 
     });
 };
 
-
+/**
+ * Internal method for looking up all medication classes, given a URL to that info (on bioontology server).
+ * If exception occurs, abort and return an error to the callback
+ * @param classUris
+ * @param callback
+ * @returns {*} calls callback, with first arg=error and 2nd arg=an array of classes
+ */
 Bioontology.getMedClassesForEachClassUri = function(classUris, callback) {
     if (!classUris) return callback("No class URIs were provided");
     var classes = [];
     async.each(classUris, function(uri, asyncCallback) {
         var lookupUrl = Bioontology.getUrlLookupClass("MESH", uri);
-        //console.log("\n\nGetting med class at: " + lookupUrl);
+        console.log("\n\nGetting med class at: " + lookupUrl);
         HTTP.get(lookupUrl, function (err, response) {
+            if (err) return callback(err);
             var json = JSON.parse(response.content);
+            console.log("\n\n****For drug class: " + uri + ", found these details: " + JSON.stringify(json, null, "  "));
+            //classes = classes.concat(json);
             classes.push(json);
             asyncCallback();
         });

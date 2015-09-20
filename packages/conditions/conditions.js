@@ -124,3 +124,31 @@ Conditions.addConditionClassesToFacts = function(condition, fact, callback) {
 };
 
 
+
+/**
+ * Given a condition result (from Bioontology), create a fact, with its classes added to it
+ * @param ptid
+ * @param condition
+ * @param callback
+ */
+Conditions.constructConditionFact = function(ptid, condition, callback) {
+    var fact = Conditions.createConditionFact(ptid, condition);
+
+    Bioontology.getConditionClasses(condition,
+        function(err, classes) {
+            if (err) {
+                var msg = "Unable to getConditionClasses: " + err;
+                console.error(msg);
+                if (callback) callback(msg);
+                return;
+            }
+            for (var ci in classes) {
+                var clazz = classes[ci];
+                var addingError = Conditions.addConditionClass(fact, clazz);
+                if (addingError) return callback(addingError);
+            }
+
+            return callback(null, fact);
+        }
+    );
+};

@@ -159,3 +159,49 @@ Medications.setIngredientStrength = function(medFact, ingredientCui, strength) {
 };
 
 
+/**
+ * Given a medicine result (from Bioontology), create a fact, with ingredients and their classes added to it
+ * @param med
+ * @param ptid
+ * @param callback
+ */
+Medications.constructMedFact = function(ptid, med, callback) {
+    var fact = Medications.createMedFact(ptid, med);
+
+    Bioontology.getIngredients(med,
+        function(err, ingreds) {
+            if (err) {
+                var msg = "Unable to addIngredients: " + err;
+                console.error(msg);
+                if (callback) callback(msg);
+                return;
+            }
+            for (var ii in ingreds) {
+                var ingredient = ingreds[ii];
+                var addingError = Medications.addMedIngredient(fact, ingredient);
+                if (addingError) return callback(addingError);
+            }
+
+            var ingredsArr = [];
+            var ingredients = fact.data[Medications.PREDICATE_INGREDIENT._id];
+            console.log("\n\nNext add med classes: " + JSON.stringify(ingredients));
+
+            Bioontology.getMedClassesForEachIngredient(ingredients,
+                function(err, medClasses) {
+                    if (err) {
+                        console.error("Error adding med class: " + err);
+                        return callback(err);
+                    }
+
+                    for (var i in medClasses) {
+                        var medClass = medClasses[i];
+                        var addingError = Medications.addMedClass(fact, medClass);
+                        if (addingError) return callback(addingError);
+                    }
+
+                    return callback(null, fact);
+                }
+            );
+        }
+    );
+};
