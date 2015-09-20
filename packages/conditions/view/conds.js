@@ -101,27 +101,37 @@ submitBioolookupConditions = function() {
     //console.log("Saving med: " + JSON.stringify(med));
     if (!cond) return;
 
-    var fact = Conditions.createConditionFact(getPatient()._id, cond);
-
-    Bioontology.getConditionClasses(cond,
-        //callback to add a condition:
-        function(conditionToAdd) {
-            //add condition to the fact
-            Conditions.addConditionClass(fact, conditionToAdd);
-        },
-        //final callback:
-        function(err) {
+    Conditions.constructConditionFact(getPatient()._id, cond, function(err, fact){
+        if (err) {
+            return console.error(err);
+        }
+        saveProperty(fact, function(err, success) {
             if (err) {
-                console.error("Unable to addClasses: " + JSON.stringify(err));
+                console.error("Unable to save condition fact: " + err + "\n" + JSON.stringify(fact));
+                return;
             }
-
-            saveProperty(fact, function(err, success) {
-                if (err) {
-                    console.error("Unable to save condition fact: " + err + "\n" + JSON.stringify(fact));
-                    return;
-                }
-            });
+        });
     });
+    //var fact = Conditions.createConditionFact(getPatient()._id, cond);
+    //Bioontology.getConditionClasses(cond,
+    //    //callback to add a condition:
+    //    function(conditionToAdd) {
+    //        //add condition to the fact
+    //        Conditions.addConditionClass(fact, conditionToAdd);
+    //    },
+    //    //final callback:
+    //    function(err) {
+    //        if (err) {
+    //            console.error("Unable to addClasses: " + JSON.stringify(err));
+    //        }
+    //
+    //        saveProperty(fact, function(err, success) {
+    //            if (err) {
+    //                console.error("Unable to save condition fact: " + err + "\n" + JSON.stringify(fact));
+    //                return;
+    //            }
+    //        });
+    //});
 };
 
 

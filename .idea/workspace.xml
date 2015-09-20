@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="02e712f0-6afb-4af0-a485-f0f77566c506" name="Default" comment="Merge branch 'master' of https://github.com/biologio/biolog&#10;&#10;# Please enter a commit message to explain why this merge is necessary,&#10;# especially if it merges an updated upstream into a topic branch.&#10;#&#10;# Lines starting with '#' will be ignored, and an empty message aborts&#10;# the commit.&#10;">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/conditions/conditions.js" afterPath="$PROJECT_DIR$/packages/conditions/conditions.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/medications/medications.js" afterPath="$PROJECT_DIR$/packages/medications/medications.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/conditions/view/conds.js" afterPath="$PROJECT_DIR$/packages/conditions/view/conds.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/util/stringUtils.js" afterPath="$PROJECT_DIR$/lib/util/stringUtils.js" />
     </list>
     <ignored path="biolog.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -57,11 +57,31 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="conditions.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="conditions.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/packages/conditions/conditions.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.26035503" vertical-offset="1878" max-vertical-offset="2415">
+            <state vertical-scroll-proportion="0.0" vertical-offset="1741" max-vertical-offset="2415">
               <caret line="134" column="73" selection-start-line="127" selection-start-column="0" selection-end-line="134" selection-end-column="73" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="stringUtils.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/util/stringUtils.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="686" max-vertical-offset="1485">
+              <caret line="66" column="67" selection-start-line="66" selection-start-column="67" selection-end-line="66" selection-end-column="67" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="conds.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/packages/conditions/view/conds.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-9.259259" vertical-offset="1415" max-vertical-offset="5820">
+              <caret line="111" column="13" selection-start-line="111" selection-start-column="13" selection-end-line="111" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -77,11 +97,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="meds.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="meds.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/packages/medications/view/meds.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-10.555555" vertical-offset="1485" max-vertical-offset="6450">
-              <caret line="118" column="7" selection-start-line="106" selection-start-column="4" selection-end-line="118" selection-end-column="7" />
+            <state vertical-scroll-proportion="0.53125" vertical-offset="1410" max-vertical-offset="6450">
+              <caret line="111" column="31" selection-start-line="111" selection-start-column="31" selection-end-line="111" selection-end-column="31" />
               <folding />
             </state>
           </provider>
@@ -115,7 +135,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/packages/bioontology-facts/view/conditions.html" />
         <option value="$PROJECT_DIR$/packages/bioontology/api/condition-api.js" />
         <option value="$PROJECT_DIR$/private/settings-localbioontology.json" />
         <option value="$PROJECT_DIR$/private/settings-remotebioontology.json" />
@@ -151,7 +170,6 @@
         <option value="$PROJECT_DIR$/packages/conditions/conditions-tests.js" />
         <option value="$PROJECT_DIR$/tests/jasmine/server/unit/packageMocksSpec.js" />
         <option value="$PROJECT_DIR$/CODEBASE.md" />
-        <option value="$PROJECT_DIR$/packages/conditions/view/conds.js" />
         <option value="$PROJECT_DIR$/packages/bioontology/annotator.js" />
         <option value="$PROJECT_DIR$/packages/bioontology/conditions.js" />
         <option value="$PROJECT_DIR$/packages/bioontology/bioontology.js" />
@@ -166,6 +184,8 @@
         <option value="$PROJECT_DIR$/packages/bioontology/bioontology-tests.js" />
         <option value="$PROJECT_DIR$/packages/medications/medications.js" />
         <option value="$PROJECT_DIR$/packages/conditions/conditions.js" />
+        <option value="$PROJECT_DIR$/lib/util/stringUtils.js" />
+        <option value="$PROJECT_DIR$/packages/conditions/view/conds.js" />
       </list>
     </option>
   </component>
@@ -423,13 +443,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/client/views/patient/patient.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1303" max-vertical-offset="2355">
-          <caret line="112" column="0" selection-start-line="112" selection-start-column="0" selection-end-line="112" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/views/layouts/basic.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="120" max-vertical-offset="1005">
@@ -698,14 +711,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/packages/conditions/view/conds.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33333334" vertical-offset="895" max-vertical-offset="5670">
-          <caret line="69" column="44" selection-start-line="69" selection-start-column="38" selection-end-line="69" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/CODEBASE.md">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="13.033334" vertical-offset="451" max-vertical-offset="1155">
@@ -770,14 +775,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/packages/medications/view/meds.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.555555" vertical-offset="1485" max-vertical-offset="6450">
-          <caret line="118" column="7" selection-start-line="106" selection-start-column="4" selection-end-line="118" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/packages/biolog-feed/client/js/feed.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="7366" max-vertical-offset="8070">
@@ -812,8 +809,32 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/packages/conditions/conditions.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.26035503" vertical-offset="1878" max-vertical-offset="2415">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1741" max-vertical-offset="2415">
           <caret line="134" column="73" selection-start-line="127" selection-start-column="0" selection-end-line="134" selection-end-column="73" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/util/stringUtils.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="686" max-vertical-offset="1485">
+          <caret line="66" column="67" selection-start-line="66" selection-start-column="67" selection-end-line="66" selection-end-column="67" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/packages/conditions/view/conds.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-9.259259" vertical-offset="1415" max-vertical-offset="5820">
+          <caret line="111" column="13" selection-start-line="111" selection-start-column="13" selection-end-line="111" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/packages/medications/view/meds.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.53125" vertical-offset="1410" max-vertical-offset="6450">
+          <caret line="111" column="31" selection-start-line="111" selection-start-column="31" selection-end-line="111" selection-end-column="31" />
           <folding />
         </state>
       </provider>
