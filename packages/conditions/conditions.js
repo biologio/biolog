@@ -127,6 +127,7 @@ Conditions.addConditionClassesToFacts = function(condition, fact, callback) {
 
 /**
  * Given a condition result (from Bioontology), create a fact, with its classes added to it
+ * When finished, call the callback, with first argument is any error and second argument is the condition fact.
  * @param ptid
  * @param condition
  * @param callback

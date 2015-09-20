@@ -161,8 +161,9 @@ Medications.setIngredientStrength = function(medFact, ingredientCui, strength) {
 
 /**
  * Given a medicine result (from Bioontology), create a fact, with ingredients and their classes added to it
- * @param med
+ * When finished, call the callback, with first argument is any error and second argument is the medication fact.
  * @param ptid
+ * @param med
  * @param callback
  */
 Medications.constructMedFact = function(ptid, med, callback) {
