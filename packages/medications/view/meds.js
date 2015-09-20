@@ -107,10 +107,10 @@ saveMedFactWithIngredientsAndClasses = function(ptid, med, callback) {
     var fact = Medications.createMedFact(ptid, med);
 
     Bioontology.getIngredients(med,
-        function(ingred) {
-            var addingError = Medications.addMedIngredient(fact, ingred);
-            if (addingError) return callback(addingError);
-        },
+        //function(ingred) {
+        //    var addingError = Medications.addMedIngredient(fact, ingred);
+        //    if (addingError) return callback(addingError);
+        //},
         function(err) {
             if (err) {
                 var msg = "Unable to addIngredients: " + err;
@@ -119,18 +119,25 @@ saveMedFactWithIngredientsAndClasses = function(ptid, med, callback) {
                 return;
             }
 
+            var ingredsArr = [];
             var ingredients = fact.data[Medications.PREDICATE_INGREDIENT._id];
             console.log("\n\nNext add med classes: " + JSON.stringify(ingredients));
             var ingredientCuis = Object.keys(ingredients);
 
             Bioontology.getMedClassesForEachGenericCui(ingredientCuis,
-                function(medClass) {
-                    var addingError = Medications.addMedClass(fact, medClass);
-                    if (addingError) return callback(addingError);
-                },
-                function(err, result) {
+                //function(medClass) {
+                //    var addingError = Medications.addMedClass(fact, medClass);
+                //    if (addingError) return callback(addingError);
+                //},
+                function(err, medClasses) {
                     if (err) {
                         console.error("Error adding med class: " + err);
+                    }
+
+                    for (var i in medClasses) {
+                        var medClass = medClasses[i];
+                        var addingError = Medications.addMedClass(fact, medClass);
+                        if (addingError) return callback(addingError);
                     }
                     //console.log("\n\n\nSaving med fact:" + JSON.stringify(fact));
                     saveProperty(fact, function(err, success) {
@@ -141,9 +148,11 @@ saveMedFactWithIngredientsAndClasses = function(ptid, med, callback) {
                             return;
                         }
                         if (callback) return callback(null, fact);
-                });
-            });
-    });
+                    });
+                }
+            );
+        }
+    );
 };
 
 

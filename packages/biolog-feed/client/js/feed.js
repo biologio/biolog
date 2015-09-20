@@ -478,11 +478,11 @@
          }
          return
          Bioontology.getIngredients(med,
-             function(ingred) {
-                 var addingError = Medications.addMedIngredient(fact, ingred);
-                 if (addingError) return callback(addingError);
-             },
-             function(err) {
+             //function(ingred) {
+             //    var addingError = Medications.addMedIngredient(fact, ingred);
+             //    if (addingError) return callback(addingError);
+             //},
+             function(err, ingredients) {
                  if (err) {
                      var msg = "Unable to addIngredients: " + err;
                      console.error(msg);
@@ -490,18 +490,29 @@
                      return;
                  }
 
+                 for (var ingredI in ingredients) {
+                     var ingredient = ingredients[ingredI];
+                     var addingError = Medications.addMedIngredient(fact, ingredient);
+                     if (addingError) return callback(addingError);
+                 }
+
                  var ingredients = fact.data[Medications.PREDICATE_INGREDIENT._id];
                  console.log("\n\nNext add med classes: " + JSON.stringify(ingredients));
                  var ingredientCuis = Object.keys(ingredients);
 
                  Bioontology.getMedClassesForEachGenericCui(ingredientCuis,
-                     function(medClass) {
-                         var addingError = Medications.addMedClass(fact, medClass);
-                         if (addingError) return callback(addingError);
-                     },
-                     function(err, result) {
+                     //function(medClass) {
+                     //    var addingError = Medications.addMedClass(fact, medClass);
+                     //    if (addingError) return callback(addingError);
+                     //},
+                     function(err, medClasses) {
                          if (err) {
                              console.error("Error adding med class: " + err);
+                         }
+                         for (var medClassI in medClasses) {
+                             var medClass = medClasses[medClassI];
+                             var addingError = Medications.addMedClass(fact, medClass);
+                             if (addingError) return callback(addingError);
                          }
                          //console.log("\n\n\nSaving med fact:" + JSON.stringify(fact));
                          saveProperty(fact, function(err, success) {
