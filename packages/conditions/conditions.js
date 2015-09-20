@@ -104,17 +104,52 @@ Conditions.addConditionClass = function(conditionFact, clazz) {
  * It then adds all disease classes (parent categories, grandparents, etc) to the provided Fact object.
  * @param condition
  * @param fact
- * @param apiKey - the Bioontology API key
  * @param callback
  */
-Conditions.addConditionClassesToFacts = function(condition, fact, apiKey, callback) {
+Conditions.addConditionClassesToFacts = function(condition, fact, callback) {
     //add current condition as a class
     //addConditionClass(fact, condition);
 
     //To the provided fact, add parent classes of this condition as a class
-    return Conditions.addConditionClasses(condition, apiKey, function(ancestor) {
-        addConditionClass(fact, ancestor);
-    }, callback);
+    return Conditions.getConditionClasses(condition, function(err, classes) {
+        if (err) {
+            return callback(err);
+        }
+        for (var ci in classes) {
+            var ancestorClass = classes[ci];
+            addConditionClass(fact, ancestorClass);
+        }
+        callback(null, fact);
+    });
 };
 
 
+
+/**
+ * Given a condition result (from Bioontology), create a fact, with its classes added to it
+ * When finished, call the callback, with first argument is any error and second argument is the condition fact.
+ * @param ptid
+ * @param condition
+ * @param callback
+ */
+Conditions.constructConditionFact = function(ptid, condition, callback) {
+    var fact = Conditions.createConditionFact(ptid, condition);
+
+    Bioontology.getConditionClasses(condition,
+        function(err, classes) {
+            if (err) {
+                var msg = "Unable to getConditionClasses: " + err;
+                console.error(msg);
+                if (callback) callback(msg);
+                return;
+            }
+            for (var ci in classes) {
+                var clazz = classes[ci];
+                var addingError = Conditions.addConditionClass(fact, clazz);
+                if (addingError) return callback(addingError);
+            }
+
+            return callback(null, fact);
+        }
+    );
+};

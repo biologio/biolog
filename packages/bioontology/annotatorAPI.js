@@ -3,6 +3,8 @@
  */
 
 
+
+
 Bioontology.getBaseUrlAnnotator = function() {
     return Bioontology.getBaseUrl() + "/annotator";
 };
@@ -19,19 +21,35 @@ Bioontology.getUrlAnnotator = function(ontology, q) {
     return url + "?suggest=true" +
         "&ontologies=" + ontology +
         "&include=prefLabel,synonym,definition,notation,cui,semanticType,properties" +
-        "&display_context=false&text=" + encodeURIComponent(q) +
+        "&display_context=false" +
         "&apikey=" + apiKey;
 };
 
-Bioontology.annotate = function(q, callback) {
-    var url = Bioontology.getUrlAnnotator(Bioontology.ONTOLOGIES_ANNOTATOR, q);
-    console.log("Bioontology.annotate at URL=" + url);
-    HTTP.get(url, function (err, response) {
+/**
+ * Annotate a block of text against the desired ontologies
+ * @param text
+ * @param ontologies
+ * @param callback
+ */
+Bioontology.annotate = function(text, ontologies, callback) {
+    var url = Bioontology.getUrlAnnotator(ontologies, text);
+    //console.log("Bioontology.annotate at URL=" + url);
+    HTTP.post(url,
+        {data: {"text": text}},
+        function (err, response) {
         if (err) {
             return callback(err);
         }
-        //console.log("Bioontology.annotate: response=" + JSON.stringify(response));
         var json = JSON.parse(response.content);
         return callback(null, json);
     });
+};
+
+/**
+ * Annotate a block of text against Bioontology
+ * @param text
+ * @param callback
+ */
+Bioontology.annotateHealth = function(text, callback) {
+    return Bioontology.annotate(text, Bioontology.ONTOLOGIES_HEALTH, callback);
 };
