@@ -1,40 +1,55 @@
 <template name="conditionsMedicationsFeed">
+    
     <div class="animated">
-        <!--  {{#each medications}}
-    <div class="notice info">
-        <p>{{objName}} <br>
-        {{pred}}
-        </p>
-    </div>
-{{/each}} -->
         {{#each medications}}
-        <div class="bubble ">
-            <i class="icon ion-close"></i>
-            <div class="header ui">{{objName}}</div>
-            <p>
-                Do you want to give some details about {{objName}} ?
+        <div class="ns-box ns-attached ns-effect-bouncyflip ns-type-notice ns-show">
+            <div class="ns-box-inner">
+                <!-- <i class="icon ion-calendar"></i> -->
+                <p> {{#if isMedcation}} Do you take <strong>
+              {{objName}}  </strong>
+                    <i class="icon ion-help-circled"></i> {{else}} Do you have <strong>{{objName}}</strong> <i class="icon ion-help-circled"></i> {{/if}}
+                    <div class="ui floated right    buttons">
+                        <div class="ui basic yes button">Yes</div>
+                        <div class="ui basic no  button">No</div>
+                    </div>
+                </p>
+            </div><span class="ns-close"></span>
+        </div>
+        {{/each}}
+        {{> conditionsMedicationsHistory}}
+    </div>
+</template>
+<template name="conditionsMedicationsHistory">
+    {{#each getUserHistory }}
+    <div class="ns-box feed-item  ns-attached ns-effect-bouncyflip ns-type-notice ns-show">
+        <div class="ns-box-inner"><span class="icon calendar"></span>
+            <p class="flex-container">
+                <div class="image">
+                    {{#if isCondition}}
+                  <i class="icon heartbeat"></i>{{else}}
+                    <img src="images/pills.jpg" alt="">
+                     {{/if}}
+                </div>
+                <div class="text">
+                    <div class="title">{{objName}}</div>
+                    {{#if isCondition}}
+                    <!--   <div class="ui rating   small" data-rating="{{num}}" data-max-rating="5"></div> -->
+                    <div class="icons-set" value="{{num}}"><!-- {{{getIconsSets num}}} --> </div>
+                    {{else}}
+                    <div class="ui rating small" data-rating="{{data.rating.num}}" data-max-rating="5"></div>
+                    {{/if}}
+                    <div class="start-date">
+                        {{#if endDate}}
+                    {{formatDate startDate}}  to {{formatDate endDate}}
+                    {{else}}
+                    Since   {{formatDate startDate}}
+                    {{/if}}
+                       
+                    </div>
+                </div>
             </p>
         </div>
-        {{/each}} {{#each medications}}
-        <!-- <div class="card">
-            <div class="card-content">
-                 <span class="card-title">{{objName}}
-    <i class="icon write right"></i>
-                 </span>
-              <p>I am a very simple card. I am good at containing small bits of information.
-              I am convenient because I require little markup to use effectively.</p>
-            </div>
-            <div class="card-action">
-              <a href="#">This is a link</a>
-            </div>
-          </div> -->
-        <!--  <div class="notice info ">
-        <p class="header ui">{{objName}} 
-        
-        </p>
-
-        <p>{{pred}}</p>
-    </div> -->
-        {{/each}}
     </div>
+    {{/each}}
+
 </template>

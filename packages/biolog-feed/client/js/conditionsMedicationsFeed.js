@@ -1,7 +1,15 @@
 Template.conditionsMedicationsFeed.helpers({
      medications: function(){
         return Session.get("postFacts");
-     } 
+     } ,
+     isMedcation:function(){
+        if(this.pred === "patient/medication"){
+            return true
+        }
+        else{
+            return false;
+        }
+     }
      // function() {
      //     return Facts.find({
      //         $or: [{
@@ -21,8 +29,10 @@ Template.conditionsMedicationsFeed.helpers({
      // }
  });
 
+
+
  Template.conditionsMedicationsFeed.events({
-     "click .card, click .bubble": function(event, template) {
+     "click .card, click .bubble, click .yes": function(event, template) {
          console.log(this);
          if(this.pred == "patient/medication"){
              Session.set("biolog:medications/med.editing", this);
@@ -33,18 +43,22 @@ Template.conditionsMedicationsFeed.helpers({
      }
          //Session.set("biolog.med.modal.open", true);
      },
-     "click .icon":function(event, template){
+     "click .ns-close, click .no":function(event, template){
         //$(event.target)
         console.log(event.target)
+        // $(event.target).parent(".ns-box").toggleClass("ns-show ns-hide");
           var postFacts = Session.get("postFacts");
          var self = this;
-         var post =_.reject(postFacts, function(element){
-           return element.objName == self.objName;
+         var posts =_.reject(postFacts, function(element){
+           return element.obj == self.obj;
             
          });
-         Session.set("postFacts", post)
+
+         //postFacts = _.reject(postFacts, function(fact){ return fact.obj == self.obj });
+        Session.setPersistent("postFacts", posts)
+         
         //$(event.target).parents(".bubble").removeClass("inserted slideInLeft").addClass("slideOutUp")
-        return false;
+        //return false;
      }
  });
  Template.conditionsMedicationsFeed.rendered = function() {
@@ -53,13 +67,14 @@ Template.conditionsMedicationsFeed.helpers({
  };
  Template.conditionsMedicationsFeed.animations({
 
-     ".bubble, .notice, .card": {
+     ".notice, .card": {
          animateInitial: true, // animate the intial elements
-         animateInitialStep: 1000, // Step between each animation for each initial item
+         animateInitialStep: 800, // Step between each animation for each initial item
          animateInitialDelay: 0,
-         container: ".animated", // container of the ".item" elements
-         in : "animated fast slideInLeft", // class applied to inserted elements (animations courtesy of animate.css)
-         out: "animated fast fadeOutRight", // class applied to removed elements
+         container: "", // container of the ".item" elements
+         // class applied to inserted elements (animations courtesy of animate.css)
+         in:"",
+         out: "", // class applied to removed elements
          inCallback: function() {
              // var title = $(this).find(".title").text();
              //Logs.insert({ text: "Inserted " + title + " to the DOM" });
@@ -70,3 +85,49 @@ Template.conditionsMedicationsFeed.helpers({
          }
      }
  });
+ Template.conditionsMedicationsHistory.helpers({
+     getUserHistory: function () {
+        var lists= getPatientConditionsMedications(getPatient()._id)
+        return lists;
+     },
+     isCondition:function(){
+      return this.pred == "patient/condition" ? true : false;
+           
+        },
+        getIconsSets: function(number){
+            var icons = '';
+            console.log(number)
+            for (var i = number; i >= 0; i--) {
+                icons += '<i class="ion-happy  icon"></i>';
+            };
+            return icons;
+        },
+        formatDate:function(date){
+            return moment(date).format("MMM Do YY")
+        }
+     
+ });
+ Template.conditionsMedicationsHistory.events({
+       "click .ns-box": function(event, template) {
+        //console.log("clicked: " + JSON.stringify(this));
+          if(this.pred == "patient/medication"){
+             Session.set("biolog:medications/med.editing", this);
+         }
+         else {
+         //console.log("clicked: " + JSON.stringify(this));
+         Session.set("biolog:conditions/condition.editing", this);
+     }
+        //Session.set("biolog.condition.modal.open", true);
+
+    }
+ });
+ Template.conditionsMedicationsHistory.rendered = function () {
+    $('.icons-set').rateit()
+   Meteor.setTimeout(function(){
+    $('.ui.rating.small')
+  .rating({
+ maxRating: 5
+  }).rating('disable')
+;
+}, 500)
+ };

@@ -12,7 +12,7 @@
                         </div>
                         <div class="ui form">
                             <div class="field">
-                                <textarea data-gramm="" class="post-input" placeholder="What's on your mind" id="post" data-txt_gramm_id="3185a836-18d3-8af1-a062-dc5516a51584"></textarea>
+                                <textarea  class="post-input" placeholder="What's on your mind" id="post" ></textarea>
                             </div>
                         </div>
                     </div>
@@ -32,7 +32,7 @@
                                     <div class="summary">
                                         <a>{{owner}}</a>
                                         <div class="date">
-                                            {{date}}
+                                            {{getHumanizeDate}}
                                         </div>
                                     </div>
                                     {{#if isOwner}}
@@ -79,12 +79,17 @@
             </div>
             <div class="bl-column material sidebar-right">
                 {{>conditionsMedicationsFeed}}
+                <!--    <div class="ns-box ns-attached ns-effect-flip ns-type-notice ns-show"><div class="ns-box-inner"><p>Your preferences have been saved successfully. See all your settings in your <a href="#">profile overview</a>.</p></div><span class="ns-close"></span></div>
+
+                   <div class="ns-box ns-attached ns-effect-bouncyflip ns-type-notice ns-show"><div class="ns-box-inner"><span class="icon calendar"></span><p>The event was added to your calendar. Check out all your events in your <a href="#">event overview</a>.</p></div><span class="ns-close"></span></div> -->
             </div>
             <!-- <div class="bl-column sidebar-left">
                 <p>&nbsp;</p>
             </div> -->
         </div>
-        {{>conditionsMedicationsModals}}
+       
     </article>
+ {{>conditionsMedicationsModals}}
+
 </template>
 

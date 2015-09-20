@@ -1,3 +1,5 @@
 local
 private/settings.json 
-server/settings.json
+./server/settings.json
+/server/settings.json
+../server/settings.json

@@ -20,7 +20,8 @@ Package.onUse(function(api) {
         'biolog:bioontology',
         'biolog:medications',
         'biolog:conditions',
-        'u2622:persistent-session'
+        'u2622:persistent-session',
+        'dandv:jquery-rateit'
 
     ]);
 
@@ -36,6 +37,7 @@ Package.onUse(function(api) {
     api.add_files("client/js/conditionsMedicationsFeed.js", ["client"]);
     api.add_files("client/templates/conditionsMedicationsModals.html", ["client"]);
     api.add_files("client/templates/feed.html", ["client"]);
+    // api.add_files("client/js/materialize.min.js", ["client"]);
     api.add_files("client/js/feed.js", ["client"]);
     api.add_files("client/_partials/_footer.html", ["client"]);
     api.add_files("lib/route.js", ["client"]);
@@ -43,6 +45,7 @@ Package.onUse(function(api) {
     api.add_files("lib/collections/collection.js", ["client", "server"]);
     api.add_files("client/css/material.css", ["client"]);
     api.add_files("client/css/feed.scss", ["client"]);
+    api.add_files("client/css/theme.css", ["client"]);
 
 
     // api.add_files("lib/client/semantic-ui/custom.semantic.json", ["client"]);

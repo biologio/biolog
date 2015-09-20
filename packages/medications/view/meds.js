@@ -2,20 +2,20 @@
  * Created by dd on 5/16/15.
  */
 
-Router.route('/meds', function () {
+Router.route('/meds', function() {
     this.render('meds');
 });
 
-Tracker.autorun(function () {
+Tracker.autorun(function() {
     if (Session.get("biolog:medications/meds.modal.open")) {
         $('#bioolookupMedsModal').modal({
-            closable  : true,
-            onApprove    : function(){
+            closable: true,
+            onApprove: function() {
                 Session.set("biolog:medications/meds.modal.open", null);
                 submitBioolookupMeds();
                 return true;
             },
-            onDeny    : function(){
+            onDeny: function() {
                 Session.set("biolog:medications/meds.modal.open", null);
                 return true;
             },
@@ -141,9 +141,9 @@ saveMedFactWithIngredientsAndClasses = function(ptid, med, callback) {
                             return;
                         }
                         if (callback) return callback(null, fact);
+                    });
                 });
-            });
-    });
+        });
 };
 
 
@@ -151,13 +151,13 @@ saveMedFactWithIngredientsAndClasses = function(ptid, med, callback) {
 
 
 Template.meds.helpers({
-    currentMeds: function () {
+    currentMeds: function() {
         if (!getPatient()) return;
         var result = getPatientMedsCurrent(getPatient()._id).fetch();
         return result;
     },
 
-    pastMeds: function () {
+    pastMeds: function() {
         if (!getPatient()) return;
         var result = getPatientMedsPast(getPatient()._id).fetch();
         return result;
@@ -204,10 +204,10 @@ Template.medsItem.helpers({
         if (this.startDate && this.endDate) {
             return yyyy_mm_dd(this.startDate) + " to " + yyyy_mm_dd(this.endDate);
         }
-        if (this.startDate && ! this.endDate) {
+        if (this.startDate && !this.endDate) {
             return "since " + yyyy_mm_dd(this.startDate);
         }
-        if (! this.startDate && this.endDate) {
+        if (!this.startDate && this.endDate) {
             return "stopped " + yyyy_mm_dd(this.endDate);
         }
     }
@@ -218,21 +218,36 @@ Template.medsItem.helpers({
 
 
 
-Tracker.autorun(function () {
+Tracker.autorun(function() {
     if (Session.get("biolog:medications/med.editing")) {
         //console.log("Showing modal:" + JSON.stringify(Session.get("biolog:medications/med.editing")));
         $('#medModal').modal({
-            closable  : true,
-            onApprove    : function(){
+            closable: true,
+            onApprove: function() {
                 updateMed();
-                $('.ui.rating').rating('clear rating');
+                $('.ui.rating.med').rating('clear rating');
                 $('#medStrength').val('');
                 $('#medStartDate').val('');
                 $('#medEndDate').val('');
+                /**
+                * Created by Rashid on 5/19/15.
+                   Remove the medication from current session and save it to the collection 
+                */
+                var postFacts = Session.get("postFacts");
+                var modal = this;
+                if (postFacts) {
+                    var posts = _.reject(postFacts, function(element) {
+                        return element.objName.toLowerCase() == $.trim($(modal).find(".ui.label.huge").text().toLowerCase());
+
+                    });
+                    Session.setPersistent("postFacts", posts)
+                 
+                }
+
                 Session.set("biolog:medications/med.editing", null);
                 return true;
             },
-            onDeny    : function(){
+            onDeny: function() {
                 Session.set("biolog:medications/med.editing", null);
                 return true;
             },
@@ -250,12 +265,11 @@ Tracker.autorun(function () {
 
 
 Template.medModal.rendered = function() {
-    $('.ui.rating')
+    $('.ui.rating.med')
         .rating({
             //initialRating: 2,
             maxRating: 5
-        })
-    ;
+        });
 };
 
 
@@ -322,7 +336,7 @@ Template.medModal.helpers({
         if (!med) return;
         var freqVal = Medications.getMedFrequency(med);
         if (!freqVal) {
-            if (aFreqVal=="1") return "selected";
+            if (aFreqVal == "1") return "selected";
             return "";
         }
         if (freqVal == aFreqVal) return "selected";
@@ -338,7 +352,7 @@ Template.medModal.helpers({
         if (!med) return;
         var ratingVal = getFactRating(med);
         //console.log("ratingVal=" + ratingVal);
-        $('.ui.rating').rating('set rating', ratingVal);
+        $('.ui.rating.med').rating('set rating', ratingVal);
         return ratingVal;
     }
 });
@@ -354,7 +368,7 @@ updateMed = function() {
     if (!med) return;
     var frequency = $("#medFrequency").val();
     var rating = null;
-    rating = $('.ui.rating').rating('get rating');
+    rating = $('.ui.rating.med').rating('get rating');
     if (rating) {
         setFactRating(med, String(rating));
     }
@@ -373,7 +387,7 @@ updateMed = function() {
     var startDateStr = $("#medStartDate").val();
     if (startDateStr) {
         var startDate = new Date(startDateStr);
-        startDate.setTime( startDate.getTime() + startDate.getTimezoneOffset()*60*1000 );
+        startDate.setTime(startDate.getTime() + startDate.getTimezoneOffset() * 60 * 1000);
         med.startDate = startDate;
     } else {
         med.startDate = null;
@@ -383,7 +397,7 @@ updateMed = function() {
     console.log("endDateStr='" + endDateStr + "'");
     if (endDateStr) {
         var endDate = new Date(endDateStr);
-        endDate.setTime( endDate.getTime() + endDate.getTimezoneOffset()*60*1000 );
+        endDate.setTime(endDate.getTime() + endDate.getTimezoneOffset() * 60 * 1000);
         med.endDate = endDate;
         console.log("set endDate=" + endDate);
     } else {
@@ -397,8 +411,18 @@ updateMed = function() {
             console.error("Unable to save med: " + err + "\n" + JSON.stringify(med));
             return;
         }
+           $('.ui.rating.small')
+                        .rating({
+                            maxRating: 5
+                        }).rating('disable');
         console.log("Saved med: " + JSON.stringify(med));
     })
 };
 
-
+Template.body.rendered = function () {
+    console.log("body rended");
+    $('.ui.rating.small')
+                        .rating({
+                            maxRating: 5
+                        }).rating('disable');
+};

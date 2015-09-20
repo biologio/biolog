@@ -1,21 +1,21 @@
 /**
  * Created by dd on 5/16/15.
  */
-Router.route('/conditions', function () {
+Router.route('/conditions', function() {
     this.render('conditions');
 });
 
 
-Tracker.autorun(function () {
+Tracker.autorun(function() {
     if (Session.get("biolog:conditions/conditions.modal.open")) {
         $('#bioolookupConditionsModal').modal({
-            closable  : true,
-            onApprove    : function(){
+            closable: true,
+            onApprove: function() {
                 Session.set("biolog:conditions/conditions.modal.open", null);
                 submitBioolookupConditions();
                 return true;
             },
-            onDeny    : function(){
+            onDeny: function() {
                 Session.set("biolog:conditions/conditions.modal.open", null);
                 return true;
             },
@@ -121,7 +121,7 @@ submitBioolookupConditions = function() {
                     return;
                 }
             });
-    });
+        });
 };
 
 
@@ -139,7 +139,7 @@ var getFrowns = function() {
 
 
 Template.conditions.helpers({
-    currentConditions: function () {
+    currentConditions: function() {
 
         if (!getPatient()) return;
         var result = getPatientConditionsCurrent(getPatient()._id).fetch();
@@ -147,7 +147,7 @@ Template.conditions.helpers({
         return result;
     },
 
-    pastConditions: function () {
+    pastConditions: function() {
         if (!getPatient()) return;
         var result = getPatientConditionsPast(getPatient()._id).fetch();
         return result;
@@ -189,10 +189,10 @@ Template.conditionsItem.helpers({
         if (this.startDate && this.endDate) {
             return yyyy_mm_dd(this.startDate) + " to " + yyyy_mm_dd(this.endDate);
         }
-        if (this.startDate && ! this.endDate) {
+        if (this.startDate && !this.endDate) {
             return "since " + yyyy_mm_dd(this.startDate);
         }
-        if (! this.startDate && this.endDate) {
+        if (!this.startDate && this.endDate) {
             return "stopped " + yyyy_mm_dd(this.endDate);
         }
     }
@@ -203,18 +203,31 @@ Template.conditionsItem.helpers({
 
 
 
-Tracker.autorun(function () {
+Tracker.autorun(function() {
     if (Session.get("biolog:conditions/condition.editing")) {
         //console.log("Showing modal:" + JSON.stringify(Session.get("biolog:conditions/condition.editing")));
         $('#conditionModal').modal({
-            closable  : true,
-            onApprove    : function(){
+            closable: true,
+            onApprove: function() {
                 updateCondition();
+                /**
+                 * Created by Rashid on 5/19/15.
+                    Remove the condition from current session and save it to the collection 
+                 */
+                var postFacts = Session.get("postFacts");
+                if (postFacts) {
+                    var modal = this;
+                    var posts = _.reject(postFacts, function(element) {
+                        return element.objName.toLowerCase() == $.trim($(modal).find(".header").text().toLowerCase());
+
+                    });
+                    Session.setPersistent("postFacts", posts)
+                }
 
                 Session.set("biolog:conditions/condition.editing", null);
                 return true;
             },
-            onDeny    : function(){
+            onDeny: function() {
                 Session.set("biolog:conditions/condition.editing", null);
                 return true;
             },
@@ -305,7 +318,7 @@ Template.conditionModal.helpers({
         if (!condition) return;
         var freqVal = getConditionFrequency(condition);
         if (!freqVal) {
-            if (aFreqVal=="1") return "selected";
+            if (aFreqVal == "1") return "selected";
             return "";
         }
         if (freqVal == aFreqVal) return "selected";
@@ -335,7 +348,7 @@ updateCondition = function() {
     var startDateStr = $("#conditionStartDate").val();
     if (startDateStr) {
         var startDate = new Date(startDateStr);
-        startDate.setTime( startDate.getTime() + startDate.getTimezoneOffset()*60*1000 );
+        startDate.setTime(startDate.getTime() + startDate.getTimezoneOffset() * 60 * 1000);
         condition.startDate = startDate;
     } else {
         condition.startDate = null;
@@ -345,7 +358,7 @@ updateCondition = function() {
     console.log("endDateStr='" + endDateStr + "'");
     if (endDateStr) {
         var endDate = new Date(endDateStr);
-        endDate.setTime( endDate.getTime() + endDate.getTimezoneOffset()*60*1000 );
+        endDate.setTime(endDate.getTime() + endDate.getTimezoneOffset() * 60 * 1000);
         condition.endDate = endDate;
         console.log("set endDate=" + endDate);
     } else {
@@ -368,5 +381,3 @@ updateCondition = function() {
         console.log("Saved condition: " + JSON.stringify(condition));
     });
 };
-
-

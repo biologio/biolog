@@ -1,12 +1,3 @@
- Meteor.conditionArr = [];
- Meteor.medArr = [];
- Meteor.startup(function() {
-
-
-
- })
-
- //Meteor.subscribe("FeedMedications")
  Template.feed.helpers({
      postLists: function() {
          return {
@@ -17,7 +8,6 @@
                      created: -1
                  }
              }).map(function(fact) {
-                 //fact.isEditMode = Template.instance().isEditMode.get() ? 'isEditMode' : '';
                  fact.commentCount = Facts.find({
                      pred: "post/comment",
                      postId: fact._id
@@ -41,7 +31,7 @@
 
          }
      },
-     date: function() {
+     getHumanizeDate: function() {
          var m = moment(this.created);
          if (m.isValid()) return m.fromNow();
      },
@@ -68,188 +58,46 @@
  });
  Template.feed.rendered = function() {
 
-
-     $('#post').highlightTextarea({
-         words: ['{/\#(.+?):/g}'],
-         color: '#ADF0FF'
-     });
      $("body").addClass('feed');
-     $("#post").atwho({
-         at: "@",
-         startWithSpace: true,
-         displayTimeout: 300,
-         // highlight_first suggestion in popup menu
-         highlightFirst: true,
-         // delay time trigger At.js while typing. For example: delay: 400
-         delay: null,
-         // suffix for inserting string.
-         suffix: ": ",
-         // don't show dropdown view without `suffix`
-         hideWithoutSuffix: false,
-         displayTpl: "<li data-sign='${at}' data-collection='${collection}' data-name='${data}' data-link = '${link}'>${name} <small>${desc}</small></li>",
-
-         callbacks: {
-             remoteFilter: function(query, callback) {
-                 $.getJSON('http://data.bioontology.org/search?ontologies=MEDLINEPLUS,ICD10CM&suggest=t…play_context=false&apikey=89b05cf1-2e81-48f6-baad-58236f6af05d', {
-                     q: query
-                 }, function(data) {
-                     // console.log(data);
-                     if (data.collection.length > 0) {
-                         conditions = $.map(data.collection, function(value, i) {
-                             return {
-                                 'id': i,
-                                 'at': "@",
-                                 'name': data.collection[i].prefLabel,
-                                 'data': data.collection[i].prefLabel.replace(/\s+/g, '-'),
-                                 'desc': data.collection[i].definition ? data.collection[i].definition[0] : "no description",
-                                 'link': data.collection[i]['@id'],
-                                 'collection': JSON.stringify(data.collection[i])
-                             };
-                         });
-                         // console.log(conditions)
-                         callback(conditions)
-                         return;
-                     }
-
-                     callback(null);
-                 });
-             }
-         }
-     }).atwho({
-         at: "#",
-
-         displayTpl: "<li data-sign='${at}' data-collection='${collection}' data-name='${data}' data-link = '${link}'>${name} <small>${desc}</small></li>",
-         startWithSpace: true,
-         displayTimeout: 300,
-         // highlight_first suggestion in popup menu
-         highlightFirst: true,
-         // delay time trigger At.js while typing. For example: delay: 400
-         delay: null,
-         // suffix for inserting string.
-         suffix: ": ",
-         // don't show dropdown view without `suffix`
-         hideWithoutSuffix: false,
-         callbacks: {
-             remoteFilter: function(query, callback) {
-                 $.getJSON('http://bioportal.smart-bio.org:8080/search?ontologies=RXNORM&suggest=true&s…play_context=false&apikey=95d31cce-3247-4186-ae95-97c61884c50a', {
-                     q: query
-                 }, function(data) {
-                     console.log(data);
-                     if (data.collection.length > 0) {
-                         conditions = $.map(data.collection, function(value, i) {
-                             return {
-
-
-                                 'id': i,
-                                 'at': "#",
-                                 'name': data.collection[i].prefLabel,
-                                 'data': data.collection[i].prefLabel.replace(/\s+/g, '-'),
-                                 'desc': data.collection[i].definition ? data.collection[i].definition[0] : "no description",
-                                 'link': data.collection[i]["@id"],
-                                 'collection': JSON.stringify(data.collection[i])
-                             };
-                         });
-                         // console.log(conditions)
-                         callback(conditions)
-                         return;
-                     }
-
-                     callback(null);
-                 });
-             }
-         }
-
-     });
-
-     $("#post").on("matched.atwho", function(event, flag, query) {
-         //console.log(event, "matched " + flag + " and the result is " + query);
-     });
-     $("#post").on("inserted.atwho", function(event, li, browser_event) {
-
-
-
-
-         savePostFact(li);
-
-
-
-         console.log(event, "item " + li + " and browser event " + browser_event);
-         // if (li.attr("data-sign") == "@") {
-         //     Meteor.conditionArr.push({
-         //         id: li.attr("data-name"),
-         //         link: li.attr("data-link")
-         //     })
-         // } else if (li.attr("data-sign") == "#") {
-         //     Meteor.medArr.push({
-         //         id: li.attr("data-name"),
-         //         link: li.attr("data-link")
-         //     })
-         // }
-
-
-     });
  };
  Template.feed.events({
      'click .publish': function(e, tpl) {
+         $(e.target).addClass("loading");
          e.preventDefault();
-         var post = tpl.find('#post');
-         var value = post.value;
-         //todo function for replace
-         var postBody = UniHTML.purify(post.value);
-         if (postBody) {
+         post = tpl.find('#post');
+         var postHTML = post.value;
+         var button = $(e.target);
 
-             if (postBody.indexOf("#") > -1) {
-                 postBody = postBody.replace(/\#(.+?):/g, function replacer(match, word, index) {
-                     //  console.log(match)
-                     var link = '';
-                     Meteor.medArr.forEach(function(element, index) {
+         Bioontology.annotate(postHTML, function(err, annotations, button) {
+             //conslole.log(value);
+             if (err) {
+                 console.log(err)
+                 return;
+             }
+             console.log("Bioontology annotations=" + JSON.stringify(annotations, null, "  "));
 
-                         if (element.id == word.replace(/\s+/g, '-')) {
-                             link = element.link;
+             annotations = _.uniq(annotations)
+             annotations.forEach(function(element, index) {
+                 savePostFact(element);
+             });
 
-                         }
-                     });
-                     return "<a href=" + link + ">" + word + "</a>";
-                 });
+             postHTML = UniHTML.purify(postHTML);
+             if (postHTML) {
+                 var postFact = createFactOjbect("patient/post", postHTML)
+                 saveFact(postFact, function(err, data) {
+                     if (!err) {
+                         post.value = '';
+                     }
+                 })
 
              }
-             if (postBody.indexOf("@") > -1) {
-                 postBody = postBody.replace(/\@(.+?):/g, function replacer(match, word, index, text) {
-                     // console.log(match)
-                     var link = '';
-                     Meteor.conditionArr.forEach(function(element, index) {
+             $(".publish").removeClass("loading")
+         });
 
-                         if (element.id == word.replace(/\s+/g, '-')) {
-                             link = element.link;
-
-                         }
-                     });
-                     return "<a href=" + link + ">" + word + "</a>";
-                 });
-
-             }
-
-             var postFact = {
-                 subj: getPatient()._id,
-                 pred: "patient/post",
-                 text: postBody,
-                 valid: 1,
-                 creator: Meteor.userId()
-             }
-             saveFact(postFact, function(err, data) {
-                 if (!err) {
-                     post.value = '';
-
-                     //  console.log(data);
-                 }
-             })
-
-         }
      },
      'click a.comment': function(e, tpl) {
          // console.log(this);
          $(e.target).parents('.event').find('.input').toggleClass('hide');
-
          e.preventDefault();
      },
      'keypress .input input': function(e, tpl) {
@@ -257,15 +105,12 @@
          if (keycode == '13') {
 
              if (e.target.value) {
-                 var postFact = {
-                     subj: getPatient()._id,
-                     pred: "post/comment",
-                     text: e.target.value,
-                     valid: 1,
-                     creator: Meteor.userId(),
-                     postId: this._id
-                 }
-                 saveFact(postFact, function(err, data) {
+                 var postComment = createFactOjbect("post/comment", e.target.value);
+                 postComment = extendObject(postComment, [{
+                     name: "postId",
+                     value: this._id
+                 }]);
+                 saveFact(postComment, function(err, data) {
                      if (!err) {
                          e.target.value = '';
                          //  console.log(data);
@@ -282,54 +127,12 @@
          if (actionButton.hasClass("ion-edit")) {
              actionButton.next('.text').addClass('hide');
              if (actionButton.prev('.section-post-edit').find("textarea")[0].value.indexOf("</a>") > -1) {
-                 var value = actionButton.prev('.section-post-edit').find("textarea")[0].value.replace(/[^<]*(<a href="([^"]+)">([^<]+)<\/a>)/g, function replacer(match, word, index) {
-                     //   console.log(match)
-                     var link = '';
-                     // Meteor.medArr.forEach(function(element, index) {
-
-                     //     if (element.id == word.replace(/\s+/g, '-')) {
-                     //         link = element.link;
-
-                     //     }
-                     // });
-                     return // "<a href=" + link + ">" + word + "</a>";
-                 });
+                 var value = actionButton.prev('.section-post-edit').find("textarea")[0].value;
 
              }
 
              actionButton.prev('.section-post-edit').removeClass("hide");
              actionButton.addClass("ion-android-close").removeClass('ion-edit');
-             $(".post-input").atwho({
-                 at: "@",
-                 displayTpl: '<li data-sign="${at}" data-name="${data}">${name} <small>${desc}</small></li>',
-                 callbacks: {
-                     remoteFilter: function(query, callback) {
-                         $.getJSON('http://data.bioontology.org/search?ontologies=MEDLINEPLUS,ICD10CM&suggest=t…play_context=false&apikey=89b05cf1-2e81-48f6-baad-58236f6af05d', {
-                             q: query
-                         }, function(data) {
-                             // console.log(data);
-                             if (data.collection.length > 0) {
-
-
-                                 conditions = $.map(data.collection, function(value, i) {
-                                     return {
-                                         'id': i,
-                                         'at': "@",
-                                         'name': data.collection[i].prefLabel,
-                                         'data': data.collection[i].prefLabel.replace(/\s+/g, '-'),
-                                         'desc': data.collection[i].definition ? data.collection[i].definition[0] : "no description"
-                                     };
-                                 });
-                                 // console.log(conditions)
-                                 callback(conditions)
-                                 return;
-                             }
-
-                             callback(null);
-                         });
-                     }
-                 }
-             })
              return;
          } else if (actionButton.hasClass("ion-android-close")) {
              actionButton.next('.text').removeClass('hide');
@@ -341,30 +144,54 @@
          //console.log(this)
      },
      'click button.post-update': function(e, tpl) {
-         this.text = $(e.target).parent('div').siblings('.textarea').val();
-         //console.log(this);
-         Facts.update({
-             _id: this._id
-         }, {
-             $set: {
-                 text: this.text
-             }
-         }, function(err, data) {
+         var postUpdateText = $(e.currentTarget).parent('div').siblings('.textarea').val();
+         var postId = this._id;
+         Bioontology.annotate(postUpdateText, function(err, annotations, button) {
+             //conslole.log(value);
              if (err) {
-                 //console.log(err)
-             } else {
-                 // console.log(data);
-                 var actionButton = $('.post-edit');
-                 actionButton.next('.text').removeClass('hide');
-                 actionButton.prev('.section-post-edit').addClass("hide");
-                 actionButton.addClass("ion-edit").removeClass('ion-android-close');
+                 console.log(err)
+                 return;
              }
+             console.log("Bioontology annotations=" + JSON.stringify(annotations, null, "  "));
+
+             annotations = _.uniq(annotations)
+             annotations.forEach(function(element, index) {
+                 // var cui = Bioontology.getItemCui(element.annotatedClass);
+                 // var prefLabel = Bioontology.getItemPreferredLabel(element.annotatedClass);
+                 // var altLabels = Bioontology.getItemAlternateLabels(element.annotatedClass);
+                 // console.log(cui, prefLabel, altLabels);
+                 savePostFact(element);
+             });
+
+             postUpdateText = UniHTML.purify(postUpdateText);
+             if (postUpdateText) {
+
+                 Facts.update({
+                     _id: postId
+                 }, {
+                     $set: {
+                         text: postUpdateText
+                     }
+                 }, function(err, data) {
+                     if (err) {
+                         //console.log(err)
+                     } else {
+                         // console.log(data);
+                         var actionButton = $('.post-edit');
+                         actionButton.next('.text').removeClass('hide');
+                         actionButton.prev('.section-post-edit').addClass("hide");
+                         actionButton.addClass("ion-edit").removeClass('ion-android-close');
+                     }
+                 });
+
+             }
+             // $(".publish").removeClass("loading")
          });
+         //console.log(this);
+
 
      },
      'click a.like': function(e, tpl) {
-         // this.text = $(e.target).parent('div').siblings('.textarea').val();
-         //console.log(this);
          Facts.update({
              _id: this._id
          }, {
@@ -381,8 +208,7 @@
 
      },
      'click a.unlike': function(e, tpl) {
-         // this.text = $(e.target).parent('div').siblings('.textarea').val();
-         //console.log(this);
+
          Facts.update({
              _id: this._id
          }, {
@@ -400,45 +226,21 @@
      }
 
  });
+
+
  UI.registerHelper("momentNow", function(date) {
      var m = moment(this.created);
      if (m.isValid()) return m.fromNow();
  })
 
- function removeLocalProps(obj) {
-     delete obj.commentCount;
-     delete obj.isOwner;
-     return obj
- }
-
-
-
- Template.feed.animations({
-
-     "feed1": {
-         animateInitial: true, // animate the intial elements
-         animateInitialStep: 500, // Step between each animation for each initial item
-         animateInitialDelay: 0,
-         container: ".event", // container of the ".item" elements
-         in : "animated fast slideInDown", // class applied to inserted elements (animations courtesy of animate.css)
-         out: "animated fast slideInUp", // class applied to removed elements
-         inCallback: function() {
-             // var title = $(this).find(".title").text();
-             //Logs.insert({ text: "Inserted " + title + " to the DOM" });
-         },
-         outCallback: function() {
-             // var title = $(this).find(".title").text();
-             //Logs.insert({ text: "Removed " + title + " from the DOM" });
-         }
-     }
- });
 
  function savePostFact(object) {
-     var med = JSON.parse(object.attr("data-collection"));
+     //var med = JSON.parse(object.attr("data-collection"));
      var postFacts = Session.get("postFacts")
-     if (object.attr("data-sign") == "@") {
-         var fact = Conditions.createConditionFact(getPatient()._id, med);
-
+     if (Bioontology.getOntologiesType(object) == "cond") {
+         var fact = Conditions.createConditionFact(getPatient()._id, object.annotatedClass);
+         //fact.definition = object.annotatedClass.definition[0] || "no definition found";
+         //fact.definition = object.annotatedClass
          if (postFacts) {
              postFacts.push(fact);
              Session.setPersistent("postFacts", postFacts);
@@ -446,8 +248,8 @@
 
              Session.setPersistent("postFacts", [fact]);
          }
-         return
-         Bioontology.addConditionClasses(med, Bioontology.getApiKey(),
+         
+         Bioontology.addConditionClasses(fact, Bioontology.getApiKey(),
              //callback to add a condition:
              function(conditionToAdd) {
                  //add condition to the fact
@@ -466,9 +268,11 @@
                      }
                  });
              });
+         return
      } else {
-         var fact = Medications.createMedFact(getPatient()._id, med)
-         med.properties = med.properties || [];
+         var fact = Medications.createMedFact(getPatient()._id, object.annotatedClass)
+             //fact.definition = object.annotatedClass.definition[0] || "no definition found";
+             //med.properties = med.properties || [];
          if (postFacts) {
              postFacts.push(fact);
              Session.setPersistent("postFacts", postFacts);
@@ -476,8 +280,8 @@
 
              Session.setPersistent("postFacts", [fact]);
          }
-         return
-         Bioontology.addIngredients(med,
+     
+         Bioontology.addIngredients(fact,
              function(ingred) {
                  var addingError = Medications.addMedIngredient(fact, ingred);
                  if (addingError) return callback(addingError);
@@ -519,4 +323,24 @@
          console.log(fact);
 
      }
+ }
+
+ // add properties to object 
+ function extendObject(obj, arrProperties) {
+     if (!obj) return;
+     arrProperties.forEach(function(element, index) {
+         obj[element.name] = element.value
+     });
+     return obj;
+ }
+ // create fact object
+ function createFactOjbect(pred, text) {
+     var fact = {
+         subj: getPatient()._id ? getPatient()._id : null,
+         pred: pred,
+         text: text,
+         valid: 1,
+         creator: Meteor.userId() ? Meteor.userId() : null
+     }
+     return fact;
  }

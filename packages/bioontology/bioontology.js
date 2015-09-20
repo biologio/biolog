@@ -138,7 +138,7 @@ Bioontology.addConditionClasses = function(condition, apiKey, callbackForEachCla
         return finalCallback("No ancestor links found for this condition");
     }
     ancestorsUrl += "?apikey=" + apiKey;
-    HTTP.get(ancestorsUrl, function (err, response) {
+    HTTP.get(ancestorsUrl, function(err, response) {
         if (err) {
             console.error("Unable to look up condition ancestors at url: " + ancestorsUrl + ":\n" + err);
             finalCallback(err);
@@ -161,16 +161,18 @@ Bioontology.addConditionClasses = function(condition, apiKey, callbackForEachCla
             batchData["http://www.w3.org/2002/07/owl#Class"].collection.push({
                 "class": clazz,
                 "ontology": theOntology
-                //"ontology": "http://data.bioontology.org/ontologies/" + BIOONTOLOGY_ONTOLOGY_CONDITIONS
+                    //"ontology": "http://data.bioontology.org/ontologies/" + BIOONTOLOGY_ONTOLOGY_CONDITIONS
             });
         }
         console.log("assembled batchData for batch lookup of disease class CUIs:" + JSON.stringify(batchData));
-        HTTP.post(batchUrl, {data: batchData}, function(err, result) {
+        HTTP.post(batchUrl, {
+            data: batchData
+        }, function(err, result) {
             if (err) {
                 console.error("Unable to batch refine condition ancestors at url: " + batchUrl + ":\n" + err + "\nbatchData=" + JSON.stringify(batchData));
                 finalCallback(err);
             }
-            console.log("Batch queried these ancestors: " + JSON.stringify(result.data, null , "  "));
+            console.log("Batch queried these ancestors: " + JSON.stringify(result.data, null, "  "));
 
             for (var ancestorIdx in result.data["http://www.w3.org/2002/07/owl#Class"]) {
                 var ancestor = result.data["http://www.w3.org/2002/07/owl#Class"][ancestorIdx];
@@ -190,7 +192,7 @@ Bioontology.addConditionClasses = function(condition, apiKey, callbackForEachCla
  */
 Bioontology.searchConditions = function(q, callback) {
     var url = Bioontology.getUrlSearchConditions(q);
-    HTTP.get(url, function (err, response) {
+    HTTP.get(url, function(err, response) {
         if (err) {
             return callback(err);
         }
@@ -218,7 +220,7 @@ Bioontology.getUrlSearchMeds = function(q) {
  */
 Bioontology.searchMeds = function(q, callback) {
     var url = Bioontology.getUrlSearchMeds(q);
-    HTTP.get(url, function (err, response) {
+    HTTP.get(url, function(err, response) {
         if (err) {
             return callback(err);
         }
@@ -249,7 +251,7 @@ Bioontology.addIngredients = function(med, callbackForEachIngredient, callback) 
     async.each(genericUris, function(uri, asyncCallback) {
         //lookup each uri and add it as a medication/ingredient
         var lookupUrl = Bioontology.getUrlLookupClass(Bioontology.ONTOLOGIES_MEDS, uri);
-        HTTP.get(lookupUrl, function (err, response) {
+        HTTP.get(lookupUrl, function(err, response) {
             if (err) {
                 console.error("Unable to look up generic ar url: " + lookupUrl + ":\n" + err);
                 asyncCallback(err);
@@ -269,7 +271,7 @@ Bioontology.addMedClassesForEachGenericCui = function(ingredientCuis, callbackFo
         //lookup each uri and add it as a medication/ingredient
         var lookupUrl = Bioontology.getUrlLookupMesh(cui);
         console.log("\n\nLooking up med class at: " + lookupUrl);
-        HTTP.get(lookupUrl, function (err, response) {
+        HTTP.get(lookupUrl, function(err, response) {
             if (err) {
                 console.error("Unable to look up med class at url: " + lookupUrl + ":\n" + err);
                 asyncCallback(err);
@@ -294,7 +296,7 @@ Bioontology.addMedClassesForEachGenericCui = function(ingredientCuis, callbackFo
                 return callback(err);
             }
             var uris = props["http://purl.bioontology.org/ontology/MESH/isa"];
-            if (! uris) {
+            if (!uris) {
                 callback("No classes found");
             }
 
@@ -311,7 +313,7 @@ Bioontology.addMedClassesForEachClassUri = function(classUris, callbackForEachMe
     async.each(classUris, function(uri, asyncCallback) {
         var lookupUrl = Bioontology.getUrlLookupClass("MESH", uri);
         //console.log("\n\nGetting med class at: " + lookupUrl);
-        HTTP.get(lookupUrl, function (err, response) {
+        HTTP.get(lookupUrl, function(err, response) {
             var json = JSON.parse(response.content);
             callbackForEachMedClass(json);
             asyncCallback();
@@ -325,9 +327,9 @@ Bioontology.addMedClassesForEachClassUri = function(classUris, callbackForEachMe
  */
 Bioontology.getItemCui = function(item) {
     var cuis = item.cui;
-    if (! cuis) return;
-    if ( typeof cuis === 'string') return cuis;
-    if( Object.prototype.toString.call( cuis ) === '[object Array]' ) {
+    if (!cuis) return;
+    if (typeof cuis === 'string') return cuis;
+    if (Object.prototype.toString.call(cuis) === '[object Array]') {
         return cuis[0];
     }
 };
@@ -358,3 +360,11 @@ Bioontology.getItemSemanticTypes = function(item) {
     if (!item) return;
     return item.semanticType;
 };
+Bioontology.getOntologiesType = function(item) {
+        if (!item) return;
+        if (item.annotatedClass["@id"] && (item.annotatedClass["@id"].indexOf("MEDLINEPLUS") != -1 || item.annotatedClass["@id"].indexOf("ICD10CM") != -1)) {
+                return "cond";
+            } else {
+                return "med";
+            }
+        };
