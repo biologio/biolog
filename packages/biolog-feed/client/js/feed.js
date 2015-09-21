@@ -156,10 +156,6 @@
 
              annotations = _.uniq(annotations)
              annotations.forEach(function(element, index) {
-                 // var cui = Bioontology.getItemCui(element.annotatedClass);
-                 // var prefLabel = Bioontology.getItemPreferredLabel(element.annotatedClass);
-                 // var altLabels = Bioontology.getItemAlternateLabels(element.annotatedClass);
-                 // console.log(cui, prefLabel, altLabels);
                  savePostFact(element);
              });
 
@@ -188,7 +184,6 @@
              // $(".publish").removeClass("loading")
          });
          //console.log(this);
-
 
      },
      'click a.like': function(e, tpl) {
@@ -224,20 +219,16 @@
          });
 
      },
-     'click .close-message': function () {
-           $(".message").slideUp('fast');
-        }
+     'click .close-message': function() {
+         $(".message").slideUp('fast');
+     }
 
  });
-
 
  UI.registerHelper("momentNow", function(date) {
      var m = moment(this.created);
      if (m.isValid()) return m.fromNow();
  })
-
-
- 
 
  // add properties to object 
  function extendObject(obj, arrProperties) {
@@ -259,44 +250,13 @@
      return fact;
  }
 
-
-
  function savePostFact(object) {
-     var postFacts = Session.get("postFacts")
+     var postFacts = Session.get("postFacts") || [];
      if (getOntologiesType(object) == "cond") {
-         var condition = Conditions.constructConditionFact(getPatient()._id, object.annotatedClass, function(err, data){
-        var postFacts = Session.get("postFacts")
-            console.log(data)
-              if (postFacts) {
-             postFacts.push(data);
-             Session.setPersistent("postFacts", postFacts);
-         } else {
-
-             Session.setPersistent("postFacts", [data]);
-         }
-         });
-
-       
-
+         var condition = Conditions.constructConditionFact(getPatient()._id, object.annotatedClass, cb);
 
      } else {
-         var med = Medications.constructMedFact(getPatient()._id, object.annotatedClass, function(err, data){
-             if (postFacts) {
-             postFacts.push(data);
-             Session.setPersistent("postFacts", postFacts);
-         } else {
-
-             Session.setPersistent("postFacts", [data]);
-         }
-            
-         })
-
-       
-        
-      
-    
-    
-        
+         var med = Medications.constructMedFact(getPatient()._id, object.annotatedClass, cb)
 
      }
  }
@@ -310,48 +270,24 @@
      }
  };
 
+ function SetSession(sessionKey, value, type) {
+     if (!value) return;
+     if (type === "setPersistent") {
+         Session.setPersistent(sessionKey, value)
+     } else {
+         Session.set(sessionKey, value)
+     }
+ }
 
- saveMedFactWithIngredientsAndClasses = function(ptid, med, callback) {
-    //console.log("Saving med: " + JSON.stringify(med));
-    if (!med) return;
+ function cb(err, data) {
+     if (!err)
+         var postFacts = Session.get("postFacts") || [];
+     isAlreadyAdded = _.find(postFacts, function(post) {
+         return post.objName == data.objName;
+     });
+     postFacts.push(data);
+     if (data && !isAlreadyAdded) {
 
-    Medications.constructMedFact(ptid, med, function(err, fact) {
-        if (err) return callback(err);
-
-        saveProperty(fact, function(err, success) {
-            if (err) {
-                var msg = "Unable to save medication fact: " + err + "\n" + JSON.stringify(fact);
-                console.error(msg);
-                if (callback) callback(msg);
-                return;
-            }
-
-
-            var ingredients = fact.data[Medications.PREDICATE_INGREDIENT._id];
-            console.log("\n\nNext add med classes: " + JSON.stringify(ingredients));
-            var ingredientCuis = Object.keys(ingredients);
-
-            Bioontology.addMedClassesForEachGenericCui(ingredientCuis,
-                function(medClass) {
-                    var addingError = Medications.addMedClass(fact, medClass);
-                    if (addingError) return callback(addingError);
-                },
-                function(err, result) {
-                    if (err) {
-                        console.error("Error adding med class: " + err);
-                    }
-                    //console.log("\n\n\nSaving med fact:" + JSON.stringify(fact));
-                    saveProperty(fact, function(err, success) {
-                        if (err) {
-                            var msg = "Unable to save medication fact: " + err + "\n" + JSON.stringify(fact);
-                            console.error(msg);
-                            if (callback) callback(msg);
-                            return;
-                        }
-                        if (callback) return callback(null, fact);
-                    });
-                });
-        });
-            if (callback) return callback(null, fact);
-        });
-    }
+         Session.setPersistent("postFacts", postFacts);
+     }
+ }
