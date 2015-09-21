@@ -121,7 +121,7 @@ submitBioolookupConditions = function() {
         });
 
         });
-    });
+    }
     //var fact = Conditions.createConditionFact(getPatient()._id, cond);
     //Bioontology.getConditionClasses(cond,
     //    //callback to add a condition:
@@ -143,7 +143,7 @@ submitBioolookupConditions = function() {
     //        });
     //});
 
-};
+
 
 
 
@@ -239,8 +239,9 @@ Tracker.autorun(function() {
                 if (postFacts) {
                     var modal = this;
                     var posts = _.reject(postFacts, function(element) {
+                        if(element && element.objName){
                         return element.objName.toLowerCase() == $.trim($(modal).find(".header").text().toLowerCase());
-
+                          }
                     });
                     Session.setPersistent("postFacts", posts)
                 }

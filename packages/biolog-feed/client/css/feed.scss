@@ -562,3 +562,8 @@ overflow: scroll;
 .feed-item{
     cursor:pointer;
 }
+.message{
+    .ns-close::before, .ns-close::after {
+    background: #937E5C !important;
+}
+}

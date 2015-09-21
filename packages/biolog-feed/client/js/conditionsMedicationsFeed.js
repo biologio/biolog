@@ -123,11 +123,37 @@ Template.conditionsMedicationsFeed.helpers({
  });
  Template.conditionsMedicationsHistory.rendered = function () {
     $('.icons-set').rateit()
-   Meteor.setTimeout(function(){
-    $('.ui.rating.small')
-  .rating({
- maxRating: 5
-  }).rating('disable')
-;
-}, 500)
+
  };
+
+
+ Template.factItem.rendered = function () {
+    var getFrowns = function() {
+   
+    
+    return this.data.num;
+};
+    console.log(this)
+
+       
+          if(this.data && this.data.pred == "patient/medication"){
+             $(this.find('.ui.rating.small'))
+                        .rating({
+                            maxRating: 5
+                        }).rating('disable');
+          }
+          else{
+                 $(this.find('.rateit.faces-sm')).rateit().rateit('value', this.data.num)//.bind(getFrowns)
+                       
+          }
+ 
+ };
+ Template.factItem.helpers({
+    formatDate:function(date){
+            return moment(date).format("MMM Do YY")
+        },
+        isCondition:function(){
+      return this.pred == "patient/condition" ? true : false;
+           
+        }
+ });

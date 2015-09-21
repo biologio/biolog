@@ -141,58 +141,58 @@ saveMedFactWithIngredientsAndClasses = function(ptid, med, callback) {
                     });
                 });
         });
-            if (callback) return callback(null, fact);
-        });
+        if (callback) return callback(null, fact);
     });
+}
 
-    //var fact = Medications.createMedFact(ptid, med);
-    //
-    //Bioontology.getIngredients(med,
-    //    function(err, ingreds) {
-    //        if (err) {
-    //            var msg = "Unable to addIngredients: " + err;
-    //            console.error(msg);
-    //            if (callback) callback(msg);
-    //            return;
-    //        }
-    //        for (var ii in ingreds) {
-    //            var ingredient = ingreds[ii];
-    //            var addingError = Medications.addMedIngredient(fact, ingredient);
-    //            if (addingError) return callback(addingError);
-    //        }
-    //
-    //        var ingredsArr = [];
-    //        var ingredients = fact.data[Medications.PREDICATE_INGREDIENT._id];
-    //        console.log("\n\nNext add med classes: " + JSON.stringify(ingredients));
-    //        var ingredientCuis = Object.keys(ingredients);
-    //
-    //        Bioontology.getMedClassesForEachGenericCui(ingredientCuis,
-    //            function(err, medClasses) {
-    //                if (err) {
-    //                    console.error("Error adding med class: " + err);
-    //                }
-    //
-    //                for (var i in medClasses) {
-    //                    var medClass = medClasses[i];
-    //                    var addingError = Medications.addMedClass(fact, medClass);
-    //                    if (addingError) return callback(addingError);
-    //                }
-    //                //console.log("\n\n\nSaving med fact:" + JSON.stringify(fact));
-    //                saveProperty(fact, function(err, success) {
-    //                    if (err) {
-    //                        var msg = "Unable to save medication fact: " + err + "\n" + JSON.stringify(fact);
-    //                        console.error(msg);
-    //                        if (callback) callback(msg);
-    //                        return;
-    //                    }
-    //                    if (callback) return callback(null, fact);
-    //                });
-    //            }
-    //        );
-    //    }
-    //);
+//var fact = Medications.createMedFact(ptid, med);
+//
+//Bioontology.getIngredients(med,
+//    function(err, ingreds) {
+//        if (err) {
+//            var msg = "Unable to addIngredients: " + err;
+//            console.error(msg);
+//            if (callback) callback(msg);
+//            return;
+//        }
+//        for (var ii in ingreds) {
+//            var ingredient = ingreds[ii];
+//            var addingError = Medications.addMedIngredient(fact, ingredient);
+//            if (addingError) return callback(addingError);
+//        }
+//
+//        var ingredsArr = [];
+//        var ingredients = fact.data[Medications.PREDICATE_INGREDIENT._id];
+//        console.log("\n\nNext add med classes: " + JSON.stringify(ingredients));
+//        var ingredientCuis = Object.keys(ingredients);
+//
+//        Bioontology.getMedClassesForEachGenericCui(ingredientCuis,
+//            function(err, medClasses) {
+//                if (err) {
+//                    console.error("Error adding med class: " + err);
+//                }
+//
+//                for (var i in medClasses) {
+//                    var medClass = medClasses[i];
+//                    var addingError = Medications.addMedClass(fact, medClass);
+//                    if (addingError) return callback(addingError);
+//                }
+//                //console.log("\n\n\nSaving med fact:" + JSON.stringify(fact));
+//                saveProperty(fact, function(err, success) {
+//                    if (err) {
+//                        var msg = "Unable to save medication fact: " + err + "\n" + JSON.stringify(fact);
+//                        console.error(msg);
+//                        if (callback) callback(msg);
+//                        return;
+//                    }
+//                    if (callback) return callback(null, fact);
+//                });
+//            }
+//        );
+//    }
+//);
 
-};
+
 
 
 
@@ -285,11 +285,15 @@ Tracker.autorun(function() {
                 var modal = this;
                 if (postFacts) {
                     var posts = _.reject(postFacts, function(element) {
-                        return element.objName.toLowerCase() == $.trim($(modal).find(".ui.label.huge").text().toLowerCase());
+
+                        if (element && element.objName) {
+                            return element.objName.toLowerCase() == $.trim($(modal).find(".ui.label.huge").text().toLowerCase());
+                        }
+
 
                     });
                     Session.setPersistent("postFacts", posts)
-                 
+
                 }
 
                 Session.set("biolog:medications/med.editing", null);
@@ -459,18 +463,7 @@ updateMed = function() {
             console.error("Unable to save med: " + err + "\n" + JSON.stringify(med));
             return;
         }
-           $('.ui.rating.small')
-                        .rating({
-                            maxRating: 5
-                        }).rating('disable');
+
         console.log("Saved med: " + JSON.stringify(med));
     })
-};
-
-Template.body.rendered = function () {
-    console.log("body rended");
-    $('.ui.rating.small')
-                        .rating({
-                            maxRating: 5
-                        }).rating('disable');
 };

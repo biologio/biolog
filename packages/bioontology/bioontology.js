@@ -360,11 +360,3 @@ Bioontology.getItemSemanticTypes = function(item) {
     if (!item) return;
     return item.semanticType;
 };
-Bioontology.getOntologiesType = function(item) {
-        if (!item) return;
-        if (item.annotatedClass["@id"] && (item.annotatedClass["@id"].indexOf("MEDLINEPLUS") != -1 || item.annotatedClass["@id"].indexOf("ICD10CM") != -1)) {
-                return "cond";
-            } else {
-                return "med";
-            }
-        };
