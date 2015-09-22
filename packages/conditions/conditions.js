@@ -77,7 +77,7 @@ Conditions.setConditionSeverity = function(conditionFact, severity) {
  * @param clazz - the object from within the Bioontology search results, which contains the class information
  */
 Conditions.addConditionClass = function(conditionFact, clazz) {
-    console.log("Adding condition class: " + JSON.stringify(clazz));
+    //console.log("Adding condition class: " + JSON.stringify(clazz));
     //var cuiVal = clazz.cui;
     var cuiVal = Bioontology.getItemCui(clazz);
     var cuis = [cuiVal];

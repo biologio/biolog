@@ -31,7 +31,6 @@ reactive-var
 semantic:ui-sidebar
 bengott:avatar
 aldeed:template-extension
-sanjo:jasmine
 velocity:html-reporter
 houston:admin
 ongoworks:security
@@ -58,3 +57,4 @@ u2622:persistent-session
 
 biolog:bioontology
 
+clinical:verification
