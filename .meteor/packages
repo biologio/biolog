@@ -31,12 +31,10 @@ reactive-var
 semantic:ui-sidebar
 bengott:avatar
 aldeed:template-extension
-velocity:html-reporter
 houston:admin
 ongoworks:security
 peerlibrary:async
 risul:chance
-velocity:chokidar@1.0.3_1
 lawshe:full-page
 dandv:jquery-rateit
 
