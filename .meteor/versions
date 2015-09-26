@@ -14,7 +14,7 @@ autoupdate@1.2.1
 base64@1.0.3
 bengott:avatar@0.7.6
 binary-heap@1.0.3
-biolog:bioontology@0.0.2
+biolog:bioontology@0.0.3
 biolog:conditions@0.0.1
 biolog:feed@0.1.0
 biolog:medications@0.0.1
