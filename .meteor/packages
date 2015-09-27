@@ -29,7 +29,6 @@ accounts-ui
 http
 reactive-var
 semantic:ui-sidebar
-bengott:avatar
 aldeed:template-extension
 velocity:html-reporter
 houston:admin
@@ -58,3 +57,4 @@ u2622:persistent-session
 biolog:bioontology
 
 clinical:verification
+utilities:avatar

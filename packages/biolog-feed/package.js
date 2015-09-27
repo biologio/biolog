@@ -1,7 +1,7 @@
 Package.describe({
     name: "biolog:feed",
     summary: "Feed page for listing user activity",
-    version: "0.1.0"
+    version: "0.2.0"
 
 });
 
@@ -21,16 +21,16 @@ Package.onUse(function(api) {
         'biolog:medications',
         'biolog:conditions',
         'u2622:persistent-session',
-        'dandv:jquery-rateit'
+        'dandv:jquery-rateit',
+        'flemay:less-autoprefixer'
 
     ]);
 
     // i18n config (must come first)
 
 
-
+    
     api.add_files("server/publication.js", ["server"]);
-    api.add_files("server/settings.json", ["server"]);
     api.add_files("client/templates/loading.html", ["client"]);
     api.add_files("client/templates/comments.html", ["client"]);
     api.add_files("client/templates/conditionsMedicationsFeed.html", ["client"]);
@@ -41,7 +41,9 @@ Package.onUse(function(api) {
     api.add_files("client/js/feed.js", ["client"]);
     api.add_files("client/_partials/_footer.html", ["client"]);
     api.add_files("lib/route.js", ["client"]);
-    api.add_files("scss.json", ["client", "server"]);
+        api.add_files("client/templates/layout/aboutusLayout.html", ["client"])
+        api.add_files("client/templates/about.html", ["client"])
+    api.add_files("client/js/about.js", ["client"]);
     api.add_files("lib/collections/collection.js", ["client", "server"]);
     api.add_files("client/css/material.css", ["client"]);
     api.add_files("client/css/feed.scss", ["client"]);

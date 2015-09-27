@@ -53,7 +53,7 @@ Template.conditionsMedicationsFeed.events({
         });
 
         //postFacts = _.reject(postFacts, function(fact){ return fact.obj == self.obj });
-        Session.setPersistent("postFacts", posts)
+        Session.setAuth("postFacts", posts)
 
         //$(event.target).parents(".bubble").removeClass("inserted slideInLeft").addClass("slideOutUp")
         //return false;
