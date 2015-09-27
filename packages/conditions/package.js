@@ -35,7 +35,7 @@ Package.onUse(function(api) {
 });
 
 Package.onTest(function(api) {
-    api.use('sanjo:jasmine');
+    api.use('clinical:verification');
     api.use('biolog:conditions');
     api.addFiles('conditions-tests.js');
 });

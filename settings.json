@@ -1,6 +1,13 @@
 {
-    "orion-cli": {
-        "profile": "default",
-        "config": "private/orion-config.json"
+  "public": {
+    "bioontology": {
+      "baseUrl": "http://data.bioontology.org",
+      "apiKey": "89b05cf1-2e81-48f6-baad-58236f6af05d"
     }
+  },
+
+  "isabel": {
+    "isabelId": "40888",
+    "isabelPassword": "15abel2015"
+  }
 }
