@@ -2,7 +2,7 @@
      postLists: function() {
          return {
              facts: Facts.find({
-                 pred: "patient/post"
+                 pred: "patient/post", creator:Meteor.userId()
              }, {
                  sort: {
                      created: -1
@@ -272,8 +272,8 @@
 
  function SetSession(sessionKey, value, type) {
      if (!value) return;
-     if (type === "setPersistent") {
-         Session.setPersistent(sessionKey, value)
+     if (type === "setAuth") {
+         Session.setAuth(sessionKey, value)
      } else {
          Session.set(sessionKey, value)
      }
@@ -288,6 +288,6 @@
      postFacts.push(data);
      if (data && !isAlreadyAdded) {
 
-         Session.setPersistent("postFacts", postFacts);
+         Session.setAuth("postFacts", postFacts);
      }
  }

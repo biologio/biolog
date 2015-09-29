@@ -292,7 +292,7 @@ Tracker.autorun(function() {
 
 
                     });
-                    Session.setPersistent("postFacts", posts)
+                    Session.setAuth("postFacts", posts)
 
                 }
 

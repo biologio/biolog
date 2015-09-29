@@ -1,96 +1,97 @@
 <template name="aboutus">
-	
-	 <div class="section no-pad-bot" id="index-banner">
+    <div class="section no-pad-bot" id="index-banner">
+        <div class="container">
+            <br>
+            <br>
+            <h1 class="header center blue-text bio-header">Biolog.io</h1>
+            <div class="row center">
+                <h5 class="header col s12 light">Biolog.io is a personal health record + expert system, designed for people to drive their health care. Our mission is to give people the tools to make optimal health decisions and to eliminate medical error.</h5>
+            </div>
+            <div class="row center">
+                {{#if currentUser}}
+                <a href="/feed" class="btn-large waves-effect waves-light blue">Try it now</a> {{else}}
+                <a href="/sign-in" class="btn-large waves-effect waves-light blue">Sign Up</a> {{/if}}
+            </div>
+            <br>
+            <br>
+        </div>
+    </div>
     <div class="container">
-      <br><br>
-      <h1 class="header center orange-text">Starter Template</h1>
-      <div class="row center">
-        <h5 class="header col s12 light">A modern responsive front-end framework based on Material Design</h5>
-      </div>
-      <div class="row center">
-        <a href="http://materializecss.com/getting-started.html" id="download-button" class="btn-large waves-effect waves-light orange">Get Started</a>
-      </div>
-      <br><br>
-
+        <div class="section">
+            <!--   Icon Section   -->
+            <div class="row">
+                <div class="col s12 m4">
+                    <div class="icon-block">
+                        <h2 class="center light-blue-text"><i class="icon   gift alternate aligned ui circular center big"></i></h2>
+                        <h5 class="center">Free</h5>
+                        <p class="center-align p">We are devoted to transforming health care and eliminating medical error. Biolog.io is open source</p>
+                    </div>
+                </div>
+                <div class="col s12 m4">
+                    <div class="icon-block">
+                        <h2 class="center light-blue-text"><i class="icon birthday aligned ui circular center big "></i></h2>
+                        <h5 class="center">Easy</h5>
+                        <p class="center-align p">
+                            Health records do not have to be hard. Post on your wall. Tap on meds/conditions. Add friends/trustees.
+                        </p>
+                    </div>
+                </div>
+                <div class="col s12 m4">
+                    <div class="icon-block">
+                        <h2 class="center light-blue-text">
+              <i class="icon doctor aligned ui circular center big"></i>
+            </h2>
+                        <h5 class="center">Expert</h5>
+                        <p class="center-align p">
+                            Biolog.io is an expert system. It delivers best practices based on your health data, pulled from latest research
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
-
-
-  <div class="container">
-    <div class="section">
-
-      <!--   Icon Section   -->
-      <div class="row">
-        <div class="col s12 m4">
-          <div class="icon-block">
-            <h2 class="center light-blue-text"><i class="material-icons">flash_on</i></h2>
-            <h5 class="center">Speeds up development</h5>
-
-            <p class="light">We did most of the heavy lifting for you to provide a default stylings that incorporate our custom components. Additionally, we refined animations and transitions to provide a smoother experience for developers.</p>
-          </div>
+    <div class="section no-pad-bot">
+        <div class="container">
+            <h1 class="header center blue-text bio-header">Our Vision</h1>
+            <div class="row center">
+                <h5 class="header col s12 light">Our vision is that we have entered a new era in which patients like us will control our health information and make better health decisions. Biolog is required to make this happen.</h5>
+            </div>
+            <br>
         </div>
-
-        <div class="col s12 m4">
-          <div class="icon-block">
-            <h2 class="center light-blue-text"><i class="material-icons">group</i></h2>
-            <h5 class="center">User Experience Focused</h5>
-
-            <p class="light">By utilizing elements and principles of Material Design, we were able to create a framework that incorporates components and animations that provide more feedback to users. Additionally, a single underlying responsive system across all platforms allow for a more unified user experience.</p>
-          </div>
-        </div>
-
-        <div class="col s12 m4">
-          <div class="icon-block">
-            <h2 class="center light-blue-text"><i class="material-icons">settings</i></h2>
-            <h5 class="center">Easy to work with</h5>
-
-            <p class="light">We have provided detailed documentation as well as specific code examples to help new users get started. We are also always open to feedback and can answer any questions a user may have about Materialize.</p>
-          </div>
-        </div>
-      </div>
-
     </div>
-    <br><br>
-
-    <div class="section">
-
-    </div>
-  </div>
-
-  <footer class="page-footer orange">
-    <div class="container">
-      <div class="row">
-        <div class="col l6 s12">
-          <h5 class="white-text">Company Bio</h5>
-          <p class="grey-text text-lighten-4">We are a team of college students working on this project like it's our full time job. Any amount would help support and continue development on this project and is greatly appreciated.</p>
-
-
+    <footer class="page-footer blue">
+        <div class=" valign-wrapper">
+            <div class="container valign">
+                <h5 class="white-text  footer-heading">Brought to you by your friends at Biolog.io</h5>
+            </div>
         </div>
-        <div class="col l3 s12">
-          <h5 class="white-text">Settings</h5>
-          <ul>
-            <li><a class="white-text" href="#!">Link 1</a></li>
-            <li><a class="white-text" href="#!">Link 2</a></li>
-            <li><a class="white-text" href="#!">Link 3</a></li>
-            <li><a class="white-text" href="#!">Link 4</a></li>
-          </ul>
+        <div class="container">
+            <div class="row">
+                <div class="col l6 s12 m12">
+                    <p class="grey-text text-lighten-4 text-justify">Disclaimer: The content of this website should not be interpreted to be medical advice. You can only obtain that from your healthcare provider! Use of this website is bound by our Terms &amp; Conditions.</p>
+                </div>
+                <div class="col l3 s12">
+                    <h5 class="white-text">Follow us</h5>
+                    <ul>
+                        <!--    <li><a class="white-text" href="#!"><i class="icon big  facebook square "></i></a></li>
+                            <li><a class="white-text" href="#!"><i class="icon big google plus square "></i></a></li> -->
+                        <li><a class="white-text" href="#"><i class="icon big twitter square "></i></a></li>
+                    </ul>
+                </div>
+                <div class="col l3 s12">
+                    <h5 class="white-text left-align">Help and Support</h5>
+                    <ul class="left-align">
+                        <li><a class="white-text" href="#!">FAQ</a></li>
+                        <li><a class="white-text" href="/terms-of-use">Terms of Use</a></li>
+                        <!--   <li><a class="white-text" href="#!">About Invent.heathcare</a></li> -->
+                    </ul>
+                </div>
+            </div>
         </div>
-        <div class="col l3 s12">
-          <h5 class="white-text">Connect</h5>
-          <ul>
-            <li><a class="white-text" href="#!">Link 1</a></li>
-            <li><a class="white-text" href="#!">Link 2</a></li>
-            <li><a class="white-text" href="#!">Link 3</a></li>
-            <li><a class="white-text" href="#!">Link 4</a></li>
-          </ul>
+        <div class="footer-copyright valign-wrapper">
+            <div class="container valign">
+                Produced by <i class="icon heartbeat white-text"></i> <a class="white-text text-lighten-3" href="#">Beyobe, LLC</a>
+            </div>
         </div>
-      </div>
-    </div>
-    <div class="footer-copyright">
-      <div class="container">
-      Made by <a class="orange-text text-lighten-3" href="http://materializecss.com">Materialize</a>
-      </div>
-    </div>
-  </footer>
-
+    </footer>
 </template>

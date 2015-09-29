@@ -286,3 +286,57 @@
         right: 30px;
     }
 }
+/*
+aboutus page
+*/
+
+nav.light-blue.lighten-1 {
+    background-color: #5F7BE5  !important;
+}
+.bio-header{
+    font-size: 5rem !important;
+    font-weight: 100 !important;
+    background: url('/images/header-bg.png') no-repeat bottom center !important;
+        padding-bottom: 1.5rem;
+            margin: .8rem;
+            color:#5F7BE5 !important;
+}
+#index-banner{
+    background: url('/images/background/cubes.png') repeat;
+}
+.btn-large{
+    font-weight: 400 !important;
+    font-size: 1.4rem !important;
+    text-transform: capitalize !important;
+    background-color:#5F7BE5 !important;
+}
+.page-footer.blue {
+    background-color: #5F7BE5 !important;
+    text-align: center;
+}
+.footer-copyright .icon {
+    font-size: 2.3rem;
+}
+.footer-copyright .icon {
+  
+  font-size:2.3rem;
+  
+}
+.text-justify{
+  text-align:justify;
+}
+.footer-heading{
+  
+      padding-bottom: 20px;
+      border-bottom: solid 2px #879AE2;
+      margin-bottom: 10px !important;
+}
+.p{
+    font-size: 1.3rem;
+}
+.icon-block{
+           box-shadow: 0 10px 10px -7px rgb(186, 186, 186);
+    margin: 1rem;
+    padding: .3rem;
+
+}

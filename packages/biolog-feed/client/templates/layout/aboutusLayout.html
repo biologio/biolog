@@ -1,18 +1,32 @@
 <template name="aboutusLayout">
-   <div class="material">
-    <nav class="light-blue lighten-1 " role="navigation">
-    <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">Logo</a>
-      <ul class="right hide-on-med-and-down">
-        <li><a href="#">Navbar Link</a></li>
-      </ul>
+    <div class="material">
+        <nav class="light-blue lighten-1 " role="navigation">
+            <div class="nav-wrapper container">
+                {{#if currentUser}}
+                <a id="logo-container" href="/feed" class="brand-logo">Biolog.io (alpha)</a> {{else}}
+                <a id="logo-container" href="/" class="brand-logo">Biolog.io (alpha)</a> {{/if}}
+                <ul class="right hide-on-med-and-down">
+                    {{#if currentUser}}
+                      {{> atNavButton}}
+                      {{else}}
+                       <a  href="/sign-in" style="font-size:1.3rem; font-weight:normal">Log in</a>
+                       {{/if}}
+                </ul>
+                <ul id="nav-mobile" class="side-nav">
+                  <li>
+                     {{#if currentUser}}
+                      {{> atNavButton}}
+                      {{else}}
+                       <a  href="/sign-in" class="brand-logo">Log in</a>
+                       {{/if}}
+                  </li>
+                 
+                  
+                </ul>
+                <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
 
-      <ul id="nav-mobile" class="side-nav">
-        <li><a href="#">Navbar Link</a></li>
-      </ul>
-      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+            </div>
+        </nav>
+        {{> yield}}
     </div>
-  </nav>
-   {{> yield}}
- </div>
-
 </template>

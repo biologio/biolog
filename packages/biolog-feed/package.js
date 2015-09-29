@@ -29,7 +29,7 @@ Package.onUse(function(api) {
     // i18n config (must come first)
 
 
-    
+
     api.add_files("server/publication.js", ["server"]);
     api.add_files("client/templates/loading.html", ["client"]);
     api.add_files("client/templates/comments.html", ["client"]);
@@ -41,8 +41,8 @@ Package.onUse(function(api) {
     api.add_files("client/js/feed.js", ["client"]);
     api.add_files("client/_partials/_footer.html", ["client"]);
     api.add_files("lib/route.js", ["client"]);
-        api.add_files("client/templates/layout/aboutusLayout.html", ["client"])
-        api.add_files("client/templates/about.html", ["client"])
+    api.add_files("client/templates/layout/aboutusLayout.html", ["client"])
+    api.add_files("client/templates/about.html", ["client"])
     api.add_files("client/js/about.js", ["client"]);
     api.add_files("lib/collections/collection.js", ["client", "server"]);
     api.add_files("client/css/material.css", ["client"]);

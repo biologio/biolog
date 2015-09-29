@@ -59,7 +59,7 @@ Template.profile.events({
         //
         //});
         
-        Router.go("/");
+        Router.go("/feed");
        
         
         

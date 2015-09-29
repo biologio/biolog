@@ -1,4 +1,4 @@
-    Router.route('/aboutus', {
+    Router.route('/', {
         layoutTemplate: 'aboutusLayout',
         name: 'aboutus',
         template: 'aboutus',
@@ -7,7 +7,7 @@
         }
 
     });
-
-    Template.body.destroyed = function () {
-    	alert(Session.get("postFacts"))
-    };
+Template.aboutus.rendered = function () {
+	$('body').removeClass("feed")
+};
+    

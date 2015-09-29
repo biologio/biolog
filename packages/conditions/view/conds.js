@@ -243,7 +243,7 @@ Tracker.autorun(function() {
                         return element.objName.toLowerCase() == $.trim($(modal).find(".header").text().toLowerCase());
                           }
                     });
-                    Session.setPersistent("postFacts", posts)
+                    Session.setAuth("postFacts", posts)
                 }
 
                 Session.set("biolog:conditions/condition.editing", null);

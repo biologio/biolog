@@ -1,6 +1,6 @@
 
 .h1, .h2, .h3, .h4, body, h1, h2, h3, h4, h5, h6 {
-    font-family: RobotoDraft,Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-family: Raleway, sans-serif;
     font-weight: 300;
 }
 
@@ -8,9 +8,10 @@
 body.feed {
     background: #e9eaed;
     background: #E4EAEA;
-   font-family: RobotoDraft,Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
+      font-family: Raleway, sans-serif !important;
     color: #333;
     margin-top: 1em;
+    font-weight: normal
 }
 
 .bl-container {

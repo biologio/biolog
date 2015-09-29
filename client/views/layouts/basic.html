@@ -9,7 +9,7 @@
       
         
         <div class="right item">
-              {{#if currentUser}}<a class="item user ui pointing dropdown" href="#">  {{> avatar user=currentUser size='small' shape='circle'}} <span class="user-name">{{patient.name}} </span>  
+              {{#if currentUser}}<a class="item user ui pointing dropdown" href="#">  {{> avatar  user=currentUser size='small' class='avatar-small' shape='circle'}} <span class="user-name">{{patient.name}} </span>  
               <div class="menu floating transition hidden" tabindex="-1">
                
           <a href="/profile/{{currentUser._id}}" class="item">Profile</a>

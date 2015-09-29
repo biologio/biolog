@@ -85,7 +85,9 @@ Template.conditionsMedicationsFeed.animations({
 });
 Template.conditionsMedicationsHistory.helpers({
     getUserHistory: function() {
-        var lists = getPatientConditionsMedications(getPatient()._id)
+        var patient = getPatient();
+        var patientId = patient._id;
+        var lists = getPatientConditionsMedications(patientId)
         return lists;
     },
     isCondition: function() {
@@ -125,7 +127,7 @@ Template.factItem.rendered = function() {
     var getFrowns = function() {
         return this.data.num;
     };
-    console.log(this)
+
 
 
     if (this.data && this.data.pred == "patient/medication") {

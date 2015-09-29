@@ -2,7 +2,7 @@ Router.configure({
   loadingTemplate: 'loading'
 })
 
-Router.route('/', {
+Router.route('/feed', {
   // The name of the route.
   // Used to reference the route in path helpers and to find a default template
   // for the route if none is provided in the "template" option. If no name is
@@ -38,15 +38,6 @@ Router.route('/', {
     // add the subscription to the waitlist
    // this.subscribe('item', this.params._id).wait();
   },
-onBeforeAction:function(){
-    if (!Meteor.userId()) {
-        // if the user is not logged in, render the Login template
-        // 
-        Router.go('/sign-in');
-
-    }
-    this.next();
-},
   // Subscriptions or other things we want to "wait" on. This also
   // automatically uses the loading hook. That's the only difference between
   // this option and the subscriptions option above.

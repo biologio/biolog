@@ -1,7 +1,0 @@
-{
-  "enableAutoprefixer": true,
-  "autoprefixerOptions": {
-      "browsers": ["> 5%", "BlackBerry", "OperaMini"],
-      "cascade": false
-  }
-}
