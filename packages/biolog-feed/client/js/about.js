@@ -9,5 +9,6 @@
     });
 Template.aboutus.rendered = function () {
 	$('body').removeClass("feed")
+	 new WOW().init();
 };
     

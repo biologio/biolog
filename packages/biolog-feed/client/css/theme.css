@@ -302,7 +302,7 @@ nav.light-blue.lighten-1 {
             color:#5F7BE5 !important;
 }
 #index-banner{
-    background: url('/images/background/cubes.png') repeat;
+    background: url("/images/hero-bg.png") repeat scroll 0 0 #fff !important;
 }
 .btn-large{
     font-weight: 400 !important;

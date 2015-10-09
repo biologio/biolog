@@ -22,7 +22,8 @@ Package.onUse(function(api) {
         'biolog:conditions',
         'u2622:persistent-session',
         'dandv:jquery-rateit',
-        'flemay:less-autoprefixer'
+        'flemay:less-autoprefixer',
+        'timmyg:wow'
 
     ]);
 
