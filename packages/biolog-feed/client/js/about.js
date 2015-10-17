@@ -8,7 +8,10 @@
 
     });
 Template.aboutus.rendered = function () {
-	$('body').removeClass("feed")
+	$('body').removeClass("feed pushable")
 	 new WOW().init();
+	 $('.button-collapse').sideNav();
+
+
 };
     

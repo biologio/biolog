@@ -6,7 +6,7 @@ Package.describe({
 });
 
 Package.onUse(function(api) {
-
+    api.versionsFrom("METEOR@1.2.0.2");
     api.use('tracker');
     api.use('mongo', ['client', 'server']);
     api.use([
@@ -38,7 +38,7 @@ Package.onUse(function(api) {
     api.add_files("client/js/conditionsMedicationsFeed.js", ["client"]);
     api.add_files("client/templates/conditionsMedicationsModals.html", ["client"]);
     api.add_files("client/templates/feed.html", ["client"]);
-    // api.add_files("client/js/materialize.min.js", ["client"]);
+    api.add_files("client/js/materialize.js", ["client"]);
     api.add_files("client/js/feed.js", ["client"]);
     api.add_files("client/_partials/_footer.html", ["client"]);
     api.add_files("lib/route.js", ["client"]);

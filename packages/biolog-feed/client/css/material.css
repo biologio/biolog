@@ -6509,7 +6509,7 @@ html {
 
 @media only screen and (min-width: 993px) {
     .material .container {
-        width: 70%
+        width: 90%
     }
 }
 
@@ -10583,4 +10583,11 @@ button.picker__close:focus {
 .highlightTextarea .ui-resizable-se {
   bottom:15px;
   right:0px;
+}
+ul.hide-on-med-and-down li #at-nav-button,ul#nav-mobile li #at-nav-button {
+    background: transparent;
+    color: #fff;
+}
+ul#nav-mobile li #at-nav-button {
+    color: #444;
 }

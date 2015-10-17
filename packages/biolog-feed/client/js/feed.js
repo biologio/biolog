@@ -68,7 +68,7 @@
          var postHTML = post.value;
          var button = $(e.target);
 
-         Bioontology.annotate(postHTML, Bioontology.ONTOLOGIES_HEALTH, function(err, annotations) {
+         Bioontology.annotate(postHTML, Bioontology.ONTOLOGIES_HEALTH,Bioontology.SEMANTIC_TYPES_HEALTH, function(err, annotations) {
              //conslole.log(value);
              if (err) {
                  console.log(err)
@@ -285,7 +285,10 @@
      isAlreadyAdded = _.find(postFacts, function(post) {
          return post.objName == data.objName;
      });
-     postFacts.push(data);
+     if(data){
+         postFacts.push(data);
+     }
+    
      if (data && !isAlreadyAdded) {
 
          Session.setAuth("postFacts", postFacts);

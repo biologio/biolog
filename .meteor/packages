@@ -21,7 +21,6 @@ semantic:ui-css
 accounts-google
 accounts-password
 coffeescript
-accounts-facebook
 accounts-twitter
 service-configuration
 accounts-ui
@@ -69,3 +68,4 @@ ejson
 spacebars
 check
 biolog:font-medical-icons
+accounts-facebook

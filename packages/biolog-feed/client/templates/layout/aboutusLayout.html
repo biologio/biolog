@@ -5,25 +5,47 @@
                 {{#if currentUser}}
                 <a id="logo-container" href="/feed" class="brand-logo">Biolog.io (alpha)</a> {{else}}
                 <a id="logo-container" href="/" class="brand-logo">Biolog.io (alpha)</a> {{/if}}
+
                 <ul class="right hide-on-med-and-down">
-                    {{#if currentUser}}
-                      {{> atNavButton}}
+                  
+                         <li>
+                        <a  href="#" style="font-size:1.3rem; font-weight:normal"> <span class="ion icon ion-ios-chatbubble-outline"></span> Share your suggetion</a>
+                      </li>
+                      <li>
+                          <a  href="#" style="font-size:1.3rem; font-weight:normal">I have an idea</a>
+                        </li>
+                          {{#if currentUser}}
+                     <li> {{> atNavButton}}</li>
                       {{else}}
+                      <li>
                        <a  href="/sign-in" style="font-size:1.3rem; font-weight:normal">Log in</a>
+                       </li>
                        {{/if}}
+                        
+
                 </ul>
+
                 <ul id="nav-mobile" class="side-nav">
-                  <li>
+                
+                        <li>
+                        <a  href="#" style="font-size:1.3rem; font-weight:normal">Share your suggetion</a>
+                      </li>
+                      <li>
+                          <a  href="#" style="font-size:1.3rem; font-weight:normal">I have an idea</a>
+                        </li>
+                    
+                  
+                   <li>
                      {{#if currentUser}}
-                      {{> atNavButton}}
+                   {{> atNavButton}}
                       {{else}}
-                       <a  href="/sign-in" class="brand-logo">Log in</a>
+                       <a  href="/sign-in"  style="font-size:1.3rem; font-weight:normal">Log in</a>
                        {{/if}}
-                  </li>
-                 
+
+                     </li>
                   
                 </ul>
-                <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+                <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="ion-android-menu icon"></i></a>
 
             </div>
         </nav>
