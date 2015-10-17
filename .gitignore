@@ -5,8 +5,8 @@ private/*
 tests/jasmine/server/unit/package-stubs.js
 tests/jasmine/server/unit/packageMocksSpec.js
 settings.json
-server/settings.json
 mup.json
+server/settings.json
 server/config/social-config.js
 ssl.pem
 biolog.io.nopass.key
