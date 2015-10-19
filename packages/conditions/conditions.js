@@ -135,21 +135,30 @@ Conditions.addConditionClassesToFacts = function(condition, fact, callback) {
 Conditions.constructConditionFact = function(ptid, condition, callback) {
     var fact = Conditions.createConditionFact(ptid, condition);
 
-    Bioontology.getConditionClasses(condition,
-        function(err, classes) {
-            if (err) {
-                var msg = "Unable to getConditionClasses: " + err;
-                console.error(msg);
-                if (callback) callback(msg);
-                return;
-            }
-            for (var ci in classes) {
-                var clazz = classes[ci];
-                var addingError = Conditions.addConditionClass(fact, clazz);
-                if (addingError) return callback(addingError);
-            }
-
-            return callback(null, fact);
+    Meteor.call("getConditionClasses", condition, function(classes) {
+        for (var ci in classes) {
+            var clazz = classes[ci];
+            var addingError = Conditions.addConditionClass(fact, clazz);
+            if (addingError) return callback(addingError);
         }
-    );
+
+        return callback(null, fact);
+    });
+    //Bioontology.getConditionClasses(condition,
+    //    function(err, classes) {
+    //        if (err) {
+    //            var msg = "Unable to getConditionClasses: " + err;
+    //            console.error(msg);
+    //            if (callback) callback(msg);
+    //            return;
+    //        }
+    //        for (var ci in classes) {
+    //            var clazz = classes[ci];
+    //            var addingError = Conditions.addConditionClass(fact, clazz);
+    //            if (addingError) return callback(addingError);
+    //        }
+    //
+    //        return callback(null, fact);
+    //    }
+    //);
 };

@@ -25,7 +25,6 @@ accounts-facebook
 accounts-twitter
 service-configuration
 accounts-ui
-http
 reactive-var
 semantic:ui-sidebar
 aldeed:template-extension
@@ -70,3 +69,4 @@ spacebars
 check
 biolog:font-medical-icons
 force-ssl
+http

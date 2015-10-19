@@ -108,6 +108,7 @@ Template.patientDemographics.helpers({
                 //no patient found.  create and save it.
                 patient = createPatientEntity(patientId, Meteor.user().profile.name);
                 setPatient(patient);
+                console.log("addEntity: Adding patient:", patient);
                 Meteor.call("addEntity", patient);
 
                 return patient;

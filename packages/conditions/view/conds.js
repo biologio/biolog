@@ -70,20 +70,16 @@ Template.bioolookupConditionsContent.events({
         //var apiKey = Bioontology.getApiKey();
         //var url = Bioontology.getUrlSearchConditions(q);
 
-        Bioontology.searchConditions(q, function(err, conditions) {
-            if (err) {
-                return conditionsResults.set([]);
-            }
-            conditionsResults.set(conditions);
-        });
-        //HTTP.get(url, function (err, response) {
+        //Bioontology.searchConditions(q, function(err, conditions) {
         //    if (err) {
         //        return conditionsResults.set([]);
         //    }
-        //    var json = JSON.parse(response.content);
-        //    //console.log("Received data: " + JSON.stringify(json.collection));
-        //    conditionsResults.set(json.collection);
+        //    conditionsResults.set(conditions);
         //});
+
+        Meteor.call("searchConditions", q, function(conditions) {
+            conditionsResults.set(conditions);
+        });
     },
 
     "click .bioolookupConditionsResult": function(event, template) {
