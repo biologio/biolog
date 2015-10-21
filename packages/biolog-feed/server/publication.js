@@ -8,3 +8,6 @@ Meteor.publish('userData', function() {
         }
     });
 });
+Meteor.publish("feedback", function() {
+    return Feedback.find();
+});

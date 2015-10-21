@@ -10588,6 +10588,12 @@ ul.hide-on-med-and-down li #at-nav-button,ul#nav-mobile li #at-nav-button {
     background: transparent;
     color: #fff;
 }
-ul#nav-mobile li #at-nav-button {
+ul#nav-mobile li #at-nav-button, ul#nav-mobile li a {
     color: #444;
+}
+.material ul.hide-on-med-and-down li a,.material ul#nav-mobile li #at-nav-button a {
+    -webkit-box-shadow: 1px 0px 0px rgba(250, 250, 251, 0.29); 
+    -moz-box-shadow: 1px 0px 0px rgba(250, 250, 251, 0.29); 
+  box-shadow: 1px 0px 0px rgba(250, 250, 251, 0.29);  
+  font-size:1.5rem;
 }

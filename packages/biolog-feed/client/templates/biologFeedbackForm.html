@@ -1,0 +1,28 @@
+<template name="biologFeedbackForm">
+<div class="ui feedback modal transition " >
+    <i class="close icon"></i>
+    <div class="header">
+      How is Biolog working for you?
+    </div>
+    <div class="content">
+      <div class="ui form ">
+        <h4 class="ui  header">Give us your feedback</h4>
+        <div class="field feeback-label">
+          <label>Feedback</label>
+          <textarea class="feed-item" name="feedbackText" id ="feedbackText"></textarea>
+        </div>
+        <div class="field">
+         <div class="ui checkbox">
+  <input type="checkbox"  class="feed-item" name="report-bug" id="report-bug">
+  <label for="report-bug">This is a bug</label>
+</div>
+        </div>
+      </div>
+    </div>
+    <div class="actions">
+      <div class="ui button cancel">Cancel</div>
+      <div class="ui blue button submit ">Submit</div>
+    
+    </div>
+  </div>
+</template>
