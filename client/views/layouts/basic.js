@@ -45,36 +45,43 @@ Template.sidebar.helpers({
             text: "Home",
             icon: "ion-ios-home",
             url: "/"
-        }, {
+        },
+        {
             text: "Conditions",
             icon: "heartbeat",
             url: "/conditions"
-        }, {
+        },
+        {
             text: "Meds",
             icon: "ion-medkit",
             url: "/meds"
-        }, {
-            text: "Events",
-            icon: "calendar",
-            url: "/#"
-        }, {
+        },
+        //{
+        //    text: "Events",
+        //    icon: "calendar",
+        //    url: "/#"
+        //},
+        {
             text: "Alerts",
             icon: "ion-ios-bell",
             url: "/alerts",
             badge: countAlerts()
-        }, {
-            text: "Timeline",
-            icon: "ion-ios-pulse-strong",
-            url: "/#"
-        }, {
-            text: "About",
-            icon: "ion-ios-people",
-            url: "/about"
-        }, {
-            text: "Admin",
-            icon: "settings",
-            url: "/admin"
         }
+        //{
+        //    text: "Timeline",
+        //    icon: "ion-ios-pulse-strong",
+        //    url: "/#"
+        //},
+        //{
+        //    text: "About",
+        //    icon: "ion-ios-people",
+        //    url: "/about"
+        //},
+        //{
+        //    text: "Admin",
+        //    icon: "settings",
+        //    url: "/admin"
+        //}
 
     ]
 
