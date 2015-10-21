@@ -70,22 +70,22 @@ Template.bioolookupConditionsContent.events({
         //var apiKey = Bioontology.getApiKey();
         //var url = Bioontology.getUrlSearchConditions(q);
 
-        //Bioontology.searchConditions(q, function(err, conditions) {
-        //    if (err) {
-        //        return conditionsResults.set([]);
-        //    }
-        //    conditionsResults.set(conditions);
-        //});
-
-        Meteor.call("searchConditions", q, function(err, conditions) {
+        Bioontology.searchConditions(q, function(err, conditions) {
             if (err) {
-                console.error("Error searching for conditions: ", err);
-                conditionsResults.set([]);
-            } else {
-                //console.log("conds: received results: ", conditions);
-                conditionsResults.set(conditions);
+                return conditionsResults.set([]);
             }
+            conditionsResults.set(conditions);
         });
+
+        //Meteor.call("searchConditions", q, function(err, conditions) {
+        //    if (err) {
+        //        console.error("Error searching for conditions: ", err);
+        //        conditionsResults.set([]);
+        //    } else {
+        //        //console.log("conds: received results: ", conditions);
+        //        conditionsResults.set(conditions);
+        //    }
+        //});
     },
 
     "click .bioolookupConditionsResult": function(event, template) {
