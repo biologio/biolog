@@ -9,10 +9,11 @@ Meteor.methods({
     },
 
     addEntity: function (entity) {
+        console.log("entities.js: checking entity: ", entity);
         check(entity, {
             _id: String,
             name: String,
-            //source: String,
+            source: String,
             etypes: [String]
         });
         // Make sure the user is logged in before inserting a task

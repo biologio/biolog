@@ -77,14 +77,20 @@ Template.bioolookupConditionsContent.events({
         //    conditionsResults.set(conditions);
         //});
 
-        Meteor.call("searchConditions", q, function(conditions) {
-            conditionsResults.set(conditions);
+        Meteor.call("searchConditions", q, function(err, conditions) {
+            if (err) {
+                console.error("Error searching for conditions: ", err);
+                conditionsResults.set([]);
+            } else {
+                //console.log("conds: received results: ", conditions);
+                conditionsResults.set(conditions);
+            }
         });
     },
 
     "click .bioolookupConditionsResult": function(event, template) {
         var selectedCondition = this;
-        console.log("clicked: " + JSON.stringify(selectedCondition));
+        //console.log("clicked: " + JSON.stringify(selectedCondition));
         conditionsResults.set([selectedCondition]);
         Session.set("biolog.bioolookup.conditions.results", selectedCondition);
     }
@@ -94,7 +100,7 @@ Template.bioolookupConditionsContent.events({
 submitBioolookupConditions = function() {
     Session.set("biolog:conditions/conditions.modal.open", null);
     var cond = Session.get("biolog.bioolookup.conditions.results");
-    //console.log("Saving med: " + JSON.stringify(med));
+    console.log("Saving condition: " + JSON.stringify(cond));
     if (!cond) return;
 
     Conditions.constructConditionFact(getPatient()._id, cond, function(err, fact){

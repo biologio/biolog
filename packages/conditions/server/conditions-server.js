@@ -5,6 +5,7 @@ Meteor.methods({
         var searchSync = Meteor.wrapAsync(Bioontology.searchConditions);
         try {
             var conditionsResults = searchSync(q);
+            //console.log("searchConditions: found: ", conditionsResults);
             return conditionsResults;
         } catch(err) {
             console.error("ERROR searchConditions: q=" + q, err);

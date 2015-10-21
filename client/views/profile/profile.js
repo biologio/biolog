@@ -26,12 +26,13 @@ Template.profile.events({
     'click #saveProfile': function(e) {
         // Update profile
         var data = _.object($("#profileForm").serializeArray().map(function(v) {return [v.name, v.value];} ));
-        console.log(data);
+        console.log("saving profile data: ", data);
         Meteor.call('updateProfile', data);
         
         // create Entity for user.
         var pt = getPatient();
-        
+
+        console.log("Got profile for patient: ", Meteor.user().profile);
         setPatientNickname(pt, Meteor.user().profile.name);
         setPatientDob(pt, $("#profileDob").val());
         setPatientSex(pt, $("input:radio[name='profile.sex']").val());
