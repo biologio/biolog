@@ -1,6 +1,7 @@
 Meteor.startup(function(){
      FeedMedications = new Mongo.Collection(null);
-})
+});
+
 Template.basicLayout.events({
     /*
     'click #btnSignIn': function(e) {
