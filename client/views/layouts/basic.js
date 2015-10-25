@@ -45,7 +45,7 @@ Template.sidebar.helpers({
     sidebarmenus: [{
             text: "Home",
             icon: "ion-ios-home",
-            url: "/"
+            url: "/feed"
         },
         {
             text: "Conditions",
