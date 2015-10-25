@@ -68,7 +68,8 @@
          var postHTML = post.value;
          var button = $(e.target);
 
-         Bioontology.annotate(postHTML, Bioontology.ONTOLOGIES_HEALTH, function(err, annotations) {
+         //Bioontology.annotate(postHTML, Bioontology.ONTOLOGIES_HEALTH, function(err, annotations) {
+         Bioontology.annotateHealth(postHTML, function(err, annotations) {
              //conslole.log(value);
              if (err) {
                  console.log(err)
@@ -146,9 +147,10 @@
      'click button.post-update': function(e, tpl) {
          var postUpdateText = $(e.currentTarget).parent('div').siblings('.textarea').val();
          var postId = this._id;
-         Bioontology.annotate(postUpdateText, Bioontology.ONTOLOGIES_HEALTH, function(err, annotations, button) {
+         //Bioontology.annotate(postUpdateText, Bioontology.ONTOLOGIES_HEALTH, function(err, annotations, button) {
              //conslole.log(value);
-             if (err) {
+
+         Bioontology.annotateHealth(postUpdateText, function(err, annotations, button) {             if (err) {
                  console.log(err)
                  return;
              }

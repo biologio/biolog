@@ -86,6 +86,8 @@ Template.conditionsMedicationsFeed.animations({
 Template.conditionsMedicationsHistory.helpers({
     getUserHistory: function() {
         var patient = getPatient();
+        //DD 2015-10-25
+        if (!patient) return;
         var patientId = patient._id;
         var lists = getPatientConditionsMedications(patientId)
         return lists;
