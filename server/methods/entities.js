@@ -13,7 +13,6 @@ Meteor.methods({
         check(entity, {
             _id: String,
             name: String,
-            source: String,
             etypes: [String]
         });
         // Make sure the user is logged in before inserting a task

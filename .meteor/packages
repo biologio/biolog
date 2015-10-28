@@ -37,7 +37,6 @@ dandv:jquery-rateit
 
 less
 mystor:device-detection
-#digilord:faker
 miro:mailchimp
 
 tmeasday:publish-counts
@@ -66,6 +65,7 @@ random
 ejson
 spacebars
 check
+
 biolog:font-medical-icons
 meteortoys:allthings
 force-ssl
