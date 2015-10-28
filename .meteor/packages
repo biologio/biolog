@@ -24,7 +24,6 @@ coffeescript
 accounts-twitter
 service-configuration
 accounts-ui
-http
 reactive-var
 semantic:ui-sidebar
 aldeed:template-extension
@@ -38,7 +37,7 @@ dandv:jquery-rateit
 
 less
 mystor:device-detection
-digilord:faker
+#digilord:faker
 miro:mailchimp
 
 tmeasday:publish-counts
@@ -68,6 +67,7 @@ ejson
 spacebars
 check
 biolog:font-medical-icons
-accounts-facebook
-force-ssl
 meteortoys:allthings
+force-ssl
+http
+

@@ -1,6 +1,6 @@
 <template name="basicLayout">
     {{> patientModal}}
-     
+    {{>biologFeedbackForm}}
     <div class="ui large  fixed   menu main-nav">
         <a class="toc item main-menu">
           <i class="ion-android-menu icon"></i>
@@ -9,6 +9,12 @@
       
         
         <div class="right item">
+
+                          <a class="item"  href="http://invent.healthcare/?cat=for-new-apps" style=" "> <i class="material-icons left ion icon ion-lightbulb"></i> Share your idea</a>
+                        
+                        <a class="show-feedback-form item" href="#" style=" "><i class=" material-icons left ion icon ion-chatbox ion"></i> Feedback</a>
+                      
+                  
               {{#if currentUser}}<a class="item user ui pointing dropdown" href="#">  {{> avatar  user=currentUser size='small' class='avatar-small' shape='circle'}} <span class="user-name">{{patient.name}} </span>  
               <div class="menu floating transition hidden" tabindex="-1">
                

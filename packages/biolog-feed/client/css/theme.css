@@ -340,3 +340,20 @@ nav.light-blue.lighten-1 {
     padding: .3rem;
 
 }
+.material ul.hide-on-med-and-down li a, .material ul#nav-mobile li #at-nav-button a{
+    font-size:1rem;
+    font-weight: 600;
+
+}
+.material ul.hide-on-med-and-down li a i, .material ul#nav-mobile li #at-nav-button a i{
+    font-size: 1.5rem;
+}
+.font-weight-400{
+    font-weight: 400;
+}
+.feedback .ui .checkbox label{
+    cursor: pointer;
+}
+.ui.menu.fixed .item .material-icons.icon{
+    font-size: 1.5rem;
+}

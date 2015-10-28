@@ -26,6 +26,7 @@ Package.onUse(function(api) {
         'dandv:jquery-rateit',
         'flemay:less-autoprefixer',
         'timmyg:wow'
+      
 
     ]);
 
@@ -76,4 +77,5 @@ Package.onUse(function(api) {
     // ], ['client', 'server']);
 
   api.export("Feedback", ['client', 'server']);
+   api.export("Feed", ['client']);
 });

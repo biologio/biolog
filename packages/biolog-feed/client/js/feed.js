@@ -59,6 +59,93 @@
  Template.feed.rendered = function() {
 
      $("body").addClass('feed');
+
+      $("#post").atwho({
+         at: "@",
+         startWithSpace: true,
+         displayTimeout: 300,
+         // highlight_first suggestion in popup menu
+         highlightFirst: true,
+         // delay time trigger At.js while typing. For example: delay: 400
+         delay: null,
+         // suffix for inserting string.
+         suffix: ": ",
+         // don't show dropdown view without `suffix`
+         hideWithoutSuffix: false,
+         displayTpl: "<li data-sign='${at}' data-collection='${collection}' data-name='${data}' data-link = '${link}'>${name} <small>${desc}</small></li>",
+
+         callbacks: {
+             remoteFilter: function(query, callback) {
+                 $.getJSON('https://data.bioontology.org/search?ontologies=MEDLINEPLUS,ICD10CM&suggest=t…play_context=false&apikey=89b05cf1-2e81-48f6-baad-58236f6af05d', {
+                     q: query
+                 }, function(data) {
+                     // console.log(data);
+                     if (data.collection.length > 0) {
+                         conditions = $.map(data.collection, function(value, i) {
+                             return {
+                                 'id': i,
+                                 'at': "@",
+                                 'name': data.collection[i].prefLabel,
+                                 'data': data.collection[i].prefLabel.replace(/\s/g, '-'),
+                                 'desc': data.collection[i].definition ? data.collection[i].definition[0] : "no description",
+                                 'link': data.collection[i]['@id'],
+                                 'collection': JSON.stringify(data.collection[i])
+                             };
+                         });
+                         // console.log(conditions)
+                         callback(conditions)
+                         return;
+                     }
+
+                     callback(null);
+                 });
+             }
+         }
+     }).atwho({
+         at: "#",
+
+         displayTpl: "<li data-sign='${at}' data-collection='${collection}' data-name='${data}' data-link = '${link}'>${name} <small>${desc}</small></li>",
+         startWithSpace: true,
+         displayTimeout: 300,
+         // highlight_first suggestion in popup menu
+         highlightFirst: true,
+         // delay time trigger At.js while typing. For example: delay: 400
+         delay: null,
+         // suffix for inserting string.
+         suffix: ": ",
+         // don't show dropdown view without `suffix`
+         hideWithoutSuffix: false,
+         callbacks: {
+             remoteFilter: function(query, callback) {
+                 $.getJSON('http://bioportal.smart-bio.org:8080/search?ontologies=RXNORM&suggest=true&s…play_context=false&apikey=95d31cce-3247-4186-ae95-97c61884c50a', {
+                     q: query
+                 }, function(data) {
+                     console.log(data);
+                     if (data.collection.length > 0) {
+                         conditions = $.map(data.collection, function(value, i) {
+                             return {
+
+
+                                 'id': i,
+                                 'at': "#",
+                                 'name': data.collection[i].prefLabel,
+                                 'data': data.collection[i].prefLabel.replace(/\s/g, '-'),
+                                 'desc': data.collection[i].definition ? data.collection[i].definition[0] : "no description",
+                                 'link': data.collection[i]["@id"],
+                                 'collection': JSON.stringify(data.collection[i])
+                             };
+                         });
+                         // console.log(conditions)
+                         callback(conditions)
+                         return;
+                     }
+
+                     callback(null);
+                 });
+             }
+         }
+
+     });
  };
  Template.feed.events({
      'click .publish': function(e, tpl) {
@@ -294,4 +381,6 @@
          Session.setAuth("postFacts", postFacts);
      }
  }
+
+
  

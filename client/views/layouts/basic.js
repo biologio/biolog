@@ -15,7 +15,44 @@ Template.basicLayout.events({
     */
     'click a.toc': function(e) {
         $('.ui.sidebar').sidebar('setting', 'transition', 'scale down').sidebar('toggle');
-    }
+    },
+    'click .show-feedback-form': function(e, tpl) {
+            console.log(e);
+            $('.feedback.modal').modal({
+                 closable: true,
+            onApprove: function() {
+               var obj = Feed.createFeedOjbect($('.feed-item'));
+                 if ($('#feedbackText').val() != '') {
+            Meteor.call('addFeedback', obj, function(err, data) {
+                if (!err) {
+                    console.log(data);
+
+                }
+
+            })
+        }
+        else {
+            $(".feeback-label").addClass("error");
+            return false;
+        }
+                return true;
+            },
+            onDeny: function() {
+               $(".feeback-label").removeClass("error");
+                
+                return true;
+            },
+            onHide: function() {
+                $('.form.feedback').form('clear')
+                $(".feeback-label").removeClass("error");
+                return true;
+            }
+            })
+
+            .modal('setting', 'transition', 'vertical flip')
+                .modal('show');
+                e.preventDefault();
+        }
 
 });
 

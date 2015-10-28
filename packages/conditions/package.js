@@ -31,6 +31,10 @@ Package.onUse(function(api) {
             'view/conds.js'
         ],
         'client');
+    api.addFiles([
+            'server/conditions-server.js'
+        ],
+        'server');
     api.export('Conditions');
 });
 

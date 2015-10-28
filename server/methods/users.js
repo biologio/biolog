@@ -6,7 +6,7 @@ Meteor.users.deny({
 
 Meteor.methods({
     updateProfile: function(data) {
-        console.log("updateProfile called");
+        console.log("updateProfile called: ", data);
         
         Meteor.users.update(Meteor.userId(), {$set: data});
     }
