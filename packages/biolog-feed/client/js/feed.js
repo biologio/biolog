@@ -62,18 +62,19 @@
 console.log("loaded");
       $("#post").atwho({
          at: "#",
+         maxLen: 20,
          //startWithSpace: true,
          displayTimeout: 300,
          // highlight_first suggestion in popup menu
          highlightFirst: true,
          // delay time trigger At.js while typing. For example: delay: 400
-         delay: 400,
-         limit:10,
+         delay: null,
+         limit:20,
          // suffix for inserting string.
          suffix: " ",
          // don't show dropdown view without `suffix`
          hideWithoutSuffix: false,
-         displayTpl: "<li data-sign='${at}' data-semanticType='${semanticType}' data-collection='${collection}' data-name='${data}' data-link = '${link}'>${name} </li>",
+         displayTpl: "<li data-sign='${at}' data-semanticType='${semanticType}'  data-name='${data}'>${name} </li>",
 
          callbacks: {
              remoteFilter: function(query, callback) {
@@ -88,9 +89,9 @@ console.log("loaded");
                                  'at': "@",
                                  'name': data.collection[i].prefLabel,
                                  'data': data.collection[i].prefLabel.replace(/\s/g, '-'),
-                                 'desc': data.collection[i].definition ? data.collection[i].definition[0] : "no description",
-                                 'link': data.collection[i]['@id'],
-                                 'collection': JSON.stringify(data.collection[i]),
+                                 //'desc': data.collection[i].definition. ? data.collection[i].definition[0] : "no description",
+                                 //'link': data.collection[i]['@id'],
+                                 //'collection': JSON.stringify(data.collection[i]),
                                  'semanticType': data.collection[i].semanticType
                              };
                          });
@@ -102,10 +103,14 @@ console.log("loaded");
                      callback(null);
                  });
              },
-              beforeInsert:function(value, $li) {
-                console.log(value, $li)
-                return value.replace("#", '');
-              }
+              // beforeInsert:function(value, $li) {
+              //   console.log(value, $li)
+              //   return value.replace("#", '');
+              // },
+              // sorter:  function(query, items, searchKey){
+              //   console.log(query, items, searchKey);
+              //   return items;
+              // }
          }
      })
  };
@@ -198,18 +203,19 @@ console.log("loaded");
          if (actionButton.hasClass("ion-edit")) {
               $(".post-input").atwho({
          at: "#",
+          maxLen: 20,
          //startWithSpace: true,
          displayTimeout: 300,
          // highlight_first suggestion in popup menu
          highlightFirst: true,
          // delay time trigger At.js while typing. For example: delay: 400
-         delay: 400,
-         limit:10,
+         delay: null,
+         limit:20,
          // suffix for inserting string.
          suffix: " ",
          // don't show dropdown view without `suffix`
          hideWithoutSuffix: false,
-          displayTpl: "<li data-sign='${at}' data-semanticType='${semanticType}' data-collection='${collection}' data-name='${data}' data-link = '${link}'>${name} </li>",
+          displayTpl: "<li data-sign='${at}' data-semanticType='${semanticType}'  data-name='${data}'>${name} </li>",
 
          callbacks: {
              remoteFilter: function(query, callback) {
@@ -238,10 +244,10 @@ console.log("loaded");
                      callback(null);
                  });
              },
-              beforeInsert:function(value, $li) {
-                console.log(value, $li)
-                return value.replace("#", '');
-              }
+              // beforeInsert:function(value, $li) {
+              //   console.log(value, $li)
+              //   return value.replace("#", '');
+              // }
          }
      })
 

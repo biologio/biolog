@@ -42,7 +42,7 @@ Package.onUse(function(api) {
     api.add_files("client/js/conditionsMedicationsFeed.js", ["client"]);
     api.add_files("client/templates/conditionsMedicationsModals.html", ["client"]);
     api.add_files("client/templates/feed.html", ["client"]);
-    // api.add_files("client/js/materialize.js", ["client"]);
+    api.add_files("client/js/materialize.js", ["client"]);
     api.add_files("client/js/feed.js", ["client"]);
     api.add_files("client/templates/footer.html", ["client"]);
     api.add_files("client/templates/biologFeedbackForm.html", ["client"]);
