@@ -25,7 +25,7 @@ accounts-twitter
 service-configuration
 accounts-ui
 reactive-var
-semantic:ui-sidebar
+#semantic:ui-sidebar
 aldeed:template-extension
 houston:admin
 ongoworks:security
@@ -66,8 +66,9 @@ ejson
 spacebars
 check
 
-biolog:font-medical-icons
+#biolog:font-medical-icons
 meteortoys:allthings
 force-ssl
 http
+
 

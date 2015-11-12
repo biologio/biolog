@@ -90,7 +90,9 @@ Template.conditionsMedicationsHistory.helpers({
         if (!patient) return;
         var patientId = patient._id;
         var lists = getPatientConditionsMedications(patientId)
+        console.log(lists)
         return lists;
+
     },
     isCondition: function() {
         return this.pred == "patient/condition" ? true : false;
@@ -145,6 +147,7 @@ Template.factItem.rendered = function() {
 };
 Template.factItem.helpers({
     formatDate: function(date) {
+        console.log(date);
         return moment(date).format("MMM Do YY")
     },
     isCondition: function() {

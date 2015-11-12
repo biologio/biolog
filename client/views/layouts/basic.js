@@ -64,7 +64,10 @@ Template.basicLayout.rendered = function() {
         Session.set("biolog.patient.modal.open", "true");
     }
 // show dropdown on hover
-      $('.user.dropdown').dropdown({
+       this.$('.menu.main-nav  .ui.dropdown').dropdown({
+        on: 'hover'
+      });
+      this.$('.menu.main-nav  .ui.dropdown.item1').dropdown({
         on: 'hover'
       });
 

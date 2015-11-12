@@ -50,7 +50,8 @@
                         {{#if endDate}}
                     {{formatDate startDate}}  to {{formatDate endDate}}
                     {{else}}
-                    Since   {{formatDate startDate}}
+                    {{#if startDate}}  Since  {{formatDate startDate}}
+                    {{/if}}
                     {{/if}}
                        
                     </div>

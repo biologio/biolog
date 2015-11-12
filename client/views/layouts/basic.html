@@ -1,99 +1,74 @@
 <head>
-  <link rel="apple-touch-icon" sizes="57x57" href="/images/apple-touch-icon-57x57.png">
-<link rel="apple-touch-icon" sizes="114x114" href="/images/apple-touch-icon-114x114.png">
-<link rel="apple-touch-icon" sizes="72x72" href="/images/apple-touch-icon-72x72.png">
-<link rel="apple-touch-icon" sizes="144x144" href="/images/apple-touch-icon-144x144.png">
-<link rel="apple-touch-icon" sizes="60x60" href="/images/apple-touch-icon-60x60.png">
-<link rel="apple-touch-icon" sizes="120x120" href="/images/apple-touch-icon-120x120.png">
-<link rel="apple-touch-icon" sizes="76x76" href="/images/apple-touch-icon-76x76.png">
-<link rel="apple-touch-icon" sizes="152x152" href="/images/apple-touch-icon-152x152.png">
-<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-180x180.png">
-<link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
-<link rel="icon" type="image/png" href="/images/favicon-160x160.png" sizes="160x160">
-<link rel="icon" type="image/png" href="/images/favicon-96x96.png" sizes="96x96">
-<link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
-<link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
-<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="57x57" href="/images/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/images/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/images/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/images/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/images/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/images/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/images/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-180x180.png">
+    <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+    <link rel="icon" type="image/png" href="/images/favicon-160x160.png" sizes="160x160">
+    <link rel="icon" type="image/png" href="/images/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
 </head>
 <template name="basicLayout">
-    {{> patientModal}}
-    {{>biologFeedbackForm}}
-    <div class="ui large  fixed   menu main-nav">
+    {{> patientModal}} {{>biologFeedbackForm}}
+    <div class="ui large  fixed   menu main-nav ">
         <a class="toc item main-menu">
-          <i class="ion-android-menu icon"></i>
+            <i class="ion-android-menu ion icon"></i>
         </a>
-          <a href="/" class="header item"><img src="/images/Biolog.io_logo_white.png" alt="" class="logo-image"></a>
-      
-        
-        <div class="right item">
-
-                          <a class="item"  href="http://invent.healthcare/?cat=for-new-apps" style=" "> <i class="material-icons left ion icon ion-lightbulb"></i> Share your idea</a>
-                        
-                        <a class="show-feedback-form item" href="#" style=" "><i class=" material-icons left ion icon ion-chatbox ion"></i> Feedback</a>
-                      
-                  
-              {{#if currentUser}}<a class="item user ui pointing dropdown" href="#">  {{> avatar  user=currentUser size='small' class='avatar-small' shape='circle'}} <span class="user-name">{{patient.name}} </span>  
-              <div class="menu floating transition hidden" tabindex="-1">
+        <a href="/" class="header item"><img src="/images/Biolog.io_logo.png" alt="" class="logo-image"></a>
+        <div class="right menu">
+            <a class="item" href="http://invent.healthcare/?cat=for-new-apps" style=" "> <i class="material-icons left ion icon ion-android-bulb"></i> Share your idea</a>
+            <a class="show-feedback-form item" href="#" style=" "><i class=" material-icons left ion icon ion-clipboard ion"></i> Feedback</a> {{#if currentUser}}<a class=" ui dropdown item user  pointing " href="#"> {{> avatar  user=currentUser size='small' class='avatar-small' shape='circle'}} <span class="user-name">{{patient.name}}  </span>
+              <div class="menu " tabindex="0">
                
-          <a href="/profile/{{currentUser._id}}" class="item">Profile</a>
-          <!--<div class="item">Link Item</div>-->
-          <!--<div class="divider"></div>-->
-          <!--<div class="header">Header Item</div>-->
-        
-           {{> atNavButton}}
-         
-          <!--<div class="item">Link Item</div>-->
+          <a href="/profile/{{currentUser._id}}" class="item">Profile</a> {{> atNavButton}}
         </div>
-            </a>
-
-
-                
-                <!-- <a href="/selectPatient" class="item user-name"> {{patient.name}}</a> -->
-                {{/if}}
-                <!--<a href="" class="item user ui pointing dropdown">-->
-                  <!--<i class="ion-android-more-horizontal icon"></i>-->
-
-              <!--<div class="menu floating transition hidden" tabindex="-1">-->
-               <!---->
-          <!--<div class="item">Profile</div>-->
-          <!--<div class="item">Link Item</div>-->
-          <!--<div class="divider"></div>-->
-          <!--<div class="header">Header Item</div>-->
-          <!--<div class="item">-->
-            <!--<i class="dropdown icon"></i>-->
-            <!--Sub Menu-->
-            <!--<div class="menu transition hidden">-->
-              <!--<div class="item">Link Item</div>-->
-              <!--<div class="item">Link Item</div>-->
-            <!--</div>-->
-          <!--</div>-->
-          <!--<div class="item">Link Item</div>-->
+        </a>
+        <!-- <a href="/selectPatient" class="item user-name"> {{patient.name}}</a> -->
+        {{/if}}
+        <!--<a href="" class="item user ui pointing dropdown">-->
+        <!--<i class="ion-android-more-horizontal icon"></i>-->
+        <!--<div class="menu floating transition hidden" tabindex="-1">-->
+        <!---->
+        <!--<div class="item">Profile</div>-->
+        <!--<div class="item">Link Item</div>-->
+        <!--<div class="divider"></div>-->
+        <!--<div class="header">Header Item</div>-->
+        <!--<div class="item">-->
+        <!--<i class="dropdown icon"></i>-->
+        <!--Sub Menu-->
+        <!--<div class="menu transition hidden">-->
+        <!--<div class="item">Link Item</div>-->
+        <!--<div class="item">Link Item</div>-->
         <!--</div>-->
-                <!--</a>-->
-                 
-        </div>
-        <!--{{> userPopup}}-->
-      </div>
-      {{>sidebar}}
+        <!--</div>-->
+        <!--<div class="item">Link Item</div>-->
+        <!--</div>-->
+        <!--</a>-->
+    </div>
+    <!--{{> userPopup}}-->
+    </div>
+    {{>sidebar}}
     <div class="main container pusher">
         <div class="ui page grid">
             <div class="column">
                 <h1>&nbsp;</h1></div>
         </div>
-
         {{> yield}}
-       
     </div>
 </template>
 <template name="sidebarmenu">
     <a class="item" data-href="{{url}}">
-        <i class="{{icon}} icon"></i> {{text}}
-        {{#if badge}}
-<span class="ui label">{{badge}}</span>
-{{/if}}
+        <i class="{{icon}} icon"></i> {{text}} {{#if badge}}
+        <span class="ui label">{{badge}}</span> {{/if}}
     </a>
 </template>
-
 <!--
 <template name="avatarSemanticUI">
   <div class="avatar {{size}} {{shape}} {{class}}">
@@ -107,46 +82,44 @@
         {{#each sidebarmenus}} {{> sidebarmenu}} {{/each}}
     </div>
 </template>
-
 <!--<template name ="userPopup">-->
-   <!--<div class="ui fluid popup bottom left transition hidden">-->
-            <!--<div class="ui four column relaxed equal height divided grid">-->
-                <!--<div class="column">-->
-                    <!--<h4 class="ui header">Fabrics</h4>-->
-                    <!--<div class="ui link list">-->
-                        <!--<a class="item">Cashmere</a>-->
-                        <!--<a class="item">Linen</a>-->
-                        <!--<a class="item">Cotton</a>-->
-                        <!--<a class="item">Viscose</a>-->
-                    <!--</div>-->
-                <!--</div>-->
-                <!--<div class="column">-->
-                    <!--<h4 class="ui header">Size</h4>-->
-                    <!--<div class="ui link list">-->
-                        <!--<a class="item">Small</a>-->
-                        <!--<a class="item">Medium</a>-->
-                        <!--<a class="item">Large</a>-->
-                        <!--<a class="item">Plus Sizes</a>-->
-                    <!--</div>-->
-                <!--</div>-->
-                <!--<div class="column">-->
-                    <!--<h4 class="ui header">Colored</h4>-->
-                    <!--<div class="ui link list">-->
-                        <!--<a class="item">Neutrals</a>-->
-                        <!--<a class="item">Brights</a>-->
-                        <!--<a class="item">Pastels</a>-->
-                    <!--</div>-->
-                <!--</div>-->
-                <!--<div class="column">-->
-                    <!--<h4 class="ui header">Types</h4>-->
-                    <!--<div class="ui link list">-->
-                        <!--<a class="item">Knitwear</a>-->
-                        <!--<a class="item">Outerwear</a>-->
-                        <!--<a class="item">Pants</a>-->
-                        <!--<a class="item">Shoes</a>-->
-                    <!--</div>-->
-                <!--</div>-->
-            <!--</div>-->
-        <!--</div>-->
-
+<!--<div class="ui fluid popup bottom left transition hidden">-->
+<!--<div class="ui four column relaxed equal height divided grid">-->
+<!--<div class="column">-->
+<!--<h4 class="ui header">Fabrics</h4>-->
+<!--<div class="ui link list">-->
+<!--<a class="item">Cashmere</a>-->
+<!--<a class="item">Linen</a>-->
+<!--<a class="item">Cotton</a>-->
+<!--<a class="item">Viscose</a>-->
+<!--</div>-->
+<!--</div>-->
+<!--<div class="column">-->
+<!--<h4 class="ui header">Size</h4>-->
+<!--<div class="ui link list">-->
+<!--<a class="item">Small</a>-->
+<!--<a class="item">Medium</a>-->
+<!--<a class="item">Large</a>-->
+<!--<a class="item">Plus Sizes</a>-->
+<!--</div>-->
+<!--</div>-->
+<!--<div class="column">-->
+<!--<h4 class="ui header">Colored</h4>-->
+<!--<div class="ui link list">-->
+<!--<a class="item">Neutrals</a>-->
+<!--<a class="item">Brights</a>-->
+<!--<a class="item">Pastels</a>-->
+<!--</div>-->
+<!--</div>-->
+<!--<div class="column">-->
+<!--<h4 class="ui header">Types</h4>-->
+<!--<div class="ui link list">-->
+<!--<a class="item">Knitwear</a>-->
+<!--<a class="item">Outerwear</a>-->
+<!--<a class="item">Pants</a>-->
+<!--<a class="item">Shoes</a>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
 <!--</template>-->

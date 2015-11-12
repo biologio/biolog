@@ -25,7 +25,8 @@ Package.onUse(function(api) {
         'u2622:persistent-session',
         'dandv:jquery-rateit',
         'flemay:less-autoprefixer',
-        'timmyg:wow'
+        'timmyg:wow',
+        'themeteorchef:bert'
       
 
     ]);
@@ -41,7 +42,7 @@ Package.onUse(function(api) {
     api.add_files("client/js/conditionsMedicationsFeed.js", ["client"]);
     api.add_files("client/templates/conditionsMedicationsModals.html", ["client"]);
     api.add_files("client/templates/feed.html", ["client"]);
-    api.add_files("client/js/materialize.js", ["client"]);
+    // api.add_files("client/js/materialize.js", ["client"]);
     api.add_files("client/js/feed.js", ["client"]);
     api.add_files("client/templates/footer.html", ["client"]);
     api.add_files("client/templates/biologFeedbackForm.html", ["client"]);
