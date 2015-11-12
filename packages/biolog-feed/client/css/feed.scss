@@ -8,12 +8,17 @@
 body.feed {
     background: #e9eaed;
     background: #E4EAEA;
-      font-family: Raleway, sans-serif !important;
+     font-family: 'Lato', 'Helvetica Neue', Arial, Helvetica, sans-serif;
     color: #333;
     margin-top: 1em;
-    font-weight: normal
+    font-weight: normal;
+    background: url("/images/hero-bg.png") repeat scroll 0 0 rgba(228, 234, 234, 0.13)!important;
 }
-
+.main-nav{
+    .ui.menu .item{
+    font-weight:normal;
+    }
+}
 .bl-container {
     display: flex;
     justify-content: space-between;
@@ -162,6 +167,8 @@ overflow: scroll;
         margin: 0;
         background-color: #F6F7F8;
         border-top: 1px solid #e1e2e3;
+         background-color: rgba(212, 212, 213, 0.11);
+        border-top: 1px solid #EAECF6;
         max-width: 800px;
         .comment:last-child {
             padding-bottom: .5rem;
@@ -255,7 +262,7 @@ overflow: scroll;
     }
     .header.ui {
         font-size: 1rem;
-        font-weight: 100;
+        font-weight: normal;
         margin-bottom: .2rem;
         margin-top: 0;
         color:#e91e63;
@@ -386,23 +393,30 @@ overflow: scroll;
 
 .ui.menu.fixed,
 .ui.vertical.menu {
-    background: #51c1b1;
+    /*background: #51c1b1;*/
+    background:#FFFFFF;
     .item {
-        color: #fff;
+       /* color: #fff;*/
+       transition:all .3s;
+       color:rgb(103, 123, 190);
         &:hover {
             color: #fff;
+    color: #E91E63;
+    background: #fff;
+       box-shadow: 0 2px 0px #E91E63;
         }
         &:before {
             background: rgba(255, 255, 255, 0.1);
         }
-        .icon {
+            
+        .ion-android-menu.ion{
             font-size: 2.5rem;
         }
     }
 }
 
 .ui.button {
-    border-radius: 0;
+    /* border-radius: 0; */
 }
 
 .animated.fast {
@@ -420,6 +434,8 @@ overflow: scroll;
 .ui.menu a.item:active {
     color: #fff;
     background-color: #78D2DC;
+    background-color:rgba(103, 123, 190, 0.85);
+
 }
 .liked-true {
     color: #E91E63;
@@ -542,4 +558,36 @@ overflow: scroll;
     .ns-close::before, .ns-close::after {
     background: #937E5C !important;
 }
+}
+.atwho-view ul {
+    
+    list-style: none;
+    padding: 0;
+    margin: auto;
+    overflow: hidden;
+    max-width: 40em;
+}
+.bert-alert.success-purple {
+  background: #E91E63;
+  color: #fff;
+}
+.bert-alert.success-purple > .bert-container > .bert-gem {
+
+    float: left;
+    width: 32px;
+    height: 32px;
+    background: #E91E63;
+    border-radius: 24px;
+    margin-right: 15px;
+    border: solid 2px #fff;
+    outline: none;}
+
+   .bl-container .ui.feed > .event > .content .meta {
+    padding-bottom: .5em;
+}
+.ui.twitter.button{
+    background-color:#61CAEE;
+    &:hover{
+     background-color:#61CAEE;
+    }
 }

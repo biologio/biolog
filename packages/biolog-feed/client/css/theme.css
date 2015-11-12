@@ -1,15 +1,12 @@
-
-
 .ns-box {
     position: relative;
-    background: rgba(42,45,50,0.85);
+    background: rgba(42, 45, 50, 0.85);
     padding: 12px;
     line-height: 1.4;
-    
     pointer-events: none;
-    color: rgba(250,251,255,0.95);
+    color: rgba(250, 251, 255, 0.95);
     margin-bottom: .5rem;
-  }
+}
 
 .ns-box.ns-show {
     pointer-events: auto;
@@ -48,7 +45,7 @@
     backface-visibility: hidden;
 }
 
-.ns-close:hover, 
+.ns-close:hover,
 .ns-close:focus {
     outline: none;
 }
@@ -70,15 +67,18 @@
 }
 
 .ns-close::before {
-    -webkit-transform: translate(-50%,-50%) rotate(45deg);
-    transform: translate(-50%,-50%) rotate(45deg);
+    -webkit-transform: translate(-50%, -50%) rotate(45deg);
+    transform: translate(-50%, -50%) rotate(45deg);
 }
 
 .ns-close::after {
-    -webkit-transform: translate(-50%,-50%) rotate(-45deg);
-    transform: translate(-50%,-50%) rotate(-45deg);
+    -webkit-transform: translate(-50%, -50%) rotate(-45deg);
+    transform: translate(-50%, -50%) rotate(-45deg);
 }
+
+
 /* Growl-style notifications */
+
 .ns-attached {
     left: 30px;
     /*max-width: 300px;*/
@@ -90,9 +90,12 @@
     animation-direction: reverse;
 }
 
+
 /* Individual effects */
 
+
 /* Flip */
+
 .ns-effect-flip {
     background: #9bd1a2;
     -webkit-transform-origin: 50% 100%;
@@ -128,44 +131,65 @@
 }
 
 @-webkit-keyframes animFlipFront {
-    0% { -webkit-transform: perspective(1000px) rotate3d(1,0,0,-90deg); }
-    100% { -webkit-transform: perspective(1000px); }
+    0% {
+        -webkit-transform: perspective(1000px) rotate3d(1, 0, 0, -90deg);
+    }
+    100% {
+        -webkit-transform: perspective(1000px);
+    }
 }
 
 @keyframes animFlipFront {
-    0% { -webkit-transform: perspective(1000px) rotate3d(1,0,0,-90deg); transform: perspective(1000px) rotate3d(1,0,0,-90deg); }
-    100% { -webkit-transform: perspective(1000px); transform: perspective(1000px); }
+    0% {
+        -webkit-transform: perspective(1000px) rotate3d(1, 0, 0, -90deg);
+        transform: perspective(1000px) rotate3d(1, 0, 0, -90deg);
+    }
+    100% {
+        -webkit-transform: perspective(1000px);
+        transform: perspective(1000px);
+    }
 }
 
 @-webkit-keyframes animFlipBack {
-    0% { -webkit-transform: perspective(1000px) rotate3d(1,0,0,90deg); }
-    100% { -webkit-transform: perspective(1000px); }
+    0% {
+        -webkit-transform: perspective(1000px) rotate3d(1, 0, 0, 90deg);
+    }
+    100% {
+        -webkit-transform: perspective(1000px);
+    }
 }
 
 @keyframes animFlipBack {
-    0% { -webkit-transform: perspective(1000px) rotate3d(1,0,0,90deg); transform: perspective(1000px) rotate3d(1,0,0,90deg); }
-    100% { -webkit-transform: perspective(1000px); transform: perspective(1000px); }
+    0% {
+        -webkit-transform: perspective(1000px) rotate3d(1, 0, 0, 90deg);
+        transform: perspective(1000px) rotate3d(1, 0, 0, 90deg);
+    }
+    100% {
+        -webkit-transform: perspective(1000px);
+        transform: perspective(1000px);
+    }
 }
 
+
 /* Bouncy Flip adapted from animate.css by Dan Eden: http://daneden.github.io/animate.css/ */
+
 .ns-effect-bouncyflip {
     -webkit-transform-origin: 50% 0%;
     transform-origin: 50% 0%;
     background: #fff;
     color: #484860;
     top: 0;
-    box-shadow: 0 13px 10px -5px rgba(0,0,0,0.2);
+    box-shadow: 0 13px 10px -5px rgba(0, 0, 0, 0.2);
 }
 
 .ns-effect-bouncyflip .icon {
     /*position: absolute;*/
- 
     /*top: 2em;
     left: 2em;*/
 }
 
 .ns-effect-bouncyflip p {
-        padding: 0.5em 0.7em 0.6em 1em;
+    padding: 0.5em 0.7em 0.6em 1em;
 }
 
 .ns-effect-bouncyflip .ns-close::after,
@@ -188,26 +212,22 @@
 
 @-webkit-keyframes flipInX {
     0% {
-        -webkit-transform: perspective(400px) rotate3d(1,0,0,-90deg);
+        -webkit-transform: perspective(400px) rotate3d(1, 0, 0, -90deg);
         -webkit-transition-timing-function: ease-in;
     }
-
     40% {
-        -webkit-transform: perspective(400px) rotate3d(1,0,0,20deg);
+        -webkit-transform: perspective(400px) rotate3d(1, 0, 0, 20deg);
         -webkit-transition-timing-function: ease-out;
     }
-
     60% {
-        -webkit-transform: perspective(400px) rotate3d(1,0,0,-10deg);
+        -webkit-transform: perspective(400px) rotate3d(1, 0, 0, -10deg);
         -webkit-transition-timing-function: ease-in;
         opacity: 1;
     }
-
     80% {
-        -webkit-transform: perspective(400px) rotate3d(1,0,0,5deg);
+        -webkit-transform: perspective(400px) rotate3d(1, 0, 0, 5deg);
         -webkit-transition-timing-function: ease-out;
     }
-
     100% {
         -webkit-transform: perspective(400px);
     }
@@ -215,34 +235,30 @@
 
 @keyframes flipInX {
     0% {
-        -webkit-transform: perspective(400px) rotate3d(1,0,0,-90deg);
-        transform: perspective(400px) rotate3d(1,0,0,-90deg);
+        -webkit-transform: perspective(400px) rotate3d(1, 0, 0, -90deg);
+        transform: perspective(400px) rotate3d(1, 0, 0, -90deg);
         -webkit-transition-timing-function: ease-in;
         transition-timing-function: ease-in;
     }
-
     40% {
-        -webkit-transform: perspective(400px) rotate3d(1,0,0,20deg);
-        transform: perspective(400px) rotate3d(1,0,0,20deg);
+        -webkit-transform: perspective(400px) rotate3d(1, 0, 0, 20deg);
+        transform: perspective(400px) rotate3d(1, 0, 0, 20deg);
         -webkit-transition-timing-function: ease-out;
         transition-timing-function: ease-out;
     }
-
     60% {
-        -webkit-transform: perspective(400px) rotate3d(1,0,0,-10deg);
-        transform: perspective(400px) rotate3d(1,0,0,-10deg);
+        -webkit-transform: perspective(400px) rotate3d(1, 0, 0, -10deg);
+        transform: perspective(400px) rotate3d(1, 0, 0, -10deg);
         -webkit-transition-timing-function: ease-in;
         transition-timing-function: ease-in;
         opacity: 1;
     }
-
     80% {
-        -webkit-transform: perspective(400px) rotate3d(1,0,0,5deg);
-        transform: perspective(400px) rotate3d(1,0,0,5deg);
+        -webkit-transform: perspective(400px) rotate3d(1, 0, 0, 5deg);
+        transform: perspective(400px) rotate3d(1, 0, 0, 5deg);
         -webkit-transition-timing-function: ease-out;
         transition-timing-function: ease-out;
     }
-
     100% {
         -webkit-transform: perspective(400px);
         transform: perspective(400px);
@@ -257,26 +273,26 @@
 }
 
 @-webkit-keyframes flipInXSimple {
-  0% {
-    -webkit-transform: perspective(400px) rotate3d(1, 0, 0, -90deg);
-    -webkit-transition-timing-function: ease-in;
-  }
-  100% {
-    -webkit-transform: perspective(400px);
-  }
+    0% {
+        -webkit-transform: perspective(400px) rotate3d(1, 0, 0, -90deg);
+        -webkit-transition-timing-function: ease-in;
+    }
+    100% {
+        -webkit-transform: perspective(400px);
+    }
 }
 
 @keyframes flipInXSimple {
-  0% {
-    -webkit-transform: perspective(400px) rotate3d(1, 0, 0, -90deg); 
-    transform: perspective(400px) rotate3d(1, 0, 0, -90deg);
-    -webkit-transition-timing-function: ease-in;
-    transition-timing-function: ease-in;
-  }
-  100% {
-    -webkit-transform: perspective(400px);
-    transform: perspective(400px);
-  }
+    0% {
+        -webkit-transform: perspective(400px) rotate3d(1, 0, 0, -90deg);
+        transform: perspective(400px) rotate3d(1, 0, 0, -90deg);
+        -webkit-transition-timing-function: ease-in;
+        transition-timing-function: ease-in;
+    }
+    100% {
+        -webkit-transform: perspective(400px);
+        transform: perspective(400px);
+    }
 }
 
 @media screen and (max-width: 25em) {
@@ -286,74 +302,99 @@
         right: 30px;
     }
 }
+
+
 /*
 aboutus page
 */
 
 nav.light-blue.lighten-1 {
-    background-color: #5F7BE5  !important;
+    background-color: #5F7BE5 !important;
 }
-.bio-header{
+
+.bio-header {
     font-size: 5rem !important;
     font-weight: 100 !important;
     background: url('/images/header-bg.png') no-repeat bottom center !important;
-        padding-bottom: 1.5rem;
-            margin: .8rem;
-            color:#5F7BE5 !important;
+    padding-bottom: 1.5rem;
+    margin: .8rem;
+    color: #5F7BE5 !important;
 }
-#index-banner{
+
+#index-banner {
     background: url("/images/hero-bg.png") repeat scroll 0 0 #fff !important;
+    border-bottom: solid 5px #E6E6E6;
 }
-.btn-large{
+
+.btn-large {
     font-weight: 400 !important;
     font-size: 1.4rem !important;
     text-transform: capitalize !important;
-    background-color:#5F7BE5 !important;
+    background-color: #5F7BE5 !important;
 }
+
 .page-footer.blue {
     background-color: #5F7BE5 !important;
     text-align: center;
 }
+
 .footer-copyright .icon {
     font-size: 2.3rem;
 }
+
 .footer-copyright .icon {
-  
-  font-size:2.3rem;
-  
+    font-size: 2.3rem;
 }
-.text-justify{
-  text-align:justify;
+
+.text-justify {
+    text-align: justify;
 }
-.footer-heading{
-  
-      padding-bottom: 20px;
-      border-bottom: solid 2px #879AE2;
-      margin-bottom: 10px !important;
+
+.footer-heading {
+    padding-bottom: 20px;
+    border-bottom: solid 2px #879AE2;
+    margin-bottom: 10px !important;
 }
-.p{
+.footer-heading a{
+    color:#fff;
+}
+
+.p {
     font-size: 1.3rem;
 }
-.icon-block{
-           box-shadow: 0 10px 10px -7px rgb(186, 186, 186);
+
+.icon-block {
+    box-shadow: 0 2px 0px 0px rgba(212, 212, 213, 0.32);
     margin: 1rem;
     padding: .3rem;
-
+    padding-bottom: .8rem;
 }
-.material ul.hide-on-med-and-down li a, .material ul#nav-mobile li #at-nav-button a{
-    font-size:1rem;
+
+.icon-block h5 {
+    color: #6679BB;
+    font-weight: bold;
+}
+
+.material ul.hide-on-med-and-down li a,
+.material ul#nav-mobile li #at-nav-button a {
+    font-size: 1rem;
     font-weight: 600;
-
 }
-.material ul.hide-on-med-and-down li a i, .material ul#nav-mobile li #at-nav-button a i{
+
+.material ul.hide-on-med-and-down li a i,
+.material ul#nav-mobile li #at-nav-button a i {
     font-size: 1.5rem;
 }
-.font-weight-400{
+
+.font-weight-400 {
     font-weight: 400;
 }
-.feedback .ui .checkbox label{
+
+.feedback .ui .checkbox label {
     cursor: pointer;
 }
-.ui.menu.fixed .item .material-icons.icon{
+
+.ui.menu.fixed .item .material-icons.icon {
     font-size: 1.5rem;
 }
+

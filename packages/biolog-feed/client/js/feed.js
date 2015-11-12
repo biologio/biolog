@@ -59,27 +59,28 @@
  Template.feed.rendered = function() {
 
      $("body").addClass('feed');
-
+console.log("loaded");
       $("#post").atwho({
-         at: "@",
-         startWithSpace: true,
+         at: "#",
+         //startWithSpace: true,
          displayTimeout: 300,
          // highlight_first suggestion in popup menu
          highlightFirst: true,
          // delay time trigger At.js while typing. For example: delay: 400
-         delay: null,
+         delay: 400,
+         limit:10,
          // suffix for inserting string.
-         suffix: ": ",
+         suffix: " ",
          // don't show dropdown view without `suffix`
          hideWithoutSuffix: false,
-         displayTpl: "<li data-sign='${at}' data-collection='${collection}' data-name='${data}' data-link = '${link}'>${name} <small>${desc}</small></li>",
+         displayTpl: "<li data-sign='${at}' data-semanticType='${semanticType}' data-collection='${collection}' data-name='${data}' data-link = '${link}'>${name} </li>",
 
          callbacks: {
              remoteFilter: function(query, callback) {
-                 $.getJSON('https://data.bioontology.org/search?ontologies=MEDLINEPLUS,ICD10CM&suggest=t…play_context=false&apikey=89b05cf1-2e81-48f6-baad-58236f6af05d', {
+                 $.getJSON(getUrlSearch(Bioontology.ONTOLOGIES_HEALTH), {
                      q: query
                  }, function(data) {
-                     // console.log(data);
+                      console.log(data);
                      if (data.collection.length > 0) {
                          conditions = $.map(data.collection, function(value, i) {
                              return {
@@ -89,7 +90,8 @@
                                  'data': data.collection[i].prefLabel.replace(/\s/g, '-'),
                                  'desc': data.collection[i].definition ? data.collection[i].definition[0] : "no description",
                                  'link': data.collection[i]['@id'],
-                                 'collection': JSON.stringify(data.collection[i])
+                                 'collection': JSON.stringify(data.collection[i]),
+                                 'semanticType': data.collection[i].semanticType
                              };
                          });
                          // console.log(conditions)
@@ -99,60 +101,36 @@
 
                      callback(null);
                  });
-             }
+             },
+              beforeInsert:function(value, $li) {
+                console.log(value, $li)
+                return value.replace("#", '');
+              }
          }
-     }).atwho({
-         at: "#",
-
-         displayTpl: "<li data-sign='${at}' data-collection='${collection}' data-name='${data}' data-link = '${link}'>${name} <small>${desc}</small></li>",
-         startWithSpace: true,
-         displayTimeout: 300,
-         // highlight_first suggestion in popup menu
-         highlightFirst: true,
-         // delay time trigger At.js while typing. For example: delay: 400
-         delay: null,
-         // suffix for inserting string.
-         suffix: ": ",
-         // don't show dropdown view without `suffix`
-         hideWithoutSuffix: false,
-         callbacks: {
-             remoteFilter: function(query, callback) {
-                 $.getJSON('http://bioportal.smart-bio.org:8080/search?ontologies=RXNORM&suggest=true&s…play_context=false&apikey=95d31cce-3247-4186-ae95-97c61884c50a', {
-                     q: query
-                 }, function(data) {
-                     console.log(data);
-                     if (data.collection.length > 0) {
-                         conditions = $.map(data.collection, function(value, i) {
-                             return {
-
-
-                                 'id': i,
-                                 'at': "#",
-                                 'name': data.collection[i].prefLabel,
-                                 'data': data.collection[i].prefLabel.replace(/\s/g, '-'),
-                                 'desc': data.collection[i].definition ? data.collection[i].definition[0] : "no description",
-                                 'link': data.collection[i]["@id"],
-                                 'collection': JSON.stringify(data.collection[i])
-                             };
-                         });
-                         // console.log(conditions)
-                         callback(conditions)
-                         return;
-                     }
-
-                     callback(null);
-                 });
-             }
-         }
-
-     });
+     })
  };
  Template.feed.events({
      'click .publish': function(e, tpl) {
-         $(e.target).addClass("loading");
+         
          e.preventDefault();
          post = tpl.find('#post');
+         if(!post.value) return;
+         $(e.target).addClass("loading");
          var postHTML = post.value;
+        if(postHTML.indexOf("#") > -1){
+//              postHTML = postHTML.replace(/\#(.+?):/g, function replacer(match, word, index) {
+//                        console.log(match)
+//                     // var link = '';
+// // +                     Meteor.medArr.forEach(function(element, index) {
+// // +
+// // +                         if (element.id == word.replace(/\s+/g, '-')) {
+// // +                             link = element.link;
+// // +
+// // +                         }
+// // +                     });
+//                     return  word//"<a href=" + link + ">" + word + "</a>";
+//                 });
+        }
          var button = $(e.target);
 
 
@@ -168,7 +146,9 @@
 
              annotations = _.uniq(annotations)
              annotations.forEach(function(element, index) {
-                 savePostFact(element);
+                element.semanticType = Bioontology.getItemSemanticTypes(element.annotatedClass)
+                savePostFact(element);
+                 console.log(element)
              });
 
              postHTML = UniHTML.purify(postHTML);
@@ -212,9 +192,59 @@
      },
      'click .post-edit': function(e, tpl) {
          // tpl.isEditMode.set(true);
+         console.log("edit")
          var actionButton = $(e.target);
 
          if (actionButton.hasClass("ion-edit")) {
+              $(".post-input").atwho({
+         at: "#",
+         //startWithSpace: true,
+         displayTimeout: 300,
+         // highlight_first suggestion in popup menu
+         highlightFirst: true,
+         // delay time trigger At.js while typing. For example: delay: 400
+         delay: 400,
+         limit:10,
+         // suffix for inserting string.
+         suffix: " ",
+         // don't show dropdown view without `suffix`
+         hideWithoutSuffix: false,
+          displayTpl: "<li data-sign='${at}' data-semanticType='${semanticType}' data-collection='${collection}' data-name='${data}' data-link = '${link}'>${name} </li>",
+
+         callbacks: {
+             remoteFilter: function(query, callback) {
+                 $.getJSON(getUrlSearch(Bioontology.ONTOLOGIES_HEALTH), {
+                     q: query
+                 }, function(data) {
+                      //console.log(data);
+                     if (data.collection.length > 0) {
+                         conditions = $.map(data.collection, function(value, i) {
+                             return {
+                                 'id': i,
+                                 'at': "@",
+                                 'name': data.collection[i].prefLabel,
+                                 'data': data.collection[i].prefLabel.replace(/\s/g, '-'),
+                                 'desc': data.collection[i].definition ? data.collection[i].definition[0] : "no description",
+                                 'link': data.collection[i]['@id'],
+                                 'collection': JSON.stringify(data.collection[i]),
+                                 'semanticType': data.collection[i].semanticType
+                             };
+                         });
+                         // console.log(conditions)
+                         callback(conditions)
+                         return;
+                     }
+
+                     callback(null);
+                 });
+             },
+              beforeInsert:function(value, $li) {
+                console.log(value, $li)
+                return value.replace("#", '');
+              }
+         }
+     })
+
              actionButton.next('.text').addClass('hide');
              if (actionButton.prev('.section-post-edit').find("textarea")[0].value.indexOf("</a>") > -1) {
                  var value = actionButton.prev('.section-post-edit').find("textarea")[0].value;
@@ -248,6 +278,7 @@
              annotations = _.uniq(annotations)
              annotations.forEach(function(element, index) {
                  savePostFact(element);
+                 console.log(element)
              });
 
              postUpdateText = UniHTML.purify(postUpdateText);
@@ -268,6 +299,13 @@
                          actionButton.next('.text').removeClass('hide');
                          actionButton.prev('.section-post-edit').addClass("hide");
                          actionButton.addClass("ion-edit").removeClass('ion-android-close');
+                         Bert.alert({
+  //title: 'Updated!',
+  message: 'Post updated!',
+  type: 'success-purple',
+  style: 'growl-top-right',
+  icon: 'ion ion-android-done'
+});
                      }
                  });
 
@@ -386,5 +424,13 @@
      }
  }
 
+function getUrlSearch(ontologies) {
+    var apiKey = Bioontology.getApiKey();
+    var searchUrl = Bioontology.getBaseUrlSearch();
+    return searchUrl + "?suggest=true" +
+        "&ontologies=" + ontologies +
+        "&include=prefLabel,synonym,definition,notation,cui,semanticType,properties" +
+        "&display_context=false&apikey=" + apiKey;
+};
 
  
