@@ -591,3 +591,13 @@ overflow: scroll;
      background-color:#61CAEE;
     }
 }
+.ns-box .title {
+    top: .2rem;
+    left: .4rem;
+    font-weight: bold;
+    color: #484860;
+    transition: all .5s;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
