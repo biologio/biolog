@@ -109,6 +109,7 @@ console.log("loaded");
               // },
               // sorter:  function(query, items, searchKey){
               //   console.log(query, items, searchKey);
+              //    items = _.sortBy(items, 'name');
               //   return items;
               // }
          }
