@@ -526,3 +526,15 @@ color:#6679BB;
 .light-blue-text {
     color: #6679BB !important;
 }
+.material .icon-block i.circular.icon:hover {
+   box-shadow: 18em 0em 0em 0.1em rgba(155, 163, 211, 0.17) inset;
+    /* color: #fff; */
+    opacity: 1;
+}
+i.icon.gift.alternate.aligned.ui.circular.center.big {
+}
+.material .icon-block i.circular.icon {
+   
+    transition: all .5s ease;
+    opacity: .8;
+}
