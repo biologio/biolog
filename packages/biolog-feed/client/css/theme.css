@@ -501,13 +501,13 @@ margin-top:2em;
     cursor: pointer;
 }
 .material ul.hide-on-med-and-down li:hover #at-nav-button, ul#nav-mobile li.active #at-nav-button {
-    background: #6679BB;
+    background: rgb(155, 163, 211);
     color: #fff;
     cursor: pointer;
 }
 
 .material nav ul li:hover, .material nav ul li.active {
-    background-color: rgb(102, 121, 187);
+    background-color: rgb(155, 163, 211);
 }
 .material nav ul li:hover a, .material nav ul li:hover a#at-nav-button, .material nav ul li:hover a i, .material nav ul li.active a,.material nav ul li.active a i{
     color:#fff;
