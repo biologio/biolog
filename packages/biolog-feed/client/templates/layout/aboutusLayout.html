@@ -1,10 +1,10 @@
 <template name="aboutusLayout">
     <div class="material">
-        <nav class="light-blue lighten-1 " role="navigation">
+        <nav class=" " role="navigation">
             <div class="nav-wrapper container">
                 {{#if currentUser}}
-                <a id="logo-container" href="/feed" class="brand-logo">Biolog.io (alpha)</a> {{else}}
-                <a id="logo-container" href="/" class="brand-logo">Biolog.io (alpha)</a> {{/if}}
+                <a id="" href="/feed" class="brand-logo"><img src="/images/Biolog.io_logo.png" class="logo-image"></a> {{else}}
+                <a id="" href="/" class="brand-logo"><img src="/images/Biolog.io_logo.png" class="logo-image"></a> {{/if}}
 
                 <ul class="right hide-on-med-and-down">
                   
@@ -19,7 +19,7 @@
                      <li> {{> atNavButton}}</li>
                       {{else}}
                       <li>
-                       <a class="" href="/sign-in" style=" ">Log in</a>
+                         <a class="" href="/sign-in"  style=" "><i class="ion-log-in ion  material-icons left"></i> Sign In</a>
                        </li>
                        {{/if}}
                         
@@ -33,14 +33,14 @@
                           <a class="" href="http://invent.healthcare/?cat=for-new-apps" style=""><i class="material-icons left ion ion-android-bulb"></i> Share your idea</a>
                         </li>
                            <li>
-                        <a  class="show-feedback-form " href="#" style=" "> <i class=" material-icons left ion icon ion-clipboard ion"></i> Feedback</a>
+                        <a  class="show-feedback-form " href="#" style=" "> <i class=" material-icons left  icon ion-clipboard ion"></i> Feedback</a>
                       </li>
                   
                    <li>
                      {{#if currentUser}}
                    {{> atNavButton}}
                       {{else}}
-                       <a class="ui inverted button" href="/sign-in"  style=" ">Log in</a>
+                       <a class="" href="/sign-in"  style=" "><i class="ion-log-in ion  material-icons left"></i> Sign In</a>
                        {{/if}}
 
                      </li>
@@ -53,4 +53,10 @@
         {{> yield}}
     </div>
     {{>biologFeedbackForm}}
+</template>
+
+<template name="custom_atNavButton">
+ 
+    <a class="" id="at-nav-button"><i class="ion ion-power material-icons left"></i> Sign Out</a>
+  
 </template>

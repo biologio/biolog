@@ -15,7 +15,7 @@
 
 
     };
-    
+    Template.custom_atNavButton.replaces("atNavButton");
     Template.aboutusLayout.events({
         'click .show-feedback-form': function(e, tpl) {
             console.log(e);

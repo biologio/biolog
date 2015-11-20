@@ -3,18 +3,37 @@
         <div class="container">
             <br>
             <br>
-            <h1 class="header center blue-text bio-header"><img src="/images/Biolog.io_logo.png" alt="" class="logo-image"></h1>
-            <div class="row center">
-                <h5 class="header col s12 light">Biolog.io is a personal health record + expert system, designed for people to drive their health care. Our mission is to give people the tools to make optimal health decisions and to eliminate medical error.</h5>
+            <h1 class="header center blue-text bio-header"><img src="/images/Biolog.io_logo.png" alt="" class="logo-image"></h1></div>
+            <div class="row center heading-1">
+                <div class="container">
+                <h5 class="header normal-weight col s12 light">Biolog.io is a personal health record + expert system, designed for people to drive their health care. Our mission is to give people the tools to make optimal health decisions and to eliminate medical error.</h5></div>
             </div>
             <div class="row center">
+                <div class="col s4 center">&nbsp;</div>
+                  <div class="col s4 center margin-top twoem">
                 {{#if currentUser}}
-                <a href="/feed" class="button ui massive blue">Try It Now</a> {{else}}
-                <a href="/sign-in" class="btn-large waves-effect waves-light blue">Sign Up</a> {{/if}}
+              
+                <a href="/feed" class="button ui fluid fade animated huge indigo inverted">
+<div class="visible content">Try  Now</div>
+  <div class="hidden content">
+    <i class="  fa fa-2x fa-arrow-right"></i>
+  </div>
+                 </a> {{else}}
+
+                <a href="/sign-in" class="button ui animated fade  fluid huge indigo inverted">
+<div class="visible content">Sign Up</div>
+  <div class="hidden content">
+   Register Biolog <i class=" fa icon fa-2x fa-sign-in"></i>
+  </div>
+                    </a> 
+                
+                {{/if}}
+                </div>
+                <div class="col s4 center">&nbsp;</div>
             </div>
             <br>
             <br>
-        </div>
+        
     </div>
     <div class="container">
         <div class="section">
@@ -52,14 +71,14 @@
     </div>
     <div class="section no-pad-bot">
         <div class="container wow zoomIn">
-            <h1 class="header center blue-text bio-header">Our Vision</h1>
+            <h1 class="header center indigo-color bio-header">Our Vision</h1>
             <div class="row center">
                 <h5 class="header col s12 light">Our vision is that we have entered a new era in which patients like us will control our health information and make better health decisions. Biolog is required to make this happen.</h5>
             </div>
             <br>
         </div>
     </div>
-    <footer class="page-footer blue">
+    <footer class="page-footer indigo aligned-center center">
         <div class=" valign-wrapper">
             <div class="container valign">
                 <h5 class="white-text  footer-heading">Brought to you by your friends at <a target="_blank" href="http://invent.healthcare">invent.healthcare</a></h5>

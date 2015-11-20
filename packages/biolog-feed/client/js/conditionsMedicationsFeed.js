@@ -113,7 +113,7 @@ Template.conditionsMedicationsHistory.helpers({
 });
 Template.conditionsMedicationsHistory.events({
     "click .ns-box": function(event, template) {
-        //console.log("clicked: " + JSON.stringify(this));
+        console.log("clicked: " + JSON.stringify(this));
         if (this.pred == "patient/medication") {
             Session.set("biolog:medications/med.editing", this);
         } else {
@@ -129,6 +129,7 @@ Template.conditionsMedicationsHistory.rendered = function() {
 };
 Template.factItem.rendered = function() {
     var getFrowns = function() {
+        console.log(this)
         return this.data.num;
     };
 

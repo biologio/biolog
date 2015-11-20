@@ -5,15 +5,16 @@
 }
 
 
-body.feed {
+body.feed, body.feed.pushable {
     background: #e9eaed;
     background: #E4EAEA;
      font-family: 'Lato', 'Helvetica Neue', Arial, Helvetica, sans-serif;
     color: #333;
     margin-top: 1em;
     font-weight: normal;
-    background: url("/images/hero-bg.png") repeat scroll 0 0 rgba(228, 234, 234, 0.13)!important;
+    background: url("/images/hero-bg.png") repeat scroll 0 0 rgba(228, 234, 234, 0.42) !important;
 }
+
 .main-nav{
     .ui.menu .item{
     font-weight:normal;

@@ -26,7 +26,8 @@ Package.onUse(function(api) {
         'dandv:jquery-rateit',
         'flemay:less-autoprefixer',
         'timmyg:wow',
-        'themeteorchef:bert'
+        'themeteorchef:bert',
+        'aldeed:template-extension'
       
 
     ]);
