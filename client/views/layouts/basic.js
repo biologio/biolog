@@ -1,5 +1,5 @@
-Meteor.startup(function(){
-     FeedMedications = new Mongo.Collection(null);
+Meteor.startup(function() {
+    FeedMedications = new Mongo.Collection(null);
 });
 
 Template.basicLayout.events({
@@ -18,29 +18,28 @@ Template.basicLayout.events({
         $('.ui.sidebar').sidebar('setting', 'transition', 'scale down').sidebar('toggle');
     },
     'click .show-feedback-form': function(e, tpl) {
-            console.log(e);
-            $('.feedback.modal').modal({
-                 closable: true,
+        console.log(e);
+        $('.feedback.modal').modal({
+            closable: true,
             onApprove: function() {
-               var obj = Feed.createFeedOjbect($('.feed-item'));
-                 if ($('#feedbackText').val() != '') {
-            Meteor.call('addFeedback', obj, function(err, data) {
-                if (!err) {
-                    console.log(data);
+                var obj = Feed.createFeedOjbect($('.feed-item'));
+                if ($('#feedbackText').val() != '') {
+                    Meteor.call('addFeedback', obj, function(err, data) {
+                        if (!err) {
+                            console.log(data);
 
+                        }
+
+                    })
+                } else {
+                    $(".feeback-label").addClass("error");
+                    return false;
                 }
-
-            })
-        }
-        else {
-            $(".feeback-label").addClass("error");
-            return false;
-        }
                 return true;
             },
             onDeny: function() {
-               $(".feeback-label").removeClass("error");
-                
+                $(".feeback-label").removeClass("error");
+
                 return true;
             },
             onHide: function() {
@@ -48,12 +47,12 @@ Template.basicLayout.events({
                 $(".feeback-label").removeClass("error");
                 return true;
             }
-            })
+        })
 
-            .modal('setting', 'transition', 'vertical flip')
-                .modal('show');
-                e.preventDefault();
-        }
+        .modal('setting', 'transition', 'vertical flip')
+            .modal('show');
+        e.preventDefault();
+    }
 
 });
 
@@ -63,19 +62,22 @@ Template.basicLayout.rendered = function() {
     if (!getPatient()) {
         Session.set("biolog.patient.modal.open", "true");
     }
-// show dropdown on hover
-       this.$('.menu.main-nav  .ui.dropdown').dropdown({
+    // show dropdown on hover
+    this.$('.menu.main-nav  .ui.dropdown').dropdown({
         on: 'hover'
-      });
-      this.$('.menu.main-nav  .ui.dropdown.item1').dropdown({
+    });
+    this.$('.menu.main-nav  .ui.dropdown.item1').dropdown({
         on: 'hover'
-      });
+    });
 
 };
 
 Template.basicLayout.helpers({
     getUserId: function() {
         return Meteor.user()._id;
+    },
+    alertCounts: function() {
+        return countAlerts();
     }
 });
 
@@ -85,14 +87,18 @@ Template.sidebar.helpers({
     sidebarmenus: [{
             text: "Home",
             icon: "ion-ios-home",
+            url: "/"
+        }, {
+            text: "Feed",
+            icon: "ion-ios-paper ion   icon",
             url: "/feed"
         },
+
         {
             text: "Conditions",
             icon: "heartbeat",
             url: "/conditions"
-        },
-        {
+        }, {
             text: "Meds",
             icon: "ion-medkit",
             url: "/meds"

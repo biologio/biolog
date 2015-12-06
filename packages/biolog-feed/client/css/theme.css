@@ -5,6 +5,10 @@
     line-height: 1.4;
     pointer-events: none;
     color: rgba(250, 251, 255, 0.95);
+  
+    min-width: 225px;
+    max-width: 270px;
+    margin: 0 auto;
     margin-bottom: .5rem;
 }
 
@@ -80,7 +84,7 @@
 /* Growl-style notifications */
 
 .ns-attached {
-    left: 30px;
+    /*left: 30px;*/
     /*max-width: 300px;*/
 }
 
@@ -297,9 +301,9 @@
 
 @media screen and (max-width: 25em) {
     .ns-attached {
-        left: 30px;
+        /*left: 30px;
         max-width: none;
-        right: 30px;
+        right: 30px;*/
     }
 }
 
@@ -313,12 +317,13 @@ nav.light-blue.lighten-1 {
 }
 
 .bio-header {
-    font-size: 5rem !important;
+    font-size: 4rem !important;
     font-weight: 100 !important;
   /*  background: url('/images/header-bg.png') no-repeat bottom center !important;*/
     padding-bottom: 1.5rem;
     margin: .8rem;
     /*color: #5F7BE5 !important;*/
+    padding: 2rem;
 }
 
 #index-banner {
@@ -364,7 +369,7 @@ nav.light-blue.lighten-1 {
 }
 
 .icon-block {
-    box-shadow: 0 2px 0px 0px rgba(212, 212, 213, 0.32);
+   /* box-shadow: 0 2px 0px 0px rgba(212, 212, 213, 0.32);*/
     margin: 1rem;
     padding: .3rem;
     padding-bottom: .8rem;
@@ -538,3 +543,201 @@ i.icon.gift.alternate.aligned.ui.circular.center.big {
     transition: all .5s ease;
     opacity: .8;
 }
+
+.picker__select--year.browser-default {
+    display: inline !important;
+    background-color: #FFFFFF;
+    width: 25% !important;
+        border: none;
+}
+.picker__select--month.browser-default {
+    display: inline !important;
+    background-color: #FFFFFF;
+    width: 40% !important;
+        border: none;
+}
+.picker__weekday-display {
+    background-color: rgb(88, 99, 139);
+}
+.picker__date-display {
+    background-color: #495581;}
+selected, .picker__day--selected:hover, .picker--focused .picker__day--selected {
+    border-radius: 80%;
+    -webkit-transform: scale(0.9);
+    -moz-transform: scale(0.9);
+    -ms-transform: scale(0.9);
+    -o-transform: scale(0.9);
+    transform: scale(0.9);
+    background-color: #495581;}
+    .picker__nav--prev:hover, .picker__nav--next:hover {
+    cursor: pointer;
+    color: #000000;
+    background: rgba(73, 85, 129, 0.55);}
+
+
+.btn-flat{
+
+    cursor: pointer;
+    display: inline-block;
+    min-height: 1em;
+    outline: none;
+    border: none;
+    vertical-align: baseline;
+    background: #e0e1e2 none;
+    color: rgba(0, 0, 0, 0.6);
+    font-family: 'Lato', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    margin: 0em 0.25em 0em 0em;
+    padding: 0.78571429em 1.5em 0.78571429em;
+    text-transform: none;
+    text-shadow: none;
+    font-weight: bold;
+    line-height: 1em;
+    font-style: normal;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 0.28571429rem;
+    box-shadow: 0px 0px 0px 1px transparent inset, 0px 0em 0px 0px rgba(34, 36, 38, 0.15) inset;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-transition: opacity 0.1s ease, background-color 0.1s ease, color 0.1s ease, box-shadow 0.1s ease, background 0.1s ease;
+    transition: opacity 0.1s ease, background-color 0.1s ease, color 0.1s ease, box-shadow 0.1s ease, background 0.1s ease;
+    will-change: '';
+    -webkit-tap-highlight-color: transparent;
+        font-size: .8rem;
+
+}
+#profileForm .btn-flat.picker__today{
+        background-color: #21ba45;
+    color: #ffffff;
+    text-shadow: none;
+    background-image: none;
+    
+}
+.btn-flat.picker__clear{
+        background-color: #db2828;
+    color: #ffffff;
+    text-shadow: none;
+    background-image: none;
+}
+ .btn-flat.picker__close{
+    background-color: #21ba45;
+        /*//background-color: #21ba45;
+
+    color: #ffffff;*/
+    text-shadow: none;
+    background-image: none;
+        color: #fff;
+}
+
+.sec-motion-graphpic{
+    /*border-bottom: solid 4px #eb1478;*/
+}
+.ui.inverted.indiegogo.buttons .button, .ui.inverted.indiegogo.button, .ui.inverted.indiegogo.buttons .button, .ui.indiegogo.purple.button
+{
+    background-color: #eb1478;
+    box-shadow: 0px 0px 0px 2px rgba(235, 20, 120, 0.8) inset !important;
+    color: #fff;
+    /*text-transform: uppercase;*/
+    font-weight: bolder;
+    font-family: 'Antenna Cond Black', sans-serif;
+    
+   
+}
+.material i.icon.right{
+    float: none !important;
+}
+.material i.icon.left{
+   /* float: none !important;*/
+}
+
+.ui.items > .item > [class*="middle aligned"].content {
+    -webkit-align-self: center;
+    -ms-flex-item-align: center;
+    align-self: center;
+}
+.features .ui.items > .item > .content > .header{
+    font-size: 3rem;
+    color:#3b3b3b;
+    display: block;
+}
+.features .ui.items > .item > .content{
+    padding-right: .3rem;
+}
+.features .ui.items > .item > .content > .description{
+    font-size: 1.5em;
+    color:#525252;
+}
+.position.relative{
+    position: relative;
+}
+.vision .ui.vertical.divider:before, .vision .ui.vertical.divider:after{
+border-color: transparent;
+}
+.vision .ui.divider > .icon{
+    font-size: 2rem;
+}
+.material .ui.header.divider .icon:only-child{
+    margin-right: 0;
+}
+.material .section{
+
+    min-height: 400px;
+    width: 100%;
+    -webkit-display: flex;
+    -moz-display: flex;
+    -ms-display: flex;
+    display: flex;
+    
+    -webkit-flex-direction: column;
+    -webkit-align-items: center;
+    -webkit-justify-content: center;
+    -moz-flex-direction: column;
+    -moz-align-items: center;
+    -moz-justify-content: center;
+     -ms-flex-direction: column;
+    -ms-align-items: center;
+    -ms-justify-content: center;
+     flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.material .ui.definition.table tr td:first-child {
+    background: #D363A1;
+    font-weight: bold;
+    color: #fff;
+}
+.material .ui.basic.table th {
+    background: #D363A1;
+    border-left: none;
+    color: #fff;
+}
+.material .ui.basic.table td {
+    background: #fff;}
+    .sec-motion-graphpic  i.right{
+        margin-left: 0;
+    }
+    .ui.menu .ui.dropdown .menu > .item{
+        font-size: initial !important;
+    }
+ .sec-motion-graphpic  .ui.items .item .content{
+        margin-right: 2rem;
+    }
+    .sec-motion-graphpic  .ui.items .item .description p{
+       font-size: 1.2rem;
+       color:#525252;
+    }
+     .sec-motion-graphpic  .ui.items .item .sub.header{
+       display: block;
+       margin-top: .8rem;
+       margin-bottom: .8rem;
+    }
+.cares .ui.items .item i.icon{
+    opacity: .7;
+}
+.cares .ui.items .item:hover i.icon{
+    opacity: 1;
+}
+
+

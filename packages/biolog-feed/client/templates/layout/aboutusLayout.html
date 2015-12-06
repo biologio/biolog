@@ -8,7 +8,12 @@
 
                 <ul class="right hide-on-med-and-down">
                   
-                      
+                      {{#if currentUser}}
+
+                      <li>
+                          <a class="" href="/feed" style=""><i class="material-icons left ion-ios-paper ion   icon"></i> Feed</a>
+                        </li>
+                      {{/if}}
                       <li>
                           <a class="" href="http://invent.healthcare/?cat=for-new-apps" style=""><i class="material-icons left ion ion-android-bulb"></i> Share your idea</a>
                         </li>
@@ -19,7 +24,7 @@
                      <li> {{> atNavButton}}</li>
                       {{else}}
                       <li>
-                         <a class="" href="/sign-in"  style=" "><i class="ion-log-in ion  material-icons left"></i> Sign In</a>
+                         <a class="" href="/sign-in"  style=" "><i class="ion-log-in ion  material-icons left"></i> Sign in</a>
                        </li>
                        {{/if}}
                         
@@ -40,7 +45,7 @@
                      {{#if currentUser}}
                    {{> atNavButton}}
                       {{else}}
-                       <a class="" href="/sign-in"  style=" "><i class="ion-log-in ion  material-icons left"></i> Sign In</a>
+                       <a class="" href="/sign-in"  style=" "><i class="ion-log-in ion  material-icons left"></i> Sign in</a>
                        {{/if}}
 
                      </li>
@@ -57,6 +62,6 @@
 
 <template name="custom_atNavButton">
  
-    <a class="" id="at-nav-button"><i class="ion ion-power material-icons left"></i> Sign Out</a>
+    <a class="item" id="at-nav-button"><i class="ion icon ion-power material-icons left"></i> Sign out</a>
   
 </template>

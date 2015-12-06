@@ -106,20 +106,23 @@
                 <div class="two fields">
                     <div class="field">
                         <label>Start Date</label>
-                        <input id="conditionStartDate" placeholder="Text Input" type="date" value="{{conditionStartDate}}">
+                        <input id="conditionStartDate" placeholder="start date" type="text" value="{{conditionStartDate}}" class="datepicker">
 
                         <label>Since Birth</label>
                         <input id="conditionStartFlag" type="checkbox" value="0" {{conditionSinceBirthChecked}}>
                     </div>
                     <div class="field">
                         <label>End Date</label>
-                        <input id="conditionEndDate" placeholder="Text Input" type="date" value="{{conditionEndDate}}">
+                        <input id="conditionEndDate" placeholder="end date" type="text" value="{{conditionEndDate}}" class="datepicker">
 
                         <label>Ongoing</label>
                         <input id="conditionEndFlag" type="checkbox" value="1" {{conditionOngoingChecked}}>
                     </div>
                 </div>
+                <br>
+            <br>
             </div>
+
         </div>
         <div class="actions">
             <div class="ui button cancel">Cancel</div>

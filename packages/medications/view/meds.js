@@ -322,6 +322,16 @@ Template.medModal.rendered = function() {
             //initialRating: 2,
             maxRating: 5
         });
+        $("#medFrequency").dropdown();
+         $('.datepicker').pickadate({
+    selectMonths: true, // Creates a dropdown to control month
+    selectYears: 80, // Creates a dropdown of 15 years to control year,
+    max:1998,
+     format: 'yyyy/mm/dd',
+    formatSubmit: 'yyyy/mm/dd',
+    close: 'Ok',
+
+  });
 };
 
 
@@ -354,7 +364,7 @@ Template.medModal.helpers({
     medStartDate: function() {
         var med = Session.get("biolog:medications/med.editing");
         if (!med) return;
-        var dateStr = yyyy_mm_dd(med.startDate);
+        var dateStr = moment(med.startDate).format("LL");
         return dateStr;
     },
 
@@ -363,7 +373,7 @@ Template.medModal.helpers({
         if (!med) return;
         //return med.endDate;
         if (!med.endDate) return "";
-        var dateStr = yyyy_mm_dd(med.endDate);
+        var dateStr = moment(med.endDate).format("LL");
         return dateStr;
     },
 

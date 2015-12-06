@@ -29,3 +29,7 @@ searchIsabel = function(patientId) {
         Session.set("isabel", content.Diagnosis_checklist)
     });
 };
+
+
+
+

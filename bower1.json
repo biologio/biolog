@@ -1,0 +1,19 @@
+{
+  "name": "Biolog",
+  "version": "0.0.0",
+  "authors": [
+    "Rashid Ahmad <decent10cs@gmail.com>"
+  ],
+  "main": "index.html",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+   
+  }
+}

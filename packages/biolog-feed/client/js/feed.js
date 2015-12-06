@@ -27,7 +27,7 @@
 
                  return fact;
              }),
-             name: Meteor.user().profile.firstName + ' ' + Meteor.user().profile.lastName,
+             //name: Meteor.user().profile.firstName + ' ' + Meteor.user().profile.lastName,
 
          }
      },
@@ -57,6 +57,19 @@
      }
  });
  Template.feed.rendered = function() {
+    $('.feed-help')
+  .popup({
+    on:'click',
+     position : 'top center',
+  })
+;
+if(Session.get("newUser")){
+ Meteor.setTimeout(function(){
+
+$('.feed-help').popup('show');
+
+}, 2000)   
+}
 
      $("body").addClass('feed');
 console.log("loaded");
@@ -439,5 +452,7 @@ function getUrlSearch(ontologies) {
         "&include=prefLabel,synonym,definition,notation,cui,semanticType,properties" +
         "&display_context=false&apikey=" + apiKey;
 };
-
+Template.feed.destroyed = function () {
+   Session.set("newUser", null)
+};
  
