@@ -1,6 +1,24 @@
 Meteor.subscribe("country");
 Template.profile.rendered = function() {
     $('.ui.radio.checkbox').checkbox();
+    $('.user-tab .item')
+        .tab();
+    $('#profile-countryOfResidence')
+        .dropdown({});
+    $('.datepicker').pickadate({
+        selectMonths: true, // Creates a dropdown to control month
+        selectYears: 80, // Creates a dropdown of 15 years to control year,
+        max: 1998,
+        format: 'dd mmm, yyyy',
+        formatSubmit: 'yyyy/mm/dd',
+        today: '',
+        clear: 'Clear selection',
+        close: 'Ok',
+        closeOnSelect: true,
+        closeOnClear: true
+
+    });
+
 };
 
 Template.profile.helpers({
@@ -10,8 +28,8 @@ Template.profile.helpers({
     isFemale: function(sex) {
         return "Female" == sex;
     },
-    
-    countries: function () {
+
+    countries: function() {
         console.log(Country.find({}));
         return Country.find({});
     }
@@ -20,15 +38,20 @@ Template.profile.helpers({
 Template.country.helpers({
     isResidenceOf: function(countryOfResidenceCode) {
         return Meteor.user().profile.countryOfResidence == countryOfResidenceCode;
+    },
+    toLowerCase: function(word) {
+        return word.toLowerCase()
     }
 });
 Template.profile.events({
     'click #saveProfile': function(e) {
         // Update profile
-        var data = _.object($("#profileForm").serializeArray().map(function(v) {return [v.name, v.value];} ));
+        var data = _.object($("#profileForm").serializeArray().map(function(v) {
+            return [v.name, v.value];
+        }));
         console.log("saving profile data: ", data);
         Meteor.call('updateProfile', data);
-        
+
         // create Entity for user.
         var pt = getPatient();
 
@@ -59,10 +82,10 @@ Template.profile.events({
         //
         //
         //});
-        
+        Session.set("newUser", true);
         Router.go("/feed");
-       
-        
-        
+
+
+
     }
 });

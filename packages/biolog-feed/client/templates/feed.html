@@ -1,32 +1,36 @@
 <head>
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+
 </head>
 <template name="feed">
- <div class=" message ns-box ns-attached ns-effect-flip ns-type-notice ns-show" style="max-width:917px !important; padding:1rem !important; left:0 !important;  margin:0 auto !important; margin-top:2.2rem !important; box-shadow: 0 0 0 1px #c9ba9b inset,0 0 0 0 transparent !important;
-    border-radius: 4px !important;
-    background-color: #fffaf3 !important;
-    color: #573a08 !important;     position: relative;
-    left: 24px !important;"><div style="max-width:100% !important" class="ns-box-inner"><h6 style="font-size:1.2rem; font-weight:normal;     text-align: center;">This website is for testing only.  Do not add real information! </h6>  </div><span class="ns-close close-message"></span></div>
-    <article class="feed">
-        <div class="bl-container">
-            <div class="bl-column main material">
-                <div class="card small post-field">
+
+    <article class="feed ">
+        <div class="bl-container grid ui page">
+          <!--   <div class="two wide computer nine wide tablet six wide mobile column">&nbsp;</div> -->
+          <div class=" sixteen wide tablet sixteen wide computer column">
+               <div class="  ui segment   message warning " ><div style="max-width:100% !important" class="ns-box-inner"><h6 style="font-size:1.2rem; font-weight:normal;     text-align: center;">This website is for testing only.  Do not add real information! </h6>  </div><span class="ns-close close-message"></span></div>
+          </div>
+            <div class="bl-column main material ten wide tablet twelve wide computer column ">
+                <div class="card small post-field" data-content="Hint: Type # to search for a medication or health condition." >
                     <div class="card-content">
                         <div class="feed-avatar ">
                             {{> avatar user=currentUser shape="square"}}
                         </div>
                         <div class="ui form">
                             <div class="field">
-                                <textarea  class="post-input" placeholder="What's on your mind" id="post" ></textarea>
+                                <i class="icon info circle feed-help"  data-content="Hint: To search for a name of medication or condition, type # followed by the name." data-offset="-150"></i>
+                                <textarea  class="post-input"  placeholder="What's on your mind" id="post"  ></textarea>
+
                             </div>
                         </div>
                     </div>
                     <div class="card-action right-align">
                         <a href="#" class="ui button blue small publish">post</a>
                     </div>
+
                 </div>
-                <div class="row">
-                    <div class="col s12">
+                <!-- <div class="row">
+                    <div class="col s12"> -->
                         <div class="ui feed ">
                             {{#each postLists.facts}}
                             <div class="event">
@@ -79,10 +83,10 @@
                             </div>
                             {{/each}}
                         </div>
-                    </div>
-                </div>
+                  <!--   </div>
+                </div> -->
             </div>
-            <div class="bl-column material sidebar-right">
+            <div class="bl-column material  six wide tablet four wide computer column">
                 {{>conditionsMedicationsFeed}}
                 <!--    <div class="ns-box ns-attached ns-effect-flip ns-type-notice ns-show"><div class="ns-box-inner"><p>Your preferences have been saved successfully. See all your settings in your <a href="#">profile overview</a>.</p></div><span class="ns-close"></span></div>
 

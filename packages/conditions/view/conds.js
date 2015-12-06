@@ -272,6 +272,15 @@ Tracker.autorun(function() {
 Template["biologConditionModal"].rendered = function() {
     $('.rateit').rateit();
     //$('.rateit').bind(getFrowns);
+     $('.datepicker').pickadate({
+    selectMonths: true, // Creates a dropdown to control month
+    selectYears: 80, // Creates a dropdown of 15 years to control year,
+    max:1998,
+    //format: 'dd mmm, yyyy',
+    formatSubmit: 'yyyy/mm/dd',
+    close: 'Ok',
+
+  });
 };
 
 Template["biologConditionModal"].events({
@@ -307,7 +316,9 @@ Template["biologConditionModal"].helpers({
     conditionStartDate: function() {
         var condition = Session.get("biolog:conditions/condition.editing");
         if (!condition) return;
-        var dateStr = yyyy_mm_dd(condition.startDate);
+        var dateStr = moment(condition.startDate).format("LL");
+        // yyyy_mm_dd(condition.startDate);
+        console.log(dateStr)
         return dateStr;
     },
 
@@ -316,7 +327,7 @@ Template["biologConditionModal"].helpers({
         if (!condition) return;
         //return condition.endDate;
         if (!condition.endDate) return "";
-        var dateStr = yyyy_mm_dd(condition.endDate);
+        var dateStr = moment(condition.endDate).format("LL");
         return dateStr;
     },
 

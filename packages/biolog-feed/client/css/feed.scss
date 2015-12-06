@@ -1,9 +1,13 @@
-
+@import "include-media";
 .h1, .h2, .h3, .h4, body, h1, h2, h3, h4, h5, h6 {
     font-family: Raleway, sans-serif;
-    font-weight: 300;
+    font-weight: normal;
 }
-
+@include media('>=phone', '<=tablet') {
+.heading-1 h5{
+    font-size: 1.8em;
+}
+ }
 
 body.feed, body.feed.pushable {
     background: #e9eaed;
@@ -12,7 +16,7 @@ body.feed, body.feed.pushable {
     color: #333;
     margin-top: 1em;
     font-weight: normal;
-    background: url("/images/hero-bg.png") repeat scroll 0 0 rgba(228, 234, 234, 0.42) !important;
+    background: url("/images/hero-bg.png") repeat scroll 0 0 rgba(228, 234, 234, 0.42) ;
 }
 
 .main-nav{
@@ -21,20 +25,20 @@ body.feed, body.feed.pushable {
     }
 }
 .bl-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    align-items: flex-start;
-    min-height: 100vh;
-    width: 900px;
-    margin: 1rem auto;
-    margin-top: 1.5rem;
-    .bl-column {
-        flex-grow: 1;
-    }
+    // display: flex;
+    // justify-content: space-between;
+    // align-items: center;
+    // align-items: flex-start;
+    // min-height: 100vh;
+    // width: 900px;
+    // margin: 1rem auto;
+    // margin-top: 1.5rem;
+    // .bl-column {
+    //     flex-grow: 1;
+    // }
     .main {
-        margin: 0 .6rem;
-        padding: 0 .5em;
+        // margin: 0 .6rem;
+        // padding: 0 .5em;
         /* box-shadow: -1px 0px 0px 0px #ccc, 1px 0px 0px 0px #ccc;
 overflow: scroll;
          */
@@ -42,7 +46,7 @@ overflow: scroll;
         
     }
     .row .col {
-        padding: 0;
+        // padding: 0;
     }
     .ui.form textarea,
     .textarea {
@@ -377,10 +381,10 @@ overflow: scroll;
     border-color: #FFDC00;
 }
 
-.warning:before {
-    content: "!";
-    background-color: #FFDC00;
-}
+// .warning:before {
+//     content: "!";
+//     background-color: #FFDC00;
+// }
 /*
 .error {
     border-color: #FF4136;
@@ -531,8 +535,8 @@ overflow: scroll;
 }
 
 .at-grid{
-        width: 800px;
-    margin: 0 auto !important;
+        
+    margin: 2rem auto !important;
 }
    .flex-container{
    display:flex;
@@ -603,3 +607,65 @@ overflow: scroll;
     overflow: hidden;
     text-overflow: ellipsis;
 }
+.ui.form input:not([type]), .ui.form input[type="date"], .ui.form input[type="datetime-local"], .ui.form input[type="email"], .ui.form input[type="number"], .ui.form input[type="password"], .ui.form input[type="search"], .ui.form input[type="tel"], .ui.form input[type="time"], .ui.form input[type="text"], .ui.form input[type="url"], .ui.form input{
+    font-weight: normal;
+}
+.feed-help{
+        position: absolute;
+    top: -.5rem;
+    z-index: 300;
+    right: -.2rem;
+    color: #69697D;
+    cursor: pointer;
+}
+.ui.modal .picker__date-display{
+        padding-bottom: 0px;
+}
+.ui.modal .picker__weekday-display{
+         padding: 5px;
+    font-weight: 200;
+    letter-spacing: .5;
+    font-size: 1rem;
+    margin-bottom: 0px;
+}
+.ui.modal .picker__month-display {
+    text-transform: uppercase;
+    font-size: 1.5rem;
+}
+.ui.modal .picker__day-display {
+    font-size: 2.2rem;
+    font-weight: 400;
+}
+   
+   .ui.modal .picker__year-display {
+    font-size: 1.3rem;
+    color: rgba(255, 255, 255, 0.4);
+}
+.ui.modal .picker__header {
+    text-align: center;
+    position: relative;
+    margin-top: .35em;
+}
+.ui.modal .picker__table {
+    margin-top: 0;
+    margin-bottom: .2em;
+}
+
+.ui.modal .picker__day--infocus {
+ 
+    letter-spacing: -.3;
+    padding: .45rem 0;
+    font-weight: 400;
+    border: 1px solid transparent;
+}
+.picker__select--year.browser-default {
+    display: inline !important;
+    background-color: #FFFFFF;
+    width: 35% !important;
+    border: none;
+}
+
+
+
+
+

@@ -118,9 +118,9 @@
     color: #EF5350 !important
 }
 
-.red {
+/*.red {
     background-color: #F44336 !important
-}
+}*/
 
 .red-text {
     color: #F44336 !important
@@ -230,10 +230,10 @@
     color: #ec407a !important
 }
 
-.pink {
+/*.pink {
     background-color: #e91e63 !important
 }
-
+*/
 .pink-text {
     color: #e91e63 !important
 }
@@ -342,9 +342,9 @@
     color: #ab47bc !important
 }
 
-.purple {
+/*.purple {
     background-color: #9c27b0 !important
-}
+}*/
 
 .purple-text {
     color: #9c27b0 !important
@@ -677,10 +677,10 @@
 .blue-text.text-lighten-1 {
     color: #42A5F5 !important
 }
-
+/*
 .blue {
     background-color: #2196F3 !important
-}
+}*/
 
 .blue-text {
     color: #2196F3 !important
@@ -1014,9 +1014,9 @@
     color: #26a69a !important
 }
 
-.teal {
+/*.teal {
     background-color: #009688 !important
-}
+}*/
 
 .teal-text {
     color: #009688 !important
@@ -1126,9 +1126,9 @@
     color: #66BB6A !important
 }
 
-.green {
+/*.green {
     background-color: #4CAF50 !important
-}
+}*/
 
 .green-text {
     color: #4CAF50 !important
@@ -1350,9 +1350,9 @@
     color: #d4e157 !important
 }
 
-.lime {
+/*.lime {
     background-color: #cddc39 !important
-}
+}*/
 
 .lime-text {
     color: #cddc39 !important
@@ -1462,9 +1462,9 @@
     color: #ffee58 !important
 }
 
-.yellow {
+/*.yellow {
     background-color: #ffeb3b !important
-}
+}*/
 
 .yellow-text {
     color: #ffeb3b !important
@@ -1686,9 +1686,9 @@
     color: #ffa726 !important
 }
 
-.orange {
+/*.orange {
     background-color: #ff9800 !important
-}
+}*/
 
 .orange-text {
     color: #ff9800 !important
@@ -1910,9 +1910,9 @@
     color: #8d6e63 !important
 }
 
-.brown {
+/*.brown {
     background-color: #795548 !important
-}
+}*/
 
 .brown-text {
     color: #795548 !important
@@ -2070,9 +2070,9 @@
     color: #bdbdbd !important
 }
 
-.grey {
+/*.grey {
     background-color: #9e9e9e !important
-}
+}*/
 
 .grey-text {
     color: #9e9e9e !important
@@ -2134,9 +2134,9 @@
     color: transparent !important
 }
 
-.black {
+/*.black {
     background-color: #000 !important
-}
+}*/
 
 .black-text {
     color: #000 !important
@@ -2477,9 +2477,9 @@ html {
 }
 
 .material .divider {
-    height: 1px;
+    /*height: 4px;
     overflow: hidden;
-    background-color: #e0e0e0
+    background-color: transparent;*/
 }
 
 .material blockquote {

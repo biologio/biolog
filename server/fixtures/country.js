@@ -1,8 +1,8 @@
 Meteor.startup(function () {
-        BrowserPolicy.content.allowOriginForAll('fonts.gstatic.com');
-    BrowserPolicy.content.allowOriginForAll('*.googleapis.com');
-    BrowserPolicy.content.allowOriginForAll('code.ionicframework.com');
-    BrowserPolicy.content.allowOriginForAll('maps.gstatic.com');
+    //     BrowserPolicy.content.allowOriginForAll('fonts.gstatic.com');
+    // BrowserPolicy.content.allowOriginForAll('*.googleapis.com');
+    // BrowserPolicy.content.allowOriginForAll('code.ionicframework.com');
+    // BrowserPolicy.content.allowOriginForAll('maps.gstatic.com');
     if(Country.find({}).count() !== 250) {
         Country.remove({});
         var countries = [

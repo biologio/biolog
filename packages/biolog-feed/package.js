@@ -28,6 +28,7 @@ Package.onUse(function(api) {
         'timmyg:wow',
         'themeteorchef:bert',
         'aldeed:template-extension'
+
       
 
     ]);
@@ -57,6 +58,7 @@ Package.onUse(function(api) {
     api.add_files("lib/methods.js", ["server"]);
     api.add_files("lib/subscribe.js", ["client"]);
     api.add_files("client/css/material.css", ["client"]);
+    api.add_files("client/css/_include-media.scss", ["client"]);
     api.add_files("client/css/feed.scss", ["client"]);
     api.add_files("client/css/theme.css", ["client"]);
 
