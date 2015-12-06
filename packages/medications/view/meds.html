@@ -1,15 +1,15 @@
 <!-- MEDICATIONS -->
-<template name="bioolookupMedsButton">
-    <span id="bioolookupMedsButton" class="ui icon small button">
+<template name="biologBioontologyMedsButton">
+    <span class="ui icon small button biologBioontologyMedsButton">
         <i class="plus icon"></i>
     </span>
 </template>
 
 
-<template name="bioolookupMedsModal">
-    <div id="bioolookupMedsModal" class="ui modal small">
+<template name="biologBioontologyMedsModal">
+    <div id="biologBioontologyMedsModal" class="ui modal small">
         <div class="content">
-            {{>bioolookupMedsContent}}
+            {{>biologBioontologyMedsContent}}
         </div>
         <div class="actions">
             <div class="ui button cancel">Cancel</div>
@@ -19,17 +19,17 @@
 </template>
 
 
-<template name="bioolookupMedsContent">
+<template name="biologBioontologyMedsContent">
 <!--<div class="ui page grid">-->
     <!--<div class="three column row">-->
         <!--<div class="column"></div>-->
         <!--<div class="left aligned starter column">-->
             <div class="ui icon input loading">
-                <input class="prompt" type="text" placeholder="Search for medications..." id="biolookupSearchMedsBox">
+                <input class="prompt" type="text" placeholder="Search for medications..." id="biologBioontologySearchMedsBox">
             </div>
             <div class="results ui selection list">
                 {{#each results}}
-                    <div class="item bioolookupMedsResult">
+                    <div class="item biologBioontologyMedsResult">
                         <div class="content">
                             <div class="header">{{prefLabel}}</div>
                         </div>
@@ -45,38 +45,38 @@
 
 
 
-<template name="meds">
+<template name="biologMeds">
     <div class="ui segment">
-        <span class="ui large header">Current Medications</span>&nbsp;&nbsp;&nbsp;&nbsp;{{> bioolookupMedsButton}}
+        <span class="ui large header">Current Medications</span>&nbsp;&nbsp;&nbsp;&nbsp;{{> biologBioontologyMedsButton}}
         <div class="ui segment">
             <!--<div class="ui items">-->
             <div class="ui divided link items">
                 {{#each currentMeds}}
-                    {{>medsItem}}
+                    {{> biologMedsItem}}
                 {{/each}}
             </div>
         </div>
     </div>
 
     <div class="ui segment">
-        <span class="ui large header">Past Medications</span>&nbsp;&nbsp;&nbsp;&nbsp;{{> bioolookupMedsButton}}
+        <span class="ui large header">Past Medications</span>&nbsp;&nbsp;&nbsp;&nbsp;{{> biologBioontologyMedsButton}}
         <div class="ui segment">
             <!--<div class="ui items">-->
             <div class="ui divided link items">
                 {{#each pastMeds}}
-                    {{>medsItem}}
+                    {{> biologMedsItem}}
                 {{/each}}
             </div>
         </div>
     </div>
 
-    {{> bioolookupMedsModal}}
-    {{> medModal}}
+    {{> biologBioontologyMedsModal}}
+    {{> biologMedModal}}
 </template>
 
 
-<template name="medsItem">
-    <div class="item medsItem">
+<template name="biologMedsItem">
+    <div class="item biologMedsItem">
         <div class="ui tiny image">
             <img src="images/pills.jpg">
         </div>
@@ -90,7 +90,7 @@
 
 
 
-<template name="medModal">
+<template name="biologMedModal">
     <div id="medModal" class="ui modal small">
         <div class="content">
             <div class="ui form segment">

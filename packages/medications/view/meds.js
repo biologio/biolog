@@ -3,12 +3,12 @@
  */
 
 Router.route('/meds', function() {
-    this.render('meds');
+    this.render('biolog.meds');
 });
 
 Tracker.autorun(function() {
     if (Session.get("biolog:medications/meds.modal.open")) {
-        $('#bioolookupMedsModal').modal({
+        $('#biologBioontologyMedsModal').modal({
             closable: true,
             onApprove: function() {
                 Session.set("biolog:medications/meds.modal.open", null);
@@ -27,12 +27,12 @@ Tracker.autorun(function() {
 
     } else {
         //console.log("Hiding modal: " + Session.get("biolog:medications/meds.modal.open"));
-        $('#bioolookupMedsModal').modal('hide');
+        $('#biologBioontologyMedsModal').modal('hide');
     }
 });
 
-Template.bioolookupMedsButton.events({
-    "click #bioolookupMedsButton": function() {
+Template["biologBioontologyMedsButton"].events({
+    "click .biologBioontologyMedsButton": function() {
         Session.set("biolog:medications/meds.modal.open", false);
         Session.set("biolog:medications/meds.modal.open", true);
     }
@@ -42,14 +42,16 @@ Template.bioolookupMedsButton.events({
 var medsResults = new ReactiveVar();
 
 
-Template.bioolookupMedsContent.helpers({
+Template["biologBioontologyMedsContent"].helpers({
     results: function() {
         return medsResults.get();
     }
 });
 
-Template.bioolookupMedsContent.events({
+Template["biologBioontologyMedsContent"].events({
     "input .prompt": function(event, template) {
+        console.log("input .prompt", template.find("#biologBioontologySearchMedsBox").value);
+
         //if return character, submit the form
         if (event.which === 13) {
             if (Session.get("biolog:medications/meds.results")) {
@@ -63,9 +65,9 @@ Template.bioolookupMedsContent.events({
         }
 
         Session.set("biolog:medications/meds.results", null);
-        var q = template.find("#biolookupSearchMedsBox").value;
+        var q = template.find("#biologBioontologySearchMedsBox").value;
 
-        Bioontology.searchMeds(q, function(err, meds) {
+        biolog.Bioontology.searchMeds(q, function(err, meds) {
             if (err) {
                 return medsResults.set([]);
             }
@@ -83,7 +85,7 @@ Template.bioolookupMedsContent.events({
         //});
     },
 
-    "click .bioolookupMedsResult": function(event, template) {
+    "click .biologBioontologyMedsResult": function(event, template) {
         var med = this;
         //console.log("clicked: " + JSON.stringify(selectedMed));
         medsResults.set([med]);
@@ -104,7 +106,7 @@ saveMedFactWithIngredientsAndClasses = function(ptid, med, callback) {
     //console.log("Saving med: " + JSON.stringify(med));
     if (!med) return;
 
-    Medications.constructMedFact(ptid, med, function(err, fact) {
+    biolog.Medications.constructMedFact(ptid, med, function(err, fact) {
         if (err) return callback(err);
 
         saveProperty(fact, function(err, success) {
@@ -116,13 +118,13 @@ saveMedFactWithIngredientsAndClasses = function(ptid, med, callback) {
             }
 
 
-            var ingredients = fact.data[Medications.PREDICATE_INGREDIENT._id];
+            var ingredients = fact.data[biolog.Medications.PREDICATE_INGREDIENT._id];
             console.log("\n\nNext add med classes: " + JSON.stringify(ingredients));
             var ingredientCuis = Object.keys(ingredients);
 
-            Bioontology.addMedClassesForEachGenericCui(ingredientCuis,
+            biolog.Bioontology.addMedClassesForEachGenericCui(ingredientCuis,
                 function(medClass) {
-                    var addingError = Medications.addMedClass(fact, medClass);
+                    var addingError = biolog.Medications.addMedClass(fact, medClass);
                     if (addingError) return callback(addingError);
                 },
                 function(err, result) {
@@ -147,7 +149,7 @@ saveMedFactWithIngredientsAndClasses = function(ptid, med, callback) {
 
 //var fact = Medications.createMedFact(ptid, med);
 //
-//Bioontology.getIngredients(med,
+//biolog.Bioontology.getIngredients(med,
 //    function(err, ingreds) {
 //        if (err) {
 //            var msg = "Unable to addIngredients: " + err;
@@ -166,7 +168,7 @@ saveMedFactWithIngredientsAndClasses = function(ptid, med, callback) {
 //        console.log("\n\nNext add med classes: " + JSON.stringify(ingredients));
 //        var ingredientCuis = Object.keys(ingredients);
 //
-//        Bioontology.getMedClassesForEachGenericCui(ingredientCuis,
+//        biolog.Bioontology.getMedClassesForEachGenericCui(ingredientCuis,
 //            function(err, medClasses) {
 //                if (err) {
 //                    console.error("Error adding med class: " + err);
@@ -198,7 +200,7 @@ saveMedFactWithIngredientsAndClasses = function(ptid, med, callback) {
 
 
 
-Template.meds.helpers({
+Template["biologMeds"].helpers({
     currentMeds: function() {
         if (!getPatient()) return;
         var result = getPatientMedsCurrent(getPatient()._id).fetch();
@@ -212,11 +214,11 @@ Template.meds.helpers({
     }
 });
 
-Template.medsItem.events({
-    "click .medsItem": function(event, template) {
+Template["biologMedsItem"].events({
+    "click .biologMedsItem": function(event, template) {
         //console.log("clicked: " + JSON.stringify(this));
         Session.set("biolog:medications/med.editing", this);
-        //Session.set("biolog.med.modal.open", true);
+        //Session.set("biologMed.modal.open", true);
     }
 });
 
@@ -225,15 +227,15 @@ Template.medsItem.events({
 
 
 
-Template.medsItem.helpers({
+Template["biologMedsItem"].helpers({
 
     strength: function() {
         var med = this;
-        var ingredients = Medications.getMedIngredients(med);
+        var ingredients = biolog.Medications.getMedIngredients(med);
         var display = "";
         for (var ingredientIdx in ingredients) {
             var ingredient = ingredients[ingredientIdx];
-            var strength = Medications.getIngredientStrength(med, ingredient.obj);
+            var strength = biolog.Medications.getIngredientStrength(med, ingredient.obj);
             if (!strength) strength = "?";
             if (display.length > 0) display += " + ";
             display += ingredient.text + " " + strength + " mg";
@@ -243,9 +245,9 @@ Template.medsItem.helpers({
     },
 
     frequency: function() {
-        var freq = Medications.getMedFrequency(this);
+        var freq = biolog.Medications.getMedFrequency(this);
         if (!freq) return "? frequency";
-        return Medications.MED_FREQUENCIES[freq];
+        return biolog.Medications.MED_FREQUENCIES[freq];
     },
 
     timing: function() {
@@ -316,7 +318,7 @@ Tracker.autorun(function() {
 });
 
 
-Template.medModal.rendered = function() {
+Template["biologMedModal"].rendered = function() {
     $('.ui.rating.med')
         .rating({
             //initialRating: 2,
@@ -325,16 +327,16 @@ Template.medModal.rendered = function() {
 };
 
 
-Template.medModal.helpers({
+Template["biologMedModal"].helpers({
     medName: function() {
         var med = Session.get("biolog:medications/med.editing");
-        return Medications.getMedName(med);
+        return biolog.Medications.getMedName(med);
     },
 
     ingredients: function() {
         var med = Session.get("biolog:medications/med.editing");
         //console.log("med=" + JSON.stringify(med));
-        var medIngredients = Medications.getMedIngredients(med);
+        var medIngredients = biolog.Medications.getMedIngredients(med);
 
         return medIngredients;
     },
@@ -342,7 +344,7 @@ Template.medModal.helpers({
     ingredientStrength: function(cui) {
         var med = Session.get("biolog:medications/med.editing");
         if (!med) return;
-        return Medications.getIngredientStrength(med, cui);
+        return biolog.Medications.getIngredientStrength(med, cui);
     },
 
     //medFrequency: function() {
@@ -386,7 +388,7 @@ Template.medModal.helpers({
     medFrequencySelected: function(aFreqVal) {
         var med = Session.get("biolog:medications/med.editing");
         if (!med) return;
-        var freqVal = Medications.getMedFrequency(med);
+        var freqVal = biolog.Medications.getMedFrequency(med);
         if (!freqVal) {
             if (aFreqVal == "1") return "selected";
             return "";
@@ -396,7 +398,7 @@ Template.medModal.helpers({
     },
 
     medFrequencyLabel: function(freqVal) {
-        return Medications.MED_FREQUENCIES[freqVal];
+        return biolog.Medications.MED_FREQUENCIES[freqVal];
     },
 
     medRating: function() {
@@ -424,16 +426,16 @@ updateMed = function() {
     if (rating) {
         setFactRating(med, String(rating));
     }
-    Medications.setMedFrequency(med, frequency);
+    biolog.Medications.setMedFrequency(med, frequency);
 
     //setMedStrength(med, strength);
-    var ingredients = Medications.getMedIngredients(med);
+    var ingredients = biolog.Medications.getMedIngredients(med);
     for (var ingredientIdx in ingredients) {
         var ingredient = ingredients[ingredientIdx];
         var inputId = "#medStrength-" + ingredient.obj;
         var ingredientStrength = $(inputId).val();
         console.log("ingredient: " + ingredient.text + " has id: " + inputId + " has strength:" + ingredientStrength);
-        Medications.setIngredientStrength(med, ingredient.obj, ingredientStrength);
+        biolog.Medications.setIngredientStrength(med, ingredient.obj, ingredientStrength);
     }
 
     var startDateStr = $("#medStartDate").val();

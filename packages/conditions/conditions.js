@@ -2,7 +2,7 @@
  * Created by dd on 8/30/15.
  */
 
-Conditions = {
+biolog.Conditions = {
     PREDICATE: {
         _id: "patient/condition",
         name: "condition",
@@ -21,13 +21,13 @@ Conditions = {
  * @param bioontologyConditionItem
  * @returns Biolog fact object
  */
-Conditions.createConditionFact = function(patientId, bioontologyConditionItem) {
-    var cui = Bioontology.getItemCui(bioontologyConditionItem);
+biolog.Conditions.createConditionFact = function(patientId, bioontologyConditionItem) {
+    var cui = biolog.Bioontology.getItemCui(bioontologyConditionItem);
     if (! cui) return console.error("Unable to get CUI for condition: " + JSON.stringify(bioontologyConditionItem));
-    var name = Bioontology.getItemPreferredLabel(bioontologyConditionItem);
+    var name = biolog.Bioontology.getItemPreferredLabel(bioontologyConditionItem);
     var fact = {
         subj: patientId,
-        pred: Conditions.PREDICATE._id,
+        pred: biolog.Conditions.PREDICATE._id,
         obj: cui,
         objName: name,
         startDate: new Date(),
@@ -41,7 +41,7 @@ Conditions.createConditionFact = function(patientId, bioontologyConditionItem) {
  * @param conditionFact
  * @returns the name of the condition
  */
-Conditions.getConditionName = function(conditionFact) {
+biolog.Conditions.getConditionName = function(conditionFact) {
     if (! conditionFact) return;
     return conditionFact.objName;
 };
@@ -51,7 +51,7 @@ Conditions.getConditionName = function(conditionFact) {
  * @param conditionFact
  * @returns the severity rating
  */
-Conditions.getConditionSeverity = function(conditionFact) {
+biolog.Conditions.getConditionSeverity = function(conditionFact) {
     if (! conditionFact) return;
     return conditionFact.num;
 };
@@ -61,7 +61,7 @@ Conditions.getConditionSeverity = function(conditionFact) {
  * @param conditionFact
  * @param severity
  */
-Conditions.setConditionSeverity = function(conditionFact, severity) {
+biolog.Conditions.setConditionSeverity = function(conditionFact, severity) {
     if (! conditionFact) return;
     //console.log("setConditionSeverity=" + severity);
     if (!isNumber(severity)) return;
@@ -74,12 +74,12 @@ Conditions.setConditionSeverity = function(conditionFact, severity) {
 /**
  * add a parent category ("class") to a condition fact.
  * @param conditionFact
- * @param clazz - the object from within the Bioontology search results, which contains the class information
+ * @param clazz - the object from within the biolog.Bioontology search results, which contains the class information
  */
-Conditions.addConditionClass = function(conditionFact, clazz) {
+biolog.Conditions.addConditionClass = function(conditionFact, clazz) {
     //console.log("Adding condition class: " + JSON.stringify(clazz));
     //var cuiVal = clazz.cui;
-    var cuiVal = Bioontology.getItemCui(clazz);
+    var cuiVal = biolog.Bioontology.getItemCui(clazz);
     var cuis = [cuiVal];
     if (Array.isArray(cuiVal)) {
         cuis = cuiVal;
@@ -100,18 +100,18 @@ Conditions.addConditionClass = function(conditionFact, clazz) {
 };
 
 /**
- * Given a condition result object found from the Bioontology server, performs a series of queries on the Bioontology server.
+ * Given a condition result object found from the biolog.Bioontology server, performs a series of queries on the biolog.Bioontology server.
  * It then adds all disease classes (parent categories, grandparents, etc) to the provided Fact object.
  * @param condition
  * @param fact
  * @param callback
  */
-Conditions.addConditionClassesToFacts = function(condition, fact, callback) {
+biolog.Conditions.addConditionClassesToFacts = function(condition, fact, callback) {
     //add current condition as a class
     //addConditionClass(fact, condition);
 
     //To the provided fact, add parent classes of this condition as a class
-    return Conditions.getConditionClasses(condition, function(err, classes) {
+    return biolog.Bioontology.getItemClasses(condition, function(err, classes) {
         if (err) {
             return callback(err);
         }
@@ -126,39 +126,22 @@ Conditions.addConditionClassesToFacts = function(condition, fact, callback) {
 
 
 /**
- * Given a condition result (from Bioontology), create a fact, with its classes added to it
+ * Given a condition result (from biolog.Bioontology), create a fact, with its classes added to it
  * When finished, call the callback, with first argument is any error and second argument is the condition fact.
  * @param ptid
  * @param condition
  * @param callback
  */
-Conditions.constructConditionFact = function(ptid, condition, callback) {
-    var fact = Conditions.createConditionFact(ptid, condition);
+biolog.Conditions.constructConditionFact = function(ptid, condition, callback) {
+    var fact = biolog.Conditions.createConditionFact(ptid, condition);
 
-    Meteor.call("getConditionClasses", condition, function(classes) {
+    Meteor.call("biolog.bioontology.getItemClasses", condition, function(classes) {
         for (var ci in classes) {
             var clazz = classes[ci];
-            var addingError = Conditions.addConditionClass(fact, clazz);
+            var addingError = biolog.Conditions.addConditionClass(fact, clazz);
             if (addingError) return callback(addingError);
         }
 
         return callback(null, fact);
     });
-    //Bioontology.getConditionClasses(condition,
-    //    function(err, classes) {
-    //        if (err) {
-    //            var msg = "Unable to getConditionClasses: " + err;
-    //            console.error(msg);
-    //            if (callback) callback(msg);
-    //            return;
-    //        }
-    //        for (var ci in classes) {
-    //            var clazz = classes[ci];
-    //            var addingError = Conditions.addConditionClass(fact, clazz);
-    //            if (addingError) return callback(addingError);
-    //        }
-    //
-    //        return callback(null, fact);
-    //    }
-    //);
 };

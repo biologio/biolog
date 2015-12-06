@@ -107,6 +107,11 @@ Template.sidebar.helpers({
             icon: "ion-ios-bell",
             url: "/alerts",
             badge: countAlerts()
+        },
+        {
+            text: "Events",
+            icon: "fa fa-calendar",
+            url: "/events"
         }
         //{
         //    text: "Timeline",

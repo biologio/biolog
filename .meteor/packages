@@ -20,7 +20,6 @@ meteorhacks:fast-render
 semantic:ui-css
 accounts-google
 accounts-password
-coffeescript
 accounts-twitter
 service-configuration
 accounts-ui
@@ -44,6 +43,7 @@ useraccounts:iron-routing
 biolog:feed
 biolog:conditions
 biolog:medications
+biolog:health-events
 
 pagebakers:ionicons
 u2622:persistent-session
@@ -73,3 +73,4 @@ http
 
 
 
+biolog:biolog-core

@@ -78,7 +78,7 @@ console.log("loaded");
 
          callbacks: {
              remoteFilter: function(query, callback) {
-                 $.getJSON(getUrlSearch(Bioontology.ONTOLOGIES_HEALTH), {
+                 $.getJSON(getUrlSearch(biolog.Bioontology.ONTOLOGIES_HEALTH), {
                      q: query
                  }, function(data) {
                       console.log(data);
@@ -141,7 +141,7 @@ console.log("loaded");
 
 
          //Bioontology.annotate(postHTML, Bioontology.ONTOLOGIES_HEALTH, function(err, annotations) {
-         Bioontology.annotateHealth(postHTML, function(err, annotations) {
+         biolog.Bioontology.annotateHealth(postHTML, function(err, annotations) {
 
              //conslole.log(value);
              if (err) {
@@ -152,7 +152,7 @@ console.log("loaded");
 
              annotations = _.uniq(annotations)
              annotations.forEach(function(element, index) {
-                element.semanticType = Bioontology.getItemSemanticTypes(element.annotatedClass)
+                element.semanticType = biolog.Bioontology.getItemSemanticTypes(element.annotatedClass)
                 savePostFact(element);
                  console.log(element)
              });
@@ -220,7 +220,7 @@ console.log("loaded");
 
          callbacks: {
              remoteFilter: function(query, callback) {
-                 $.getJSON(getUrlSearch(Bioontology.ONTOLOGIES_HEALTH), {
+                 $.getJSON(getUrlSearch(biolog.Bioontology.ONTOLOGIES_HEALTH), {
                      q: query
                  }, function(data) {
                       //console.log(data);
@@ -276,7 +276,7 @@ console.log("loaded");
          //Bioontology.annotate(postUpdateText, Bioontology.ONTOLOGIES_HEALTH, function(err, annotations, button) {
              //conslole.log(value);
 
-         Bioontology.annotateHealth(postUpdateText, function(err, annotations, button) {             if (err) {
+         biolog.Bioontology.annotateHealth(postUpdateText, function(err, annotations, button) {             if (err) {
                  console.log(err)
                  return;
              }
@@ -389,10 +389,10 @@ console.log("loaded");
  function savePostFact(object) {
      var postFacts = Session.get("postFacts") || [];
      if (getOntologiesType(object) == "cond") {
-         var condition = Conditions.constructConditionFact(getPatient()._id, object.annotatedClass, cb);
+         var condition = biolog.Conditions.constructConditionFact(getPatient()._id, object.annotatedClass, cb);
 
      } else {
-         var med = Medications.constructMedFact(getPatient()._id, object.annotatedClass, cb)
+         var med = biolog.Medications.constructMedFact(getPatient()._id, object.annotatedClass, cb)
 
      }
  }
@@ -432,8 +432,8 @@ console.log("loaded");
  }
 
 function getUrlSearch(ontologies) {
-    var apiKey = Bioontology.getApiKey();
-    var searchUrl = Bioontology.getBaseUrlSearch();
+    var apiKey = biolog.Bioontology.getApiKey();
+    var searchUrl = biolog.Bioontology.getBaseUrlSearch();
     return searchUrl + "?suggest=true" +
         "&ontologies=" + ontologies +
         "&include=prefLabel,synonym,definition,notation,cui,semanticType,properties" +

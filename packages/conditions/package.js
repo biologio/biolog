@@ -12,7 +12,7 @@ Package.describe({
 
 Package.onUse(function(api) {
     api.versionsFrom('1.1.0.3');
-    api.use('tracker');
+    api.use(['tracker', 'biolog:biolog-core'], ['client', 'server']);
 
     api.use([
             'session',
@@ -35,7 +35,7 @@ Package.onUse(function(api) {
             'server/conditions-server.js'
         ],
         'server');
-    api.export('Conditions');
+    //api.export('Conditions');
 });
 
 Package.onTest(function(api) {

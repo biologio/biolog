@@ -2,13 +2,13 @@
  * Created by dd on 5/16/15.
  */
 Router.route('/conditions', function() {
-    this.render('conditions');
+    this.render('biolog.conditions');
 });
 
 
 Tracker.autorun(function() {
     if (Session.get("biolog:conditions/conditions.modal.open")) {
-        $('#bioolookupConditionsModal').modal({
+        $('#biologBioontologyConditionsModal').modal({
             closable: true,
             onApprove: function() {
                 Session.set("biolog:conditions/conditions.modal.open", null);
@@ -27,7 +27,7 @@ Tracker.autorun(function() {
 
     } else {
         //console.log("Hiding modal: " + Session.get("biolog:conditions/conditions.modal.open"));
-        $('#bioolookupConditionsModal').modal('hide');
+        $('#biologBioontologyConditionsModal').modal('hide');
     }
 });
 
@@ -37,7 +37,7 @@ Tracker.autorun(function() {
 var conditionsResults = new ReactiveVar();
 
 
-Template.bioolookupConditionsContent.helpers({
+Template["biologBioontologyConditionsContent"].helpers({
     results: function() {
         return conditionsResults.get();
     },
@@ -49,15 +49,15 @@ Template.bioolookupConditionsContent.helpers({
     }
 });
 
-Template.bioolookupConditionsContent.events({
+Template["biologBioontologyConditionsContent"].events({
     "input .prompt": function(event, template) {
         //if return character, submit the form
         if (event.which === 13) {
-            if (Session.get("biolog.bioolookup.conditions.results")) {
+            if (Session.get("biolog.bioontology.conditions.results")) {
                 return submitBioolookupConditions();
             }
             if (conditionsResults.get() && conditionsResults.get().length > 0) {
-                Session.set("biolog.bioolookup.conditions.results", conditionsResults.get()[0]);
+                Session.set("biolog.bioontology.conditions.results", conditionsResults.get()[0]);
                 conditionsResults.set([]);
                 return submitBioolookupConditions();
             }
@@ -65,12 +65,12 @@ Template.bioolookupConditionsContent.events({
 
 
 
-        Session.set("biolog.bioolookup.conditions.results", null);
-        var q = template.find("#biolookupSearchConditionsBox").value;
+        Session.set("biolog.bioontology.conditions.results", null);
+        var q = template.find("#biologBioontologySearchConditionsBox").value;
         //var apiKey = Bioontology.getApiKey();
         //var url = Bioontology.getUrlSearchConditions(q);
 
-        Bioontology.searchConditions(q, function(err, conditions) {
+        biolog.Bioontology.searchConditions(q, function(err, conditions) {
             if (err) {
                 return conditionsResults.set([]);
             }
@@ -88,22 +88,22 @@ Template.bioolookupConditionsContent.events({
         //});
     },
 
-    "click .bioolookupConditionsResult": function(event, template) {
+    "click .biologBioontologyConditionsResult": function(event, template) {
         var selectedCondition = this;
         //console.log("clicked: " + JSON.stringify(selectedCondition));
         conditionsResults.set([selectedCondition]);
-        Session.set("biolog.bioolookup.conditions.results", selectedCondition);
+        Session.set("biolog.bioontology.conditions.results", selectedCondition);
     }
 });
 
 
 submitBioolookupConditions = function() {
     Session.set("biolog:conditions/conditions.modal.open", null);
-    var cond = Session.get("biolog.bioolookup.conditions.results");
+    var cond = Session.get("biolog.bioontology.conditions.results");
     console.log("Saving condition: " + JSON.stringify(cond));
     if (!cond) return;
 
-    Conditions.constructConditionFact(getPatient()._id, cond, function(err, fact){
+    biolog.Conditions.constructConditionFact(getPatient()._id, cond, function(err, fact){
         if (err) {
             return console.error(err);
         }
@@ -114,16 +114,17 @@ submitBioolookupConditions = function() {
             }
 
 
-            saveProperty(fact, function(err, success) {
-                if (err) {
-                    console.error("Unable to save condition fact: " + err + "\n" + JSON.stringify(fact));
-                    return;
-                }
-            });
+            //saveProperty(fact, function(err, success) {
+            //    if (err) {
+            //        console.error("Unable to save condition fact: " + err + "\n" + JSON.stringify(fact));
+            //        return;
+            //    }
+            //});
         });
 
-        });
-    }
+    });
+};
+
     //var fact = Conditions.createConditionFact(getPatient()._id, cond);
     //Bioontology.getConditionClasses(cond,
     //    //callback to add a condition:
@@ -156,12 +157,12 @@ conditionFrowns = new ReactiveVar();
 var getFrowns = function() {
     var condition = Session.get("biolog:conditions/condition.editing");
     if (!condition) return;
-    var frowns = Conditions.getConditionSeverity(condition);
+    var frowns = biolog.Conditions.getConditionSeverity(condition);
     return frowns;
 };
 
 
-Template.conditions.helpers({
+Template["biologConditions"].helpers({
     currentConditions: function() {
 
         if (!getPatient()) return;
@@ -177,13 +178,13 @@ Template.conditions.helpers({
     }
 });
 
-Template.conditionsItem.rendered = function() {
+Template["biologConditionsItem"].rendered = function() {
     $('.rateit').rateit();
     $('.rateit').bind(getFrowns);
 };
 
-Template.conditionsItem.events({
-    "click .conditionsItem": function(event, template) {
+Template["biologConditionsItem"].events({
+    "click .biologConditionsItem": function(event, template) {
         //console.log("clicked: " + JSON.stringify(this));
         Session.set("biolog:conditions/condition.editing", this);
         //Session.set("biolog.condition.modal.open", true);
@@ -192,8 +193,8 @@ Template.conditionsItem.events({
 
 
 
-Template.bioolookupConditionsButton.events({
-    "click #bioolookupConditionsButton": function() {
+Template["biologBioontologyConditionsButton"].events({
+    "click #biologBioontologyConditionsButton": function() {
         Session.set("biolog:conditions/conditions.modal.open", false);
         Session.set("biolog:conditions/conditions.modal.open", true);
     }
@@ -201,10 +202,10 @@ Template.bioolookupConditionsButton.events({
 
 
 
-Template.conditionsItem.helpers({
+Template["biologConditionsItem"].helpers({
 
     frowns: function() {
-        var sev = Conditions.getConditionSeverity(this);
+        var sev = biolog.Conditions.getConditionSeverity(this);
         return sev;
     },
 
@@ -268,12 +269,12 @@ Tracker.autorun(function() {
 });
 
 
-Template.conditionModal.rendered = function() {
+Template["biologConditionModal"].rendered = function() {
     $('.rateit').rateit();
     //$('.rateit').bind(getFrowns);
 };
 
-Template.conditionModal.events({
+Template["biologConditionModal"].events({
     //"click .rateit": function(event, template) {
     //    console.log("click .rateit");
     //    var changedElementId = event.currentTarget.id;
@@ -287,10 +288,10 @@ Template.conditionModal.events({
 });
 
 
-Template.conditionModal.helpers({
+Template["biologConditionModal"].helpers({
     conditionName: function() {
         var condition = Session.get("biolog:conditions/condition.editing");
-        return Conditions.getConditionName(condition);
+        return biolog.Conditions.getConditionName(condition);
     },
 
     frowns: function() {
@@ -395,7 +396,7 @@ updateCondition = function() {
     //setConditionSeverity(condition, conditionFrowns.get());
     var frownsRating = $('#conditionSeverityFrowns').rateit('value');
     console.log("frownsRating=" + frownsRating);
-    Conditions.setConditionSeverity(condition, frownsRating);
+    biolog.Conditions.setConditionSeverity(condition, frownsRating);
 
     saveProperty(condition, function(err, success) {
         if (err) {

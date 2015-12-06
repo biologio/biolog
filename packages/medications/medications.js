@@ -2,7 +2,7 @@
  * Created by dd on 9/4/15.
  */
 
-Medications = {
+biolog.Medications = {
     PREDICATE: {
         _id: "patient/medication",
         name: "medication",
@@ -47,12 +47,12 @@ Medications = {
  * @param med
  * @returns {{subj: *, pred: (medicationPredicate._id|*), obj: *, objName: *, startDate: Date, endFlag: number}}
  */
-Medications.createMedFact = function(patientId, med) {
-    var cui = Bioontology.getItemCui(med);
-    var name = Bioontology.getItemPreferredLabel(med);
+biolog.Medications.createMedFact = function(patientId, med) {
+    var cui = biolog.Bioontology.getItemCui(med);
+    var name = biolog.Bioontology.getItemPreferredLabel(med);
     var fact = {
         subj: patientId,
-        pred: Medications.PREDICATE._id,
+        pred: biolog.Medications.PREDICATE._id,
         obj: cui,
         objName: name,
         startDate: new Date(),
@@ -62,18 +62,18 @@ Medications.createMedFact = function(patientId, med) {
     return fact;
 };
 
-Medications.getMedName = function(medFact) {
+biolog.Medications.getMedName = function(medFact) {
     if (! medFact) return;
     return medFact.objName;
 };
 
-Medications.getMedFrequency = function(medFact) {
+biolog.Medications.getMedFrequency = function(medFact) {
     if (! medFact) return;
     //return getValuePath(medFact, "data.medication/frequency").text;
     return getValuePath(medFact, "data.medication/frequency.text");
 };
 
-Medications.setMedFrequency = function(medFact, frequency) {
+biolog.Medications.setMedFrequency = function(medFact, frequency) {
     if (! medFact) return;
     if (! frequency || !isNumber(frequency)) return;
     var frequencyNum = Number(frequency);
@@ -86,9 +86,9 @@ Medications.setMedFrequency = function(medFact, frequency) {
     setValuePath(medFact, "data.medication/frequency", frequencyFact);
 };
 
-Medications.getMedIngredients = function(medFact) {
+biolog.Medications.getMedIngredients = function(medFact) {
     if (!medFact) return;
-    var ingredients = getValuePath(medFact, "data." + Medications.PREDICATE_INGREDIENT._id);
+    var ingredients = getValuePath(medFact, "data." + biolog.Medications.PREDICATE_INGREDIENT._id);
     var ingredientsArr = [];
     for (var cui in ingredients) {
         var ingredient = ingredients[cui];
@@ -98,16 +98,16 @@ Medications.getMedIngredients = function(medFact) {
 };
 
 
-Medications.addMedIngredient = function(medFact, ingredient) {
+biolog.Medications.addMedIngredient = function(medFact, ingredient) {
     if (! medFact) return "No fact specified";
     if (! ingredient) return ("no ingredient specified");
-    var cui = Bioontology.getItemCui(ingredient);
+    var cui = biolog.Bioontology.getItemCui(ingredient);
     //if (! cui) cui = ingredient.cui[0];
     if (! cui) return "ingredient lacks a cui";
-    var prefLabel = Bioontology.getItemPreferredLabel(ingredient);
+    var prefLabel = biolog.Bioontology.getItemPreferredLabel(ingredient);
     if (!prefLabel) return "ingredient lacks a prefLabel";
     prefLabel = prefLabel.toLowerCase();
-    var signature = "data." + Medications.PREDICATE_INGREDIENT._id + "." + cui;
+    var signature = "data." + biolog.Medications.PREDICATE_INGREDIENT._id + "." + cui;
 
     var ingrObj = {
         obj: cui,
@@ -117,10 +117,10 @@ Medications.addMedIngredient = function(medFact, ingredient) {
 };
 
 
-Medications.addMedClass = function(medFact, clazz) {
-    var cui = Bioontology.getItemCui(clazz);
+biolog.Medications.addMedClass = function(medFact, clazz) {
+    var cui = biolog.Bioontology.getItemCui(clazz);
     if (! cui) return "med class lacks a cui";
-    var prefLabel = Bioontology.getItemPreferredLabel(clazz);
+    var prefLabel = biolog.Bioontology.getItemPreferredLabel(clazz);
     if (!prefLabel) return "med class lacks a prefLabel";
     var signature = "data.medication/class." + cui;
 
@@ -132,11 +132,11 @@ Medications.addMedClass = function(medFact, clazz) {
 };
 
 
-Medications.getIngredientStrength = function(medFact, ingredientCui) {
+biolog.Medications.getIngredientStrength = function(medFact, ingredientCui) {
     if (! medFact || !ingredientCui) return;
     var strength;
     try {
-        strength = medFact.data[Medications.PREDICATE_INGREDIENT._id][ingredientCui].num;
+        strength = medFact.data[biolog.Medications.PREDICATE_INGREDIENT._id][ingredientCui].num;
     } catch (unable) {
         //return null
     }
@@ -144,12 +144,12 @@ Medications.getIngredientStrength = function(medFact, ingredientCui) {
 };
 
 
-Medications.setIngredientStrength = function(medFact, ingredientCui, strength) {
+biolog.Medications.setIngredientStrength = function(medFact, ingredientCui, strength) {
     if (! medFact || !ingredientCui) return;
     if (! strength || !isNumber(strength)) return;
     var ingredient;
     try {
-        ingredient = medFact.data[Medications.PREDICATE_INGREDIENT._id][ingredientCui];
+        ingredient = medFact.data[biolog.Medications.PREDICATE_INGREDIENT._id][ingredientCui];
     } catch (unable) {
         //return null
     }
@@ -160,16 +160,16 @@ Medications.setIngredientStrength = function(medFact, ingredientCui, strength) {
 
 
 /**
- * Given a medicine result (from Bioontology), create a fact, with ingredients and their classes added to it
+ * Given a medicine result (from biolog.Bioontology), create a fact, with ingredients and their classes added to it
  * When finished, call the callback, with first argument is any error and second argument is the medication fact.
  * @param ptid
  * @param med
  * @param callback
  */
-Medications.constructMedFact = function(ptid, med, callback) {
-    var fact = Medications.createMedFact(ptid, med);
+biolog.Medications.constructMedFact = function(ptid, med, callback) {
+    var fact = biolog.Medications.createMedFact(ptid, med);
 
-    Bioontology.getIngredients(med,
+    biolog.Bioontology.getIngredients(med,
         function(err, ingreds) {
             if (err) {
                 var msg = "Unable to addIngredients: " + err;
@@ -179,15 +179,15 @@ Medications.constructMedFact = function(ptid, med, callback) {
             }
             for (var ii in ingreds) {
                 var ingredient = ingreds[ii];
-                var addingError = Medications.addMedIngredient(fact, ingredient);
+                var addingError = biolog.Medications.addMedIngredient(fact, ingredient);
                 if (addingError) return callback(addingError);
             }
 
             var ingredsArr = [];
-            var ingredients = fact.data[Medications.PREDICATE_INGREDIENT._id];
+            var ingredients = fact.data[biolog.Medications.PREDICATE_INGREDIENT._id];
             console.log("\n\nNext add med classes: " + JSON.stringify(ingredients));
 
-            Bioontology.getMedClassesForEachIngredient(ingredients,
+            biolog.Bioontology.getMedClassesForEachIngredient(ingredients,
                 function(err, medClasses) {
                     if (err) {
                         console.error("Error adding med class: " + err);
@@ -196,7 +196,7 @@ Medications.constructMedFact = function(ptid, med, callback) {
 
                     for (var i in medClasses) {
                         var medClass = medClasses[i];
-                        var addingError = Medications.addMedClass(fact, medClass);
+                        var addingError = biolog.Medications.addMedClass(fact, medClass);
                         if (addingError) return callback(addingError);
                     }
 

@@ -54,11 +54,11 @@ Tracker.autorun(function () {
     //console.log("searchIsabel: conditions=" + conditionsList);
     if (! conditionsList) return;
     var pt = getPatient();
-    //console.log("searchIsabel: getPatientDob=" + getPatientDob(pt));
+    console.log("searchIsabel: pt=", pt);
     if (! pt) {
         return;
     }
-    var dob = yyyymmdd(getPatientDob(pt));
+    var dob = biolog.BiologUtil.yyyymmdd(getPatientDob(pt));
     var sex = getPatientSex(pt);
     var pregnant = "false";
     console.log("Searching Isabel for: dob: " + dob + ", sex: " + sex + ", conditions:" + conditionsList);

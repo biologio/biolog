@@ -19,3 +19,7 @@ Meteor.publish("patientMeds", function (patientId) {
 Meteor.publish("patientConditions", function (patientId) {
     return getPatientConditions(patientId);
 });
+
+Meteor.publish("patientEvents", function (patientId) {
+    return getPatientEvents(patientId);
+});

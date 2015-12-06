@@ -28,14 +28,14 @@ Tracker.autorun(function () {
 });
  */
 
-Template.patientDemographics.rendered = function() {
+Template["patientDemographics"].rendered = function() {
     $('.ui.checkbox')
         .checkbox();
     ;
 }
 
 
-Template.patientDemographics.events({
+Template["patientDemographics"].events({
     'click .patientDialog-patient': function(event) {
         //console.log(JSON.stringify(this));
     },
@@ -51,7 +51,7 @@ Template.patientDemographics.events({
     //    Session.set("editPatient", pt);
     //}
 
-    'change #inputNickname': function(event) {
+    'change #biolog-inputNickname': function(event) {
         var pt = getPatient();
         setPatientNickname(pt, event.target.value);
         setPatient(pt);
@@ -59,7 +59,7 @@ Template.patientDemographics.events({
         //console.log("Changed: " + JSON.stringify(getPatient()));
     },
 
-    'change #inputDob': function(event) {
+    'change #biolog-inputDob': function(event) {
         var pt = getPatient();
         setPatientDob(pt, event.target.value);
         setValuePath(pt, "data.id/dob", fact);
@@ -68,7 +68,7 @@ Template.patientDemographics.events({
         console.log("Changed patient: " + JSON.stringify(getPatient()));
     },
 
-    'change input[name=inputGender]': function(event) {
+    'change input[name=biolog-inputGender]': function(event) {
         var pt = getPatient();
         setPatientSex(pt, event.target.value);
 
@@ -79,7 +79,7 @@ Template.patientDemographics.events({
 });
 
 
-Template.patientDemographics.helpers({
+Template["patientDemographics"].helpers({
     //patients: function() {
     //    if (! getPatient()) return;
     //    var pts = getUserPatients(getPatient()._id).fetch();

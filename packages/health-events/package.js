@@ -1,5 +1,5 @@
 Package.describe({
-  name: 'biolog:medications',
+  name: 'biolog:health-events',
   version: '0.0.1',
   // Brief, one-line summary of the package.
   summary: '',
@@ -12,7 +12,6 @@ Package.describe({
 
 Package.onUse(function(api) {
     api.versionsFrom('1.1.0.3');
-
     api.use(['tracker', 'biolog:biolog-core'], ['client', 'server']);
 
     api.use([
@@ -22,22 +21,25 @@ Package.onUse(function(api) {
             'templating',
             'reactive-var',
             'biolog:bioontology',
-            'dandv:jquery-rateit'
+            'gwendall:template-animations'
         ],
         'client');
 
-    api.addFiles('medications.js');
+    api.addFiles('events.js');
     api.addFiles([
-            'view/meds.html',
-            'view/meds.js'
+            'view/evts.html',
+            'view/evts.js'
         ],
         'client');
-    api.export('Medications');
-
+    api.addFiles([
+            'server/events-server.js'
+        ],
+        'server');
+    api.export('Events');
 });
 
 Package.onTest(function(api) {
-  api.use('tinytest');
-  api.use('biolog:medications');
-  api.addFiles('medications-tests.js');
+    api.use('clinical:verification');
+    api.use('biolog:conditions');
+    api.addFiles('conditions-tests.js');
 });

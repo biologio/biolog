@@ -51,7 +51,7 @@ Meteor.methods({
         var postAsync = Meteor.wrapAsync(HTTP.post);
 
         try {
-            var result = postAsync(Bioontology.getUrlBatchQuery(), {data: batchData});
+            var result = postAsync(biolog.Bioontology.getUrlBatchQuery(), {data: batchData});
             //console.log("Batch queried SNOMED IDs: " + JSON.stringify(result.data, null , "  "));
 
             for (var idx in result.data["http://www.w3.org/2002/07/owl#Class"]) {
