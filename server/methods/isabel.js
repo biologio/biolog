@@ -60,7 +60,7 @@ Meteor.methods({
                 var prefixLength = uri.lastIndexOf("/") + 1;
                 var id = uri.substring(prefixLength);
                 var cuis = obj.cui;
-                console.log(result);
+                //console.log(result);
 
                 for (var dxi in diagnoses) {
                     if (diagnoses[dxi].snomed_diagnoses_id == id) {
