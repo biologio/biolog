@@ -1,9 +1,9 @@
 
 <!-- CONDITIONS -->
 <template name="biologBioontologyConditionsButton">
-    <span id="biologBioontologyConditionsButton" class="ui icon small button">
-        <i class="plus icon"></i>
-    </span>
+  
+        <i id="biologBioontologyConditionsButton" class="ion ion-plus-round icon link inverted green bordered circular biologBioontologyConditionsButton"></i>
+  
 </template>
 
 
@@ -46,9 +46,16 @@
 
 
 <template name="biologConditions">
-    <div class="ui segment">
-        <span class="ui large header">Current Conditions</span>&nbsp;&nbsp;&nbsp;&nbsp;{{> biologBioontologyConditionsButton}}
-        <div class="ui segment">
+      <h2 class="ui header attached top">
+      <div class="content">
+   Current Conditions
+{{>biologBioontologyConditionsButton}}
+  </div>
+  
+
+</h2>
+  
+        <div class="ui segment attached">
             <!--<div class="ui items">-->
             <div class="ui divided link items">
                 {{#each currentConditions}}
@@ -56,11 +63,17 @@
                 {{/each}}
             </div>
         </div>
-    </div>
+ 
+   <h2 class="ui header attached top">
+      <div class="content">
+   Past Conditions
+{{>biologBioontologyConditionsButton}}
+  </div>
+  
 
-    <div class="ui segment">
-        <span class="ui large header">Past Conditions</span>&nbsp;&nbsp;&nbsp;&nbsp;{{> biologBioontologyConditionsButton}}
-        <div class="ui segment">
+</h2>
+  
+        <div class="ui segment attached">
             <!--<div class="ui items">-->
             <div class="ui divided link items">
                 {{#each pastConditions}}
@@ -68,7 +81,7 @@
                 {{/each}}
             </div>
         </div>
-    </div>
+    
 
     {{> biologBioontologyConditionsModal}}
     {{> biologConditionModal}}
@@ -107,17 +120,35 @@
                     <div class="field">
                         <label>Start Date</label>
                         <input id="conditionStartDate" placeholder="start date" type="text" value="{{conditionStartDate}}" class="datepicker">
-
+<!-- 
                         <label>Since Birth</label>
-                        <input id="conditionStartFlag" type="checkbox" value="0" {{conditionSinceBirthChecked}}>
+
+                        <input id="conditionStartFlag" type="checkbox" value="0" {{conditionSinceBirthChecked}}> -->
                     </div>
                     <div class="field">
                         <label>End Date</label>
                         <input id="conditionEndDate" placeholder="end date" type="text" value="{{conditionEndDate}}" class="datepicker">
 
-                        <label>Ongoing</label>
-                        <input id="conditionEndFlag" type="checkbox" value="1" {{conditionOngoingChecked}}>
+                        <!-- <label>Ongoing</label>
+                        <input id="conditionEndFlag" type="checkbox" value="1" {{conditionOngoingChecked}}> -->
                     </div>
+            
+                </div>
+                <div class="two fields">
+                                       <div class="field">
+      <div class="ui radio checkbox">
+        <input id="conditionStartFlag" type="checkbox" value="0" {{conditionSinceBirthChecked}} class="hidden">
+        <label for="conditionStartFlag">Since Birth</label>
+
+      </div>
+    </div>
+                       <div class="field">
+      <div class="ui radio checkbox">
+        <input id="conditionEndFlag" type="checkbox" value="1" {{conditionOngoingChecked}} class="hidden">
+        <label for="conditionEndFlag">Ongoing</label>
+
+      </div>
+    </div>
                 </div>
                 <br>
             <br>

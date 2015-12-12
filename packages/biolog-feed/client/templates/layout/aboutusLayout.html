@@ -3,65 +3,48 @@
         <nav class=" " role="navigation">
             <div class="nav-wrapper container">
                 {{#if currentUser}}
+                <a href="" class="ui button mini support-link computer tablet only "> Support our campaign</a>
                 <a id="" href="/feed" class="brand-logo"><img src="/images/Biolog.io_logo.png" class="logo-image"></a> {{else}}
                 <a id="" href="/" class="brand-logo"><img src="/images/Biolog.io_logo.png" class="logo-image"></a> {{/if}}
-
                 <ul class="right hide-on-med-and-down">
-                  
-                      {{#if currentUser}}
-
-                      <li>
-                          <a class="" href="/feed" style=""><i class="material-icons left ion-ios-paper ion   icon"></i> Feed</a>
-                        </li>
-                      {{/if}}
-                      <li>
-                          <a class="" href="http://invent.healthcare/?cat=for-new-apps" style=""><i class="material-icons left ion ion-android-bulb"></i> Share your idea</a>
-                        </li>
-                           <li>
-                        <a  class="show-feedback-form " href="#" style=" "> <i class=" material-icons left ion icon ion-clipboard ion"></i> Feedback</a>
-                      </li>
-                          {{#if currentUser}}
-                     <li> {{> atNavButton}}</li>
-                      {{else}}
-                      <li>
-                         <a class="" href="/sign-in"  style=" "><i class="ion-log-in ion  material-icons left"></i> Sign in</a>
-                       </li>
-                       {{/if}}
-                        
-
+                    {{#if currentUser}}
+                    <li>
+                        <a class="" href="/feed" style=""><i class="material-icons left ion-ios-paper ion   icon"></i> Feed</a>
+                    </li>
+                    {{/if}}
+                    <li>
+                        <a class="" href="http://invent.healthcare/?cat=for-new-apps" style=""><i class="material-icons left ion ion-android-bulb"></i> Share your idea</a>
+                    </li>
+                    <li>
+                        <a class="show-feedback-form " href="#" style=" "> <i class=" material-icons left ion icon ion-clipboard ion"></i> Feedback</a>
+                    </li>
+                    {{#if currentUser}}
+                    <li> {{> atNavButton}}</li>
+                    {{else}}
+                    <li>
+                        <a class="" href="/sign-in" style=" "><i class="ion-log-in ion  material-icons left"></i> Sign in</a>
+                    </li>
+                    {{/if}}
                 </ul>
-
-                <ul id="nav-mobile" class="side-nav">
-                
+                <div id="nav-mobile" class="side-nav ui secondary vertical  menu">
+                   
+                        <a class="item" href="http://invent.healthcare/?cat=for-new-apps" style=""><i class="icon ion ion-android-bulb"></i> Share your idea</a>
                     
-                      <li>
-                          <a class="" href="http://invent.healthcare/?cat=for-new-apps" style=""><i class="material-icons left ion ion-android-bulb"></i> Share your idea</a>
-                        </li>
-                           <li>
-                        <a  class="show-feedback-form " href="#" style=" "> <i class=" material-icons left  icon ion-clipboard ion"></i> Feedback</a>
-                      </li>
+                        <a class="show-feedback-form item" href="#" style=" "> <i class="   icon ion-clipboard ion"></i> Feedback</a>
                   
-                   <li>
-                     {{#if currentUser}}
-                   {{> atNavButton}}
-                      {{else}}
-                       <a class="" href="/sign-in"  style=" "><i class="ion-log-in ion  material-icons left"></i> Sign in</a>
-                       {{/if}}
-
-                     </li>
-                  
-                </ul>
+                 
+                        {{#if currentUser}} <a class="item" href="/sign-in" id="logOff" style=" "><i class="ion-power ion  icon"></i> Log off</a> {{else}}
+                        <a class="item" href="/sign-in" style=" "><i class="ion-log-in ion  icon"></i> Sign in</a> {{/if}}
+                          <a href="" class="ui button mini support-link   "> Support our campaign</a>
+                   
+                </div>
                 <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="ion-android-menu icon"></i></a>
-
             </div>
         </nav>
         {{> yield}}
     </div>
     {{>biologFeedbackForm}}
 </template>
-
 <template name="custom_atNavButton">
- 
     <a class="item" id="at-nav-button"><i class="ion icon ion-power material-icons left"></i> Sign out</a>
-  
 </template>

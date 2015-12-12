@@ -270,7 +270,7 @@ Template["biologMedsItem"].helpers({
 
 Tracker.autorun(function() {
     if (Session.get("biolog:medications/med.editing")) {
-        //console.log("Showing modal:" + JSON.stringify(Session.get("biolog:medications/med.editing")));
+        console.log("Showing modal:" + JSON.stringify(Session.get("biolog:medications/med.editing")));
         $('#medModal').modal({
             closable: true,
             onApprove: function() {

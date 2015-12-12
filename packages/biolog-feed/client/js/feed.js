@@ -72,7 +72,6 @@ $('.feed-help').popup('show');
 }
 
      $("body").addClass('feed');
-console.log("loaded");
       $("#post").atwho({
          at: "#",
          maxLen: 20,
@@ -210,8 +209,6 @@ console.log("loaded");
          }
      },
      'click .post-edit': function(e, tpl) {
-         // tpl.isEditMode.set(true);
-         console.log("edit")
          var actionButton = $(e.target);
 
          if (actionButton.hasClass("ion-edit")) {
@@ -293,7 +290,7 @@ console.log("loaded");
                  console.log(err)
                  return;
              }
-             console.log("Bioontology annotations=" + JSON.stringify(annotations, null, "  "));
+             //console.log("Bioontology annotations=" + JSON.stringify(annotations, null, "  "));
 
              annotations = _.uniq(annotations)
              annotations.forEach(function(element, index) {
@@ -383,6 +380,7 @@ console.log("loaded");
  function extendObject(obj, arrProperties) {
      if (!obj) return;
      arrProperties.forEach(function(element, index) {
+        console.log(name);
          obj[element.name] = element.value
      });
      return obj;

@@ -1,8 +1,8 @@
 <!-- MEDICATIONS -->
 <template name="biologBioontologyMedsButton">
-    <span class="ui icon small button biologBioontologyMedsButton">
-        <i class="plus icon"></i>
-    </span>
+   
+        <i class=" ion ion-plus-round icon link inverted green bordered circular biologBioontologyMedsButton "></i>
+  
 </template>
 
 
@@ -46,9 +46,17 @@
 
 
 <template name="biologMeds">
-    <div class="ui segment">
-        <span class="ui large header">Current Medications</span>&nbsp;&nbsp;&nbsp;&nbsp;{{> biologBioontologyMedsButton}}
-        <div class="ui segment">
+
+   <h2 class="ui header attached top">
+      <div class="content">
+   Current Medications
+{{>biologBioontologyMedsButton}}
+  </div>
+  
+
+</h2>
+       <!--  <h3 class="ui large header attached top">Current Medications {{> biologBioontologyMedsButton}}</h3> -->
+        <div class="ui segment attached">
             <!--<div class="ui items">-->
             <div class="ui divided link items">
                 {{#each currentMeds}}
@@ -56,11 +64,18 @@
                 {{/each}}
             </div>
         </div>
-    </div>
+ 
 
-    <div class="ui segment">
-        <span class="ui large header">Past Medications</span>&nbsp;&nbsp;&nbsp;&nbsp;{{> biologBioontologyMedsButton}}
-        <div class="ui segment">
+     <h2 class="ui header attached top">
+      <div class="content">
+   Past Medications
+{{>biologBioontologyMedsButton}}
+  </div>
+  
+
+</h2>
+        <!-- <h3 class="ui large header attached top">Past Medications {{> biologBioontologyMedsButton}}</h3> -->
+        <div class="ui segment attached">
             <!--<div class="ui items">-->
             <div class="ui divided link items">
                 {{#each pastMeds}}
@@ -68,7 +83,7 @@
                 {{/each}}
             </div>
         </div>
-    </div>
+    
 
     {{> biologBioontologyMedsModal}}
     {{> biologMedModal}}
@@ -151,9 +166,19 @@
                         <label>End Date</label>
                         <input id="medEndDate" placeholder="end date" type="text" value="{{medEndDate}}" class="datepicker">
 
-                        <label>Still Taking?</label>
-                        <input id="medEndFlag" type="checkbox" value="1" {{medTakingChecked}}>
+               <!--          <label>Still Taking?</label>
+                        <input id="medEndFlag" type="checkbox" value="1" {{medTakingChecked}}> -->
                     </div>
+                </div>
+                <div class="two fields">
+                    <div class="field">&nbsp;</div>
+                              <div class="field">
+      <div class="ui radio checkbox">
+        <input id="medEndFlag" type="checkbox" value="1" {{medTakingChecked}} class="hidden">
+        <label for="medEndFlag">Still Taking?</label>
+
+      </div>
+    </div>
                 </div>
             </div>
         </div>

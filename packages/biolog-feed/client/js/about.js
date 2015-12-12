@@ -9,12 +9,16 @@
 
    });
    Template.aboutus.rendered = function() {
+    
 
 
 
        $('body').removeClass("feed pushable")
        new WOW().init();
-       $('.button-collapse').sideNav();
+       $('.button-collapse').sideNav({
+        
+      closeOnClick: true
+       });
        $('.ui.embed').embed();
 
    };
@@ -55,6 +59,10 @@
            .modal('setting', 'transition', 'vertical flip')
                .modal('show');
            e.preventDefault();
+       },
+       'click #logOff':function(e, tpl){
+        e.preventDefault();
+          Meteor.logout();
        }
    });
 
