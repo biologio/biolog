@@ -134,6 +134,7 @@ biolog.Events.addEventClassesToFacts = function(event, fact, callback) {
  */
 biolog.Events.constructEventFact = function(ptid, event, callback) {
     var fact = biolog.Events.createEventFact(ptid, event);
+    fact.semanticType = biolog.Bioontology.getItemSemanticTypes(event);
 
     Meteor.call("biolog.bioontology.getItemClasses", event, function(classes) {
         for (var ci in classes) {

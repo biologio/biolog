@@ -168,7 +168,7 @@ biolog.Medications.setIngredientStrength = function(medFact, ingredientCui, stre
  */
 biolog.Medications.constructMedFact = function(ptid, med, callback) {
     var fact = biolog.Medications.createMedFact(ptid, med);
-
+    fact.semanticType = biolog.Bioontology.getItemSemanticTypes(med);
     biolog.Bioontology.getIngredients(med,
         function(err, ingreds) {
             if (err) {

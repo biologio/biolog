@@ -405,7 +405,8 @@ console.log("loaded");
          var condition = biolog.Conditions.constructConditionFact(getPatient()._id, object.annotatedClass, cb);
 
      } else {
-         var med = biolog.Medications.constructMedFact(getPatient()._id, object.annotatedClass, cb)
+         var med = biolog.Medications.constructMedFact(getPatient()._id, object.annotatedClass, cb);
+         console.log("savePostFact: ", med);
 
      }
  }
