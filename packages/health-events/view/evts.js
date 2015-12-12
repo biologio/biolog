@@ -205,7 +205,7 @@ Template["biologBioontologyEventsButton"].events({
 Template["biologEventsItem"].helpers({
 
     frowns: function() {
-        var sev = Events.getEventSeverity(this);
+        var sev = biolog.Events.getEventSeverity(this);
         return sev;
     },
 

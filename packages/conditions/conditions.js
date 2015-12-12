@@ -134,6 +134,7 @@ biolog.Conditions.addConditionClassesToFacts = function(condition, fact, callbac
  */
 biolog.Conditions.constructConditionFact = function(ptid, condition, callback) {
     var fact = biolog.Conditions.createConditionFact(ptid, condition);
+    fact.semanticType = biolog.Bioontology.getItemSemanticTypes(condition);
 
     Meteor.call("biolog.bioontology.getItemClasses", condition, function(classes) {
         for (var ci in classes) {
