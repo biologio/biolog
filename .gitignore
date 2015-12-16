@@ -11,3 +11,4 @@ server/config/social-config.js
 public/Biolog_full_2.mp4
 ssl.pem
 biolog.io.nopass.key
+.DS_Store

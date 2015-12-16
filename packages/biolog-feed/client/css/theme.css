@@ -409,7 +409,7 @@ nav.light-blue.lighten-1 {
     font-weight: 500;
     color: #6679BB;
         font-size: 1.2rem;
-    padding: .5rem;
+    padding-top: .5rem;
 
 }
 .material nav {
@@ -658,7 +658,7 @@ selected, .picker__day--selected:hover, .picker--focused .picker__day--selected 
     align-self: center;
 }
 .features .ui.items > .item > .content > .header{
-    font-size: 3rem;
+    font-size: 2rem;
     color:#3b3b3b;
     display: block;
 }
@@ -739,5 +739,21 @@ border-color: transparent;
 .cares .ui.items .item:hover i.icon{
     opacity: 1;
 }
-
+.ui.button.support-link{
+    margin-right: 2rem;
+    position: relative;
+    left:-3rem;
+    background-color: transparent;
+    box-shadow: 0px 0px 0px 1px rgba(235, 20, 120, 0.8) inset !important;
+    color: #EF4393;
+     text-transform: uppercase; 
+    font-weight: bolder;
+    font-family: 'Antenna Cond Black', sans-serif;
+    transition:all .2s;
+}
+.ui.button.support-link:hover{
+    background-color: #EF4393;
+    color: #fff;
+   
+}
 

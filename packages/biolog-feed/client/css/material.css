@@ -6856,13 +6856,14 @@ html {
 
 .material nav .nav-wrapper i {
     display: block;
-    font-size: 2rem
+    font-size: 1.5rem;
 }
 
 @media only screen and (min-width: 993px) {
     .material nav a.button-collapse {
         display: none
     }
+    
 }
 
 .material nav .button-collapse {
@@ -6904,6 +6905,9 @@ html {
         -ms-transform: translateX(-50%);
         -o-transform: translateX(-50%);
         transform: translateX(-50%)
+    }
+    .ui.button.support-link{
+        display: none;
     }
 }
 
@@ -7001,9 +7005,9 @@ html {
 
 @media only screen and (min-width: 601px) {
     .material nav,
-    .material nav .nav-wrapper i,
+    
     .material nav a.button-collapse,
-    .material nav a.button-collapse i {
+    {
         height: 64px;
         line-height: 64px
     }
@@ -9286,7 +9290,7 @@ small {
     color: #444;
     display: block;
     font-size: 1rem;
-    height: 64px;
+    
     line-height: 64px;
     padding: 0 15px
 }

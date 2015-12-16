@@ -41,6 +41,7 @@ biolog.Medications = {
     }
 };
 
+
 /**
  * Create a medication fact object, from a object obtained from lookup of RXNORM on bioontology
  * @param patientId

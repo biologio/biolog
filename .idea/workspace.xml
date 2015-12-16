@@ -2,6 +2,41 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="02e712f0-6afb-4af0-a485-f0f77566c506" name="Default" comment="Merge branch 'master' of https://github.com/biologio/biolog&#10;&#10;# Please enter a commit message to explain why this merge is necessary,&#10;# especially if it merges an updated upstream into a topic branch.&#10;#&#10;# Lines starting with '#' will be ignored, and an empty message aborts&#10;# the commit.&#10;">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/fonts/webfont-medical-icons.eot" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/fonts/webfont-medical-icons.ttf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/fonts/webfont-medical-icons.woff" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/fonts/selection.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/fonts/webfont-medical-icons.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/stylesheets/wfmi-style.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/fonts/wfmi-style.css" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/bower1.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/packages/biolog-core" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/packages/bioontology" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/biolog-feed/client/templates/about.html" afterPath="$PROJECT_DIR$/packages/biolog-feed/client/templates/about.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/biolog-feed/client/js/about.js" afterPath="$PROJECT_DIR$/packages/biolog-feed/client/js/about.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/biolog-feed/client/templates/layout/aboutusLayout.html" afterPath="$PROJECT_DIR$/packages/biolog-feed/client/templates/layout/aboutusLayout.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/stylesheets/app.sass" afterPath="$PROJECT_DIR$/client/stylesheets/app.sass" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/views/layouts/basic.js" afterPath="$PROJECT_DIR$/client/views/layouts/basic.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/biolog-feed/client/templates/conditionsMedicationsFeed.html" afterPath="$PROJECT_DIR$/packages/biolog-feed/client/templates/conditionsMedicationsFeed.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/biolog-feed/client/js/conditionsMedicationsFeed.js" afterPath="$PROJECT_DIR$/packages/biolog-feed/client/js/conditionsMedicationsFeed.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/biolog-feed/client/templates/conditionsMedicationsModals.html" afterPath="$PROJECT_DIR$/packages/biolog-feed/client/templates/conditionsMedicationsModals.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/conditions/view/conds.html" afterPath="$PROJECT_DIR$/packages/conditions/view/conds.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/conditions/view/conds.js" afterPath="$PROJECT_DIR$/packages/conditions/view/conds.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/health-events/view/evts.html" afterPath="$PROJECT_DIR$/packages/health-events/view/evts.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/health-events/view/evts.js" afterPath="$PROJECT_DIR$/packages/health-events/view/evts.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/biolog-feed/client/js/feed.js" afterPath="$PROJECT_DIR$/packages/biolog-feed/client/js/feed.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/biolog-feed/client/css/feed.scss" afterPath="$PROJECT_DIR$/packages/biolog-feed/client/css/feed.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/biolog-feed/client/css/material.css" afterPath="$PROJECT_DIR$/packages/biolog-feed/client/css/material.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/medications/medications.js" afterPath="$PROJECT_DIR$/packages/medications/medications.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/medications/view/meds.html" afterPath="$PROJECT_DIR$/packages/medications/view/meds.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/medications/view/meds.js" afterPath="$PROJECT_DIR$/packages/medications/view/meds.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/conditions/package.js" afterPath="$PROJECT_DIR$/packages/conditions/package.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/health-events/package.js" afterPath="$PROJECT_DIR$/packages/health-events/package.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/medications/package.js" afterPath="$PROJECT_DIR$/packages/medications/package.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/config/security.js" afterPath="$PROJECT_DIR$/server/config/security.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/util/subscriptionQueries.js" afterPath="$PROJECT_DIR$/lib/util/subscriptionQueries.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/biolog-feed/client/css/theme.css" afterPath="$PROJECT_DIR$/packages/biolog-feed/client/css/theme.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="biolog.iws" />
@@ -29,9 +64,11 @@
       <file leaf-file-name="feed.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/packages/biolog-feed/client/js/feed.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.703704" vertical-offset="5966" max-vertical-offset="6975">
-              <caret line="408" column="44" selection-start-line="408" selection-start-column="44" selection-end-line="408" selection-end-column="44" />
-              <folding />
+            <state vertical-scroll-proportion="-5.703704" vertical-offset="6011" max-vertical-offset="7035">
+              <caret line="411" column="0" selection-start-line="411" selection-start-column="0" selection-end-line="411" selection-end-column="0" />
+              <folding>
+                <marker date="1450262039000" expanded="true" signature="15150:15263" placeholder="{...}" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -60,11 +97,31 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="versions" pinned="false" current-in-tab="true">
+      <file leaf-file-name="versions" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/.meteor/versions">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.55944055" vertical-offset="330" max-vertical-offset="2520">
+            <state vertical-scroll-proportion="-9.6" vertical-offset="330" max-vertical-offset="2520">
               <caret line="38" column="7" selection-start-line="38" selection-start-column="7" selection-end-line="38" selection-end-column="7" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="285">
+              <caret line="13" column="9" selection-start-line="13" selection-start-column="9" selection-end-line="13" selection-end-column="9" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="package.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/packages/conditions/package.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="780">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -118,7 +175,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/private/settings-usethisinproduction.json" />
         <option value="$PROJECT_DIR$/client/lib/client-methods.js" />
         <option value="$PROJECT_DIR$/server/methods/entities.js" />
         <option value="$PROJECT_DIR$/packages/biolog-feed/client/js/conditionsMedicationsFeed.js" />
@@ -169,6 +225,7 @@
         <option value="$PROJECT_DIR$/packages/rules/client.browserify.js" />
         <option value="$PROJECT_DIR$/packages/rules/package.js" />
         <option value="$PROJECT_DIR$/packages/rules/Ruler.js" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -236,10 +293,6 @@
               <option name="myItemId" value="packages" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rules" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -254,18 +307,8 @@
               <option name="myItemId" value="packages" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-          </PATH>
-          <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="biolog" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="biolog" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value=".meteor" />
+              <option name="myItemId" value="conditions" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -383,7 +426,7 @@
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.31142858" sideWeight="0.49964765" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2544295" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2544295" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -499,13 +542,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/packages/bioontology/bioontology-server.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.3333333" vertical-offset="0" max-vertical-offset="315">
-          <caret line="6" column="83" selection-start-line="6" selection-start-column="69" selection-end-line="6" selection-end-column="83" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/views/alerts/alerts.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-10.814815" vertical-offset="608" max-vertical-offset="1230">
@@ -524,14 +560,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="315">
           <caret line="15" column="3" selection-start-line="15" selection-start-column="3" selection-end-line="15" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/packages/biolog-core/biolog-core.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="975" max-vertical-offset="1605">
-          <caret line="88" column="25" selection-start-line="88" selection-start-column="25" selection-end-line="88" selection-end-column="25" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -561,13 +589,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.6037296" vertical-offset="581" max-vertical-offset="1230">
           <caret line="56" column="1" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/packages/bioontology/eventsAPI.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="75" max-vertical-offset="600">
-          <caret line="6" column="11" selection-start-line="6" selection-start-column="11" selection-end-line="6" selection-end-column="11" />
         </state>
       </provider>
     </entry>
@@ -635,61 +656,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/packages/biolog-core/README.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="424">
-          <caret line="0" column="54" selection-start-line="0" selection-start-column="54" selection-end-line="0" selection-end-column="54" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="MarkdownPreviewEditor">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/packages/bioontology/.versions">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="930">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/packages/biolog-core/package.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="450">
-          <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/packages/health-events/view/evts.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="2953" max-vertical-offset="6030">
           <caret line="207" column="25" selection-start-line="207" selection-start-column="25" selection-end-line="207" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/packages/bioontology/healthAPI.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="66" max-vertical-offset="510">
-          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/packages/bioontology/package.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="540">
-          <caret line="2" column="18" selection-start-line="2" selection-start-column="18" selection-end-line="2" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/packages/bioontology/bioontologyAPI.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.9259257" vertical-offset="1706" max-vertical-offset="4350">
-          <caret line="128" column="23" selection-start-line="128" selection-start-column="23" selection-end-line="128" selection-end-column="23" />
           <folding />
         </state>
       </provider>
@@ -743,19 +713,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/packages/bioontology/medicinesAPI.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.148148" vertical-offset="101" max-vertical-offset="2835">
-          <caret line="16" column="10" selection-start-line="16" selection-start-column="6" selection-end-line="16" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/packages/biolog-feed/client/js/feed.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.703704" vertical-offset="5966" max-vertical-offset="6975">
-          <caret line="408" column="44" selection-start-line="408" selection-start-column="44" selection-end-line="408" selection-end-column="44" />
-          <folding />
+        <state vertical-scroll-proportion="-5.703704" vertical-offset="6011" max-vertical-offset="7035">
+          <caret line="411" column="0" selection-start-line="411" selection-start-column="0" selection-end-line="411" selection-end-column="0" />
+          <folding>
+            <marker date="1450262039000" expanded="true" signature="15150:15263" placeholder="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -821,8 +785,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.meteor/versions">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.55944055" vertical-offset="330" max-vertical-offset="2520">
+        <state vertical-scroll-proportion="-9.6" vertical-offset="330" max-vertical-offset="2520">
           <caret line="38" column="7" selection-start-line="38" selection-start-column="7" selection-end-line="38" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="285">
+          <caret line="13" column="9" selection-start-line="13" selection-start-column="9" selection-end-line="13" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/packages/conditions/package.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="780">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>

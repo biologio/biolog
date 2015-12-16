@@ -21,7 +21,8 @@ Package.onUse(function(api) {
             'templating',
             'reactive-var',
             'biolog:bioontology',
-            'gwendall:template-animations'
+            'gwendall:template-animations',
+            'themeteorchef:bert'
         ],
         'client');
 
