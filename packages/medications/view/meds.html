@@ -1,120 +1,108 @@
 <!-- MEDICATIONS -->
 <template name="biologBioontologyMedsButton">
-   
-        <i class=" ion ion-plus-round icon link inverted green bordered circular biologBioontologyMedsButton "></i>
-  
+    <i class=" ion ion-plus-round icon link inverted green bordered circular biologBioontologyMedsButton "></i>
 </template>
-
-
 <template name="biologBioontologyMedsModal">
     <div id="biologBioontologyMedsModal" class="ui modal small">
         <div class="content">
             {{>biologBioontologyMedsContent}}
         </div>
         <div class="actions">
-            <div class="ui button cancel">Cancel</div>
-            <div class="ui button ok">OK</div>
+            <div class="ui button red cancel">Cancel</div>
+            <div class="ui button green ok">OK</div>
         </div>
     </div>
 </template>
-
-
 <template name="biologBioontologyMedsContent">
-<!--<div class="ui page grid">-->
-    <!--<div class="three column row">-->
-        <!--<div class="column"></div>-->
-        <!--<div class="left aligned starter column">-->
-            <div class="ui icon input loading">
-                <input class="prompt" type="text" placeholder="Search for medications..." id="biologBioontologySearchMedsBox">
+    <div class="ui icon input loading">
+        <input class="prompt" type="text" placeholder="Search for medications..." id="biologBioontologySearchMedsBox">
+    </div>
+    <div class="results ui selection list">
+        {{#each results}}
+        <div class="item biologBioontologyMedsResult">
+            <div class="content">
+                <div class="header">{{prefLabel}}</div>
             </div>
-            <div class="results ui selection list">
-                {{#each results}}
-                    <div class="item biologBioontologyMedsResult">
-                        <div class="content">
-                            <div class="header">{{prefLabel}}</div>
-                        </div>
-                    </div>
-                {{/each}}
-            </div>
-         <!--</div>-->
-    <!--</div>-->
-<!--</div>-->
-
+        </div>
+        {{/each}}
+    </div>
 </template>
-
-
-
-
 <template name="biologMeds">
-
-   <h2 class="ui header attached top">
-      <div class="content">
-   Current Medications
-{{>biologBioontologyMedsButton}}
-  </div>
-  
-
-</h2>
-       <!--  <h3 class="ui large header attached top">Current Medications {{> biologBioontologyMedsButton}}</h3> -->
-        <div class="ui segment attached">
-            <!--<div class="ui items">-->
-            <div class="ui divided link items">
-                {{#each currentMeds}}
-                    {{> biologMedsItem}}
-                {{/each}}
+    <div class="ui top attached menu huge biolog-meds">
+        <div class="item header icon ui active "> Current medication</div>
+        <div class="menu">
+            <div class="ui  category search item">
+                <div class="ui  icon input transparent ">
+                    <input class="prompt" type="text" placeholder="Search for medications..." id="biologBioontologySearchMedsBox">
+                    <i class="search link icon teal"></i>
+                </div>
+                <div class="results">
+                    {{#each results}}
+                    <a class=" result biologBioontologyMedsResult">
+                        <div class="content">
+                            {{prefLabel}}
+                        </div>
+                    </a>
+                    {{/each}}
+                </div>
             </div>
         </div>
- 
-
-     <h2 class="ui header attached top">
-      <div class="content">
+    </div>
+    <div class="ui bottom attached segment card-items">
+        <div class="ui four doubling stackable cards">
+            {{#each currentMeds}} {{> biologMedsItem}} {{/each}}
+        </div>
+        <h4 class="ui horizontal divider header">
+  <i class=" icon red ion ion-ios-circle-filled counterclockwise rotated "></i>
    Past Medications
-{{>biologBioontologyMedsButton}}
-  </div>
-  
-
-</h2>
-        <!-- <h3 class="ui large header attached top">Past Medications {{> biologBioontologyMedsButton}}</h3> -->
-        <div class="ui segment attached">
-            <!--<div class="ui items">-->
-            <div class="ui divided link items">
-                {{#each pastMeds}}
-                    {{> biologMedsItem}}
-                {{/each}}
+</h4>
+        <div class=" card-items">
+            <div class="ui four doubling stackable cards">
+                {{#each pastMeds}} {{> biologMedsItem}} {{/each}}
             </div>
         </div>
-    
-
-    {{> biologBioontologyMedsModal}}
-    {{> biologMedModal}}
+    </div>
+    {{> biologBioontologyMedsModal}} {{> biologMedModal}}
 </template>
-
-
 <template name="biologMedsItem">
-    <div class="item biologMedsItem">
-        <div class="ui tiny image">
-            <img src="images/pills.jpg">
-        </div>
+    <div class="card ns-box feed-item ns-attached ns-effect-bouncyflip ns-type-notice ns-show">
         <div class="content">
-            <div class="header">{{objName}}</div>
-            <p>{{strength}},&nbsp;&nbsp;{{frequency}}</p>
-            <p>{{timing}}</p>
+            <i class="icon-pharmacy icon- right floated mini ui image"></i>
+            <div class="header meds-item" title="{{objName}}" data-variation="tiny" data-content="{{objName}}">
+                {{objName}}
+            </div>
+            <div class="meta">
+                <div id="" class="ui big star  rating meds-item" data-rating="{{medRating}}"></div>
+                <div class="date-label">{{timing}}</div>
+            </div>
+            <div class="meta">
+                <div class="date-label">Ingredients: </div>
+                {{{strength}}}
+                <div class="date-label">Frequency: </div>
+                <span class="label ui olive tiny">
+            {{frequency}}
+       </span>
+            </div>
+            <div class="description">
+            </div>
+            <div class="ui bottom right corner pink  label biologMedsItem ">
+                <i class="right  icon ion ion-edit"></i></div>
+            {{#if endFlag}}
+            <div class="ui bottom right attached pink  label  "> Still taking
+            </div>
+            {{/if}}
         </div>
     </div>
 </template>
-
-
-
 <template name="biologMedModal">
     <div id="medModal" class="ui modal small">
         <div class="content">
-            <div class="ui form segment">
-                <div class="ui center message">
-                    <div class="ui huge image label">
-                        <img src="images/pills.jpg" />
-                        {{medName}}
-                    </div>
+            <div class="ui center block header top attached">
+                <div class="ui huge image label">
+                    <img src="images/pills.jpg" /> {{medName}}
                 </div>
+            </div>
+            <div class="ui form segment attached">
                 <div class="two fields">
                     <div class="field">
                         <label>How often do you take it?</label>
@@ -136,26 +124,24 @@
                             <option value="30" {{medFrequencySelected "30"}}>{{medFrequencyLabel "30"}}</option>
                         </select>
                     </div>
-
                     <div class="field">
                         <label>Your Rating</label>
                         <div id="medRating" class="ui massive star med rating" data-rating="{{medRating}}"></div>
                     </div>
                 </div>
                 {{#each ingredients}}
-                    <div class="two fields">
-                        <div class="field">
-                            <label>&nbsp;</label>
-                            <div class="ui large image label">
-                                <img src="images/pills.jpg" />
-                                {{text}}
-                            </div>
-                        </div>
-                        <div class="field">
-                            <label>Strength</label>
-                            <input id="medStrength-{{obj}}" class="medStrength" placeholder="Strength in mg" type="text" value="{{ingredientStrength obj}}">
+                <div class="two fields">
+                    <div class="field">
+                        <label>&nbsp;</label>
+                        <div class="ui large image label">
+                            <img src="images/pills.jpg" /> {{text}}
                         </div>
                     </div>
+                    <div class="field">
+                        <label>Strength</label>
+                        <input id="medStrength-{{obj}}" class="medStrength" placeholder="Strength in mg" type="text" value="{{ingredientStrength obj}}">
+                    </div>
+                </div>
                 {{/each}}
                 <div class="two fields">
                     <div class="field">
@@ -165,26 +151,24 @@
                     <div class="field">
                         <label>End Date</label>
                         <input id="medEndDate" placeholder="end date" type="text" value="{{medEndDate}}" class="datepicker">
-
-               <!--          <label>Still Taking?</label>
+                        <!--          <label>Still Taking?</label>
                         <input id="medEndFlag" type="checkbox" value="1" {{medTakingChecked}}> -->
                     </div>
                 </div>
                 <div class="two fields">
                     <div class="field">&nbsp;</div>
-                              <div class="field">
-      <div class="ui radio checkbox">
-        <input id="medEndFlag" type="checkbox" value="1" {{medTakingChecked}} class="hidden">
-        <label for="medEndFlag">Still Taking?</label>
-
-      </div>
-    </div>
+                    <div class="field">
+                        <div class="ui radio checkbox">
+                            <input id="medEndFlag" type="checkbox" value="1" {{medTakingChecked}} class="hidden">
+                            <label for="medEndFlag">Still Taking?</label>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="actions">
-            <div class="ui button cancel">Cancel</div>
-            <div class="ui button ok">OK</div>
+            <div class="ui button red cancel">Cancel</div>
+            <div class="ui button green ok">OK</div>
         </div>
     </div>
 </template>

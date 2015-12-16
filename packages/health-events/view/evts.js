@@ -49,6 +49,73 @@ Template["biologBioontologyEventsContent"].helpers({
     }
 });
 
+Template["biologEvents"].rendered = function() {
+    console.log("search");
+
+
+    $('.ui.search')
+        .search({
+            apiSettings: {
+                onResponse: function(searchResults) {
+                    var
+                        response = {
+                            results: []
+
+                        };
+                    // translate GitHub API response to work with search
+                    $.each(searchResults.collection, function(index, item) {
+
+                        response.results.push({
+                            title: item.prefLabel,
+                            obj: item
+                        })
+
+                    });
+                    return response;
+                },
+                url: 'https://data.bioontology.org/search?suggest=true&ontologies=LOINC,MESH&semantic_types=T051,T053,T055,T056,T058,T059,T068,T079&include=prefLabel,synonym,definition,notation,cui,semanticType,properties&display_context=false&apikey=89b05cf1-2e81-48f6-baad-58236f6af05d&q={query}'
+            },
+
+            minCharacters: 3,
+            onSelect: function(result, response) {
+                var self = this;
+                console.log(result, response)
+                result.obj.properties = result.obj.properties || [];
+                var evnt = result.obj;
+                evnt.properties = evnt.properties || []
+                eventsResults.set([evnt]);
+                Session.set("biolog.bioontology.events.results", evnt);
+                submitBioolookupEvents();
+                Meteor.setTimeout(function() {
+                    $(self).search('set value', "")
+                    Bert.alert({
+                        title: 'Event saved!',
+                        message: result.title + "Added successfully ",
+                        type: 'cus-success',
+                        style: 'growl-top-right',
+                        icon: 'icon checkmark'
+                    });
+                }, 100)
+
+                //}
+                // });
+
+
+
+                // Session.set("biolog:medications/meds.results", result.obj);
+                //         medsResults.set([]);
+
+
+            },
+            onResultsClose: function() {
+                console.log(this)
+
+            }
+
+        });
+};
+
+
 Template["biologBioontologyEventsContent"].events({
     "input .prompt": function(event, template) {
         //if return character, submit the form
@@ -99,11 +166,11 @@ Template["biologBioontologyEventsContent"].events({
 
 submitBioolookupEvents = function() {
     Session.set("biolog:events/events.modal.open", null);
-    var cond = Session.get("biolog.bioontology.events.results");
-    console.log("Saving event: " + JSON.stringify(cond));
-    if (!cond) return;
-
-    biolog.Events.constructEventFact(getPatient()._id, cond, function(err, fact){
+    var evnt = Session.get("biolog.bioontology.events.results");
+    console.log("Saving event: " + JSON.stringify(evnt));
+    if (!evnt) return;
+    delete evnt.semanticType;
+    biolog.Events.constructEventFact(getPatient()._id, evnt, function(err, fact) {
         if (err) {
             return console.error(err);
         }
@@ -125,26 +192,26 @@ submitBioolookupEvents = function() {
     });
 };
 
-    //var fact = Events.createEventFact(getPatient()._id, cond);
-    //biolog.Bioontology.getEventClasses(cond,
-    //    //callback to add a event:
-    //    function(eventToAdd) {
-    //        //add event to the fact
-    //        Events.addEventClass(fact, eventToAdd);
-    //    },
-    //    //final callback:
-    //    function(err) {
-    //        if (err) {
-    //            console.error("Unable to addClasses: " + JSON.stringify(err));
-    //        }
-    //
-    //        saveProperty(fact, function(err, success) {
-    //            if (err) {
-    //                console.error("Unable to save event fact: " + err + "\n" + JSON.stringify(fact));
-    //                return;
-    //            }
-    //        });
-    //});
+//var fact = Events.createEventFact(getPatient()._id, cond);
+//biolog.Bioontology.getEventClasses(cond,
+//    //callback to add a event:
+//    function(eventToAdd) {
+//        //add event to the fact
+//        Events.addEventClass(fact, eventToAdd);
+//    },
+//    //final callback:
+//    function(err) {
+//        if (err) {
+//            console.error("Unable to addClasses: " + JSON.stringify(err));
+//        }
+//
+//        saveProperty(fact, function(err, success) {
+//            if (err) {
+//                console.error("Unable to save event fact: " + err + "\n" + JSON.stringify(fact));
+//                return;
+//            }
+//        });
+//});
 
 
 
@@ -181,6 +248,15 @@ Template["biologEvents"].helpers({
 Template["biologEventsItem"].rendered = function() {
     $('.rateit').rateit();
     $('.rateit').bind(getFrowns);
+      $('.header.meds-item ')
+  .popup({
+    inline   : true,
+    hoverable: true,
+    delay: {
+      show: 300,
+      hide: 600
+    }
+  })
 };
 
 Template["biologEventsItem"].events({
@@ -210,14 +286,15 @@ Template["biologEventsItem"].helpers({
     },
 
     timing: function() {
+       
         if (this.startDate && this.endDate) {
-            return biolog.BiologUtil.yyyy_mm_dd(this.startDate) + " to " + yyyy_mm_dd(this.endDate);
+            return moment(this.startDate).format("MMM Do YY") + " to " + moment(this.endDate).format("MMM Do YY");;
         }
         if (this.startDate && !this.endDate) {
-            return "began " + biolog.BiologUtil.yyyy_mm_dd(this.startDate);
+            return "began " + moment(this.startDate).format("MMM Do YY");;
         }
         if (!this.startDate && this.endDate) {
-            return "stopped " + biolog.BiologUtil.yyyy_mm_dd(this.endDate);
+            return "stopped " + moment(this.endDate).format("MMM Do YY");;
         }
     }
 
@@ -242,9 +319,9 @@ Tracker.autorun(function() {
                 if (postFacts) {
                     var modal = this;
                     var posts = _.reject(postFacts, function(element) {
-                        if(element && element.objName){
-                        return element.objName.toLowerCase() == $.trim($(modal).find(".header").text().toLowerCase());
-                          }
+                        if (element && element.objName) {
+                            return element.objName.toLowerCase() == $.trim($(modal).find(".header").text().toLowerCase());
+                        }
                     });
                     Session.setAuth("postFacts", posts)
                 }
@@ -272,6 +349,15 @@ Tracker.autorun(function() {
 Template["biologEventModal"].rendered = function() {
     $('.rateit').rateit();
     //$('.rateit').bind(getFrowns);
+      $('.datepicker').pickadate({
+    selectMonths: true, // Creates a dropdown to control month
+    selectYears: 80, // Creates a dropdown of 15 years to control year,
+    max:1998,
+    //format: 'dd mmm, yyyy',
+    formatSubmit: 'yyyy/mm/dd',
+    close: 'Ok',
+
+  });
 };
 
 
@@ -295,7 +381,7 @@ Template["biologEventModal"].helpers({
     eventStartDate: function() {
         var event = Session.get("biolog:events/event.editing");
         if (!event) return;
-        var dateStr = yyyy_mm_dd(event.startDate);
+        var dateStr = moment(event.endDate).format("MMM Do YY");
         return dateStr;
     },
 
@@ -304,7 +390,7 @@ Template["biologEventModal"].helpers({
         if (!event) return;
         //return event.endDate;
         if (!event.endDate) return "";
-        var dateStr = yyyy_mm_dd(event.endDate);
+        var dateStr = moment(event.endDate).format("MMM Do YY");
         return dateStr;
     },
 
@@ -353,18 +439,20 @@ Template["biologEventModal"].helpers({
 
 
 updateEvent = function() {
-    var event = Session.get("biolog:events/event.editing");
-    delete event._id;
+    var evnt = Session.get("biolog:events/event.editing");
+    delete evnt._id;
+    delete evnt.semanticType;
     //console.log("\n\nSaving event: " + JSON.stringify(event));
-    if (!event) return;
+    if (!evnt) return;
+
 
     var startDateStr = $("#eventStartDate").val();
     if (startDateStr) {
         var startDate = new Date(startDateStr);
         startDate.setTime(startDate.getTime() + startDate.getTimezoneOffset() * 60 * 1000);
-        event.startDate = startDate;
+        evnt.startDate = startDate;
     } else {
-        event.startDate = null;
+        evnt.startDate = null;
     }
 
     var endDateStr = $("#eventEndDate").val();
@@ -372,25 +460,25 @@ updateEvent = function() {
     if (endDateStr) {
         var endDate = new Date(endDateStr);
         endDate.setTime(endDate.getTime() + endDate.getTimezoneOffset() * 60 * 1000);
-        event.endDate = endDate;
+        evnt.endDate = endDate;
         console.log("set endDate=" + endDate);
     } else {
-        event.endDate = null;
+        evnt.endDate = null;
     }
-    event.endFlag = 0;
-    if ($("#eventEndFlag").prop("checked")) event.endFlag = 1;
+    evnt.endFlag = 0;
+    if ($("#eventEndFlag").prop("checked")) evnt.endFlag = 1;
 
     //add frowns rating
     //setEventSeverity(event, eventFrowns.get());
     var frownsRating = $('#eventSeverityFrowns').rateit('value');
     console.log("frownsRating=" + frownsRating);
-    biolog.Events.setEventSeverity(event, frownsRating);
+    biolog.Events.setEventSeverity(evnt, frownsRating);
 
-    saveProperty(event, function(err, success) {
+    saveProperty(evnt, function(err, success) {
         if (err) {
-            console.error("Unable to save event: " + err + "\n" + JSON.stringify(event));
+            console.error("Unable to save event: " + err + "\n" + JSON.stringify(evnt));
             return;
         }
-        console.log("Saved event: " + JSON.stringify(event));
+        console.log("Saved event: " + JSON.stringify(evnt));
     });
 };

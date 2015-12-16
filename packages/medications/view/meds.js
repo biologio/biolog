@@ -47,7 +47,52 @@ Template["biologBioontologyMedsContent"].helpers({
         return medsResults.get();
     }
 });
+// Template["biologBioontologyMedsContent"].rendered = function () {
+//     console.log("search");
+ 
 
+//     $('.ui.search')
+//   .search({
+//     apiSettings: {
+//          onResponse: function(Response) {
+//         var
+//           response = {
+//             results :[]
+            
+//           }
+//         ;
+//         // translate GitHub API response to work with search
+//         $.each(Response.collection, function(index, item) {
+
+//         response.results.push({title:item.prefLabel, obj:item})
+         
+//         });
+//         return response;
+//       },
+//       url: 'https://data.bioontology.org/search?suggest=true&ontologies=RXNORM&semantic…ties&display_context=false&apikey=89b05cf1-2e81-48f6-baad-58236f6af05d&q={query}'
+//     },
+    
+//     minCharacters : 3,
+//     onSelect:function(result, response){
+//         console.log(result, response)
+
+//          var med = result.obj;
+//         console.log("clicked: " + JSON.stringify(med));
+//         medsResults.set([med]);
+//         Session.set("biolog:medications/meds.results", med);
+
+//           if (medsResults.get() && medsResults.get().length > 0) {
+//                 Session.set("biolog:medications/meds.results", medsResults.get()[0]);
+//                 medsResults.set([]);
+//                 return submitBioolookupMeds();
+//             }
+//         // Session.set("biolog:medications/meds.results", result.obj);
+//         //         medsResults.set([]);
+//     }
+//   })
+// ;
+    
+// };
 Template["biologBioontologyMedsContent"].events({
     "input .prompt": function(event, template) {
         console.log("input .prompt", template.find("#biologBioontologySearchMedsBox").value);
@@ -105,6 +150,7 @@ submitBioolookupMeds = function() {
 saveMedFactWithIngredientsAndClasses = function(ptid, med, callback) {
     //console.log("Saving med: " + JSON.stringify(med));
     if (!med) return;
+    delete med.semanticType;
 
     biolog.Medications.constructMedFact(ptid, med, function(err, fact) {
         if (err) return callback(err);
@@ -131,6 +177,7 @@ saveMedFactWithIngredientsAndClasses = function(ptid, med, callback) {
                     if (err) {
                         console.error("Error adding med class: " + err);
                     }
+
                     //console.log("\n\n\nSaving med fact:" + JSON.stringify(fact));
                     saveProperty(fact, function(err, success) {
                         if (err) {
@@ -196,7 +243,84 @@ saveMedFactWithIngredientsAndClasses = function(ptid, med, callback) {
 
 
 
+Template["biologMeds"].rendered = function () {
+        console.log("search");
+ 
 
+    $('.ui.search')
+  .search({
+    apiSettings: {
+         onResponse: function(searchResults) {
+        var
+          response = {
+            results :[]
+            
+          }
+        ;
+        // translate GitHub API response to work with search
+        $.each(searchResults.collection, function(index, item) {
+
+        response.results.push({title:item.prefLabel, obj:item})
+         
+        });
+        return response;
+      },
+      url: 'https://data.bioontology.org/search?suggest=true&ontologies=RXNORM&semantic…ties&display_context=false&apikey=89b05cf1-2e81-48f6-baad-58236f6af05d&q={query}'
+    },
+    
+    minCharacters : 3,
+    onSelect:function(result, response){
+        var self = this;
+        console.log(result, response)
+        result.obj.properties = result.obj.properties || [];
+        var med = result.obj;
+       // biolog.Medications.constructMedFact(getPatient()._id, result.obj, function(err, data){
+       // if(!err){
+          //  var med = data;
+        //     console.log("clicked: " + JSON.stringify(med));
+        // medsResults.set([med]);
+        // Session.set("biolog:medications/med.editing", med);
+
+        //   if (medsResults.get() && medsResults.get().length > 0) {
+        //         Session.set("biolog:medications/meds.results", medsResults.get()[0]);
+        //         medsResults.set([]);
+        //         // Session.set("biolog:medications/med.editing", med );
+        //         //return submitBioolookupMeds();
+        //     } 
+         med.properties = med.properties || []
+        medsResults.set([med]);
+        Session.set("biolog:medications/meds.results", med); 
+         submitBioolookupMeds();
+       Meteor.setTimeout(function(){
+
+         $(self).search('set value', "")
+         Bert.alert({
+  title: 'Medication saved!',
+  message:  result.title + "Added successfully ",
+  type: 'cus-success',
+  style: 'growl-top-right',
+  icon: 'icon checkmark'
+});
+     }, 100)
+         
+        //}
+      // });
+         
+
+   
+        // Session.set("biolog:medications/meds.results", result.obj);
+        //         medsResults.set([]);
+        
+        
+    },
+    onResultsClose:function(){
+        console.log(this)
+       
+    }
+
+  })
+;
+};
 
 
 
@@ -209,8 +333,12 @@ Template["biologMeds"].helpers({
 
     pastMeds: function() {
         if (!getPatient()) return;
+        console.log("past")
         var result = getPatientMedsPast(getPatient()._id).fetch();
         return result;
+    },
+    results: function() {
+        return medsResults.get();
     }
 });
 
@@ -219,6 +347,7 @@ Template["biologMedsItem"].events({
         //console.log("clicked: " + JSON.stringify(this));
         Session.set("biolog:medications/med.editing", this);
         //Session.set("biologMed.modal.open", true);
+
     }
 });
 
@@ -226,7 +355,22 @@ Template["biologMedsItem"].events({
 
 
 
-
+Template["biologMedsItem"].rendered = function () {
+       $('.ui.rating.meds-item').rating({
+    maxRating: 5
+  }).rating('disable');
+       $('.header.meds-item ')
+  .popup({
+    inline   : true,
+    hoverable: true,
+    delay: {
+      show: 300,
+      hide: 600
+    }
+  })
+  $('.ingredient-label.label').popup();
+;
+};
 Template["biologMedsItem"].helpers({
 
     strength: function() {
@@ -234,12 +378,22 @@ Template["biologMedsItem"].helpers({
         var ingredients = biolog.Medications.getMedIngredients(med);
         var display = "";
         for (var ingredientIdx in ingredients) {
+            console.log(1, ingredientIdx)
             var ingredient = ingredients[ingredientIdx];
             var strength = biolog.Medications.getIngredientStrength(med, ingredient.obj);
-            if (!strength) strength = "?";
-            if (display.length > 0) display += " + ";
+            if (strength){
+                  // if (display.length > 0) display += " + ";
+            display += "<span class='ui  olive tiny label ingredient-label' data-variation='mini'  data-content='"+ ingredient.text + " " + strength + " mg'"+"> ";
             display += ingredient.text + " " + strength + " mg";
+            display += "</span>";
         }
+        else{
+             display += "<span class='ui  olive tiny label ingredient-label' data-variation='mini'  data-content='"+ ingredient.text + "'> ";
+            display += ingredient.text ;
+            display += "</span>";
+        }
+            } strength = "";
+          
         if (display.length === 0) return "?";
         return display;
     },
@@ -252,14 +406,23 @@ Template["biologMedsItem"].helpers({
 
     timing: function() {
         if (this.startDate && this.endDate) {
-            return yyyy_mm_dd(this.startDate) + " to " + yyyy_mm_dd(this.endDate);
+            return moment(this.startDate).format("MMM Do YY") + " to " + moment(this.endDate).format("MMM Do YY");
         }
         if (this.startDate && !this.endDate) {
-            return "since " + yyyy_mm_dd(this.startDate);
+            return "since " + moment(this.startDate).format("MMM Do YY");
         }
         if (!this.startDate && this.endDate) {
-            return "stopped " + yyyy_mm_dd(this.endDate);
+            return "stopped " +  moment(this.endDate).format("MMM Do YY");
         }
+    },
+     medRating: function() {
+        var med = this;
+        console.log(this);
+        if (!med) return;
+        var ratingVal = getFactRating(med);
+        //console.log("ratingVal=" + ratingVal);
+        //$('.ui.rating.med').rating('set rating', ratingVal);
+        return ratingVal;
     }
 
 
@@ -340,6 +503,7 @@ Template["biologMedModal"].rendered = function() {
 Template["biologMedModal"].helpers({
     medName: function() {
         var med = Session.get("biolog:medications/med.editing");
+        console.log(med)
         return biolog.Medications.getMedName(med);
     },
 
@@ -428,6 +592,7 @@ Template["biologMedModal"].helpers({
 updateMed = function() {
     var med = Session.get("biolog:medications/med.editing");
     delete med._id;
+    delete med.semanticType;
     //console.log("\n\nSaving med: " + JSON.stringify(med));
     if (!med) return;
     var frequency = $("#medFrequency").val();

@@ -108,18 +108,19 @@ Template.sidebar.helpers({
         //    icon: "calendar",
         //    url: "/#"
         //},
-        {
-            text: "Alerts",
-            icon: "ion-ios-bell",
-            url: "/alerts",
-            badge: countAlerts()
-        },
+        
         {
             text: "Events",
             icon: "fa fa-calendar",
             url: "/events"
-        }
+        },
         //{
+        {
+            text: "Alerts",
+            icon: "ion-ios-bell",
+            url: "/alerts",
+            // badge: countAlerts()
+        }
         //    text: "Timeline",
         //    icon: "ion-ios-pulse-strong",
         //    url: "/#"

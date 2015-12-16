@@ -13,8 +13,8 @@
             {{>biologBioontologyEventsContent}}
         </div>
         <div class="actions">
-            <div class="ui button cancel">Cancel</div>
-            <div class="ui button ok">OK</div>
+            <div class="ui button red cancel">Cancel</div>
+            <div class="ui button green ok">OK</div>
         </div>
     </div>
 </template>
@@ -46,29 +46,45 @@
 
 
 <template name="biologEvents">
-    <div class="ui segment">
-        <span class="ui large header">Current Events</span>&nbsp;&nbsp;&nbsp;&nbsp;{{> biologBioontologyEventsButton}}
-        <div class="ui segment">
-            <!--<div class="ui items">-->
-            <div class="ui divided link items">
-                {{#each currentEvents}}
-                    {{>biologEventsItem}}
-                {{/each}}
-            </div>
-        </div>
-    </div>
 
-    <div class="ui segment">
-        <span class="ui large header">Past Events</span>&nbsp;&nbsp;&nbsp;&nbsp;{{> biologBioontologyEventsButton}}
-        <div class="ui segment">
-            <!--<div class="ui items">-->
-            <div class="ui divided link items">
-                {{#each pastEvents}}
-                    {{>biologEventsItem}}
-                {{/each}}
+
+
+      <div class="ui top attached menu huge biolog-events">
+        <div class="item header icon ui active "> Current Events</div>
+        <div class="menu">
+            <div class="ui  category search item">
+                <div class="ui  icon input transparent ">
+                    <input class="prompt" type="text" placeholder="Search for events..." id="biologBioontologySearchEventsBox">
+                    <i class="search link icon teal"></i>
+                </div>
+                <div class="results">
+                    {{#each results}}
+                    <a class=" result biologBioontologyMedsResult">
+                        <div class="content">
+                            {{prefLabel}}
+                            <!--   {{altLabels}} -->
+                        </div>
+                    </a>
+                    {{/each}}
+                </div>
             </div>
         </div>
     </div>
+     <div class="ui bottom attached segment card-items">
+        <div class="ui four doubling stackable cards">
+            {{#each currentEvents}} {{> biologEventsItem}} {{/each}}
+        </div>
+        <h4 class="ui horizontal divider header">
+  <i class="ion ion-ios-pulse-strong icon red"></i>
+  Past Events
+</h4>
+        <div class=" card-items">
+            <div class="ui four doubling stackable cards">
+                {{#each pastEvents}} {{> biologEventsItem}} {{/each}}
+            </div>
+        </div>
+    </div>
+ 
 
     {{> biologBioontologyEventsModal}}
     {{> biologEventModal}}
@@ -76,7 +92,29 @@
 
 
 <template name="biologEventsItem">
-    <div class="item biologEventsItem">
+
+      <div class="card ns-box feed-item ns-attached ns-effect-bouncyflip ns-type-notice ns-show">
+        <div class="content">
+            <i class="icon ion ion-ios-pulse-strong dark-pink icon- right floated mini ui image"></i>
+            <div class="header meds-item" title="{{objName}}" data-variation="tiny" data-content="{{objName}}">
+                {{objName}}
+            </div>
+            <div class="meta">
+                <div class="rateit faces-sm" data-rateit-starwidth="16" data-rateit-starheight="16" data-rateit-value="{{frowns}}" data-rateit-readonly="true"></div>
+                <div class="date-label">{{timing}}</div>
+            </div>
+            <div class="description">
+            </div>
+            <div class="ui bottom right corner pink  label biologEventsItem ">
+                <i class="right  icon ion ion-edit"></i></div>
+            {{#if endFlag}}
+            <div class="ui bottom left attached pink  label  "> Ongoing
+            </div>
+            {{/if}}
+        </div>
+    </div>
+
+    <!-- <div class="item biologEventsItem">
         <div class="ui tiny image">
             <img src="images/heartbeat.jpg">
         </div>
@@ -85,7 +123,7 @@
             <p>{{timing}}</p>
             <div class="rateit faces-sm" data-rateit-starwidth="16" data-rateit-starheight="16" data-rateit-value="{{frowns}}" data-rateit-readonly="true"></div>
         </div>
-    </div>
+    </div> -->
 </template>
 
 
@@ -93,10 +131,11 @@
 <template name="biologEventModal">
     <div id="biologEventModal" class="ui modal small">
         <div class="content">
-            <div class="ui form segment">
-                <div class="ui message">
-                    <div class="header">{{eventName}}</div>
-                </div>
+             <div class="ui header block attached top">
+                <div class="header">{{eventName}}</div>
+            </div>
+            <div class="ui form segment attached">
+               
 
                 <div class="field">
                     <label>How severe?</label>
@@ -106,24 +145,37 @@
                 <div class="two fields">
                     <div class="field">
                         <label>Start Date</label>
-                        <input id="eventStartDate" placeholder="Text Input" type="date" value="{{eventStartDate}}">
+                        <input id="eventStartDate" class="datepicker" placeholder="Start date" type="date" value="{{eventStartDate}}">
 
-                        <label>Since Birth</label>
-                        <input id="eventStartFlag" type="checkbox" value="0" {{eventSinceBirthChecked}}>
+                        
                     </div>
                     <div class="field">
                         <label>End Date</label>
-                        <input id="eventEndDate" placeholder="Text Input" type="date" value="{{eventEndDate}}">
+                        <input id="eventEndDate" class="datepicker" placeholder="End date" type="date" value="{{eventEndDate}}">
 
-                        <label>Ongoing</label>
-                        <input id="eventEndFlag" type="checkbox" value="1" {{eventOngoingChecked}}>
+                       
                     </div>
                 </div>
+                  <div class="two fields">
+                    <div class="field">
+                        <div class="ui radio checkbox">
+                            <input id="eventStartFlag" type="checkbox" value="0" {{eventSinceBirthChecked}} class="hidden">
+                            <label for="eventStartFlag">Since Birth</label>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="ui radio checkbox">
+                            <input id="eventEndFlag" type="checkbox" value="1" {{eventOngoingChecked}} class="hidden">
+                            <label for="eventEndFlag">Ongoing</label>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
         <div class="actions">
-            <div class="ui button cancel">Cancel</div>
-            <div class="ui button ok">OK</div>
+            <div class="ui button red cancel">Cancel</div>
+            <div class="ui button green ok">OK</div>
         </div>
     </div>
 </template>

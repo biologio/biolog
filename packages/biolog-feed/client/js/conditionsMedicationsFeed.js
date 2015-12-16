@@ -2,11 +2,14 @@ Template.conditionsMedicationsFeed.helpers({
     medications: function() {
         return Session.get("postFacts");
     },
-    isMedcation: function() {
+    getLabel: function() {
+            console.log(this)
             if (this.pred === "patient/medication") {
-                return true
+                return "Do you take"
+            } else if (this.pred === "patient/event") {
+                return "Have you had";
             } else {
-                return false;
+                return "Do you have"
             }
         }
         // function() {
@@ -94,8 +97,14 @@ Template.conditionsMedicationsHistory.helpers({
         return lists;
 
     },
-    isCondition: function() {
-        return this.pred == "patient/condition" ? true : false;
+    getTemplate: function() {
+        if(this.pred == "patient/condition"){
+            return "condContent"
+        }
+        else if(this.pred == "patient/medication")  return "medContent";
+        else{
+            return "eventContent"
+        }
 
     },
     getIconsSets: function(number) {
@@ -125,9 +134,19 @@ Template.conditionsMedicationsHistory.events({
     }
 });
 Template.conditionsMedicationsHistory.rendered = function() {
-    
+
 };
 Template.factItem.rendered = function() {
+
+    $('.title').popup({
+        inline: true,
+        hoverable: true,
+        delay: {
+            show: 300,
+            hide: 600
+        }
+    });
+
     var getFrowns = function() {
         console.log(this)
         return this.data.num;
@@ -146,6 +165,9 @@ Template.factItem.rendered = function() {
     }
 
 };
+UI.registerHelper("formatDate", function(date) {
+      return moment(date).format("MMM Do YY")
+ })
 Template.factItem.helpers({
     formatDate: function(date) {
         console.log(date);
@@ -154,5 +176,17 @@ Template.factItem.helpers({
     isCondition: function() {
         return this.pred == "patient/condition" ? true : false;
 
+    },  getTemplate: function() {
+        if(this.pred == "patient/condition"){
+            return "condContent"
+        }
+        else if(this.pred == "patient/medication")  return "medContent";
+        else{
+            return "eventContent"
+        }
+
+    },
+    formatDate: function(date) {
+        return moment(date).format("MMM Do YY")
     }
 });

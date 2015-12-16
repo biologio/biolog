@@ -3,11 +3,11 @@
     <div class="animated">
         {{#each medications}}
         <div class="ns-box ns-attached ns-effect-bouncyflip ns-type-notice ns-show">
-            <div class="ns-box-inner">
+            <div class="ns-box-inner" data-semantic-type="{{semanticType}}">
                 <!-- <i class="icon ion-calendar"></i> -->
-                <p> {{#if isMedcation}} Do you take <strong>
+                <p> {{getLabel}} <strong>
               {{objName}}  </strong>
-                    <i class="icon ion-help-circled"></i> {{else}} Do you have <strong>{{objName}}</strong> <i class="icon ion-help-circled"></i> {{/if}}
+                    <i class="icon ion-help-circled"></i> 
                     <div class="ui floated right    buttons">
                         <div class="ui basic yes button">Yes</div>
                         <div class="ui basic no  button">No</div>
@@ -25,27 +25,20 @@
     {{/each}}
 
 </template>
-<template name="factItem">
-     <div class="ns-box feed-item  ns-attached ns-effect-bouncyflip ns-type-notice ns-show">
-        <div class="ns-box-inner"><span class="icon calendar"></span>
-            <p class="flex-container">
+<template name="eventContent">
+      <p class="flex-container">
                 <div class="image">
-                    {{#if isCondition}}
-                  <i class="icon heartbeat"></i>
-                  {{else}}
-                    <img src="images/pills.jpg" alt="">
-                     {{/if}}
+                  
+                  <i class="icon ion ion-ios-pulse-strong dark-pink"></i>
+                 
                 </div>
                 <div class="text">
-                    <div class="title">{{objName}}</div>
-                    {{#if isCondition}}
+                    <div class="title" data-content="{{objName}}" data-variation="tiny" >{{objName}}</div>
+                 
                     <!--   <div class="ui rating   small" data-rating="{{num}}" data-max-rating="5"></div> -->
                
                      <div class="rateit faces-sm " data-rateit-starwidth="16" data-rateit-starheight="15" data-rateit-value="{{num}}" data-rateit-readonly="true"></div>
-                    {{else}}
-                    <div class="ui rating  small"  data-rating="{{data.rating.num}}" data-max-rating="5"></div>
-                   
-                    {{/if}}
+                    
                     <div class="start-date">
                         {{#if endDate}}
                     {{formatDate startDate}}  to {{formatDate endDate}}
@@ -57,6 +50,56 @@
                     </div>
                 </div>
             </p>
+</template>
+<template name="condContent">
+      <p class="flex-container">
+                <div class="image">
+                 
+                  <i class="icon heartbeat"></i>
+                 
+                </div>
+                <div class="text">
+                    <div class="title" data-content="{{objName}}" data-variation="tiny" >{{objName}}</div>
+                     <div class="rateit faces-sm " data-rateit-starwidth="16" data-rateit-starheight="15" data-rateit-value="{{num}}" data-rateit-readonly="true"></div>
+                    <div class="start-date">
+                        {{#if endDate}}
+                    {{formatDate startDate}}  to {{formatDate endDate}}
+                    {{else}}
+                    {{#if startDate}}  Since  {{formatDate startDate}}
+                    {{/if}}
+                    {{/if}}
+                       
+                    </div>
+                </div>
+            </p>
+</template>
+<template name="medContent">
+      <p class="flex-container">
+                <div class="image">
+               
+                    <i class="icon-pharmacy dark-blue"></i>
+                
+                </div>
+                <div class="text">
+                    <div class="title" data-content="{{objName}}" data-variation="tiny" >{{objName}}</div>
+               
+                    <div class="ui rating  small"  data-rating="{{data.rating.num}}" data-max-rating="5"></div>
+                    <div class="start-date">
+                        {{#if endDate}}
+                    {{formatDate startDate}}  to {{formatDate endDate}}
+                    {{else}}
+                    {{#if startDate}}  Since  {{formatDate startDate}}
+                    {{/if}}
+                    {{/if}}
+                       
+                    </div>
+                </div>
+            </p>
+</template>
+<template name="factItem">
+     <div class="ns-box feed-item  ns-attached ns-effect-bouncyflip ns-type-notice ns-show">
+        <div class="ns-box-inner">
+        {{> Template.dynamic template=getTemplate data=this}}
         </div>
     </div>
 

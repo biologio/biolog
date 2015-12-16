@@ -1,126 +1,115 @@
-
 <!-- CONDITIONS -->
 <template name="biologBioontologyConditionsButton">
-  
-        <i id="biologBioontologyConditionsButton" class="ion ion-plus-round icon link inverted green bordered circular biologBioontologyConditionsButton"></i>
-  
+    <i id="biologBioontologyConditionsButton" class="ion ion-plus-round icon link inverted green bordered circular biologBioontologyConditionsButton"></i>
 </template>
-
-
 <template name="biologBioontologyConditionsModal">
     <div id="biologBioontologyConditionsModal" class="ui modal small">
         <div class="content">
             {{>biologBioontologyConditionsContent}}
         </div>
         <div class="actions">
-            <div class="ui button cancel">Cancel</div>
-            <div class="ui button ok">OK</div>
+            <div class="ui button red cancel">Cancel</div>
+            <div class="ui button green ok">OK</div>
         </div>
     </div>
 </template>
-
-
 <template name="biologBioontologyConditionsContent">
     <!--<div class="ui page grid">-->
-        <!--<div class="three column row">-->
-            <!--<div class="column"></div>-->
-            <!--<div class="left aligned starter column">-->
-                <div class="ui icon input loading">
+    <!--<div class="three column row">-->
+    <!--<div class="column"></div>-->
+    <!--<div class="left aligned starter column">-->
+    <div class="ui icon input loading">
+        <input class="prompt" type="text" placeholder="Search for conditions..." id="biologBioontologySearchConditionsBox">
+    </div>
+    <div class="results ui selection list">
+        {{#each results}}
+        <div class="item biologBioontologyConditionsResult">
+            <div class="content" style="white-space: nowrap;">
+                <span class="header">{{prefLabel}}</span> {{altLabels}}
+            </div>
+        </div>
+        {{/each}}
+    </div>
+    <!--</div>-->
+    <!--</div>-->
+    <!--</div>-->
+</template>
+<template name="biologConditions">
+    <div class="ui top attached menu huge biolog-conds">
+        <div class="item header icon ui active "> Current Conditions</div>
+        <div class="menu">
+            <div class="ui  category search item">
+                <div class="ui  icon input transparent ">
                     <input class="prompt" type="text" placeholder="Search for conditions..." id="biologBioontologySearchConditionsBox">
+                    <i class="search link icon teal"></i>
                 </div>
-                <div class="results ui selection list">
+                <div class="results">
                     {{#each results}}
-                        <div class="item biologBioontologyConditionsResult">
-                            <div class="content" style="white-space: nowrap;">
-                                <span class="header">{{prefLabel}}</span>
-                                {{altLabels}}
-                            </div>
+                    <a class=" result biologBioontologyMedsResult">
+                        <div class="content">
+                            {{prefLabel}}
+                            <!--   {{altLabels}} -->
                         </div>
+                    </a>
                     {{/each}}
                 </div>
-            <!--</div>-->
-        <!--</div>-->
-    <!--</div>-->
-
-</template>
-
-
-<template name="biologConditions">
-      <h2 class="ui header attached top">
-      <div class="content">
-   Current Conditions
-{{>biologBioontologyConditionsButton}}
-  </div>
-  
-
-</h2>
-  
-        <div class="ui segment attached">
-            <!--<div class="ui items">-->
-            <div class="ui divided link items">
-                {{#each currentConditions}}
-                    {{> biologConditionsItem}}
-                {{/each}}
             </div>
         </div>
- 
-   <h2 class="ui header attached top">
-      <div class="content">
-   Past Conditions
-{{>biologBioontologyConditionsButton}}
-  </div>
-  
-
-</h2>
-  
-        <div class="ui segment attached">
-            <!--<div class="ui items">-->
-            <div class="ui divided link items">
-                {{#each pastConditions}}
-                    {{> biologConditionsItem}}
-                {{/each}}
+    </div>
+    <div class="ui bottom attached segment card-items">
+        <div class="ui four doubling stackable cards">
+            {{#each currentConditions}} {{> biologConditionsItem}} {{/each}}
+        </div>
+        <h4 class="ui horizontal divider header">
+  <i class="heartbeat icon red"></i>
+  Past Conditions
+</h4>
+        <div class=" card-items">
+            <div class="ui four doubling stackable cards">
+                {{#each pastConditions}} {{> biologConditionsItem}} {{/each}}
             </div>
         </div>
-    
-
-    {{> biologBioontologyConditionsModal}}
-    {{> biologConditionModal}}
+    </div>
+    {{> biologBioontologyConditionsModal}} {{> biologConditionModal}}
 </template>
-
-
 <template name="biologConditionsItem">
-    <div class="item biologConditionsItem">
-        <div class="ui tiny image">
-            <img src="images/heartbeat.jpg">
-        </div>
+    <div class="card ns-box feed-item ns-attached ns-effect-bouncyflip ns-type-notice ns-show">
         <div class="content">
-            <div class="header">{{objName}}</div>
-            <p>{{timing}}</p>
-            <div class="rateit faces-sm" data-rateit-starwidth="16" data-rateit-starheight="16" data-rateit-value="{{frowns}}" data-rateit-readonly="true"></div>
+            <i class="icon-i-cardiology icon- right floated mini ui image"></i>
+            <div class="header meds-item" title="{{objName}}" data-variation="tiny" data-content="{{objName}}">
+                {{objName}}
+            </div>
+            <div class="meta">
+                <div class="rateit faces-sm" data-rateit-starwidth="16" data-rateit-starheight="16" data-rateit-value="{{frowns}}" data-rateit-readonly="true"></div>
+                <div class="date-label">{{timing}}</div>
+            </div>
+            <div class="description">
+            </div>
+            <div class="ui bottom right corner pink  label biologConditionsItem ">
+                <i class="right  icon ion ion-edit"></i></div>
+            {{#if endFlag}}
+            <div class="ui bottom left attached pink  label  "> Ongoing
+            </div>
+            {{/if}}
         </div>
     </div>
 </template>
-
-
-
 <template name="biologConditionModal">
     <div id="conditionModal" class="ui modal small">
         <div class="content">
-            <div class="ui form segment">
-                <div class="ui message">
-                    <div class="header">{{conditionName}}</div>
-                </div>
-
+            <div class="ui header block attached top">
+                <div class="header">{{conditionName}}</div>
+            </div>
+            <div class="ui form segment attached">
                 <div class="field">
                     <label>How severe?</label>
                     <div id="conditionSeverityFrowns" class="rateit faces" data-rateit-starwidth="32" data-rateit-starheight="32" data-rateit-value="{{frowns}}"></div>
                 </div>
-
                 <div class="two fields">
                     <div class="field">
                         <label>Start Date</label>
                         <input id="conditionStartDate" placeholder="start date" type="text" value="{{conditionStartDate}}" class="datepicker">
-<!-- 
+                        <!-- 
                         <label>Since Birth</label>
 
                         <input id="conditionStartFlag" type="checkbox" value="0" {{conditionSinceBirthChecked}}> -->
@@ -128,36 +117,31 @@
                     <div class="field">
                         <label>End Date</label>
                         <input id="conditionEndDate" placeholder="end date" type="text" value="{{conditionEndDate}}" class="datepicker">
-
                         <!-- <label>Ongoing</label>
                         <input id="conditionEndFlag" type="checkbox" value="1" {{conditionOngoingChecked}}> -->
                     </div>
-            
                 </div>
                 <div class="two fields">
-                                       <div class="field">
-      <div class="ui radio checkbox">
-        <input id="conditionStartFlag" type="checkbox" value="0" {{conditionSinceBirthChecked}} class="hidden">
-        <label for="conditionStartFlag">Since Birth</label>
-
-      </div>
-    </div>
-                       <div class="field">
-      <div class="ui radio checkbox">
-        <input id="conditionEndFlag" type="checkbox" value="1" {{conditionOngoingChecked}} class="hidden">
-        <label for="conditionEndFlag">Ongoing</label>
-
-      </div>
-    </div>
+                    <div class="field">
+                        <div class="ui radio checkbox">
+                            <input id="conditionStartFlag" type="checkbox" value="0" {{conditionSinceBirthChecked}} class="hidden">
+                            <label for="conditionStartFlag">Since Birth</label>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="ui radio checkbox">
+                            <input id="conditionEndFlag" type="checkbox" value="1" {{conditionOngoingChecked}} class="hidden">
+                            <label for="conditionEndFlag">Ongoing</label>
+                        </div>
+                    </div>
                 </div>
                 <br>
-            <br>
+                <br>
             </div>
-
         </div>
         <div class="actions">
-            <div class="ui button cancel">Cancel</div>
-            <div class="ui button ok">OK</div>
+            <div class="ui button red cancel ">Cancel</div>
+            <div class="ui button green ok">OK</div>
         </div>
     </div>
 </template>

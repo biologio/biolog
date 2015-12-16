@@ -22,6 +22,7 @@ Package.onUse(function(api) {
             'templating',
             'reactive-var',
             'biolog:bioontology',
+            'themeteorchef:bert',
             'dandv:jquery-rateit'
         ],
         'client');

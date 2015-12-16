@@ -102,7 +102,7 @@ submitBioolookupConditions = function() {
     var cond = Session.get("biolog.bioontology.conditions.results");
     console.log("Saving condition: " + JSON.stringify(cond));
     if (!cond) return;
-
+    delete cond.semanticType;
     biolog.Conditions.constructConditionFact(getPatient()._id, cond, function(err, fact){
         if (err) {
             return console.error(err);
@@ -177,10 +177,100 @@ Template["biologConditions"].helpers({
         return result;
     }
 });
+Template["biologConditions"].rendered = function () {
+        console.log("search");
+ 
+
+    $('.ui.search')
+  .search({
+    apiSettings: {
+         onResponse: function(searchResults) {
+        var
+          response = {
+            results :[]
+            
+          }
+        ;
+        // translate GitHub API response to work with search
+        $.each(searchResults.collection, function(index, item) {
+
+        response.results.push({title:item.prefLabel, obj:item})
+         
+        });
+        return response;
+      },
+      url: 'https://data.bioontology.org/search?suggest=true&ontologies=MEDLINEPLUS,ICD10CM&include=prefLabel,synonym,definition,notation,cui,semanticType,properties&display_context=false&apikey=89b05cf1-2e81-48f6-baad-58236f6af05d&q={query}'
+    },
+    
+    minCharacters : 3,
+    onSelect:function(result, response){
+        var self = this;
+        console.log(result, response)
+        result.obj.properties = result.obj.properties || [];
+        var med = result.obj;
+       // biolog.Medications.constructMedFact(getPatient()._id, result.obj, function(err, data){
+       // if(!err){
+          //  var med = data;
+        //     console.log("clicked: " + JSON.stringify(med));
+        // medsResults.set([med]);
+        // Session.set("biolog:medications/med.editing", med);
+
+        //   if (medsResults.get() && medsResults.get().length > 0) {
+        //         Session.set("biolog:medications/meds.results", medsResults.get()[0]);
+        //         medsResults.set([]);
+        //         // Session.set("biolog:medications/med.editing", med );
+        //         //return submitBioolookupMeds();
+        //     } 
+         med.properties = med.properties || []
+        conditionsResults.set([med]);
+
+
+
+        Session.set("biolog.bioontology.conditions.results", med); 
+         submitBioolookupConditions();
+       Meteor.setTimeout(function(){
+
+         $(self).search('set value', "")
+         Bert.alert({
+  title: 'Condition saved!',
+  message:  result.title + "Added successfully ",
+  type: 'cus-success',
+  style: 'growl-top-right',
+  icon: 'icon checkmark'
+});
+     }, 100)
+         
+        //}
+      // });
+         
+
+   
+        // Session.set("biolog:medications/meds.results", result.obj);
+        //         medsResults.set([]);
+        
+        
+    },
+    onResultsClose:function(){
+        console.log(this)
+       
+    }
+
+  })
+;
+};
 
 Template["biologConditionsItem"].rendered = function() {
     $('.rateit').rateit();
     $('.rateit').bind(getFrowns);
+     $('.header.meds-item ')
+  .popup({
+    inline   : true,
+    hoverable: true,
+    delay: {
+      show: 300,
+      hide: 600
+    }
+  })
 };
 
 Template["biologConditionsItem"].events({
@@ -211,13 +301,13 @@ Template["biologConditionsItem"].helpers({
 
     timing: function() {
         if (this.startDate && this.endDate) {
-            return yyyy_mm_dd(this.startDate) + " to " + yyyy_mm_dd(this.endDate);
+            return moment(this.startDate).format("MMM Do YY") + " to " + moment(this.endDate).format("MMM Do YY");
         }
         if (this.startDate && !this.endDate) {
-            return "since " + yyyy_mm_dd(this.startDate);
+            return "since " +  moment(this.startDate).format("MMM Do YY");
         }
         if (!this.startDate && this.endDate) {
-            return "stopped " + yyyy_mm_dd(this.endDate);
+            return "stopped " + moment(this.endDate).format("MMM Do YY");
         }
     }
 
@@ -378,6 +468,7 @@ Template["biologConditionModal"].helpers({
 updateCondition = function() {
     var condition = Session.get("biolog:conditions/condition.editing");
     delete condition._id;
+    delete condition.semanticType;
     //console.log("\n\nSaving condition: " + JSON.stringify(condition));
     if (!condition) return;
 
