@@ -268,7 +268,7 @@ Template["biologMeds"].rendered = function () {
       url: 'https://data.bioontology.org/search?suggest=true&ontologies=RXNORM&semantic…ties&display_context=false&apikey=89b05cf1-2e81-48f6-baad-58236f6af05d&q={query}'
     },
     
-    minCharacters : 3,
+  
     onSelect:function(result, response){
         var self = this;
         console.log(result, response)

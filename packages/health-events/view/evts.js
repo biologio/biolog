@@ -76,7 +76,7 @@ Template["biologEvents"].rendered = function() {
                 url: 'https://data.bioontology.org/search?suggest=true&ontologies=LOINC,MESH&semantic_types=T051,T053,T055,T056,T058,T059,T068,T079&include=prefLabel,synonym,definition,notation,cui,semanticType,properties&display_context=false&apikey=89b05cf1-2e81-48f6-baad-58236f6af05d&q={query}'
             },
 
-            minCharacters: 3,
+           
             onSelect: function(result, response) {
                 var self = this;
                 console.log(result, response)
