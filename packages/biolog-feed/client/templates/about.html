@@ -1,15 +1,39 @@
 <template name="aboutus">
     <div class="section no-pad-bot" id="index-banner">
         <div class="container">
-            <br>
-            <br>
+        
             <h1 class="header center blue-text bio-header"><img src="/images/Biolog.io_logo.png" alt="" class="logo-image"></h1></div>
         <div class="row center heading-1">
             <div class="container">
-                <h5 class="header normal-weight col s12 light">Biolog.io is a personal health record + expert system, designed for people to drive their health care. Our mission is to give people the tools to make optimal health decisions and to eliminate medical error.</h5></div>
-        </div>
-        <div class="">
+                
+                <h5 class="header normal-weight col s12 light">Biolog.io is a FREE and open source Smart Health Record</h5>
+
+ <div class="">
             <div class="col s4 center">&nbsp;</div>
+            <div class="col s4 center margin-top twoem">
+                {{#if currentUser}}
+                <a href="/feed" class="button ui fluid fade animated big pink">
+                    <div class="visible content">Get started</div>
+                    <div class="hidden content">
+                        <i class="ion icon ion-chevron-left"></i>Get started<i class="ion icon ion-chevron-right"></i>
+                    </div>
+                </a> {{else}}
+                <a href="/sign-in" class="button ui animated fade  fluid big pink">
+                    <div class="visible content">  Register now!</div>
+                    <div class="hidden content">
+                        Register now!
+                    </div>
+                </a>
+                {{/if}}
+            </div>
+            <div class="col s4 center">&nbsp;</div>
+        </div>
+
+            </div>
+
+        </div>
+        <!-- <div class="">
+            <div class="col s4 center"></div>
             <div class="col s4 center margin-top twoem">
                 {{#if currentUser}}
                 <a href="/feed" class="button ui fluid fade animated huge indigo inverted">
@@ -30,16 +54,26 @@
             <div class="col s4 center">&nbsp;</div>
         </div>
         <br>
-        <br>
+        <br> -->
+    </div>
+    <div class="section no-pad-bot">
+        {{> persona}}
     </div>
     <div class="section no-pad-bot sec-motion-graphpic">
         <div class="container">
             <div class="wow fadeIn">
-                <h2 class="header center indigo-color bio-header">Who’s in control of your health?</h2>
+                <br>
+                <h2 class="header center grey ui huge">Why build Biolog?</h2>
+                <h4 class="ui horizontal divider header pink ">
+  <i class="ion  icon huge  ion-chevron-down"></i>
+ 
+</h4>
+                <br>
+                <br>
                 <div class="items ui">
-                    <div class="item wow fadeInRight">
+                    <div class="item wow fadeIn">
                         <div class="content ">
-                            <h1 class="header ui  color-indigo indigo-color">Biolog</h1>
+                            <h2 class="header ui  color-indigo indigo-color">Biolog</h2>
                             <div class="sub ui header">The Open Source Smart Health Record</div>
                             <!--  <div class="meta">
                             <span>Description</span>
@@ -66,11 +100,12 @@
                     </div>
                 </div>
                 <h4 class="ui horizontal divider header black">
-  <i class="diamond down  icon"></i>
+  <i class="ion icon ion-android-funnel red"></i>
 </h4>
             </div>
         </div>
     </div>
+
     <!--  <div class="container">
         <div class="section">
          
@@ -119,7 +154,7 @@
     <div class="section features">
         <div class="container">
             <div class="ui items divided">
-                <div class="item wow fadeInLeft">
+                <div class="item wow fadeIn">
                     <div class="content middle aligned">
                         <a class="header ui dividing olive">Easy</a>
                         <!--  <div class="meta">
@@ -138,7 +173,7 @@
                         <img src="/images/biolog_feed.png">
                     </div>
                 </div>
-                <div class="item wow fadeInRight">
+                <div class="item wow fadeIn">
                     <div class="image ui medium">
                         <img src="/images/Safe.png">
                     </div>
@@ -176,7 +211,7 @@
                         <i class="icon shield huge ui circular yellow"></i>
                     </div>
                 </div>
-                <div class="item wow fadeInLeft">
+                <div class="item wow fadeIn">
                     <div class="image ui small">
                         <img src="/images/open_source.svg">
                     </div>
@@ -198,7 +233,7 @@
             </div>
         </div>
         <h4 class="ui horizontal divider header red">
-  <i class="puzzle   icon"></i> 
+  <i class="ion icon ion-android-funnel"></i> 
 </h4>
     </div>
     <!--     <div class="container">
@@ -283,11 +318,15 @@
 </h4> -->
     <div class="container">
         <div class="section cares">
-            <h2 class="header grey ui aligned center">
+            <h2 class="header grey ui aligned huge center">
                Your health is on the line.
    <!--              <div class="sub-header">Who really cares about your health?
 </div> -->
             </h2>
+                      <h4 class="ui horizontal divider header pink ">
+  <i class="ion ion-flash icon huge "></i>
+ 
+</h4>
             <br>
             <div class="sub header ui grey  block"> Who really cares about your health?</div>
             <!--  <h3 class="header grey ui aligned center">
@@ -363,14 +402,16 @@
         </div>
     </div>
     <h4 class="ui horizontal divider header red">
-  <i class="ion-ios-pulse-strong ion   icon"></i>
+  <i class="ion icon ion-android-funnel"></i>
   
 </h4>
+
+    
     <div class="section vision">
         <div class="container relative position">
             <div class="ui two column middle aligned very relaxed stackable grid">
-                <div class="column wow zoomIn">
-                    <h2 class="header ui center aligned grey">You are here...</h2>
+                <div class="column wow fadeIn">
+                    <h2 class="header ui center aligned grey huge">You are here...</h2>
                     <img class="ui medium rounded centered image" src="/images/you_are_here(i).png">
                 </div>
                 <div class="ui vertical divider">
@@ -378,16 +419,17 @@
    </i>
                 </div>
                 <div class="center aligned column">
-                    <div class="column wow zoomIn">
-                        <h2 class="header ui center aligned grey"> Our vision: You will be here...</h2>
+                    <div class="column wow fadeIn">
+                        <h2 class="header ui center aligned grey huge"> Our vision: You will be here...</h2>
                         <img class="ui small rounded image centered" src="/images/our_vision(i)_arrows_triangle.png">
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
     <h4 class="ui horizontal divider header red">
-  <i class="ion-ios-pulse-strong ion   icon"></i>
+  <i class="ion icon ion-android-funnel"></i>
 </h4>
     <div class="section no-pad-bot">
         <div class="container">
