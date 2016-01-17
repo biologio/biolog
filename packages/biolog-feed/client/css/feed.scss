@@ -1,4 +1,6 @@
 @import "include-media";
+@import url(https://fonts.googleapis.com/css?family=Varela+Round);
+@import url(https://fonts.googleapis.com/css?family=Archivo+Narrow:700);
 .h1,
 .h2,
 .h3,
@@ -10,8 +12,28 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: Raleway, sans-serif;
+    font-family: 'Varela Round', sans-serif;
     font-weight: normal;
+}
+
+.h1,
+.h2,
+.h3,
+.h4,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.ui.header {
+    font-family: 'Archivo Narrow', sans-serif;
+    font-weight: 700;
+}
+
+.ui.huge.header {
+        font-size: 2.5rem;
+    word-spacing: 3px;
 }
 
 @include media('>=phone', '<=tablet') {
@@ -561,13 +583,14 @@ overflow: scroll;
     align-items: center;
     .image {
         width: 30%;
-        .icon, [class^="icon-"], [class*=" icon-"]{
+        .icon,
+        [class^="icon-"],
+        [class*=" icon-"] {
             font-size: 3.2rem;
             color: #F44336;
             position: relative;
             top: .6rem;
         }
-        
     }
     .text {
         width: 70%;
@@ -741,21 +764,21 @@ overflow: scroll;
         color: rgb(75, 75, 117);
     }
     .floated.mini.ui.image.icon- {
-    font-size: 3rem;
-    right: 1rem;
-    top: 5rem;
-    position: absolute;
+        font-size: 3rem;
+        right: 1rem;
+        top: 5rem;
+        position: absolute;
     }
-    .ui.image.icon-i-cardiology{
-        color:#E91E63;
+    .ui.image.icon-i-cardiology {
+        color: #E91E63;
     }
     .header.meds-item {
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
         width: 95% !important;
-    text-transform: capitalize;
-    margin-bottom: .4rem;
+        text-transform: capitalize;
+        margin-bottom: .4rem;
     }
     .ui.right.bottom.label.biologMedsItem {
         background: #eb1478;
@@ -768,26 +791,26 @@ overflow: scroll;
         color: #ffffff !important;
     }
 }
-.card-items{
-    .ui.doubling.stackable.cards{
-            justify-content: center;
-    }
-}
-.card-items .ui.cards .card.ns-box {
-    box-shadow: 2px 3px 30px -10px rgba(0, 0, 0, 1);
-        min-height: 170px;
-    .ui.label.olive.tiny
-    {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    background: #4A4A92 !important;
-    text-transform: capitalize;
-    min-width: 20%;
-    max-width: 40%;
+
+.card-items {
+    .ui.doubling.stackable.cards {
+        justify-content: center;
     }
 }
 
+.card-items .ui.cards .card.ns-box {
+    box-shadow: 2px 3px 30px -10px rgba(0, 0, 0, 1);
+    min-height: 170px;
+    .ui.label.olive.tiny {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        background: #4A4A92 !important;
+        text-transform: capitalize;
+        min-width: 20%;
+        max-width: 40%;
+    }
+}
 
 .ns-box .date-label {
     margin-bottom: .3rem;
@@ -795,9 +818,12 @@ overflow: scroll;
     color: #484860;
     font-size: .8rem;
 }
-.dark-pink{
-            color:#E91E63 !important;
-        }
-        .dark-blue{
-            color:#484860 !important;
-        }
+
+.dark-pink {
+    color: #E91E63 !important;
+}
+
+.dark-blue {
+    color: #484860 !important;
+}
+

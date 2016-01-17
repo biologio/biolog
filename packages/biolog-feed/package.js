@@ -27,7 +27,8 @@ Package.onUse(function(api) {
         'flemay:less-autoprefixer',
         'timmyg:wow',
         'themeteorchef:bert',
-        'aldeed:template-extension'
+        'aldeed:template-extension',
+        'markoshust:owl-carousel-2'
 
       
 
@@ -53,6 +54,8 @@ Package.onUse(function(api) {
     api.add_files("client/templates/layout/aboutusLayout.html", ["client"])
     api.add_files("client/templates/about.html", ["client"])
     api.add_files("client/js/about.js", ["client"]);
+    api.add_files("client/templates/persona.html", ["client"])
+    api.add_files("client/js/persona.js", ["client"]);
     api.add_files("lib/collections/collection.js", ["client", "server"]);
     api.add_files("server/publication.js", ["server"]);
     api.add_files("lib/methods.js", ["server"]);
@@ -83,3 +86,4 @@ Package.onUse(function(api) {
   api.export("Feedback", ['client', 'server']);
    api.export("Feed", ['client']);
 });
+

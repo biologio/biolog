@@ -1,5 +1,6 @@
 <template name="aboutusLayout">
     <div class="material">
+
         <nav class=" " role="navigation">
             <div class="nav-wrapper container">
                 {{#if currentUser}}
@@ -42,6 +43,7 @@
             </div>
         </nav>
         {{> yield}}
+       
     </div>
     {{>biologFeedbackForm}}
 </template>
