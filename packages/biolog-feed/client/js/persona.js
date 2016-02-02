@@ -56,6 +56,14 @@ Template.persona.rendered = function() {
     //     //rotator.trigger('next.owl.carousel');
     //     //rotator.trigger('next.owl.carousel');
     // }, 10000)
+$('#owl-rotator1').unslider({
+    autoPlay:true,
+    delay:8000,
+    animation: 'vertical',
+     autoplay: true,
+      infinite: true
+});
+
 
 };
 Template.persona.helpers({
